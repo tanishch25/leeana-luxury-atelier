@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #060608;
+    --gold-accent: #ffffff;
+    --gold-muted: #888890;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  html {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+  }
+}
+
+/* ForgeLync & Modern Digital Power Display */
+.font-display {
+  font-family: 'Space Grotesk', -apple-system, sans-serif;
+}
+
+/* Authentic Street Art & Urban Graffiti Display */
+.font-graffiti {
+  font-family: 'Permanent Marker', 'Sedgwick Ave Display', cursive, sans-serif;
+}
+
+/* Milanese Couture Serif (Italian luxury fashion) */
+.font-couture {
+  font-family: 'Italiana', serif;
+}
+
+/* Iconic Editorial High-Contrast Serif (Vogue / Saint Laurent) */
+.font-editorial {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+/* Delicate Romantic Luxury Serif */
+.font-serif {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Metallic text gradient from ForgeLync */
+.text-metallic {
+  background: linear-gradient(135deg, #ffffff 0%, #ece6dc 45%, #9c978f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Kinetic outline text strokes */
+.text-stroke-luxury {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.28);
+  color: transparent;
+}
+.text-stroke-gold {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
+  color: transparent;
+}
+
+/* Infinite velocity marquees */
+@keyframes marqueeLeft {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes marqueeRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0%); }
+}
+.animate-marquee-left {
+  display: flex;
+  width: max-content;
+  animation: marqueeLeft 35s linear infinite;
+}
+.animate-marquee-right {
+  display: flex;
+  width: max-content;
+  animation: marqueeRight 35s linear infinite;
+}
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+/* Apple & Emil Kowalski Micro-Interactions */
+.apple-press {
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1), opacity 140ms ease;
+}
+.apple-press:active {
+  transform: scale(0.97);
+}
+
+/* Slick Transparent Top-to-Bottom Swipe & Reveal for Specializations */
+@keyframes glassSwipeDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0.95;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(105%);
+    opacity: 0;
+  }
+}
+
+@keyframes wipeRevealFromTop {
+  0% {
+    clip-path: inset(0 0 100% 0);
+    transform: scale(1.04);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    transform: scale(1);
+  }
+}
+
+.animate-glass-swipe {
+  animation: glassSwipeDown 850ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-wipe-reveal {
+  animation: wipeRevealFromTop 850ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Ultra-subtle luxury grain overlay */
+.luxury-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* Universal hide-scrollbar utility across all browsers (Opera, Chrome, Safari, Edge, Firefox) */
+.hide-scrollbar,
+.no-scrollbar {
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important;
+}
+.hide-scrollbar::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Discreet luxury scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #060608;
+}
+::-webkit-scrollbar-thumb {
+  background: #1c1b22;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}

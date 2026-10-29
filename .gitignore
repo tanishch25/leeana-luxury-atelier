@@ -1,0 +1,10 @@
+node_modules/
+dist/
+leeana-luxury-atelier/node_modules/
+leeana-luxury-atelier/dist/
+.DS_Store
+*.pyc
+__pycache__/
+*.log
+*.mp4
+temp_whip/
