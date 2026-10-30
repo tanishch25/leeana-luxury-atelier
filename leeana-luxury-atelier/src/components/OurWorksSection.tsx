@@ -31,49 +31,49 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
 
   return (
     <section id="our-works" className="relative w-full py-20 md:py-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto z-10 text-white scroll-mt-36">
-      {/* Creative Works Board Frame with Notice Board & Vibrant Graffiti Canvas Atmosphere */}
+      {/* Creative Works Board Frame with Authentic Graffiti Brick Wall Texture */}
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="rounded-[32px] sm:rounded-[36px] border border-white/[0.14] bg-[#07070b] relative overflow-hidden shadow-2xl p-6 sm:p-9 md:p-10 space-y-7 group/board"
+        className="rounded-[32px] sm:rounded-[38px] border border-white/[0.16] bg-[#07070b] relative overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.95)] p-6 sm:p-9 md:p-10 space-y-7 group/board"
         style={{
-          backgroundImage: `radial-gradient(750px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.08), transparent 70%)`,
+          backgroundImage: `radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.08), transparent 70%)`,
         }}
       >
-        {/* Background Vibrant Graffiti Painting & Notice Board Canvas */}
+        {/* Background Graffiti Brick Wall & Concrete Canvas */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          {/* Brighter, Colorful Graffiti Artwork Texture */}
+          {/* Authentic User-Provided High-Impact Graffiti Brick Wall Artwork */}
           <img
-            src="/assets/graffiti_art_wall.jpg"
-            alt="Atelier Graffiti Canvas"
-            className="w-full h-full object-cover object-center filter contrast-110 brightness-[0.9] saturate-[1.35] opacity-80 scale-105 transition-transform duration-1000 group-hover/board:scale-100"
+            src="/assets/graffiti_brick_wall.jpg"
+            alt="Atelier Graffiti Brick Wall"
+            className="w-full h-full object-cover object-center filter contrast-[1.18] brightness-[0.88] saturate-[1.25] opacity-85 scale-105 transition-transform duration-1000 group-hover/board:scale-100"
           />
 
-          {/* Notice Board Fine Grid & Canvas Mesh Overlay */}
+          {/* Tactile Masonry Grain & Mortar Grid Texture Overlay */}
           <div 
-            className="absolute inset-0 opacity-15 mix-blend-overlay"
+            className="absolute inset-0 opacity-25 mix-blend-overlay"
             style={{
-              backgroundImage: 'radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px)',
-              backgroundSize: '24px 24px',
+              backgroundImage: 'radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px), radial-gradient(rgba(0,0,0,0.3) 1px, transparent 1px)',
+              backgroundSize: '16px 16px, 32px 32px',
             }}
           />
 
-          {/* Subtle Atmospheric Vignette - preserving graffiti vibrance and legibility */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/45 via-transparent to-[#050508]/65" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#050508_90%)]" />
-          <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.7)]" />
+          {/* Seamless Edge Blending & Atmospheric Shadow Vignette */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060609]/75 via-[#060609]/30 to-[#060609]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,#060609_92%)]" />
+          <div className="absolute inset-0 shadow-[inset_0_0_120px_rgba(4,4,7,0.85)]" />
         </div>
 
         {/* Top hairline highlight */}
-        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
-        {/* Header Bar — Highly Visible Heading */}
+        {/* Header Bar — Highly Visible Heading on Wall Canvas */}
         <div className="relative z-20 pb-5 border-b border-white/[0.12]">
-          <div className="space-y-1.5">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
+          <div className="space-y-1.5 inline-block px-4 py-2 rounded-2xl bg-black/40 backdrop-blur-md border border-white/[0.08]">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
               Our Works
             </h2>
-            <p className="text-white/85 text-xs sm:text-sm max-w-xl font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]">
+            <p className="text-white/90 text-xs sm:text-sm max-w-xl font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
               A curated soundstage archive uniting high-fashion casting, cinematic motion choreography, and luxury brand narratives.
             </p>
           </div>
