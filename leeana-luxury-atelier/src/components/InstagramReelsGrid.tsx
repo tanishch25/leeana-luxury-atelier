@@ -99,21 +99,15 @@ export const InstagramReelsGrid: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-3.5 border-b border-white/[0.08]">
           <div className="space-y-1">
             <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
-              Live Productions / In Motion
+              Live Productions In Motion
             </h2>
             <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
               Soundstage captures, high-fashion motion choreography, and architectural cinematography streamed directly from our live Instagram reels vault.
             </p>
           </div>
 
-          {/* Telemetry & Action Dock (No view switcher) */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60 self-start md:self-auto">
-              <span>04 Productions</span>
-              <span className="text-white/20">/</span>
-              <span className="text-white/80">Soundstage Feed</span>
-            </div>
-
+          {/* Action Dock (Clean button, no unnecessary wordings/chips) */}
+          <div className="flex items-center gap-3">
             <a
               href="https://www.instagram.com/leeana.in/"
               target="_blank"
@@ -161,8 +155,9 @@ export const InstagramReelsGrid: React.FC = () => {
                   className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
                 />
 
-                {/* Subtle bottom gradient vignette */}
-                <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                {/* Refined Cinematic Fade Atmosphere */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+                <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
 
                 {/* Top Corner: Discrete Audio Button (No text) */}
                 <div className="relative z-10 p-4 flex justify-end pointer-events-auto">

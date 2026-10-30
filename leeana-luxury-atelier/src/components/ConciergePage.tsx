@@ -336,7 +336,13 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
 
       {/* ========================================================= */}
-      {/* 2. OUR MODELS — FACES OF LEEANA (TIGHT PINTEREST ALIGNMENT)*/}
+      {/* 2. LIVE PRODUCTIONS — INSTAGRAM REELS SHOWCASE           */}
+      {/* ========================================================= */}
+      <InstagramReelsGrid />
+
+
+      {/* ========================================================= */}
+      {/* 3. OUR MODELS — FACES OF LEEANA (TIGHT PINTEREST ALIGNMENT)*/}
       {/* ========================================================= */}
       <section id="our-models" className="scroll-mt-32">
         {/* Creative Dashboard Frame with Tight, Refined Spacing */}
@@ -344,22 +350,15 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
           {/* Subtle top hairline highlight */}
           <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-          {/* Dashboard Header Bar (Tightened padding, no dots, no small words above title) */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/[0.08]">
+          {/* Dashboard Header Bar (Clean title, no chips, no dots, no small words above title) */}
+          <div className="pb-4 border-b border-white/[0.08]">
             <div className="space-y-1">
               <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
-                Faces of Leeana / Our Models
+                Faces of Leeana
               </h2>
               <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
                 Archival talent cast for soundstage cinema, haute couture campaigns, and luxury brand narratives.
               </p>
-            </div>
-            
-            {/* Dashboard Telemetry Chip */}
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60 self-start md:self-auto">
-              <span>09 Talents</span>
-              <span className="text-white/20">/</span>
-              <span className="text-white/80">Soundstage Casting</span>
             </div>
           </div>
 
@@ -370,7 +369,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
                 <article
                   key={model.id}
                   onClick={() => onOpenRequisition(`Model Booking Request: ${model.name}`)}
-                  className="group relative w-full aspect-[3/4] overflow-hidden rounded-[18px] sm:rounded-[20px] border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
+                  className="group relative w-full aspect-[3/4] overflow-hidden rounded-[18px] sm:rounded-[20px] border border-white/[0.12] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
                 >
                   {/* Brighter High-Fashion Model Portrait */}
                   <img
@@ -381,8 +380,9 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
                     style={{ imageRendering: '-webkit-optimize-contrast' }}
                   />
 
-                  {/* Subtle bottom shadow vignette for contrast */}
-                  <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                  {/* Refined Cinematic Fade Atmosphere */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
                   {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
@@ -397,12 +397,6 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
           </div>
         </div>
       </section>
-
-
-      {/* ========================================================= */}
-      {/* 3. LIVE PRODUCTIONS — INSTAGRAM REELS SHOWCASE           */}
-      {/* ========================================================= */}
-      <InstagramReelsGrid />
 
 
       {/* ========================================================= */}

@@ -44,7 +44,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
         {/* Header Bar */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/[0.08]">
+        <div className="pb-4 border-b border-white/[0.08]">
           <div className="space-y-1">
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
               Our Works
@@ -53,22 +53,16 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
               A curated soundstage archive uniting high-fashion casting, cinematic motion choreography, and luxury brand narratives.
             </p>
           </div>
-
-          <div className="hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60">
-            <span>Soundstage Vault</span>
-            <span className="text-white/20">/</span>
-            <span className="text-white/80">Talent & Cinema</span>
-          </div>
         </div>
 
         {/* Master Asymmetric Soundstage Bento Grid */}
         <div className="space-y-3 sm:space-y-3.5">
           {/* Row 1: Large Cinema Soundstage Feature (2 cols) + Archival Model Card (1 col) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-3.5">
-            {/* Feature Master Cinema Card */}
+            {/* Feature Master Cinema Card with Smooth Filmic Edge Fade */}
             <div
               onClick={onNavigateServices}
-              className="group relative lg:col-span-2 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#0a0a0e] shadow-2xl transition-all duration-500 hover:border-white/45 cursor-pointer flex flex-col justify-between"
+              className="group relative lg:col-span-2 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-2xl transition-all duration-500 hover:border-white/45 cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
@@ -83,90 +77,85 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
                 preload="metadata"
                 className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/20 pointer-events-none" />
+              
+              {/* Refined Cinematic Fade Atmosphere */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/45 via-35% to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#050508]/60 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(5,5,8,0.75)] pointer-events-none" />
 
-              {/* Top Controls: Soundstage Telemetry + Soundwave Visualizer + Audio Toggle */}
-              <div className="relative z-10 p-4 sm:p-5 flex items-center justify-between gap-3 pointer-events-auto">
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full border border-white/20 bg-black/60 backdrop-blur-md text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-white/90">
-                  <span>SOUNDSTAGE 01 / CINEMA MASTER</span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  {/* Dynamic Soundwave Equalizer Bars */}
-                  <div className="flex items-end gap-1 h-5 px-2 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md">
-                    <span
-                      className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                        unmutedId === 'feature-reel'
-                          ? 'animate-pulse h-4 bg-white'
-                          : 'h-1.5 opacity-40'
-                      }`}
-                    />
-                    <span
-                      className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                        unmutedId === 'feature-reel'
-                          ? 'animate-pulse h-3 bg-white'
-                          : 'h-2.5 opacity-40'
-                      }`}
-                      style={{ animationDelay: '150ms' }}
-                    />
-                    <span
-                      className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                        unmutedId === 'feature-reel'
-                          ? 'animate-pulse h-4.5 bg-white'
-                          : 'h-3 opacity-40'
-                      }`}
-                      style={{ animationDelay: '300ms' }}
-                    />
-                    <span
-                      className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                        unmutedId === 'feature-reel'
-                          ? 'animate-pulse h-2 bg-white'
-                          : 'h-1 opacity-40'
-                      }`}
-                      style={{ animationDelay: '75ms' }}
-                    />
-                  </div>
-
-                  {/* Audio Toggle Button */}
-                  <button
-                    onClick={(e) => toggleMute('feature-reel', e)}
-                    aria-label={unmutedId === 'feature-reel' ? 'Mute Audio' : 'Unmute Audio'}
-                    className={`apple-press w-8 h-8 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
+              {/* Top Controls: Soundwave Visualizer + Audio Toggle (No text badges) */}
+              <div className="relative z-10 p-4 sm:p-5 flex items-center justify-end gap-2.5 pointer-events-auto">
+                {/* Dynamic Soundwave Equalizer Bars */}
+                <div className="flex items-end gap-1 h-5 px-2 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md">
+                  <span
+                    className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
                       unmutedId === 'feature-reel'
-                        ? 'bg-white text-black border-white shadow-lg'
-                        : 'bg-black/60 text-white border-white/20 hover:bg-white hover:text-black hover:border-white'
+                        ? 'animate-pulse h-4 bg-white'
+                        : 'h-1.5 opacity-40'
                     }`}
-                  >
-                    {unmutedId === 'feature-reel' ? (
-                      <Volume2 className="w-3.5 h-3.5" />
-                    ) : (
-                      <VolumeX className="w-3.5 h-3.5" />
-                    )}
-                  </button>
+                  />
+                  <span
+                    className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
+                      unmutedId === 'feature-reel'
+                        ? 'animate-pulse h-3 bg-white'
+                        : 'h-2.5 opacity-40'
+                    }`}
+                    style={{ animationDelay: '150ms' }}
+                  />
+                  <span
+                    className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
+                      unmutedId === 'feature-reel'
+                        ? 'animate-pulse h-4.5 bg-white'
+                        : 'h-3 opacity-40'
+                    }`}
+                    style={{ animationDelay: '300ms' }}
+                  />
+                  <span
+                    className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
+                      unmutedId === 'feature-reel'
+                        ? 'animate-pulse h-2 bg-white'
+                        : 'h-1 opacity-40'
+                    }`}
+                    style={{ animationDelay: '75ms' }}
+                  />
                 </div>
+
+                {/* Audio Toggle Button */}
+                <button
+                  onClick={(e) => toggleMute('feature-reel', e)}
+                  aria-label={unmutedId === 'feature-reel' ? 'Mute Audio' : 'Unmute Audio'}
+                  className={`apple-press w-8 h-8 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
+                    unmutedId === 'feature-reel'
+                      ? 'bg-white text-black border-white shadow-lg'
+                      : 'bg-black/60 text-white border-white/20 hover:bg-white hover:text-black hover:border-white'
+                  }`}
+                >
+                  {unmutedId === 'feature-reel' ? (
+                    <Volume2 className="w-3.5 h-3.5" />
+                  ) : (
+                    <VolumeX className="w-3.5 h-3.5" />
+                  )}
+                </button>
               </div>
 
-              {/* Bottom Feature Details */}
+              {/* Bottom Feature Details: Title + Arrow */}
               <div className="relative z-10 p-5 sm:p-6 flex items-end justify-between gap-4 pointer-events-auto">
-                <div className="space-y-1">
-                  <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
-                    Haute Couture Soundstage
-                  </h3>
-                </div>
+                <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
+                  Haute Couture Soundstage
+                </h3>
 
-                <div className="apple-press inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/25 bg-black/50 backdrop-blur-md text-xs uppercase tracking-wider text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
-                  <span className="hidden sm:inline">Explore</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                <div className="w-9 h-9 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
+                  <ArrowUpRight className="w-4 h-4" />
                 </div>
               </div>
 
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
             </div>
 
-            {/* Archival Model Lookbook Card 01 */}
+            {/* Archival Model Lookbook Card 01 with Soft Filmic Fade */}
             <div
               onClick={onNavigateServices}
-              className="group relative lg:col-span-1 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
+              className="group relative lg:col-span-1 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.12] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
             >
               <img
                 src="/assets/model-1.jpg"
@@ -175,17 +164,11 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
                 className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{ imageRendering: '-webkit-optimize-contrast' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.7)] pointer-events-none" />
 
-              {/* Top Tag */}
-              <div className="relative z-10 p-4 sm:p-5 flex justify-start pointer-events-auto">
-                <div className="px-3 py-1 rounded-full border border-white/20 bg-black/60 backdrop-blur-md text-[10px] sm:text-[11px] font-mono tracking-widest uppercase text-white/80">
-                  <span>TALENT CASTING</span>
-                </div>
-              </div>
-
-              {/* Title Only */}
-              <div className="relative z-10 p-5 sm:p-6 mt-auto pointer-events-auto">
+              {/* Title Only (No top badges, no arrows) */}
+              <div className="relative z-10 p-5 sm:p-6 pointer-events-auto">
                 <h3 className="font-display text-xl sm:text-2xl text-white font-light tracking-tight leading-snug">
                   Editorial Streetwear
                 </h3>
@@ -200,7 +183,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
             {/* Reel 01: Cafe & Culinary Atmosphere */}
             <div
               onClick={onNavigateServices}
-              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#0c0c10] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
+              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
@@ -215,7 +198,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
                 preload="metadata"
                 className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
 
               {/* Top Audio Toggle */}
               <div className="relative z-10 p-3.5 sm:p-4 flex justify-end pointer-events-auto">
@@ -252,7 +236,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
             {/* Model 02: Nightlife Luxe */}
             <div
               onClick={onNavigateServices}
-              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
+              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.12] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
             >
               <img
                 src="/assets/model-2.jpg"
@@ -261,7 +245,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
                 className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105"
                 style={{ imageRendering: '-webkit-optimize-contrast' }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
 
               {/* Title Only */}
               <div className="relative z-10 p-4 sm:p-5 pointer-events-auto">
@@ -276,7 +261,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
             {/* Reel 02: Metropolitan Nightlife */}
             <div
               onClick={onNavigateServices}
-              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#0c0c10] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
+              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
@@ -291,7 +276,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
                 preload="metadata"
                 className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
 
               {/* Top Audio Toggle */}
               <div className="relative z-10 p-3.5 sm:p-4 flex justify-end pointer-events-auto">
