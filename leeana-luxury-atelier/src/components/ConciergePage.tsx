@@ -208,7 +208,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
   }
 
   return (
-    <div className="pt-6 pb-20 md:pb-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-12 md:space-y-16">
+    <div className="pt-20 sm:pt-24 md:pt-28 pb-20 md:pb-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-12 md:space-y-16">
       
       {/* ========================================================= */}
       {/* 1. HERO & PRIVATE SERVICES ALLOCATIONS                    */}

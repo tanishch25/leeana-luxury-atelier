@@ -31,15 +31,45 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
 
   return (
     <section className="relative w-full py-16 md:py-24 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto z-10 text-white">
-      {/* Creative Works Board Frame with Pointer-Responsive Lighting Sheen */}
+      {/* Creative Works Board Frame with Notice Board & Graffiti Canvas Atmosphere */}
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="rounded-[32px] sm:rounded-[36px] border border-white/[0.12] bg-[#07070b]/85 backdrop-blur-2xl p-5 sm:p-8 md:p-9 relative overflow-hidden shadow-2xl space-y-7 group/board"
+        className="rounded-[32px] sm:rounded-[36px] border border-white/[0.14] bg-[#07070b] relative overflow-hidden shadow-2xl p-5 sm:p-8 md:p-9 space-y-7 group/board"
         style={{
-          backgroundImage: `radial-gradient(750px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.05), transparent 70%)`,
+          backgroundImage: `radial-gradient(750px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.08), transparent 70%)`,
         }}
       >
+        {/* Notice Board Architectural Corner Brackets (Strictly No Dots) */}
+        <div className="absolute top-3.5 left-3.5 w-5 h-5 border-t border-l border-white/30 pointer-events-none z-20" />
+        <div className="absolute top-3.5 right-3.5 w-5 h-5 border-t border-r border-white/30 pointer-events-none z-20" />
+        <div className="absolute bottom-3.5 left-3.5 w-5 h-5 border-b border-l border-white/30 pointer-events-none z-20" />
+        <div className="absolute bottom-3.5 right-3.5 w-5 h-5 border-b border-r border-white/30 pointer-events-none z-20" />
+
+        {/* Background Graffiti Painting & Notice Board Canvas */}
+        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
+          {/* Authentic High-Resolution Graffiti Artwork Texture */}
+          <img
+            src="/assets/graffiti_art_wall.jpg"
+            alt="Atelier Graffiti Canvas"
+            className="w-full h-full object-cover object-center filter contrast-125 brightness-[0.65] saturate-[1.25] opacity-55 scale-105 transition-transform duration-1000 group-hover/board:scale-100"
+          />
+
+          {/* Notice Board Fine Grid & Canvas Mesh Overlay */}
+          <div 
+            className="absolute inset-0 opacity-20 mix-blend-overlay"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px)',
+              backgroundSize: '24px 24px',
+            }}
+          />
+
+          {/* Dark Vignette & Atmospheric Gradients to keep text & cards crystal clear */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#060609]/75 via-[#060609]/45 to-[#060609]/80" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,#060609_92%)]" />
+          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.85)]" />
+        </div>
+
         {/* Top hairline highlight */}
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
