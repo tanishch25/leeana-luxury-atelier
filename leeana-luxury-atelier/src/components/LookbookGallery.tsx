@@ -425,8 +425,8 @@ export const LookbookGallery: React.FC = () => {
         </div>
       </div>
 
-      {/* Pinterest Waterfall Grid: 4 Asymmetric Staggered Columns terminating at the EXACT Same Baseline */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* DESKTOP: 4 Asymmetric Staggered Columns terminating at the EXACT Same Baseline (Unchanged) */}
+      <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div className="flex flex-col gap-5">
           {col1.map((item) => (
             <PlateCard key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
@@ -444,6 +444,20 @@ export const LookbookGallery: React.FC = () => {
         </div>
         <div className="flex flex-col gap-5">
           {col4.map((item) => (
+            <PlateCard key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
+          ))}
+        </div>
+      </div>
+
+      {/* MOBILE-SPECIFIC LAYOUT: Balanced 2-Column Pinterest Editorial Feed */}
+      <div className="grid grid-cols-2 gap-2.5 sm:hidden">
+        <div className="flex flex-col gap-2.5">
+          {filteredItems.filter((_, i) => i % 2 === 0).map((item) => (
+            <PlateCard key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
+          ))}
+        </div>
+        <div className="flex flex-col gap-2.5">
+          {filteredItems.filter((_, i) => i % 2 === 1).map((item) => (
             <PlateCard key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
           ))}
         </div>

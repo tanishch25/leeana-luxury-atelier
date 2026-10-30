@@ -202,7 +202,7 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
           <div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="w-full lg:w-7/12 relative aspect-[16/11] sm:aspect-[16/10] min-h-[500px] lg:h-[660px] rounded-[32px] sm:rounded-[40px] overflow-hidden border border-white/[0.12] bg-[#09090b] shadow-[0_40px_100px_rgba(0,0,0,0.85)] flex flex-col justify-end"
+            className="w-full lg:w-7/12 relative aspect-[16/11] sm:aspect-[16/10] min-h-[280px] sm:min-h-[420px] lg:h-[660px] rounded-[24px] sm:rounded-[40px] overflow-hidden border border-white/[0.12] bg-[#09090b] shadow-[0_40px_100px_rgba(0,0,0,0.85)] flex flex-col justify-end"
           >
             
             {/* Underneath Layer: Previous Image (Ensures seamless zero-flicker transition) */}

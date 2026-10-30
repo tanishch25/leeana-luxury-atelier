@@ -35,7 +35,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="rounded-[32px] sm:rounded-[38px] border border-white/[0.16] bg-[#07070b] relative overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.95)] p-6 sm:p-9 md:p-10 space-y-7 group/board"
+        className="rounded-[32px] sm:rounded-[38px] border border-white/[0.16] bg-[#07070b] relative overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.95)] p-4 sm:p-9 md:p-10 space-y-5 sm:space-y-7 group/board"
         style={{
           backgroundImage: `radial-gradient(800px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.08), transparent 70%)`,
         }}
@@ -79,8 +79,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
           </div>
         </div>
 
-        {/* Master Asymmetric Soundstage Bento Grid */}
-        <div className="space-y-3 sm:space-y-3.5">
+        {/* DESKTOP LAYOUT: Master Asymmetric Soundstage Bento Grid (Preserved 100% Unchanged) */}
+        <div className="hidden sm:block space-y-3 sm:space-y-3.5">
           {/* Row 1: Large Cinema Soundstage Feature (2 cols) + Archival Model Card (1 col) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-3.5">
             {/* Feature Master Cinema Card with Smooth Filmic Edge Fade */}
@@ -333,6 +333,188 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
               </div>
 
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+            </div>
+          </div>
+        </div>
+
+        {/* MOBILE-SPECIFIC LAYOUT: Balanced Photo & Cinema Bento (Tailored Mobile Proportions) */}
+        <div className="block sm:hidden space-y-2.5">
+          {/* Card 1: Widescreen Feature Cinema Reel */}
+          <div
+            onClick={onNavigateServices}
+            className="group relative h-[210px] rounded-[20px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all cursor-pointer flex flex-col justify-between"
+          >
+            <video
+              ref={(el) => {
+                videoRefs.current['feature-reel-mobile'] = el
+              }}
+              src="/assets/reels/reel_3.mp4"
+              poster="/assets/reels/reel_3_thumb.jpg"
+              loop
+              playsInline
+              autoPlay
+              muted
+              preload="metadata"
+              className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/45 via-35% to-transparent pointer-events-none" />
+
+            {/* Top Audio Toggle */}
+            <div className="relative z-10 p-3.5 flex justify-end pointer-events-auto">
+              <button
+                onClick={(e) => toggleMute('feature-reel-mobile', e)}
+                aria-label={unmutedId === 'feature-reel-mobile' ? 'Mute Audio' : 'Unmute Audio'}
+                className={`apple-press w-7 h-7 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
+                  unmutedId === 'feature-reel-mobile'
+                    ? 'bg-white text-black border-white shadow-lg'
+                    : 'bg-black/60 text-white border-white/20'
+                }`}
+              >
+                {unmutedId === 'feature-reel-mobile' ? (
+                  <Volume2 className="w-3 h-3" />
+                ) : (
+                  <VolumeX className="w-3 h-3" />
+                )}
+              </button>
+            </div>
+
+            {/* Bottom Title + Arrow */}
+            <div className="relative z-10 p-4 flex items-end justify-between gap-3 pointer-events-auto">
+              <h3 className="font-display text-lg text-white font-light tracking-tight leading-snug">
+                Haute Couture Soundstage
+              </h3>
+              <div className="w-7 h-7 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white shrink-0">
+                <ArrowUpRight className="w-3 h-3" />
+              </div>
+            </div>
+          </div>
+
+          {/* 2-Column Mobile Photo & Video Grid: 1 Model Photo + 1 Video Reel on each row */}
+          <div className="grid grid-cols-2 gap-2.5">
+            {/* Card 2: Model Photo (Editorial Streetwear) */}
+            <div
+              onClick={onNavigateServices}
+              className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.12] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-end"
+            >
+              <img
+                src="/assets/model-1.jpg"
+                alt="Editorial Streetwear"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="relative z-10 p-3 pointer-events-auto">
+                <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
+                  Editorial Streetwear
+                </h3>
+              </div>
+            </div>
+
+            {/* Card 3: Video Reel (Cafe & Culinary Atmosphere) */}
+            <div
+              onClick={onNavigateServices}
+              className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
+            >
+              <video
+                ref={(el) => {
+                  videoRefs.current['reel-1-mobile'] = el
+                }}
+                src="/assets/reels/reel_1.mp4"
+                poster="/assets/reels/reel_1_thumb.jpg"
+                loop
+                playsInline
+                autoPlay
+                muted
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="relative z-10 p-2.5 flex justify-end pointer-events-auto">
+                <button
+                  onClick={(e) => toggleMute('reel-1-mobile', e)}
+                  aria-label={unmutedId === 'reel-1-mobile' ? 'Mute Audio' : 'Unmute Audio'}
+                  className={`apple-press w-6 h-6 rounded-full flex items-center justify-center backdrop-blur-md cursor-pointer border ${
+                    unmutedId === 'reel-1-mobile'
+                      ? 'bg-white text-black border-white'
+                      : 'bg-black/60 text-white border-white/20'
+                  }`}
+                >
+                  {unmutedId === 'reel-1-mobile' ? (
+                    <Volume2 className="w-2.5 h-2.5" />
+                  ) : (
+                    <VolumeX className="w-2.5 h-2.5" />
+                  )}
+                </button>
+              </div>
+              <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
+                <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
+                  Cafe & Culinary
+                </h3>
+                <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
+              </div>
+            </div>
+
+            {/* Card 4: Model Photo (Nightlife Luxe) */}
+            <div
+              onClick={onNavigateServices}
+              className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.12] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-end"
+            >
+              <img
+                src="/assets/model-2.jpg"
+                alt="Nightlife Luxe"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="relative z-10 p-3 pointer-events-auto">
+                <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
+                  Nightlife Luxe
+                </h3>
+              </div>
+            </div>
+
+            {/* Card 5: Video Reel (Metropolitan Nightlife) */}
+            <div
+              onClick={onNavigateServices}
+              className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
+            >
+              <video
+                ref={(el) => {
+                  videoRefs.current['reel-4-mobile'] = el
+                }}
+                src="/assets/reels/reel_4.mp4"
+                poster="/assets/reels/reel_4_thumb.jpg"
+                loop
+                playsInline
+                autoPlay
+                muted
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="relative z-10 p-2.5 flex justify-end pointer-events-auto">
+                <button
+                  onClick={(e) => toggleMute('reel-4-mobile', e)}
+                  aria-label={unmutedId === 'reel-4-mobile' ? 'Mute Audio' : 'Unmute Audio'}
+                  className={`apple-press w-6 h-6 rounded-full flex items-center justify-center backdrop-blur-md cursor-pointer border ${
+                    unmutedId === 'reel-4-mobile'
+                      ? 'bg-white text-black border-white'
+                      : 'bg-black/60 text-white border-white/20'
+                  }`}
+                >
+                  {unmutedId === 'reel-4-mobile' ? (
+                    <Volume2 className="w-2.5 h-2.5" />
+                  ) : (
+                    <VolumeX className="w-2.5 h-2.5" />
+                  )}
+                </button>
+              </div>
+              <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
+                <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
+                  Metropolitan
+                </h3>
+                <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
+              </div>
             </div>
           </div>
         </div>

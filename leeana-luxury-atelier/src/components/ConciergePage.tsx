@@ -362,8 +362,8 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
             </div>
           </div>
 
-          {/* Tight Pinterest-Style Board: Perfect 3-Column Low-End Baseline Alignment */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 pt-3.5">
+          {/* Tight Pinterest-Style Board: 2 Columns on Mobile, 3 Columns on Desktop */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-2.5 md:gap-3 pt-3.5">
             {MODELS_DATA.map((model) => {
               return (
                 <article
@@ -386,8 +386,8 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
                   {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
-                  <div className="relative z-10 p-4 sm:p-5 pointer-events-auto">
-                    <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
+                  <div className="relative z-10 p-3 sm:p-5 pointer-events-auto">
+                    <h3 className="font-display text-xs sm:text-lg md:text-xl text-white font-light tracking-tight leading-snug">
                       {model.name}
                     </h3>
                   </div>

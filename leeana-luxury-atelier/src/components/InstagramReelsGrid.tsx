@@ -127,8 +127,8 @@ export const InstagramReelsGrid: React.FC = () => {
           </div>
         </div>
 
-        {/* 4-Column Video Reel Cards — Perfect Bottom-Aligned Baseline */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-2.5 md:gap-3 pt-3.5">
+        {/* Video Reel Cards: 2 Columns on Mobile, 4 Columns on Desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-2.5 md:gap-3 pt-3.5">
           {INSTAGRAM_REELS_DATA.map((reel) => {
             const isUnmuted = unmutedId === reel.id
 
@@ -138,7 +138,7 @@ export const InstagramReelsGrid: React.FC = () => {
                 href={reel.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#0c0c10] shadow-2xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between aspect-[9/16] block"
+                className="group relative rounded-[20px] sm:rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#0c0c10] shadow-2xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between aspect-[9/16] block"
               >
                 {/* Background Video — Brighter & High Definition */}
                 <video
@@ -160,32 +160,32 @@ export const InstagramReelsGrid: React.FC = () => {
                 <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
 
                 {/* Top Corner: Discrete Audio Button (No text) */}
-                <div className="relative z-10 p-4 flex justify-end pointer-events-auto">
+                <div className="relative z-10 p-2.5 sm:p-4 flex justify-end pointer-events-auto">
                   <button
                     onClick={(e) => toggleMute(reel.id, e)}
                     aria-label={isUnmuted ? 'Mute Audio' : 'Unmute Audio'}
-                    className={`apple-press w-8 h-8 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
+                    className={`apple-press w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
                       isUnmuted
                         ? 'bg-white text-black border-white shadow-lg'
                         : 'bg-black/60 text-white border-white/20 hover:bg-white hover:text-black hover:border-white'
                     }`}
                   >
                     {isUnmuted ? (
-                      <Volume2 className="w-3.5 h-3.5" />
+                      <Volume2 className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     ) : (
-                      <VolumeX className="w-3.5 h-3.5" />
+                      <VolumeX className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     )}
                   </button>
                 </div>
 
-                {/* Bottom Card Content: ONLY Title + Arrow (Nothing else written) */}
-                <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-3 pointer-events-auto">
-                  <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
+                {/* Bottom Card Content: ONLY Title + Arrow */}
+                <div className="relative z-10 p-3 sm:p-5 flex items-end justify-between gap-1.5 sm:gap-3 pointer-events-auto">
+                  <h3 className="font-display text-xs sm:text-lg md:text-xl text-white font-light tracking-tight leading-snug">
                     {reel.title}
                   </h3>
 
-                  <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  <div className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
+                    <ArrowUpRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                   </div>
                 </div>
 

@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
     <section className="pt-26 pb-10 px-3 sm:px-6 md:px-8 max-w-[1620px] mx-auto relative z-10">
       
       {/* Shotsquare Cinema Viewport (Elevated Scale for Opera & Wide Screens) */}
-      <div className="relative w-full h-[90svh] md:h-[95vh] min-h-[680px] md:min-h-[760px] rounded-[24px] sm:rounded-[36px] md:rounded-[44px] overflow-hidden bg-black select-none shadow-2xl border border-white/[0.12] [transform:translateZ(0)]">
+      <div className="relative w-full h-[88svh] md:h-[95vh] min-h-[560px] sm:min-h-[680px] md:min-h-[760px] rounded-[24px] sm:rounded-[36px] md:rounded-[44px] overflow-hidden bg-black select-none shadow-2xl border border-white/[0.12] [transform:translateZ(0)]">
         
         {/* Pre-mounted Slides with Hardware-Accelerated Opacity Crossfade (Guaranteed Zero Shaking / Zero Remounting) */}
         {SLIDES.map((slide, idx) => {
@@ -123,7 +123,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             {/* Left Column: All-White Architectural Typography */}
             <div className="flex flex-col max-w-5xl space-y-5">
               {/* Monumental Headline (All-White, Modern Architecture) */}
-              <h1 className="text-white text-[clamp(2.8rem,5.8vw,5.6rem)] font-light tracking-[-0.03em] leading-[1.0] md:leading-[0.92] drop-shadow-2xl">
+              <h1 className="text-white text-[clamp(2.1rem,5.8vw,5.6rem)] font-light tracking-[-0.03em] leading-[1.0] md:leading-[0.92] drop-shadow-2xl">
                 {current.title}
               </h1>
 
