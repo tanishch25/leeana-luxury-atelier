@@ -10,6 +10,8 @@ import { LookbookGallery } from './components/LookbookGallery'
 import { UnifiedCommandSuite } from './components/UnifiedCommandSuite'
 import { StudiosPage } from './components/StudiosPage'
 import { ConciergePage } from './components/ConciergePage'
+import { OurWorksSection } from './components/OurWorksSection'
+import { LandingFaqReviews } from './components/LandingFaqReviews'
 import { Footer } from './components/Footer'
 import { RequisitionDossier } from './components/RequisitionDossier'
 
@@ -105,7 +107,14 @@ export function App() {
             <Statement />
             <StudiosGrid onSelectStudio={(studio) => handleOpenRequisition(studio)} />
             <SpecializationsList onSelectSpecialization={(spec) => handleOpenRequisition(spec)} />
+            <OurWorksSection
+              onNavigateServices={() => {
+                setActivePage('concierge')
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            />
             <LookbookGallery />
+            <LandingFaqReviews />
             <UnifiedCommandSuite onOpenRequisition={(mandate) => handleOpenRequisition(mandate)} />
           </div>
         )}

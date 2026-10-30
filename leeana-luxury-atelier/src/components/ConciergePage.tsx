@@ -5,11 +5,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Phone,
-  Plus,
   Star,
-  LayoutGrid,
-  SlidersHorizontal,
-  X,
 } from 'lucide-react'
 import { InstagramReelsGrid } from './InstagramReelsGrid'
 
@@ -17,7 +13,7 @@ interface ConciergePageProps {
   onOpenRequisition: (mandate?: string) => void
 }
 
-interface ConciergeCard {
+export interface ConciergeCard {
   id: string
   badge: string
   title: string
@@ -26,14 +22,14 @@ interface ConciergeCard {
   mandate: string
 }
 
-interface ModelItem {
+export interface ModelItem {
   id: string
   name: string
   tag: string
   img: string
 }
 
-interface TestimonialItem {
+export interface TestimonialItem {
   id: string
   name: string
   role: string
@@ -41,12 +37,12 @@ interface TestimonialItem {
   text: string
 }
 
-interface FaqItem {
+export interface FaqItem {
   q: string
   a: string
 }
 
-const CONCIERGE_CARDS: ConciergeCard[] = [
+export const CONCIERGE_CARDS: ConciergeCard[] = [
   {
     id: 'fleet',
     badge: 'CONFIDENTIAL ALLOCATION',
@@ -97,8 +93,8 @@ const CONCIERGE_CARDS: ConciergeCard[] = [
   },
 ]
 
-// 9 Archival Models from Leeana Roster (Restored to exact clean format)
-const MODELS_DATA: ModelItem[] = [
+// 9 Archival Models from Leeana Roster
+export const MODELS_DATA: ModelItem[] = [
   { id: '01', name: 'Editorial Streetwear', tag: 'Lifestyle', img: '/assets/model-1.jpg' },
   { id: '02', name: 'Nightlife Luxe', tag: 'Automotive', img: '/assets/model-2.jpg' },
   { id: '03', name: 'Athleisure Portrait', tag: 'Fitness', img: '/assets/model-3.jpg' },
@@ -111,7 +107,7 @@ const MODELS_DATA: ModelItem[] = [
 ]
 
 // Real Testimonials from Leeana Distinguished Clientele
-const TESTIMONIALS_DATA: TestimonialItem[] = [
+export const TESTIMONIALS_DATA: TestimonialItem[] = [
   {
     id: '01',
     name: 'Anaya Mehra',
@@ -136,7 +132,7 @@ const TESTIMONIALS_DATA: TestimonialItem[] = [
 ]
 
 // Official FAQ Content from Leeana
-const FAQ_DATA: FaqItem[] = [
+export const FAQ_DATA: FaqItem[] = [
   {
     q: 'What kind of brands does Leeana feature?',
     a: 'We curate premium and luxury brands across haute joaillerie, fashion couture, exotic fleet automotive, architectural real estate, private cellars, and soundstage media productions.',
@@ -162,16 +158,7 @@ const FAQ_DATA: FaqItem[] = [
 export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition }) => {
   const [currentCardIdx, setCurrentCardIdx] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0)
-
-  // Automatic Center-Scrolling Models state
-  const [currentModelIdx, setCurrentModelIdx] = useState(0)
-  const [isModelsPaused, setIsModelsPaused] = useState(false)
-  const [modelsViewMode, setModelsViewMode] = useState<'stream' | 'pinterest'>('stream')
-  const [selectedModel, setSelectedModel] = useState<ModelItem | null>(null)
-
   const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const modelsScrollRef = useRef<HTMLDivElement>(null)
 
   // Auto-advance rolling concierge cards when idle
   useEffect(() => {
@@ -184,13 +171,10 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
   }, [currentCardIdx, isPaused])
 
   const scrollToCard = (index: number) => {
-    if (!scrollContainerRef.current) return
-    const container = scrollContainerRef.current
-    const cards = container.children
-    if (cards[index]) {
-      const card = cards[index] as HTMLElement
-      container.scrollTo({
-        left: card.offsetLeft - container.offsetLeft,
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.clientWidth * 0.75
+      scrollContainerRef.current.scrollTo({
+        left: index * cardWidth,
         behavior: 'smooth',
       })
       setCurrentCardIdx(index)
@@ -218,94 +202,24 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
     }
   }
 
-  // Centered Model Scrolling Function: Centers target card precisely in the middle
-  const scrollToModel = (index: number) => {
-    if (!modelsScrollRef.current) return
-    const container = modelsScrollRef.current
-    const cards = container.children
-    if (cards[index]) {
-      const card = cards[index] as HTMLElement
-      const targetScroll = card.offsetLeft - (container.clientWidth / 2) + (card.clientWidth / 2)
-      container.scrollTo({
-        left: Math.max(0, targetScroll),
-        behavior: 'smooth',
-      })
-      setCurrentModelIdx(index)
-    }
-  }
-
-  // Automatic scrolling for models section from the centre
-  useEffect(() => {
-    if (isModelsPaused) return
-    const interval = setInterval(() => {
-      setCurrentModelIdx((prev) => {
-        const nextIdx = (prev + 1) % MODELS_DATA.length
-        scrollToModel(nextIdx)
-        return nextIdx
-      })
-    }, 3800)
-    return () => clearInterval(interval)
-  }, [isModelsPaused])
-
-  // Center initial model on mount
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      scrollToModel(0)
-    }, 300)
-    return () => clearTimeout(timer)
-  }, [])
-
-  // Track which card is in the center during user scroll/drag
-  const handleModelsScroll = () => {
-    if (!modelsScrollRef.current) return
-    const container = modelsScrollRef.current
-    const centerPoint = container.scrollLeft + container.clientWidth / 2
-    const children = Array.from(container.children) as HTMLElement[]
-    let closestIdx = 0
-    let closestDist = Infinity
-
-    children.forEach((child, idx) => {
-      const childCenter = child.offsetLeft + child.clientWidth / 2
-      const dist = Math.abs(centerPoint - childCenter)
-      if (dist < closestDist) {
-        closestDist = dist
-        closestIdx = idx
-      }
-    })
-
-    if (closestIdx !== currentModelIdx) {
-      setCurrentModelIdx(closestIdx)
-    }
-  }
-
-  const scrollModelsPrev = () => {
-    const prevIdx = (currentModelIdx - 1 + MODELS_DATA.length) % MODELS_DATA.length
-    scrollToModel(prevIdx)
-  }
-
-  const scrollModelsNext = () => {
-    const nextIdx = (currentModelIdx + 1) % MODELS_DATA.length
-    scrollToModel(nextIdx)
-  }
-
   const handleWhatsApp = (mandate: string) => {
     const msg = `Hello Leeana Services Desk,\n\nI wish to register a Private Consultation regarding: ${mandate}.\n\nPlease connect me with the Private Desk.`
     window.open(`https://wa.me/918585906629?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (
-    <div className="pt-10 pb-28 md:pb-36 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-24 md:space-y-36">
+    <div className="pt-8 pb-28 md:pb-36 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-24 md:space-y-32">
       
       {/* ========================================================= */}
       {/* 1. HERO & PRIVATE SERVICES ALLOCATIONS                    */}
       {/* ========================================================= */}
       <section>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.08]">
-          <div>
+          <div className="space-y-2">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
               Private Services & Allocations
             </h1>
-            <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed mt-2">
+            <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
               Comprehensive luxury acquisitions, archival talent casting, client attestations, and direct advisory.
             </p>
           </div>
@@ -422,7 +336,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
 
       {/* ========================================================= */}
-      {/* 2. OUR MODELS — FACES OF LEEANA (DASHBOARD & PINTEREST)    */}
+      {/* 2. OUR MODELS — FACES OF LEEANA (PINTEREST BOARD DEFAULT)   */}
       {/* ========================================================= */}
       <section id="our-models" className="scroll-mt-28">
         {/* Creative Dashboard Frame */}
@@ -430,251 +344,91 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
           {/* Subtle top hairline highlight */}
           <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-          {/* Dashboard Control Deck Header */}
+          {/* Dashboard Header Bar (No dots, no small words above title, no switcher) */}
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/[0.08]">
             <div className="space-y-2">
               <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
                 Faces of Leeana · Our Models
               </h2>
               <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-                Archival talent cast for soundstage cinema and international brand campaigns.
+                Archival talent cast for soundstage cinema, haute couture campaigns, and luxury brand narratives.
               </p>
             </div>
             
-            {/* Creative Dashboard Telemetry & Pinterest View Switcher */}
-            <div className="flex flex-wrap items-center gap-3">
-              {/* Pinterest vs Stream Mode Switcher */}
-              <div className="flex items-center p-1 rounded-full border border-white/15 bg-black/40 backdrop-blur-md">
-                <button
-                  onClick={() => setModelsViewMode('stream')}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-                    modelsViewMode === 'stream'
-                      ? 'bg-white text-black shadow-md'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  <SlidersHorizontal className="w-3 h-3" />
-                  <span>Stream</span>
-                </button>
-                <button
-                  onClick={() => setModelsViewMode('pinterest')}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
-                    modelsViewMode === 'pinterest'
-                      ? 'bg-white text-black shadow-md'
-                      : 'text-white/60 hover:text-white'
-                  }`}
-                >
-                  <LayoutGrid className="w-3 h-3" />
-                  <span>Pinterest</span>
-                </button>
-              </div>
+            {/* Dashboard Telemetry Chip */}
+            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60">
+              <span>09 Talents</span>
+              <span className="text-white/20">/</span>
+              <span className="text-white/80">Soundstage Casting</span>
+            </div>
+          </div>
 
-              {/* Stream Navigation Controls (Visible in Stream Mode) */}
-              {modelsViewMode === 'stream' && (
-                <>
-                  <span className="text-xs font-mono text-white/70 tracking-wider uppercase px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.04]">
-                    0{currentModelIdx + 1} / 0{MODELS_DATA.length}
-                  </span>
+          {/* Default Pinterest Waterfall Masonry Board (Clean cards, title only, bright visuals) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
+            {MODELS_DATA.map((model, idx) => {
+              // Staggered aspect ratios for authentic Pinterest waterfall
+              const aspectClasses = [
+                'aspect-[3/4]',
+                'aspect-[4/5]',
+                'aspect-[2/3]',
+                'aspect-[4/5]',
+                'aspect-[3/4]',
+                'aspect-[2/3]',
+                'aspect-[3/4]',
+                'aspect-[4/5]',
+                'aspect-[2/3]',
+              ]
+              const aspect = aspectClasses[idx % aspectClasses.length]
 
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={scrollModelsPrev}
-                      aria-label="Previous model"
-                      className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      onClick={scrollModelsNext}
-                      aria-label="Next model"
-                      className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
+              return (
+                <article
+                  key={model.id}
+                  onClick={() => onOpenRequisition(`Model Booking Request: ${model.name}`)}
+                  className={`group relative ${aspect} overflow-hidden rounded-[24px] border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1.5`}
+                >
+                  {/* Brighter High-Fashion Model Portrait */}
+                  <img
+                    src={model.img}
+                    alt={model.name}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
+                    style={{ imageRendering: '-webkit-optimize-contrast' }}
+                  />
+
+                  {/* Subtle bottom shadow vignette for contrast */}
+                  <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+
+                  {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
+                  <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
+                    <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
+                      {model.name}
+                    </h3>
                   </div>
-                </>
-              )}
-            </div>
+                </article>
+              )
+            })}
           </div>
-
-          {/* Mode 1: Models Carousel Stream (Centered Auto-Scrolling) */}
-          {modelsViewMode === 'stream' ? (
-            <div
-              className="pt-8 overflow-hidden"
-              onMouseEnter={() => setIsModelsPaused(true)}
-              onMouseLeave={() => setIsModelsPaused(false)}
-            >
-              <div
-                ref={modelsScrollRef}
-                onScroll={handleModelsScroll}
-                className="flex gap-6 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar"
-              >
-                {MODELS_DATA.map((model, idx) => {
-                  const isCenter = currentModelIdx === idx
-                  return (
-                    <article
-                      key={model.id}
-                      onClick={() => {
-                        scrollToModel(idx)
-                        setSelectedModel(model)
-                      }}
-                      className={`group relative min-w-[280px] sm:min-w-[340px] md:min-w-[360px] h-[480px] md:h-[540px] overflow-hidden rounded-[24px] border bg-[#09090c] transition-all duration-700 shrink-0 snap-center shadow-2xl cursor-pointer flex flex-col justify-end ${
-                        isCenter
-                          ? 'border-white/45 ring-1 ring-white/30 scale-100 opacity-100'
-                          : 'border-white/[0.12] hover:border-white/35 scale-[0.97] opacity-85 hover:opacity-100'
-                      }`}
-                    >
-                      {/* Brighter High-Fashion Model Portrait */}
-                      <img
-                        src={model.img}
-                        alt={model.name}
-                        loading={idx < 3 ? 'eager' : 'lazy'}
-                        className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
-                        style={{ imageRendering: '-webkit-optimize-contrast' }}
-                      />
-
-                      {/* Subtle bottom shadow vignette for title contrast */}
-                      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
-                      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-
-                      {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
-                      <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
-                        <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
-                          {model.name}
-                        </h3>
-                      </div>
-                    </article>
-                  )
-                })}
-              </div>
-            </div>
-          ) : (
-            /* Mode 2: Pinterest Waterfall Masonry Board */
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-8 animate-in fade-in duration-500">
-              {MODELS_DATA.map((model, idx) => {
-                // Staggered aspect ratios for authentic Pinterest waterfall
-                const aspectClasses = [
-                  'aspect-[3/4]',
-                  'aspect-[4/5]',
-                  'aspect-[2/3]',
-                  'aspect-[4/5]',
-                  'aspect-[3/4]',
-                  'aspect-[2/3]',
-                  'aspect-[3/4]',
-                  'aspect-[4/5]',
-                  'aspect-[2/3]',
-                ]
-                const aspect = aspectClasses[idx % aspectClasses.length]
-
-                return (
-                  <article
-                    key={model.id}
-                    onClick={() => setSelectedModel(model)}
-                    className={`group relative ${aspect} overflow-hidden rounded-[24px] border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1.5`}
-                  >
-                    {/* Brighter High-Fashion Model Portrait */}
-                    <img
-                      src={model.img}
-                      alt={model.name}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
-                      style={{ imageRendering: '-webkit-optimize-contrast' }}
-                    />
-
-                    {/* Bottom shadow vignette */}
-                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
-                    <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-
-                    {/* Card Content: ONLY the title that is all */}
-                    <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
-                      <h3 className="font-display text-2xl text-white font-light tracking-tight leading-snug">
-                        {model.name}
-                      </h3>
-                    </div>
-                  </article>
-                )
-              })}
-            </div>
-          )}
         </div>
-
-        {/* Pinterest Spotlight Modal on Click */}
-        {selectedModel && (
-          <div
-            onClick={() => setSelectedModel(null)}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6 md:p-10 animate-in fade-in duration-300"
-          >
-            <div
-              onClick={(e) => e.stopPropagation()}
-              className="relative max-w-4xl w-full max-h-[90vh] flex flex-col md:flex-row rounded-[32px] overflow-hidden border border-white/20 bg-[#09090d] shadow-2xl"
-            >
-              {/* Close button */}
-              <button
-                onClick={() => setSelectedModel(null)}
-                aria-label="Close modal"
-                className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg"
-              >
-                <X className="w-5 h-5" />
-              </button>
-
-              {/* Large Image Frame */}
-              <div className="relative md:w-3/5 h-[48vh] md:h-[75vh] bg-black flex items-center justify-center overflow-hidden">
-                <img
-                  src={selectedModel.img}
-                  alt={selectedModel.name}
-                  className="w-full h-full object-cover filter brightness-[1.08] contrast-[1.04]"
-                />
-              </div>
-
-              {/* Pinterest Board Info Panel */}
-              <div className="md:w-2/5 p-6 sm:p-8 md:p-10 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10 bg-[#09090d]">
-                <div className="space-y-4">
-                  <span className="text-[11px] font-mono tracking-widest uppercase text-white/50 block">
-                    Talent Plate · 0{selectedModel.id}
-                  </span>
-                  <h3 className="font-display text-3xl sm:text-4xl text-white font-light tracking-tight">
-                    {selectedModel.name}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
-                    Curated talent for high-fashion runway, soundstage cinema, and luxury brand editorial campaigns.
-                  </p>
-                </div>
-
-                <div className="pt-8 space-y-3">
-                  <button
-                    onClick={() => {
-                      onOpenRequisition(`Model Booking Request: ${selectedModel.name}`)
-                      setSelectedModel(null)
-                    }}
-                    className="apple-press w-full py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-white/90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl"
-                  >
-                    <span>Book Talent For Shoot</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
 
       {/* ========================================================= */}
-      {/* 2.5 LIVE PRODUCTIONS — INSTAGRAM REELS SHOWCASE           */}
+      {/* 3. LIVE PRODUCTIONS — INSTAGRAM REELS SHOWCASE           */}
       {/* ========================================================= */}
-      <InstagramReelsGrid onOpenRequisition={onOpenRequisition} />
+      <InstagramReelsGrid />
 
 
       {/* ========================================================= */}
-      {/* 3. TESTIMONIALS — VOICES OF OUR DISTINGUISHED CLIENTELE    */}
+      {/* 4. REVIEWS — SEE WHAT OUR CLIENTS THINK                  */}
       {/* ========================================================= */}
       <section id="testimonials" className="border-t border-white/[0.08] pt-16 md:pt-24 scroll-mt-28">
-        <div className="pb-10 border-b border-white/[0.08]">
+        <div className="pb-10 border-b border-white/[0.08] space-y-2">
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-            Voices of Our Distinguished Clientele
+            See What Our Clients Think
           </h2>
-          <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed mt-2">
-            Uncompromising accounts from jewelry founders, private estate directors, and luxury lifestyle curators.
+          <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
+            Uncompromising reflections from fine jewelry founders, luxury estate directors, and lifestyle curators who entrust their public presence to our atelier.
           </p>
         </div>
 
@@ -723,62 +477,6 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
             </div>
           ))}
-        </div>
-      </section>
-
-
-      {/* ========================================================= */}
-      {/* 4. FAQ — QUESTIONS, REFINED ANSWERS                      */}
-      {/* ========================================================= */}
-      <section id="faq" className="border-t border-white/[0.08] pt-16 md:pt-24 scroll-mt-28">
-        <div className="pb-10 border-b border-white/[0.08]">
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-            Questions, Refined Answers
-          </h2>
-          <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed mt-2">
-            Direct clarity regarding curation criteria, buyer confidentiality, international representation, and atelier partnerships.
-          </p>
-        </div>
-
-        {/* Luxury Accordion Suite */}
-        <div className="pt-10 max-w-4xl mx-auto space-y-4">
-          {FAQ_DATA.map((faq, idx) => {
-            const isOpen = openFaqIdx === idx
-            return (
-              <div
-                key={idx}
-                className={`rounded-[24px] sm:rounded-[28px] border transition-all duration-300 overflow-hidden ${
-                  isOpen
-                    ? 'border-white/35 bg-white/[0.04] shadow-2xl'
-                    : 'border-white/[0.08] bg-[#07070a] hover:border-white/20'
-                }`}
-              >
-                <button
-                  onClick={() => setOpenFaqIdx(isOpen ? null : idx)}
-                  className="w-full py-6 px-6 sm:px-8 text-left flex items-center justify-between gap-4 cursor-pointer select-none"
-                >
-                  <h3 className="font-display text-base sm:text-lg md:text-xl font-light text-white tracking-tight leading-snug">
-                    {faq.q}
-                  </h3>
-                  <div
-                    className={`w-9 h-9 rounded-full border border-white/20 flex items-center justify-center shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'bg-white text-black border-white rotate-45' : 'text-white'
-                    }`}
-                  >
-                    <Plus className="w-4 h-4" />
-                  </div>
-                </button>
-
-                {isOpen && (
-                  <div className="px-6 sm:px-8 pb-6 sm:pb-8 animate-in fade-in slide-in-from-top-2 duration-300">
-                    <p className="text-sm sm:text-base text-white/75 font-light leading-relaxed border-t border-white/[0.08] pt-4">
-                      {faq.a}
-                    </p>
-                  </div>
-                )}
-              </div>
-            )
-          })}
         </div>
       </section>
 
