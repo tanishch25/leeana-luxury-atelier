@@ -7,7 +7,6 @@ import {
   Phone,
   Plus,
   Star,
-  Sparkles,
 } from 'lucide-react'
 import { InstagramReelsGrid } from './InstagramReelsGrid'
 
@@ -298,12 +297,6 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
       <section>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.08]">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/15 bg-white/[0.03] backdrop-blur-md mb-3">
-              <Sparkles className="w-3 h-3 text-white/70" />
-              <span className="text-[10px] uppercase tracking-[0.22em] text-white/70 font-light">
-                Atelier Directory & Client Suite
-              </span>
-            </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
               Private Services & Allocations
             </h1>
@@ -361,7 +354,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
                     src={card.image}
                     alt={card.title}
                     loading={idx < 2 ? 'eager' : 'lazy'}
-                    className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.75] contrast-[1.08] transition-transform duration-1000 ease-out group-hover:scale-108 [transform:translate3d(0,0,0)]"
+                    className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.96] contrast-[1.03] transition-transform duration-1000 ease-out group-hover:scale-108 [transform:translate3d(0,0,0)]"
                     style={{ imageRendering: '-webkit-optimize-contrast' }}
                   />
 
@@ -424,105 +417,106 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
 
       {/* ========================================================= */}
-      {/* 2. OUR MODELS — FACES OF LEEANA (SCROLLS FROM THE CENTRE)  */}
+      {/* 2. OUR MODELS — FACES OF LEEANA (DASHBOARD SCROLLS FROM CENTRE) */}
       {/* ========================================================= */}
-      <section id="our-models" className="border-t border-white/[0.08] pt-16 md:pt-24 scroll-mt-28">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.08]">
-          <div>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 block font-light mb-2">
-              Archival Talent Roster
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-              Faces of Leeana · Our Models
-            </h2>
-          </div>
-          
-          <div className="flex items-center justify-between md:justify-end gap-5">
-            <span className="text-xs font-mono text-white/60 tracking-wider uppercase hidden sm:inline-block">
-              Muse 0{currentModelIdx + 1} of 0{MODELS_DATA.length}
-            </span>
+      <section id="our-models" className="scroll-mt-28">
+        {/* Creative Dashboard Frame */}
+        <div className="rounded-[32px] sm:rounded-[36px] border border-white/[0.12] bg-[#07070b]/80 backdrop-blur-2xl p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-2xl">
+          {/* Subtle top hairline highlight */}
+          <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-            <div className="flex items-center gap-2">
-              <button
-                onClick={scrollModelsPrev}
-                aria-label="Previous model"
-                className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-              <button
-                onClick={scrollModelsNext}
-                aria-label="Next model"
-                className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+          {/* Dashboard Control Deck Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/[0.08]">
+            <div className="space-y-2">
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
+                Faces of Leeana · Our Models
+              </h2>
+              <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
+                Archival talent cast for soundstage cinema and international brand campaigns.
+              </p>
+            </div>
+            
+            {/* Creative Dashboard Telemetry & Navigation Dock */}
+            <div className="flex flex-wrap items-center gap-3">
+              <div className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60">
+                <span>09 Talents</span>
+                <span className="text-white/20">/</span>
+                <span className="text-white/80">Soundstage Casting</span>
+              </div>
+
+              <span className="text-xs font-mono text-white/70 tracking-wider uppercase px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.04]">
+                0{currentModelIdx + 1} / 0{MODELS_DATA.length}
+              </span>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={scrollModelsPrev}
+                  aria-label="Previous model"
+                  className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={scrollModelsNext}
+                  aria-label="Next model"
+                  className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Models Carousel Track — Centered Auto-Scrolling Without Side Deadspace */}
-        <div
-          className="pt-10 overflow-hidden"
-          onMouseEnter={() => setIsModelsPaused(true)}
-          onMouseLeave={() => setIsModelsPaused(false)}
-        >
+          {/* Models Carousel Track — Centered Auto-Scrolling */}
           <div
-            ref={modelsScrollRef}
-            onScroll={handleModelsScroll}
-            className="flex gap-6 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar"
+            className="pt-8 overflow-hidden"
+            onMouseEnter={() => setIsModelsPaused(true)}
+            onMouseLeave={() => setIsModelsPaused(false)}
           >
-            {MODELS_DATA.map((model, idx) => {
-              const isCenter = currentModelIdx === idx
-              return (
-                <article
-                  key={model.id}
-                  onClick={() => {
-                    scrollToModel(idx)
-                    onOpenRequisition(`Model Booking Request: ${model.name}`)
-                  }}
-                  className={`group relative min-w-[280px] sm:min-w-[340px] md:min-w-[360px] h-[480px] md:h-[540px] overflow-hidden rounded-[28px] border bg-[#09090c] transition-all duration-700 shrink-0 snap-center shadow-2xl cursor-pointer flex flex-col justify-end p-6 sm:p-8 ${
-                    isCenter
-                      ? 'border-white/40 ring-1 ring-white/25 scale-100 opacity-100'
-                      : 'border-white/[0.1] hover:border-white/30 scale-[0.97] opacity-80 hover:opacity-100'
-                  }`}
-                >
-                  {/* Pure High-Fashion Model Portrait */}
-                  <img
-                    src={model.img}
-                    alt={model.name}
-                    loading={idx < 3 ? 'eager' : 'lazy'}
-                    className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.05] transition-transform duration-700 ease-out group-hover:scale-108 [transform:translate3d(0,0,0)]"
-                    style={{ imageRendering: '-webkit-optimize-contrast' }}
-                  />
+            <div
+              ref={modelsScrollRef}
+              onScroll={handleModelsScroll}
+              className="flex gap-6 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar"
+            >
+              {MODELS_DATA.map((model, idx) => {
+                const isCenter = currentModelIdx === idx
+                return (
+                  <article
+                    key={model.id}
+                    onClick={() => {
+                      scrollToModel(idx)
+                      onOpenRequisition(`Model Booking Request: ${model.name}`)
+                    }}
+                    className={`group relative min-w-[280px] sm:min-w-[340px] md:min-w-[360px] h-[480px] md:h-[540px] overflow-hidden rounded-[24px] border bg-[#09090c] transition-all duration-700 shrink-0 snap-center shadow-2xl cursor-pointer flex flex-col justify-end ${
+                      isCenter
+                        ? 'border-white/45 ring-1 ring-white/30 scale-100 opacity-100'
+                        : 'border-white/[0.12] hover:border-white/35 scale-[0.97] opacity-85 hover:opacity-100'
+                    }`}
+                  >
+                    {/* Brighter High-Fashion Model Portrait */}
+                    <img
+                      src={model.img}
+                      alt={model.name}
+                      loading={idx < 3 ? 'eager' : 'lazy'}
+                      className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
+                      style={{ imageRendering: '-webkit-optimize-contrast' }}
+                    />
 
-                  {/* Ambient Shadow Vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
-                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    {/* Subtle bottom shadow vignette for title contrast */}
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                    <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
-                  {/* Card Label & Action */}
-                  <div className="relative z-10 space-y-2">
-                    <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-[10px] tracking-widest text-white/90 uppercase font-light inline-block">
-                      {model.tag}
-                    </span>
-
-                    <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight">
-                      {model.name}
-                    </h3>
-
-                    <div className="pt-2 flex items-center justify-between">
-                      <span className="text-xs text-white/60 font-light group-hover:text-white transition-colors">
-                        Available for Soundstage & Editorial
-                      </span>
-                      <div className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all">
-                        <ArrowUpRight className="w-3.5 h-3.5" />
-                      </div>
+                    {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
+                    <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
+                      <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
+                        {model.name}
+                      </h3>
                     </div>
-                  </div>
 
-                </article>
-              )
-            })}
+                  </article>
+                )
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -539,9 +533,6 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
       {/* ========================================================= */}
       <section id="testimonials" className="border-t border-white/[0.08] pt-16 md:pt-24 scroll-mt-28">
         <div className="pb-10 border-b border-white/[0.08]">
-          <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 block font-light mb-2">
-            Patron Attestations
-          </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
             Voices of Our Distinguished Clientele
           </h2>
@@ -604,9 +595,6 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
       {/* ========================================================= */}
       <section id="faq" className="border-t border-white/[0.08] pt-16 md:pt-24 scroll-mt-28">
         <div className="pb-10 border-b border-white/[0.08]">
-          <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 block font-light mb-2">
-            Confidential Protocols
-          </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
             Questions, Refined Answers
           </h2>
