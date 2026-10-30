@@ -385,6 +385,42 @@ export const LookbookGallery: React.FC = () => {
   const col3 = activeFilter === 'ALL' ? COLUMN_3_ITEMS : filteredItems.filter((_, i) => i % 4 === 2)
   const col4 = activeFilter === 'ALL' ? COLUMN_4_ITEMS : filteredItems.filter((_, i) => i % 4 === 3)
 
+  // Engineered 2-column mobile layout that guarantees BOTH columns terminate at the EXACT SAME LEVEL (Zero blank space at bottom)
+  const getMobileColumns = () => {
+    if (activeFilter === 'ALL') {
+      const MOBILE_COL_1_IDS = new Set(['01', '02', '03', '04', '05', '06', '11', '13', '14', '15', '16', '18', '20', '25'])
+      const mCol1 = ALL_PLATES.filter((item) => MOBILE_COL_1_IDS.has(item.id))
+      const mCol2 = ALL_PLATES.filter((item) => !MOBILE_COL_1_IDS.has(item.id))
+      return [mCol1, mCol2]
+    }
+
+    const mCol1: LookbookItem[] = []
+    const mCol2: LookbookItem[] = []
+    let h1 = 0
+    let h2 = 0
+
+    const getRatio = (aspectStr: string) => {
+      const match = aspectStr.match(/\[(\d+)\/(\d+)\]/)
+      if (match) return Number(match[2]) / Number(match[1])
+      return 1.0
+    }
+
+    filteredItems.forEach((item) => {
+      const r = getRatio(item.aspect)
+      if (h1 <= h2) {
+        mCol1.push(item)
+        h1 += r
+      } else {
+        mCol2.push(item)
+        h2 += r
+      }
+    })
+
+    return [mCol1, mCol2]
+  }
+
+  const [mobileCol1, mobileCol2] = getMobileColumns()
+
   return (
     <section id="lookbook" className="py-20 md:py-28 px-4 sm:px-8 md:px-12 max-w-[1720px] mx-auto relative z-10">
       
@@ -449,15 +485,15 @@ export const LookbookGallery: React.FC = () => {
         </div>
       </div>
 
-      {/* MOBILE-SPECIFIC LAYOUT: Balanced 2-Column Pinterest Editorial Feed */}
+      {/* MOBILE-SPECIFIC LAYOUT: Balanced 2-Column Pinterest Waterfall Terminating at the Exact Same Level */}
       <div className="grid grid-cols-2 gap-2.5 sm:hidden">
         <div className="flex flex-col gap-2.5">
-          {filteredItems.filter((_, i) => i % 2 === 0).map((item) => (
+          {mobileCol1.map((item) => (
             <PlateCard key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
           ))}
         </div>
         <div className="flex flex-col gap-2.5">
-          {filteredItems.filter((_, i) => i % 2 === 1).map((item) => (
+          {mobileCol2.map((item) => (
             <PlateCard key={item.id} item={item} onSelect={() => setSelectedItem(item)} />
           ))}
         </div>

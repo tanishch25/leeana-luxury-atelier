@@ -25,6 +25,18 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Lock background scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   const navLinks: { id: NavPage; label: string }[] = [
     { id: 'home', label: 'Atelier' },
     { id: 'studios', label: 'Studios' },
@@ -89,44 +101,77 @@ export const Navbar: React.FC<NavbarProps> = ({
               <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black" />
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Animated Fluid Menu Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 md:hidden text-white/80 hover:text-white cursor-pointer"
+              aria-label={mobileOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              className="relative w-10 h-10 rounded-full flex items-center justify-center bg-white/[0.06] hover:bg-white/[0.12] active:scale-90 border border-white/10 hover:border-white/25 transition-all duration-300 md:hidden cursor-pointer backdrop-blur-md"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              <div className="w-5 h-3.5 relative flex flex-col justify-between items-center pointer-events-none">
+                {/* Top Bar */}
+                <span
+                  className={`h-[1.5px] rounded-full bg-white transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    mobileOpen
+                      ? 'w-5 translate-y-[6px] rotate-45'
+                      : 'w-5 translate-y-0 rotate-0'
+                  }`}
+                />
+                {/* Middle Bar */}
+                <span
+                  className={`h-[1.5px] rounded-full bg-white transition-all duration-200 ease-out ${
+                    mobileOpen ? 'w-0 opacity-0 scale-x-0' : 'w-3.5 self-start opacity-70'
+                  }`}
+                />
+                {/* Bottom Bar */}
+                <span
+                  className={`h-[1.5px] rounded-full bg-white transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    mobileOpen
+                      ? 'w-5 -translate-y-[6px] -rotate-45'
+                      : 'w-5 translate-y-0 rotate-0'
+                  }`}
+                />
+              </div>
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with Apple Fluid Transition */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-30 bg-black/95 backdrop-blur-2xl flex flex-col justify-center px-10 md:hidden animate-in fade-in duration-300">
-          <nav className="flex flex-col gap-6 text-center">
-            {navLinks.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleLinkClick(item.id)}
-                className={`font-display text-2xl tracking-wide uppercase transition-colors cursor-pointer ${
-                  activePage === item.id ? 'text-white font-semibold' : 'text-white/50 hover:text-white'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-            <div className="pt-6">
+        <div className="fixed inset-0 z-30 bg-black/95 backdrop-blur-3xl flex flex-col justify-center px-8 md:hidden animate-in fade-in duration-300">
+          <div className="max-w-md mx-auto w-full space-y-8">
+            <nav className="flex flex-col gap-5 text-center">
+              {navLinks.map((item, idx) => {
+                const isActive = activePage === item.id
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleLinkClick(item.id)}
+                    style={{ animationDelay: `${idx * 60}ms` }}
+                    className={`font-display text-2xl tracking-[0.08em] uppercase transition-all duration-300 cursor-pointer py-2 ${
+                      isActive
+                        ? 'text-white font-normal drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]'
+                        : 'text-white/45 hover:text-white font-light'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
+              })}
+            </nav>
+
+            <div className="pt-4 border-t border-white/[0.08]">
               <button
                 onClick={() => {
                   setMobileOpen(false)
                   onOpenConsultation()
                 }}
-                className="w-full py-4 rounded-full bg-white text-black font-semibold text-xs tracking-widest uppercase cursor-pointer"
+                className="w-full py-4 rounded-full bg-white text-black font-semibold text-xs tracking-[0.18em] uppercase cursor-pointer hover:bg-white/90 active:scale-98 transition-all shadow-xl"
               >
                 Let's Talk
               </button>
             </div>
-          </nav>
+          </div>
         </div>
       )}
     </>

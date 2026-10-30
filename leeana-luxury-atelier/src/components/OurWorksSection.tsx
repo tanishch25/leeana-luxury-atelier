@@ -30,7 +30,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
   }
 
   return (
-    <section id="our-works" className="relative w-full py-20 md:py-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto z-10 text-white scroll-mt-36">
+    <section id="our-works" className="relative w-full py-10 sm:py-20 md:py-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto z-10 text-white scroll-mt-36">
       {/* Creative Works Board Frame with Authentic Graffiti Brick Wall Texture */}
       <div
         ref={containerRef}

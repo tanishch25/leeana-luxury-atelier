@@ -101,16 +101,13 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
       id="specializations"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="bg-black py-20 md:py-32 text-white overflow-hidden relative z-20 border-b border-white/[0.06]"
+      className="bg-black py-10 sm:py-16 md:py-32 text-white overflow-hidden relative z-20 border-b border-white/[0.06]"
     >
-      <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-[1700px]">
+      <div className="container mx-auto px-4 sm:px-8 md:px-12 lg:px-20 max-w-[1700px]">
         
         {/* Section Header with Dynamic Sequence Counter */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12 md:mb-16">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5 sm:mb-10 md:mb-16">
           <div>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 block font-light mb-2">
-              Core Disciplines
-            </span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
               Specializations
             </h2>
@@ -133,8 +130,8 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
           </div>
         </div>
 
-        {/* Dual Column Layout */}
-        <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start">
+        {/* Dual Column Layout with Tight Spacing on Mobile */}
+        <div className="flex flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-16 items-start">
           
           {/* Left Column: Interactive Switch with Smooth Dynamic Indicator */}
           <div className="w-full lg:w-5/12 relative z-20">
@@ -177,15 +174,15 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
               })}
             </div>
 
-            {/* Mobile Snap List */}
-            <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-3 pb-4 w-full hide-scrollbar">
+            {/* Mobile Snap List (Tight, Responsive Horizontal Tabs) */}
+            <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-2 sm:gap-3 pb-2 sm:pb-4 w-full hide-scrollbar">
               {SPECIALIZATIONS.map((spec, idx) => {
                 const isActive = activeIdx === idx
                 return (
                   <button
                     key={spec.id}
                     onClick={() => handleSelect(idx)}
-                    className={`snap-start shrink-0 px-6 py-3 rounded-full border text-xs tracking-wider uppercase transition-all cursor-pointer ${
+                    className={`snap-start shrink-0 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border text-[11px] sm:text-xs tracking-wider uppercase transition-all cursor-pointer ${
                       isActive
                         ? 'bg-white text-black font-semibold shadow-lg'
                         : 'bg-white/[0.04] border-white/10 text-white/50'
@@ -202,7 +199,7 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
           <div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="w-full lg:w-7/12 relative aspect-[16/11] sm:aspect-[16/10] min-h-[280px] sm:min-h-[420px] lg:h-[660px] rounded-[24px] sm:rounded-[40px] overflow-hidden border border-white/[0.12] bg-[#09090b] shadow-[0_40px_100px_rgba(0,0,0,0.85)] flex flex-col justify-end"
+            className="w-full lg:w-7/12 relative aspect-[16/10] min-h-[220px] sm:min-h-[420px] lg:h-[660px] rounded-[24px] sm:rounded-[40px] overflow-hidden border border-white/[0.12] bg-[#09090b] shadow-[0_40px_100px_rgba(0,0,0,0.85)] flex flex-col justify-end"
           >
             
             {/* Underneath Layer: Previous Image (Ensures seamless zero-flicker transition) */}

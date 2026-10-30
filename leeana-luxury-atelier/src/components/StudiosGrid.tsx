@@ -50,7 +50,7 @@ export const StudiosGrid: React.FC<StudiosGridProps> = ({ onSelectStudio }) => {
   ]
 
   return (
-    <section id="studios" className="py-28 md:py-40 px-6 sm:px-12 md:px-16 max-w-7xl mx-auto relative z-10 border-b border-white/[0.06]">
+    <section id="studios" className="py-12 sm:py-24 md:py-40 px-4 sm:px-12 md:px-16 max-w-7xl mx-auto relative z-10 border-b border-white/[0.06]">
       
       {/* Header (Subtitle removed, upright non-cursive typography, all white) */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pb-12 border-b border-white/[0.08]">
