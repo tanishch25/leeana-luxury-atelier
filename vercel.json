@@ -1,0 +1,5 @@
+{
+  "framework": "vite",
+  "buildCommand": "cd leeana-luxury-atelier && npm run build",
+  "outputDirectory": "leeana-luxury-atelier/dist"
+}

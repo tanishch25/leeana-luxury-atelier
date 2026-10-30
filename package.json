@@ -1,0 +1,10 @@
+{
+  "name": "leeana-luxury-atelier",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix leeana-luxury-atelier run dev",
+    "build": "npm --prefix leeana-luxury-atelier run build",
+    "preview": "npm --prefix leeana-luxury-atelier run preview"
+  }
+}
