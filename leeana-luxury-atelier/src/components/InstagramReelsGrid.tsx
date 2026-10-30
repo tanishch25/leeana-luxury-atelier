@@ -88,18 +88,18 @@ export const InstagramReelsGrid: React.FC = () => {
     <section
       ref={sectionRef}
       id="instagram-reels"
-      className="scroll-mt-28"
+      className="scroll-mt-32"
     >
-      {/* Creative Dashboard Frame */}
-      <div className="rounded-[32px] sm:rounded-[36px] border border-white/[0.12] bg-[#07070b]/80 backdrop-blur-2xl p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-2xl">
+      {/* Creative Dashboard Frame with Tight, Refined Spacing */}
+      <div className="rounded-[28px] sm:rounded-[32px] border border-white/[0.12] bg-[#07070b]/80 backdrop-blur-2xl p-4 sm:p-6 md:p-6 relative overflow-hidden shadow-2xl">
         {/* Subtle top hairline highlight */}
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-        {/* Dashboard Control Deck Header (No dots, no small words above title) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/[0.08]">
-          <div className="space-y-2">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-              Live Productions · In Motion
+        {/* Dashboard Control Deck Header (Tightened padding, no dots, no small words above title) */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-3.5 border-b border-white/[0.08]">
+          <div className="space-y-1">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
+              Live Productions / In Motion
             </h2>
             <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
               Soundstage captures, high-fashion motion choreography, and architectural cinematography streamed directly from our live Instagram reels vault.
@@ -108,7 +108,7 @@ export const InstagramReelsGrid: React.FC = () => {
 
           {/* Telemetry & Action Dock (No view switcher) */}
           <div className="flex flex-wrap items-center gap-3">
-            <div className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60">
+            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60 self-start md:self-auto">
               <span>04 Productions</span>
               <span className="text-white/20">/</span>
               <span className="text-white/80">Soundstage Feed</span>
@@ -118,10 +118,10 @@ export const InstagramReelsGrid: React.FC = () => {
               href="https://www.instagram.com/leeana.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="apple-press inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 rounded-full border border-white/20 bg-white/[0.06] hover:bg-white hover:text-black hover:border-white text-xs font-semibold tracking-[0.14em] uppercase text-white transition-all backdrop-blur-md shadow-lg"
+              className="apple-press inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full border border-white/20 bg-white/[0.06] hover:bg-white hover:text-black hover:border-white text-xs font-semibold tracking-[0.14em] uppercase text-white transition-all backdrop-blur-md shadow-lg"
             >
               <svg
-                className="w-4 h-4 fill-current"
+                className="w-3.5 h-3.5 fill-current"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
@@ -133,8 +133,8 @@ export const InstagramReelsGrid: React.FC = () => {
           </div>
         </div>
 
-        {/* 4-Column Video Reel Cards (Only title + arrow, bright visuals) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-8">
+        {/* 4-Column Video Reel Cards — Perfect Bottom-Aligned Baseline */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-2.5 md:gap-3 pt-3.5">
           {INSTAGRAM_REELS_DATA.map((reel) => {
             const isUnmuted = unmutedId === reel.id
 
@@ -184,13 +184,13 @@ export const InstagramReelsGrid: React.FC = () => {
                 </div>
 
                 {/* Bottom Card Content: ONLY Title + Arrow (Nothing else written) */}
-                <div className="relative z-10 p-6 flex items-end justify-between gap-3 pointer-events-auto">
-                  <h3 className="font-display text-xl sm:text-2xl text-white font-light tracking-tight leading-snug">
+                <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-3 pointer-events-auto">
+                  <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
                     {reel.title}
                   </h3>
 
-                  <div className="w-9 h-9 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
-                    <ArrowUpRight className="w-4 h-4" />
+                  <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </div>
                 </div>
 

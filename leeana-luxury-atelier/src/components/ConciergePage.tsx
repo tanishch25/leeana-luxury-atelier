@@ -208,14 +208,14 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
   }
 
   return (
-    <div className="pt-8 pb-28 md:pb-36 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-24 md:space-y-32">
+    <div className="pt-6 pb-20 md:pb-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-12 md:space-y-16">
       
       {/* ========================================================= */}
       {/* 1. HERO & PRIVATE SERVICES ALLOCATIONS                    */}
       {/* ========================================================= */}
       <section>
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.08]">
-          <div className="space-y-2">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-8 border-b border-white/[0.08]">
+          <div className="space-y-1.5">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
               Private Services & Allocations
             </h1>
@@ -336,19 +336,19 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
 
       {/* ========================================================= */}
-      {/* 2. OUR MODELS — FACES OF LEEANA (PINTEREST BOARD DEFAULT)   */}
+      {/* 2. OUR MODELS — FACES OF LEEANA (TIGHT PINTEREST ALIGNMENT)*/}
       {/* ========================================================= */}
-      <section id="our-models" className="scroll-mt-28">
-        {/* Creative Dashboard Frame */}
-        <div className="rounded-[32px] sm:rounded-[36px] border border-white/[0.12] bg-[#07070b]/80 backdrop-blur-2xl p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-2xl">
+      <section id="our-models" className="scroll-mt-32">
+        {/* Creative Dashboard Frame with Tight, Refined Spacing */}
+        <div className="rounded-[28px] sm:rounded-[32px] border border-white/[0.12] bg-[#07070b]/80 backdrop-blur-2xl p-4 sm:p-6 md:p-6 relative overflow-hidden shadow-2xl">
           {/* Subtle top hairline highlight */}
           <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-          {/* Dashboard Header Bar (No dots, no small words above title, no switcher) */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-white/[0.08]">
-            <div className="space-y-2">
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-                Faces of Leeana · Our Models
+          {/* Dashboard Header Bar (Tightened padding, no dots, no small words above title) */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/[0.08]">
+            <div className="space-y-1">
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
+                Faces of Leeana / Our Models
               </h2>
               <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
                 Archival talent cast for soundstage cinema, haute couture campaigns, and luxury brand narratives.
@@ -356,35 +356,21 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
             </div>
             
             {/* Dashboard Telemetry Chip */}
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60">
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60 self-start md:self-auto">
               <span>09 Talents</span>
               <span className="text-white/20">/</span>
               <span className="text-white/80">Soundstage Casting</span>
             </div>
           </div>
 
-          {/* Default Pinterest Waterfall Masonry Board (Clean cards, title only, bright visuals) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-8">
-            {MODELS_DATA.map((model, idx) => {
-              // Staggered aspect ratios for authentic Pinterest waterfall
-              const aspectClasses = [
-                'aspect-[3/4]',
-                'aspect-[4/5]',
-                'aspect-[2/3]',
-                'aspect-[4/5]',
-                'aspect-[3/4]',
-                'aspect-[2/3]',
-                'aspect-[3/4]',
-                'aspect-[4/5]',
-                'aspect-[2/3]',
-              ]
-              const aspect = aspectClasses[idx % aspectClasses.length]
-
+          {/* Tight Pinterest-Style Board: Perfect 3-Column Low-End Baseline Alignment */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5 md:gap-3 pt-3.5">
+            {MODELS_DATA.map((model) => {
               return (
                 <article
                   key={model.id}
                   onClick={() => onOpenRequisition(`Model Booking Request: ${model.name}`)}
-                  className={`group relative ${aspect} overflow-hidden rounded-[24px] border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1.5`}
+                  className="group relative w-full aspect-[3/4] overflow-hidden rounded-[18px] sm:rounded-[20px] border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
                 >
                   {/* Brighter High-Fashion Model Portrait */}
                   <img
@@ -396,12 +382,12 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
                   />
 
                   {/* Subtle bottom shadow vignette for contrast */}
-                  <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                  <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
                   {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
-                  <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
-                    <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
+                  <div className="relative z-10 p-4 sm:p-5 pointer-events-auto">
+                    <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
                       {model.name}
                     </h3>
                   </div>
@@ -422,9 +408,9 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
       {/* ========================================================= */}
       {/* 4. REVIEWS — SEE WHAT OUR CLIENTS THINK                  */}
       {/* ========================================================= */}
-      <section id="testimonials" className="border-t border-white/[0.08] pt-16 md:pt-24 scroll-mt-28">
-        <div className="pb-10 border-b border-white/[0.08] space-y-2">
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
+      <section id="testimonials" className="border-t border-white/[0.08] pt-10 md:pt-14 scroll-mt-24">
+        <div className="pb-6 border-b border-white/[0.08] space-y-1.5">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
             See What Our Clients Think
           </h2>
           <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
@@ -433,32 +419,32 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
         </div>
 
         {/* 3 Editorial Testimonial Plates */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-6">
           {TESTIMONIALS_DATA.map((item) => (
             <div
               key={item.id}
-              className="relative p-8 sm:p-10 rounded-[32px] border border-white/[0.1] bg-[#08080b] hover:border-white/25 transition-all duration-500 shadow-2xl flex flex-col justify-between overflow-hidden group"
+              className="relative p-6 sm:p-7 rounded-[24px] border border-white/[0.1] bg-[#08080b] hover:border-white/25 transition-all duration-500 shadow-2xl flex flex-col justify-between overflow-hidden group"
             >
               {/* Hairline highlight */}
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
 
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* 5-Star Rating */}
                 <div className="flex items-center gap-1 text-white">
                   {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-white text-white" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-white text-white" />
                   ))}
                 </div>
 
                 {/* Quote Text */}
-                <p className="font-serif text-lg sm:text-xl text-white/95 font-light italic leading-relaxed">
+                <p className="font-serif text-base sm:text-lg text-white/95 font-light italic leading-relaxed">
                   "{item.text}"
                 </p>
               </div>
 
               {/* Patron Bio with Authentic Photography Avatar */}
-              <div className="pt-8 mt-6 border-t border-white/[0.08] flex items-center gap-4">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden border border-white/20 shrink-0 shadow-lg">
+              <div className="pt-6 mt-5 border-t border-white/[0.08] flex items-center gap-3.5">
+                <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/20 shrink-0 shadow-lg">
                   <img
                     src={item.img}
                     alt={item.name}
@@ -466,7 +452,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
                   />
                 </div>
                 <div>
-                  <h4 className="font-display text-base text-white font-medium tracking-tight">
+                  <h4 className="font-display text-sm text-white font-medium tracking-tight">
                     {item.name}
                   </h4>
                   <span className="text-xs text-white/50 font-light block mt-0.5">
@@ -484,11 +470,11 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
       {/* ========================================================= */}
       {/* 5. DIRECT PRIORITY DESK SUITE                             */}
       {/* ========================================================= */}
-      <section className="rounded-3xl border border-white/[0.12] bg-[#08080b] p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+      <section className="rounded-[28px] border border-white/[0.12] bg-[#08080b] p-6 sm:p-9 shadow-2xl relative overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
         
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div className="space-y-2">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-1.5">
             <h2 className="text-2xl sm:text-3xl font-light text-white tracking-tight">
               Connect With A Dedicated Private Director
             </h2>
@@ -497,10 +483,10 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3.5">
             <a
               href="tel:+919606199999"
-              className="apple-press py-3.5 px-7 rounded-full bg-white hover:bg-white/90 text-black text-xs font-semibold uppercase tracking-[0.14em] flex items-center gap-2 transition-all shadow-xl cursor-pointer"
+              className="apple-press py-3 px-6 rounded-full bg-white hover:bg-white/90 text-black text-xs font-semibold uppercase tracking-[0.14em] flex items-center gap-2 transition-all shadow-xl cursor-pointer"
             >
               <Phone className="w-4 h-4" />
               <span>+91 (0) 96061 99999</span>
@@ -508,7 +494,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
             <button
               onClick={() => onOpenRequisition('Private Appointment Desk')}
-              className="apple-press py-3.5 px-6 rounded-full border border-white/20 bg-white/[0.04] text-white hover:border-white hover:bg-white/10 text-xs uppercase tracking-[0.14em] transition-all cursor-pointer whitespace-nowrap backdrop-blur-md"
+              className="apple-press py-3 px-5 rounded-full border border-white/20 bg-white/[0.04] text-white hover:border-white hover:bg-white/10 text-xs uppercase tracking-[0.14em] transition-all cursor-pointer whitespace-nowrap backdrop-blur-md"
             >
               Schedule Appointment
             </button>
