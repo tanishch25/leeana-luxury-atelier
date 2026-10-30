@@ -7,6 +7,9 @@ import {
   Phone,
   Plus,
   Star,
+  LayoutGrid,
+  SlidersHorizontal,
+  X,
 } from 'lucide-react'
 import { InstagramReelsGrid } from './InstagramReelsGrid'
 
@@ -164,6 +167,8 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
   // Automatic Center-Scrolling Models state
   const [currentModelIdx, setCurrentModelIdx] = useState(0)
   const [isModelsPaused, setIsModelsPaused] = useState(false)
+  const [modelsViewMode, setModelsViewMode] = useState<'stream' | 'pinterest'>('stream')
+  const [selectedModel, setSelectedModel] = useState<ModelItem | null>(null)
 
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const modelsScrollRef = useRef<HTMLDivElement>(null)
@@ -417,7 +422,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
 
       {/* ========================================================= */}
-      {/* 2. OUR MODELS — FACES OF LEEANA (DASHBOARD SCROLLS FROM CENTRE) */}
+      {/* 2. OUR MODELS — FACES OF LEEANA (DASHBOARD & PINTEREST)    */}
       {/* ========================================================= */}
       <section id="our-models" className="scroll-mt-28">
         {/* Creative Dashboard Frame */}
@@ -436,89 +441,221 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
               </p>
             </div>
             
-            {/* Creative Dashboard Telemetry & Navigation Dock */}
+            {/* Creative Dashboard Telemetry & Pinterest View Switcher */}
             <div className="flex flex-wrap items-center gap-3">
-              <div className="hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.03] text-[11px] font-mono tracking-wider uppercase text-white/60">
-                <span>09 Talents</span>
-                <span className="text-white/20">/</span>
-                <span className="text-white/80">Soundstage Casting</span>
-              </div>
-
-              <span className="text-xs font-mono text-white/70 tracking-wider uppercase px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.04]">
-                0{currentModelIdx + 1} / 0{MODELS_DATA.length}
-              </span>
-
-              <div className="flex items-center gap-2">
+              {/* Pinterest vs Stream Mode Switcher */}
+              <div className="flex items-center p-1 rounded-full border border-white/15 bg-black/40 backdrop-blur-md">
                 <button
-                  onClick={scrollModelsPrev}
-                  aria-label="Previous model"
-                  className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
+                  onClick={() => setModelsViewMode('stream')}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
+                    modelsViewMode === 'stream'
+                      ? 'bg-white text-black shadow-md'
+                      : 'text-white/60 hover:text-white'
+                  }`}
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <SlidersHorizontal className="w-3 h-3" />
+                  <span>Stream</span>
                 </button>
                 <button
-                  onClick={scrollModelsNext}
-                  aria-label="Next model"
-                  className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
+                  onClick={() => setModelsViewMode('pinterest')}
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-medium tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer ${
+                    modelsViewMode === 'pinterest'
+                      ? 'bg-white text-black shadow-md'
+                      : 'text-white/60 hover:text-white'
+                  }`}
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <LayoutGrid className="w-3 h-3" />
+                  <span>Pinterest</span>
                 </button>
               </div>
+
+              {/* Stream Navigation Controls (Visible in Stream Mode) */}
+              {modelsViewMode === 'stream' && (
+                <>
+                  <span className="text-xs font-mono text-white/70 tracking-wider uppercase px-3.5 py-2 rounded-full border border-white/10 bg-white/[0.04]">
+                    0{currentModelIdx + 1} / 0{MODELS_DATA.length}
+                  </span>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={scrollModelsPrev}
+                      aria-label="Previous model"
+                      className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={scrollModelsNext}
+                      aria-label="Next model"
+                      className="apple-press w-10 h-10 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 
-          {/* Models Carousel Track — Centered Auto-Scrolling */}
-          <div
-            className="pt-8 overflow-hidden"
-            onMouseEnter={() => setIsModelsPaused(true)}
-            onMouseLeave={() => setIsModelsPaused(false)}
-          >
+          {/* Mode 1: Models Carousel Stream (Centered Auto-Scrolling) */}
+          {modelsViewMode === 'stream' ? (
             <div
-              ref={modelsScrollRef}
-              onScroll={handleModelsScroll}
-              className="flex gap-6 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar"
+              className="pt-8 overflow-hidden"
+              onMouseEnter={() => setIsModelsPaused(true)}
+              onMouseLeave={() => setIsModelsPaused(false)}
             >
+              <div
+                ref={modelsScrollRef}
+                onScroll={handleModelsScroll}
+                className="flex gap-6 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory hide-scrollbar"
+              >
+                {MODELS_DATA.map((model, idx) => {
+                  const isCenter = currentModelIdx === idx
+                  return (
+                    <article
+                      key={model.id}
+                      onClick={() => {
+                        scrollToModel(idx)
+                        setSelectedModel(model)
+                      }}
+                      className={`group relative min-w-[280px] sm:min-w-[340px] md:min-w-[360px] h-[480px] md:h-[540px] overflow-hidden rounded-[24px] border bg-[#09090c] transition-all duration-700 shrink-0 snap-center shadow-2xl cursor-pointer flex flex-col justify-end ${
+                        isCenter
+                          ? 'border-white/45 ring-1 ring-white/30 scale-100 opacity-100'
+                          : 'border-white/[0.12] hover:border-white/35 scale-[0.97] opacity-85 hover:opacity-100'
+                      }`}
+                    >
+                      {/* Brighter High-Fashion Model Portrait */}
+                      <img
+                        src={model.img}
+                        alt={model.name}
+                        loading={idx < 3 ? 'eager' : 'lazy'}
+                        className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
+                        style={{ imageRendering: '-webkit-optimize-contrast' }}
+                      />
+
+                      {/* Subtle bottom shadow vignette for title contrast */}
+                      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
+                      <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+
+                      {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
+                      <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
+                        <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
+                          {model.name}
+                        </h3>
+                      </div>
+                    </article>
+                  )
+                })}
+              </div>
+            </div>
+          ) : (
+            /* Mode 2: Pinterest Waterfall Masonry Board */
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-8 animate-in fade-in duration-500">
               {MODELS_DATA.map((model, idx) => {
-                const isCenter = currentModelIdx === idx
+                // Staggered aspect ratios for authentic Pinterest waterfall
+                const aspectClasses = [
+                  'aspect-[3/4]',
+                  'aspect-[4/5]',
+                  'aspect-[2/3]',
+                  'aspect-[4/5]',
+                  'aspect-[3/4]',
+                  'aspect-[2/3]',
+                  'aspect-[3/4]',
+                  'aspect-[4/5]',
+                  'aspect-[2/3]',
+                ]
+                const aspect = aspectClasses[idx % aspectClasses.length]
+
                 return (
                   <article
                     key={model.id}
-                    onClick={() => {
-                      scrollToModel(idx)
-                      onOpenRequisition(`Model Booking Request: ${model.name}`)
-                    }}
-                    className={`group relative min-w-[280px] sm:min-w-[340px] md:min-w-[360px] h-[480px] md:h-[540px] overflow-hidden rounded-[24px] border bg-[#09090c] transition-all duration-700 shrink-0 snap-center shadow-2xl cursor-pointer flex flex-col justify-end ${
-                      isCenter
-                        ? 'border-white/45 ring-1 ring-white/30 scale-100 opacity-100'
-                        : 'border-white/[0.12] hover:border-white/35 scale-[0.97] opacity-85 hover:opacity-100'
-                    }`}
+                    onClick={() => setSelectedModel(model)}
+                    className={`group relative ${aspect} overflow-hidden rounded-[24px] border border-white/[0.12] bg-[#09090c] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1.5`}
                   >
                     {/* Brighter High-Fashion Model Portrait */}
                     <img
                       src={model.img}
                       alt={model.name}
-                      loading={idx < 3 ? 'eager' : 'lazy'}
+                      loading="lazy"
                       className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
                       style={{ imageRendering: '-webkit-optimize-contrast' }}
                     />
 
-                    {/* Subtle bottom shadow vignette for title contrast */}
+                    {/* Bottom shadow vignette */}
                     <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
                     <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
 
-                    {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
+                    {/* Card Content: ONLY the title that is all */}
                     <div className="relative z-10 p-6 sm:p-8 pointer-events-auto">
-                      <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
+                      <h3 className="font-display text-2xl text-white font-light tracking-tight leading-snug">
                         {model.name}
                       </h3>
                     </div>
-
                   </article>
                 )
               })}
             </div>
-          </div>
+          )}
         </div>
+
+        {/* Pinterest Spotlight Modal on Click */}
+        {selectedModel && (
+          <div
+            onClick={() => setSelectedModel(null)}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-6 md:p-10 animate-in fade-in duration-300"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full max-h-[90vh] flex flex-col md:flex-row rounded-[32px] overflow-hidden border border-white/20 bg-[#09090d] shadow-2xl"
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setSelectedModel(null)}
+                aria-label="Close modal"
+                className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white flex items-center justify-center hover:bg-white hover:text-black transition-all cursor-pointer shadow-lg"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {/* Large Image Frame */}
+              <div className="relative md:w-3/5 h-[48vh] md:h-[75vh] bg-black flex items-center justify-center overflow-hidden">
+                <img
+                  src={selectedModel.img}
+                  alt={selectedModel.name}
+                  className="w-full h-full object-cover filter brightness-[1.08] contrast-[1.04]"
+                />
+              </div>
+
+              {/* Pinterest Board Info Panel */}
+              <div className="md:w-2/5 p-6 sm:p-8 md:p-10 flex flex-col justify-between border-t md:border-t-0 md:border-l border-white/10 bg-[#09090d]">
+                <div className="space-y-4">
+                  <span className="text-[11px] font-mono tracking-widest uppercase text-white/50 block">
+                    Talent Plate · 0{selectedModel.id}
+                  </span>
+                  <h3 className="font-display text-3xl sm:text-4xl text-white font-light tracking-tight">
+                    {selectedModel.name}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
+                    Curated talent for high-fashion runway, soundstage cinema, and luxury brand editorial campaigns.
+                  </p>
+                </div>
+
+                <div className="pt-8 space-y-3">
+                  <button
+                    onClick={() => {
+                      onOpenRequisition(`Model Booking Request: ${selectedModel.name}`)
+                      setSelectedModel(null)
+                    }}
+                    className="apple-press w-full py-4 rounded-full bg-white text-black font-semibold text-xs uppercase tracking-widest hover:bg-white/90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl"
+                  >
+                    <span>Book Talent For Shoot</span>
+                    <ArrowUpRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
 
