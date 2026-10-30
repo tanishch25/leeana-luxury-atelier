@@ -9,6 +9,7 @@ import {
   Star,
   Sparkles,
 } from 'lucide-react'
+import { InstagramReelsGrid } from './InstagramReelsGrid'
 
 interface ConciergePageProps {
   onOpenRequisition: (mandate?: string) => void
@@ -525,6 +526,12 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
           </div>
         </div>
       </section>
+
+
+      {/* ========================================================= */}
+      {/* 2.5 LIVE PRODUCTIONS — INSTAGRAM REELS SHOWCASE           */}
+      {/* ========================================================= */}
+      <InstagramReelsGrid onOpenRequisition={onOpenRequisition} />
 
 
       {/* ========================================================= */}
