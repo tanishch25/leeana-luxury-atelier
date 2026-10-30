@@ -30,56 +30,50 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
   }
 
   return (
-    <section className="relative w-full py-16 md:py-24 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto z-10 text-white">
-      {/* Creative Works Board Frame with Notice Board & Graffiti Canvas Atmosphere */}
+    <section id="our-works" className="relative w-full py-20 md:py-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto z-10 text-white scroll-mt-36">
+      {/* Creative Works Board Frame with Notice Board & Vibrant Graffiti Canvas Atmosphere */}
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        className="rounded-[32px] sm:rounded-[36px] border border-white/[0.14] bg-[#07070b] relative overflow-hidden shadow-2xl p-5 sm:p-8 md:p-9 space-y-7 group/board"
+        className="rounded-[32px] sm:rounded-[36px] border border-white/[0.14] bg-[#07070b] relative overflow-hidden shadow-2xl p-6 sm:p-9 md:p-10 space-y-7 group/board"
         style={{
           backgroundImage: `radial-gradient(750px circle at ${mousePos.x}% ${mousePos.y}%, rgba(255, 255, 255, 0.08), transparent 70%)`,
         }}
       >
-        {/* Notice Board Architectural Corner Brackets (Strictly No Dots) */}
-        <div className="absolute top-3.5 left-3.5 w-5 h-5 border-t border-l border-white/30 pointer-events-none z-20" />
-        <div className="absolute top-3.5 right-3.5 w-5 h-5 border-t border-r border-white/30 pointer-events-none z-20" />
-        <div className="absolute bottom-3.5 left-3.5 w-5 h-5 border-b border-l border-white/30 pointer-events-none z-20" />
-        <div className="absolute bottom-3.5 right-3.5 w-5 h-5 border-b border-r border-white/30 pointer-events-none z-20" />
-
-        {/* Background Graffiti Painting & Notice Board Canvas */}
+        {/* Background Vibrant Graffiti Painting & Notice Board Canvas */}
         <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          {/* Authentic High-Resolution Graffiti Artwork Texture */}
+          {/* Brighter, Colorful Graffiti Artwork Texture */}
           <img
             src="/assets/graffiti_art_wall.jpg"
             alt="Atelier Graffiti Canvas"
-            className="w-full h-full object-cover object-center filter contrast-125 brightness-[0.65] saturate-[1.25] opacity-55 scale-105 transition-transform duration-1000 group-hover/board:scale-100"
+            className="w-full h-full object-cover object-center filter contrast-110 brightness-[0.9] saturate-[1.35] opacity-80 scale-105 transition-transform duration-1000 group-hover/board:scale-100"
           />
 
           {/* Notice Board Fine Grid & Canvas Mesh Overlay */}
           <div 
-            className="absolute inset-0 opacity-20 mix-blend-overlay"
+            className="absolute inset-0 opacity-15 mix-blend-overlay"
             style={{
-              backgroundImage: 'radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px)',
+              backgroundImage: 'radial-gradient(rgba(255,255,255,0.2) 1px, transparent 1px)',
               backgroundSize: '24px 24px',
             }}
           />
 
-          {/* Dark Vignette & Atmospheric Gradients to keep text & cards crystal clear */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#060609]/75 via-[#060609]/45 to-[#060609]/80" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,#060609_92%)]" />
-          <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.85)]" />
+          {/* Subtle Atmospheric Vignette - preserving graffiti vibrance and legibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050508]/45 via-transparent to-[#050508]/65" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#050508_90%)]" />
+          <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.7)]" />
         </div>
 
         {/* Top hairline highlight */}
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
 
-        {/* Header Bar */}
-        <div className="pb-4 border-b border-white/[0.08]">
-          <div className="space-y-1">
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
+        {/* Header Bar — Highly Visible Heading */}
+        <div className="relative z-20 pb-5 border-b border-white/[0.12]">
+          <div className="space-y-1.5">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
               Our Works
             </h2>
-            <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
+            <p className="text-white/85 text-xs sm:text-sm max-w-xl font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.85)]">
               A curated soundstage archive uniting high-fashion casting, cinematic motion choreography, and luxury brand narratives.
             </p>
           </div>
@@ -343,14 +337,14 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
           </div>
         </div>
 
-        {/* Below the Board: Explore Services Button */}
-        <div className="flex justify-center pt-2">
+        {/* Below the Board: Explore Button (Highly Visible, High Contrast) */}
+        <div className="relative z-30 flex justify-center pt-6 pb-2">
           <button
             onClick={onNavigateServices}
-            className="apple-press group cursor-pointer inline-flex items-center gap-3 px-8 sm:px-10 py-3.5 sm:py-4 rounded-full bg-white text-black font-semibold text-xs tracking-[0.18em] uppercase hover:bg-white/90 transition-all duration-300 shadow-2xl hover:shadow-[0_0_35px_rgba(255,255,255,0.22)] hover:scale-[1.02]"
+            className="apple-press group cursor-pointer inline-flex items-center gap-3.5 px-9 sm:px-12 py-4 sm:py-4.5 rounded-full bg-white text-black font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase hover:bg-white/95 transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.35)] hover:scale-105 active:scale-95"
           >
             <span>Explore Services</span>
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            <ArrowUpRight className="w-4 h-4 text-black transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </button>
         </div>
       </div>
