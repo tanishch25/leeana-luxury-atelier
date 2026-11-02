@@ -3,9 +3,13 @@ import { ArrowUpRight, Volume2, VolumeX } from 'lucide-react'
 
 interface OurWorksSectionProps {
   onNavigateServices: () => void
+  onOpenOurWorksShorts?: () => void
 }
 
-export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServices }) => {
+export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
+  onNavigateServices,
+  onOpenOurWorksShorts,
+}) => {
   const [unmutedId, setUnmutedId] = useState<string | null>(null)
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({})
   const containerRef = useRef<HTMLDivElement>(null)
@@ -341,7 +345,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
         <div className="block sm:hidden space-y-2.5">
           {/* Card 1: Widescreen Feature Cinema Reel */}
           <div
-            onClick={onNavigateServices}
+            onClick={onOpenOurWorksShorts || onNavigateServices}
             className="group relative h-[210px] rounded-[20px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all cursor-pointer flex flex-col justify-between"
           >
             <video
@@ -412,7 +416,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
 
             {/* Card 3: Video Reel (Cafe & Culinary Atmosphere) */}
             <div
-              onClick={onNavigateServices}
+              onClick={onOpenOurWorksShorts || onNavigateServices}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -475,7 +479,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({ onNavigateServ
 
             {/* Card 5: Video Reel (Metropolitan Nightlife) */}
             <div
-              onClick={onNavigateServices}
+              onClick={onOpenOurWorksShorts || onNavigateServices}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video

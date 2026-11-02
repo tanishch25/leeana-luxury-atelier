@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowUpRight, Menu, X, Film } from 'lucide-react'
 
 export type NavPage = 'home' | 'studios' | 'specializations' | 'lookbook' | 'concierge'
 
@@ -7,12 +7,14 @@ interface NavbarProps {
   activePage: NavPage
   onNavigate: (page: NavPage) => void
   onOpenConsultation: () => void
+  onOpenOurWorksShorts?: () => void
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   activePage,
   onNavigate,
   onOpenConsultation,
+  onOpenOurWorksShorts,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -160,19 +162,78 @@ export const Navbar: React.FC<NavbarProps> = ({
               })}
             </nav>
 
-            <div className="pt-4 border-t border-white/[0.08]">
+            <div className="pt-4 border-t border-white/[0.08] space-y-3">
+              <button
+                onClick={() => {
+                  setMobileOpen(false)
+                  onOpenOurWorksShorts?.()
+                }}
+                className="w-full py-3.5 rounded-full bg-white/[0.08] border border-white/20 text-white font-medium text-xs tracking-[0.18em] uppercase cursor-pointer hover:bg-white/[0.14] active:scale-98 transition-all flex items-center justify-center gap-2"
+              >
+                <Film className="w-3.5 h-3.5" />
+                <span>Our Work (Reels)</span>
+              </button>
+
               <button
                 onClick={() => {
                   setMobileOpen(false)
                   onOpenConsultation()
                 }}
-                className="w-full py-4 rounded-full bg-white text-black font-semibold text-xs tracking-[0.18em] uppercase cursor-pointer hover:bg-white/90 active:scale-98 transition-all shadow-xl"
+                className="w-full py-4 rounded-full bg-white text-black font-semibold text-xs tracking-[0.18em] uppercase cursor-pointer hover:bg-white/90 active:scale-98 transition-all shadow-xl flex items-center justify-center gap-2"
               >
-                Let's Talk
+                <span>Let's Connect</span>
+                <ArrowUpRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         </div>
+      )}
+
+      {/* Bespoke Mobile Floating Bottom Navigation Dock (Strictly Mobile: md:hidden) */}
+      {!mobileOpen && (
+        <aside
+          aria-label="Mobile Navigation Dock"
+          className="fixed bottom-5 inset-x-0 z-40 px-4 flex justify-center pointer-events-none md:hidden transition-all duration-300"
+        >
+          <div className="pointer-events-auto flex items-center gap-2.5 p-1.5 rounded-full bg-black/85 border border-white/[0.18] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.95)] max-w-sm w-full mx-auto">
+            
+            {/* 1. Our Work Button (Opens Vertical Short-Form Video Reels) */}
+            <button
+              onClick={() => {
+                if (onOpenOurWorksShorts) {
+                  onOpenOurWorksShorts()
+                } else {
+                  handleLinkClick('home')
+                  setTimeout(() => {
+                    document.getElementById('our-works')?.scrollIntoView({ behavior: 'smooth' })
+                  }, 100)
+                }
+              }}
+              aria-label="Open Our Work Reels"
+              className="apple-press flex-1 flex items-center justify-center gap-2 py-3 px-3.5 rounded-full bg-white/[0.08] hover:bg-white/[0.16] active:scale-95 border border-white/12 text-white transition-all cursor-pointer shadow-md group"
+            >
+              <div className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors">
+                <Film className="w-3 h-3 text-white group-hover:text-black" />
+              </div>
+              <span className="font-couture text-[11px] sm:text-xs tracking-[0.16em] uppercase font-medium">
+                Our Work
+              </span>
+            </button>
+
+            {/* 2. Let's Connect Button (Opens Requisition Dossier) */}
+            <button
+              onClick={onOpenConsultation}
+              aria-label="Let's Connect"
+              className="apple-press flex-1 flex items-center justify-center gap-2 py-3 px-3.5 rounded-full bg-white text-black hover:bg-white/90 active:scale-95 border border-white text-[11px] sm:text-xs font-semibold tracking-[0.16em] uppercase transition-all shadow-[0_8px_24px_rgba(255,255,255,0.22)] cursor-pointer"
+            >
+              <span className="font-couture">
+                Let's Connect
+              </span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-black" />
+            </button>
+
+          </div>
+        </aside>
       )}
     </>
   )

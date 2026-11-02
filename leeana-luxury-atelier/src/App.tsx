@@ -14,10 +14,12 @@ import { OurWorksSection } from './components/OurWorksSection'
 import { LandingFaqReviews } from './components/LandingFaqReviews'
 import { Footer } from './components/Footer'
 import { RequisitionDossier } from './components/RequisitionDossier'
+import { MobileShortsModal } from './components/MobileShortsModal'
 
 export function App() {
   const [activePage, setActivePage] = useState<NavPage>('home')
   const [isDossierOpen, setIsDossierOpen] = useState(false)
+  const [isShortsOpen, setIsShortsOpen] = useState(false)
   const [selectedService, setSelectedService] = useState<string | undefined>()
   const [scrollProgress, setScrollProgress] = useState(0)
   const [showBackToTop, setShowBackToTop] = useState(false)
@@ -95,6 +97,7 @@ export function App() {
         activePage={activePage}
         onNavigate={handleNavigate}
         onOpenConsultation={() => handleOpenRequisition()}
+        onOpenOurWorksShorts={() => setIsShortsOpen(true)}
       />
 
       {/* 2. Main Viewport Flow */}
@@ -112,6 +115,7 @@ export function App() {
                 setActivePage('concierge')
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
+              onOpenOurWorksShorts={() => setIsShortsOpen(true)}
             />
             <LookbookGallery />
             <LandingFaqReviews />
@@ -155,11 +159,11 @@ export function App() {
       {/* 3. Sculptural Monumental Footer */}
       <Footer onOpenRequisition={() => handleOpenRequisition()} />
 
-      {/* Floating Apple-Style Back-to-Top Capsule */}
+      {/* Floating Apple-Style Back-to-Top Capsule (Offset on mobile so it doesn't clash with bottom dock) */}
       <button
         onClick={scrollToTop}
         aria-label="Scroll to Top"
-        className={`fixed bottom-6 right-6 z-40 px-4 py-2.5 rounded-full bg-black/80 border border-white/20 backdrop-blur-2xl text-white text-xs font-light tracking-[0.2em] uppercase transition-all duration-400 flex items-center gap-2 shadow-2xl hover:border-white hover:bg-white hover:text-black cursor-pointer ${
+        className={`fixed bottom-22 right-4 md:bottom-6 md:right-6 z-30 px-4 py-2.5 rounded-full bg-black/80 border border-white/20 backdrop-blur-2xl text-white text-xs font-light tracking-[0.2em] uppercase transition-all duration-400 flex items-center gap-2 shadow-2xl hover:border-white hover:bg-white hover:text-black cursor-pointer ${
           showBackToTop ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
         }`}
       >
@@ -174,6 +178,13 @@ export function App() {
         isOpen={isDossierOpen}
         onClose={() => setIsDossierOpen(false)}
         initialService={selectedService}
+      />
+
+      {/* 5. Mobile-Specific Vertical Short-Form Video Reels Modal (Strictly Mobile Only) */}
+      <MobileShortsModal
+        isOpen={isShortsOpen}
+        onClose={() => setIsShortsOpen(false)}
+        onOpenConnect={() => handleOpenRequisition()}
       />
 
     </div>
