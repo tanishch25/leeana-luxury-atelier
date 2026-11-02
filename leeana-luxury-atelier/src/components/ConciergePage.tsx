@@ -93,16 +93,13 @@ export const CONCIERGE_CARDS: ConciergeCard[] = [
   },
 ]
 
-// 9 Archival Models from Leeana Roster
+// 6 Curated Archival Models from Leeana Roster (Urban Chic, Midnight Power, Athleisure Portrait removed as requested)
 export const MODELS_DATA: ModelItem[] = [
   { id: '01', name: 'Editorial Streetwear', tag: 'Lifestyle', img: '/assets/model-1.jpg' },
   { id: '02', name: 'Nightlife Luxe', tag: 'Automotive', img: '/assets/model-2.jpg' },
-  { id: '03', name: 'Athleisure Portrait', tag: 'Fitness', img: '/assets/model-3.jpg' },
   { id: '04', name: 'Effortless Charm', tag: 'Portrait', img: '/assets/model-4.jpg' },
   { id: '05', name: 'Boutique Elegance', tag: 'Lifestyle', img: '/assets/model-5.jpg' },
-  { id: '06', name: 'Midnight Power', tag: 'Editorial', img: '/assets/model-6.jpg' },
   { id: '07', name: 'Supercar Charisma', tag: 'Automotive', img: '/assets/model-7.jpg' },
-  { id: '08', name: 'Urban Chic', tag: 'Portrait', img: '/assets/model-0107.jpg' },
   { id: '09', name: 'Heritage Elegance', tag: 'Portrait', img: '/assets/model-0106.jpg' },
 ]
 

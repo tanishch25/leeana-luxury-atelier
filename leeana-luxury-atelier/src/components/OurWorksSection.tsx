@@ -83,11 +83,11 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
           </div>
         </div>
 
-        {/* DESKTOP LAYOUT: Master Asymmetric Soundstage Bento Grid (Preserved 100% Unchanged) */}
+        {/* DESKTOP LAYOUT: Master Asymmetric Soundstage Bento Grid */}
         <div className="hidden sm:block space-y-3 sm:space-y-3.5">
-          {/* Row 1: Large Cinema Soundstage Feature (2 cols) + Archival Model Card (1 col) */}
+          {/* Row 1: Priority 1 — Large Cafe & Culinary Feature (2 cols) + Archival Model Card (1 col) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-3.5">
-            {/* Feature Master Cinema Card with Smooth Filmic Edge Fade */}
+            {/* Feature Master Cinema Card: Priority 1 — Cafe & Culinary Atmosphere */}
             <div
               onClick={onNavigateServices}
               className="group relative lg:col-span-2 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-2xl transition-all duration-500 hover:border-white/45 cursor-pointer flex flex-col justify-between"
@@ -96,8 +96,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['feature-reel'] = el
                 }}
-                src="/assets/reels/reel_3.mp4"
-                poster="/assets/reels/reel_3_thumb.jpg"
+                src="/assets/reels/reel_1.mp4"
+                poster="/assets/reels/reel_1_thumb.jpg"
                 loop
                 playsInline
                 autoPlay
@@ -111,44 +111,34 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#050508]/60 to-transparent pointer-events-none" />
               <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(5,5,8,0.75)] pointer-events-none" />
 
-              {/* Top Controls: Soundwave Visualizer + Audio Toggle (No text badges) */}
+              {/* Top Controls: Soundwave Visualizer + Audio Toggle */}
               <div className="relative z-10 p-4 sm:p-5 flex items-center justify-end gap-2.5 pointer-events-auto">
-                {/* Dynamic Soundwave Equalizer Bars */}
                 <div className="flex items-end gap-1 h-5 px-2 py-1 rounded-full bg-black/60 border border-white/20 backdrop-blur-md">
                   <span
                     className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                      unmutedId === 'feature-reel'
-                        ? 'animate-pulse h-4 bg-white'
-                        : 'h-1.5 opacity-40'
+                      unmutedId === 'feature-reel' ? 'animate-pulse h-4 bg-white' : 'h-1.5 opacity-40'
                     }`}
                   />
                   <span
                     className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                      unmutedId === 'feature-reel'
-                        ? 'animate-pulse h-3 bg-white'
-                        : 'h-2.5 opacity-40'
+                      unmutedId === 'feature-reel' ? 'animate-pulse h-3 bg-white' : 'h-2.5 opacity-40'
                     }`}
                     style={{ animationDelay: '150ms' }}
                   />
                   <span
                     className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                      unmutedId === 'feature-reel'
-                        ? 'animate-pulse h-4.5 bg-white'
-                        : 'h-3 opacity-40'
+                      unmutedId === 'feature-reel' ? 'animate-pulse h-4.5 bg-white' : 'h-3 opacity-40'
                     }`}
                     style={{ animationDelay: '300ms' }}
                   />
                   <span
                     className={`w-[2.5px] rounded-full bg-white transition-all duration-300 ${
-                      unmutedId === 'feature-reel'
-                        ? 'animate-pulse h-2 bg-white'
-                        : 'h-1 opacity-40'
+                      unmutedId === 'feature-reel' ? 'animate-pulse h-2 bg-white' : 'h-1 opacity-40'
                     }`}
                     style={{ animationDelay: '75ms' }}
                   />
                 </div>
 
-                {/* Audio Toggle Button */}
                 <button
                   onClick={(e) => toggleMute('feature-reel', e)}
                   aria-label={unmutedId === 'feature-reel' ? 'Mute Audio' : 'Unmute Audio'}
@@ -166,10 +156,10 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 </button>
               </div>
 
-              {/* Bottom Feature Details: Title + Arrow */}
+              {/* Bottom Feature Details */}
               <div className="relative z-10 p-5 sm:p-6 flex items-end justify-between gap-4 pointer-events-auto">
                 <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
-                  Haute Couture Soundstage
+                  Cafe & Culinary Atmosphere
                 </h3>
 
                 <div className="w-9 h-9 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
@@ -180,7 +170,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
             </div>
 
-            {/* Archival Model Lookbook Card 01 with Soft Filmic Fade */}
+            {/* Archival Model Lookbook Card 01 */}
             <div
               onClick={onNavigateServices}
               className="group relative lg:col-span-1 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.12] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
@@ -195,7 +185,6 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
               <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.7)] pointer-events-none" />
 
-              {/* Title Only (No top badges, no arrows) */}
               <div className="relative z-10 p-5 sm:p-6 pointer-events-auto">
                 <h3 className="font-display text-xl sm:text-2xl text-white font-light tracking-tight leading-snug">
                   Editorial Streetwear
@@ -206,19 +195,19 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
             </div>
           </div>
 
-          {/* Row 2: 3 Balanced Cards (Reel + Model + Reel) Terminating at Exact Same Baseline */}
+          {/* Row 2: Priorities 2, 3, 4 — Attached Reels (1st Video, 2nd Video, 3rd Video) */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
-            {/* Reel 01: Cafe & Culinary Atmosphere */}
+            {/* Priority 2: 1st Attached Video — Founder Vision & Commercial Direction */}
             <div
               onClick={onNavigateServices}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
-                  videoRefs.current['reel-1'] = el
+                  videoRefs.current['reel-attached-1'] = el
                 }}
-                src="/assets/reels/reel_1.mp4"
-                poster="/assets/reels/reel_1_thumb.jpg"
+                src="/assets/reels/reel_attached_1.mp4"
+                poster="/assets/reels/reel_attached_1_thumb.jpg"
                 loop
                 playsInline
                 autoPlay
@@ -232,15 +221,15 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Top Audio Toggle */}
               <div className="relative z-10 p-3.5 sm:p-4 flex justify-end pointer-events-auto">
                 <button
-                  onClick={(e) => toggleMute('reel-1', e)}
-                  aria-label={unmutedId === 'reel-1' ? 'Mute Audio' : 'Unmute Audio'}
+                  onClick={(e) => toggleMute('reel-attached-1', e)}
+                  aria-label={unmutedId === 'reel-attached-1' ? 'Mute Audio' : 'Unmute Audio'}
                   className={`apple-press w-7 h-7 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
-                    unmutedId === 'reel-1'
+                    unmutedId === 'reel-attached-1'
                       ? 'bg-white text-black border-white shadow-lg'
                       : 'bg-black/60 text-white border-white/20 hover:bg-white hover:text-black hover:border-white'
                   }`}
                 >
-                  {unmutedId === 'reel-1' ? (
+                  {unmutedId === 'reel-attached-1' ? (
                     <Volume2 className="w-3 h-3" />
                   ) : (
                     <VolumeX className="w-3 h-3" />
@@ -251,7 +240,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Title + Arrow */}
               <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-2.5 pointer-events-auto">
                 <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  Cafe & Culinary Atmosphere
+                  Founder Vision
                 </h3>
                 <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -261,42 +250,17 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
             </div>
 
-            {/* Model 02: Nightlife Luxe */}
-            <div
-              onClick={onNavigateServices}
-              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.12] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
-            >
-              <img
-                src="/assets/model-2.jpg"
-                alt="Nightlife Luxe"
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105"
-                style={{ imageRendering: '-webkit-optimize-contrast' }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
-              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
-
-              {/* Title Only */}
-              <div className="relative z-10 p-4 sm:p-5 pointer-events-auto">
-                <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  Nightlife Luxe
-                </h3>
-              </div>
-
-              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-            </div>
-
-            {/* Reel 02: Metropolitan Nightlife */}
+            {/* Priority 3: 2nd Attached Video — The Cozy Ambience */}
             <div
               onClick={onNavigateServices}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
-                  videoRefs.current['reel-4'] = el
+                  videoRefs.current['reel-attached-2'] = el
                 }}
-                src="/assets/reels/reel_4.mp4"
-                poster="/assets/reels/reel_4_thumb.jpg"
+                src="/assets/reels/reel_attached_2.mp4"
+                poster="/assets/reels/reel_attached_2_thumb.jpg"
                 loop
                 playsInline
                 autoPlay
@@ -310,15 +274,15 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Top Audio Toggle */}
               <div className="relative z-10 p-3.5 sm:p-4 flex justify-end pointer-events-auto">
                 <button
-                  onClick={(e) => toggleMute('reel-4', e)}
-                  aria-label={unmutedId === 'reel-4' ? 'Mute Audio' : 'Unmute Audio'}
+                  onClick={(e) => toggleMute('reel-attached-2', e)}
+                  aria-label={unmutedId === 'reel-attached-2' ? 'Mute Audio' : 'Unmute Audio'}
                   className={`apple-press w-7 h-7 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
-                    unmutedId === 'reel-4'
+                    unmutedId === 'reel-attached-2'
                       ? 'bg-white text-black border-white shadow-lg'
                       : 'bg-black/60 text-white border-white/20 hover:bg-white hover:text-black hover:border-white'
                   }`}
                 >
-                  {unmutedId === 'reel-4' ? (
+                  {unmutedId === 'reel-attached-2' ? (
                     <Volume2 className="w-3 h-3" />
                   ) : (
                     <VolumeX className="w-3 h-3" />
@@ -329,7 +293,60 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Title + Arrow */}
               <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-2.5 pointer-events-auto">
                 <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  Metropolitan Nightlife
+                  The Cozy Ambience
+                </h3>
+                <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </div>
+              </div>
+
+              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+            </div>
+
+            {/* Priority 4: 3rd Attached Video — Design Dialogue & Living Spaces */}
+            <div
+              onClick={onNavigateServices}
+              className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
+            >
+              <video
+                ref={(el) => {
+                  videoRefs.current['reel-attached-3'] = el
+                }}
+                src="/assets/reels/reel_attached_3.mp4"
+                poster="/assets/reels/reel_attached_3_thumb.jpg"
+                loop
+                playsInline
+                autoPlay
+                muted
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
+
+              {/* Top Audio Toggle */}
+              <div className="relative z-10 p-3.5 sm:p-4 flex justify-end pointer-events-auto">
+                <button
+                  onClick={(e) => toggleMute('reel-attached-3', e)}
+                  aria-label={unmutedId === 'reel-attached-3' ? 'Mute Audio' : 'Unmute Audio'}
+                  className={`apple-press w-7 h-7 rounded-full flex items-center justify-center transition-all backdrop-blur-md cursor-pointer border ${
+                    unmutedId === 'reel-attached-3'
+                      ? 'bg-white text-black border-white shadow-lg'
+                      : 'bg-black/60 text-white border-white/20 hover:bg-white hover:text-black hover:border-white'
+                  }`}
+                >
+                  {unmutedId === 'reel-attached-3' ? (
+                    <Volume2 className="w-3 h-3" />
+                  ) : (
+                    <VolumeX className="w-3 h-3" />
+                  )}
+                </button>
+              </div>
+
+              {/* Title + Arrow */}
+              <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-2.5 pointer-events-auto">
+                <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
+                  Design Dialogue
                 </h3>
                 <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -341,9 +358,9 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
           </div>
         </div>
 
-        {/* MOBILE-SPECIFIC LAYOUT: Balanced Photo & Cinema Bento (Tailored Mobile Proportions) */}
+        {/* MOBILE-SPECIFIC LAYOUT: Balanced Photo & Cinema Bento (Tailored Mobile Proportions with Priority Order) */}
         <div className="block sm:hidden space-y-2.5">
-          {/* Card 1: Widescreen Feature Cinema Reel */}
+          {/* Card 1: Priority 1 — Feature Cinema Reel: Cafe & Culinary Atmosphere */}
           <div
             onClick={onOpenOurWorksShorts || onNavigateServices}
             className="group relative h-[210px] rounded-[20px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all cursor-pointer flex flex-col justify-between"
@@ -352,8 +369,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               ref={(el) => {
                 videoRefs.current['feature-reel-mobile'] = el
               }}
-              src="/assets/reels/reel_3.mp4"
-              poster="/assets/reels/reel_3_thumb.jpg"
+              src="/assets/reels/reel_1.mp4"
+              poster="/assets/reels/reel_1_thumb.jpg"
               loop
               playsInline
               autoPlay
@@ -385,7 +402,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
             {/* Bottom Title + Arrow */}
             <div className="relative z-10 p-4 flex items-end justify-between gap-3 pointer-events-auto">
               <h3 className="font-display text-lg text-white font-light tracking-tight leading-snug">
-                Haute Couture Soundstage
+                Cafe & Culinary Atmosphere
               </h3>
               <div className="w-7 h-7 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white shrink-0">
                 <ArrowUpRight className="w-3 h-3" />
@@ -393,9 +410,9 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
             </div>
           </div>
 
-          {/* 2-Column Mobile Photo & Video Grid: 1 Model Photo + 1 Video Reel on each row */}
+          {/* 2-Column Mobile Photo & Video Grid: Pairings following Priority 2, 3, 4 */}
           <div className="grid grid-cols-2 gap-2.5">
-            {/* Card 2: Model Photo (Editorial Streetwear) */}
+            {/* Row 1, Left: Model Photo (Editorial Streetwear) */}
             <div
               onClick={onNavigateServices}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.12] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-end"
@@ -414,17 +431,17 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
             </div>
 
-            {/* Card 3: Video Reel (Cafe & Culinary Atmosphere) */}
+            {/* Row 1, Right: Priority 2 — Video Reel: Founder Vision (1st Attached Video) */}
             <div
               onClick={onOpenOurWorksShorts || onNavigateServices}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
-                  videoRefs.current['reel-1-mobile'] = el
+                  videoRefs.current['reel-attached-1-mobile'] = el
                 }}
-                src="/assets/reels/reel_1.mp4"
-                poster="/assets/reels/reel_1_thumb.jpg"
+                src="/assets/reels/reel_attached_1.mp4"
+                poster="/assets/reels/reel_attached_1_thumb.jpg"
                 loop
                 playsInline
                 autoPlay
@@ -435,15 +452,15 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
               <div className="relative z-10 p-2.5 flex justify-end pointer-events-auto">
                 <button
-                  onClick={(e) => toggleMute('reel-1-mobile', e)}
-                  aria-label={unmutedId === 'reel-1-mobile' ? 'Mute Audio' : 'Unmute Audio'}
+                  onClick={(e) => toggleMute('reel-attached-1-mobile', e)}
+                  aria-label={unmutedId === 'reel-attached-1-mobile' ? 'Mute Audio' : 'Unmute Audio'}
                   className={`apple-press w-6 h-6 rounded-full flex items-center justify-center backdrop-blur-md cursor-pointer border ${
-                    unmutedId === 'reel-1-mobile'
+                    unmutedId === 'reel-attached-1-mobile'
                       ? 'bg-white text-black border-white'
                       : 'bg-black/60 text-white border-white/20'
                   }`}
                 >
-                  {unmutedId === 'reel-1-mobile' ? (
+                  {unmutedId === 'reel-attached-1-mobile' ? (
                     <Volume2 className="w-2.5 h-2.5" />
                   ) : (
                     <VolumeX className="w-2.5 h-2.5" />
@@ -452,13 +469,13 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
               <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
                 <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
-                  Cafe & Culinary
+                  Founder Vision
                 </h3>
                 <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
               </div>
             </div>
 
-            {/* Card 4: Model Photo (Nightlife Luxe) */}
+            {/* Row 2, Left: Model Photo (Nightlife Luxe) */}
             <div
               onClick={onNavigateServices}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.12] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-end"
@@ -477,17 +494,17 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
             </div>
 
-            {/* Card 5: Video Reel (Metropolitan Nightlife) */}
+            {/* Row 2, Right: Priority 3 — Video Reel: The Cozy Ambience (2nd Attached Video) */}
             <div
               onClick={onOpenOurWorksShorts || onNavigateServices}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
                 ref={(el) => {
-                  videoRefs.current['reel-4-mobile'] = el
+                  videoRefs.current['reel-attached-2-mobile'] = el
                 }}
-                src="/assets/reels/reel_4.mp4"
-                poster="/assets/reels/reel_4_thumb.jpg"
+                src="/assets/reels/reel_attached_2.mp4"
+                poster="/assets/reels/reel_attached_2_thumb.jpg"
                 loop
                 playsInline
                 autoPlay
@@ -498,15 +515,15 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
               <div className="relative z-10 p-2.5 flex justify-end pointer-events-auto">
                 <button
-                  onClick={(e) => toggleMute('reel-4-mobile', e)}
-                  aria-label={unmutedId === 'reel-4-mobile' ? 'Mute Audio' : 'Unmute Audio'}
+                  onClick={(e) => toggleMute('reel-attached-2-mobile', e)}
+                  aria-label={unmutedId === 'reel-attached-2-mobile' ? 'Mute Audio' : 'Unmute Audio'}
                   className={`apple-press w-6 h-6 rounded-full flex items-center justify-center backdrop-blur-md cursor-pointer border ${
-                    unmutedId === 'reel-4-mobile'
+                    unmutedId === 'reel-attached-2-mobile'
                       ? 'bg-white text-black border-white'
                       : 'bg-black/60 text-white border-white/20'
                   }`}
                 >
-                  {unmutedId === 'reel-4-mobile' ? (
+                  {unmutedId === 'reel-attached-2-mobile' ? (
                     <Volume2 className="w-2.5 h-2.5" />
                   ) : (
                     <VolumeX className="w-2.5 h-2.5" />
@@ -515,7 +532,70 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
               <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
                 <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
-                  Metropolitan
+                  Cozy Ambience
+                </h3>
+                <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
+              </div>
+            </div>
+
+            {/* Row 3, Left: Model Photo (Boutique Elegance) */}
+            <div
+              onClick={onNavigateServices}
+              className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.12] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-end"
+            >
+              <img
+                src="/assets/model-5.jpg"
+                alt="Boutique Elegance"
+                loading="lazy"
+                className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="relative z-10 p-3 pointer-events-auto">
+                <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
+                  Boutique Elegance
+                </h3>
+              </div>
+            </div>
+
+            {/* Row 3, Right: Priority 4 — Video Reel: Design Dialogue (3rd Attached Video) */}
+            <div
+              onClick={onOpenOurWorksShorts || onNavigateServices}
+              className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
+            >
+              <video
+                ref={(el) => {
+                  videoRefs.current['reel-attached-3-mobile'] = el
+                }}
+                src="/assets/reels/reel_attached_3.mp4"
+                poster="/assets/reels/reel_attached_3_thumb.jpg"
+                loop
+                playsInline
+                autoPlay
+                muted
+                preload="metadata"
+                className="absolute inset-0 w-full h-full object-cover filter brightness-[1.08] contrast-[1.04]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
+              <div className="relative z-10 p-2.5 flex justify-end pointer-events-auto">
+                <button
+                  onClick={(e) => toggleMute('reel-attached-3-mobile', e)}
+                  aria-label={unmutedId === 'reel-attached-3-mobile' ? 'Mute Audio' : 'Unmute Audio'}
+                  className={`apple-press w-6 h-6 rounded-full flex items-center justify-center backdrop-blur-md cursor-pointer border ${
+                    unmutedId === 'reel-attached-3-mobile'
+                      ? 'bg-white text-black border-white'
+                      : 'bg-black/60 text-white border-white/20'
+                  }`}
+                >
+                  {unmutedId === 'reel-attached-3-mobile' ? (
+                    <Volume2 className="w-2.5 h-2.5" />
+                  ) : (
+                    <VolumeX className="w-2.5 h-2.5" />
+                  )}
+                </button>
+              </div>
+              <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
+                <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
+                  Design Dialogue
                 </h3>
                 <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
               </div>
