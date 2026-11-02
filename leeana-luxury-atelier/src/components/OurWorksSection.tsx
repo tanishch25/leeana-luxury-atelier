@@ -1,19 +1,34 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { ArrowUpRight, Volume2, VolumeX } from 'lucide-react'
 
 interface OurWorksSectionProps {
   onNavigateServices: () => void
   onOpenOurWorksShorts?: () => void
+  isPaused?: boolean
 }
 
 export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
   onNavigateServices,
   onOpenOurWorksShorts,
+  isPaused = false,
 }) => {
   const [unmutedId, setUnmutedId] = useState<string | null>(null)
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({})
   const containerRef = useRef<HTMLDivElement>(null)
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 })
+
+  // Synchronously pause and mute all videos when shorts modal is open
+  useEffect(() => {
+    if (isPaused) {
+      setUnmutedId(null)
+      Object.values(videoRefs.current).forEach((vEl) => {
+        if (vEl) {
+          vEl.pause()
+          vEl.muted = true
+        }
+      })
+    }
+  }, [isPaused])
 
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return

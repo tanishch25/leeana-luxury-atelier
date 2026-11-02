@@ -116,6 +116,7 @@ export function App() {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
               onOpenOurWorksShorts={() => setIsShortsOpen(true)}
+              isPaused={isShortsOpen}
             />
             <LookbookGallery />
             <LandingFaqReviews />

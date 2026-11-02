@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp, Film } from 'lucide-react'
+import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp } from 'lucide-react'
 
 export interface ReelShortItem {
   id: string
@@ -102,34 +102,96 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
   const [showSwipeHint, setShowSwipeHint] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
+  const sectionRefs = useRef<(HTMLElement | null)[]>([])
   
-  // Touch tracking specifically for the video tap/swipe layer
+  // Touch tracking specifically for quick video tap detection
   const touchStartY = useRef<number | null>(null)
+  const touchStartX = useRef<number | null>(null)
   const touchStartTime = useRef<number>(0)
-  const isSwiping = useRef(false)
 
-  // Lock background scroll when open
+  // Pause and reset all videos immediately
+  const stopAllPlayback = useCallback(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause()
+        video.currentTime = 0
+      }
+    })
+  }, [])
+
+  const handleClose = useCallback(() => {
+    stopAllPlayback()
+    setActiveIndex(0)
+    onClose()
+  }, [stopAllPlayback, onClose])
+
+  // Lock background scroll when open and ensure fresh start from slide 0
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
+      setActiveIndex(0)
+      if (containerRef.current) {
+        containerRef.current.scrollTop = 0
+      }
+      stopAllPlayback()
       setShowSwipeHint(true)
-      const timer = setTimeout(() => setShowSwipeHint(false), 3500)
+      const timer = setTimeout(() => setShowSwipeHint(false), 3200)
       return () => {
         clearTimeout(timer)
         document.body.style.overflow = ''
       }
     } else {
+      stopAllPlayback()
+      setActiveIndex(0)
       document.body.style.overflow = ''
     }
     return () => {
       document.body.style.overflow = ''
     }
+  }, [isOpen, stopAllPlayback])
+
+  // High-performance IntersectionObserver detects the active reel at 60% viewport visibility
+  useEffect(() => {
+    if (!isOpen) return
+    const container = containerRef.current
+    if (!container) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Number(entry.target.getAttribute('data-index'))
+            if (!isNaN(idx)) {
+              setActiveIndex(idx)
+            }
+          }
+        })
+      },
+      {
+        root: container,
+        threshold: 0.55,
+      }
+    )
+
+    sectionRefs.current.forEach((section) => {
+      if (section) observer.observe(section)
+    })
+
+    return () => {
+      observer.disconnect()
+    }
   }, [isOpen])
 
-  // Play active video and pause others on slide change
+  // Video playback & zero audio delay lifecycle: plays active reel only, completely silences all others
   useEffect(() => {
     if (!isOpen) {
-      videoRefs.current.forEach((video) => video?.pause())
+      stopAllPlayback()
+      return
+    }
+
+    // If viewing the concluding Let's Talk card (slide index >= 7), silence all videos immediately!
+    if (activeIndex >= SHORTS_REELS_DATA.length) {
+      stopAllPlayback()
       return
     }
 
@@ -137,29 +199,20 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
       if (!video) return
       if (index === activeIndex) {
         video.muted = isMuted
-        video.currentTime = 0
-        video.play().catch(() => {
-          // Autoplay policy fallback
-          video.muted = true
-          video.play().catch(() => {})
-        })
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {
+            // Fallback if browser requires muted autoplay
+            video.muted = true
+            video.play().catch(() => {})
+          })
+        }
       } else {
         video.pause()
+        video.currentTime = 0
       }
     })
-  }, [activeIndex, isOpen, isMuted])
-
-  // Scroll snap observer using debounce to keep scrolling butter-smooth
-  const handleScroll = useCallback(() => {
-    const container = containerRef.current
-    if (!container) return
-    const height = container.clientHeight
-    if (height === 0) return
-    const newIndex = Math.round(container.scrollTop / height)
-    if (newIndex !== activeIndex && newIndex >= 0 && newIndex < SHORTS_REELS_DATA.length) {
-      setActiveIndex(newIndex)
-    }
-  }, [activeIndex])
+  }, [activeIndex, isOpen, isMuted, stopAllPlayback])
 
   const toggleSound = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -194,35 +247,25 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     setTimeout(() => setCopiedToast(false), 2000)
   }
 
-  // Smooth gesture assist on the background video layer
+  // Pure tap detection on the video surface (does NOT interfere with 120Hz native scroll snap)
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY
+    touchStartX.current = e.touches[0].clientX
     touchStartTime.current = Date.now()
-    isSwiping.current = false
   }
 
-  const handleTouchEnd = (url: string, index: number, e: React.TouchEvent) => {
-    if (touchStartY.current === null) return
-    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+  const handleTouchEnd = (url: string, e: React.TouchEvent) => {
+    if (touchStartY.current === null || touchStartX.current === null) return
+    const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY.current)
+    const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX.current)
     const deltaTime = Date.now() - touchStartTime.current
 
-    // If dragged more than 45px vertically, assist smooth glide to next/prev reel
-    if (Math.abs(deltaY) > 45) {
-      isSwiping.current = true
-      const container = containerRef.current
-      if (container) {
-        const height = container.clientHeight
-        if (deltaY < -45 && index < SHORTS_REELS_DATA.length - 1) {
-          container.scrollTo({ top: (index + 1) * height, behavior: 'smooth' })
-        } else if (deltaY > 45 && index > 0) {
-          container.scrollTo({ top: (index - 1) * height, behavior: 'smooth' })
-        }
-      }
-    } else if (Math.abs(deltaY) < 10 && deltaTime < 350) {
-      // Intentional tap on video area (not a button)
+    // Trigger Instagram only on an intentional quick tap (<10px displacement, <260ms duration)
+    if (deltaY < 10 && deltaX < 10 && deltaTime < 260) {
       handleOpenInstagram(url, e)
     }
     touchStartY.current = null
+    touchStartX.current = null
   }
 
   if (!isOpen) return null
@@ -236,7 +279,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         <button
           onClick={(e) => {
             e.stopPropagation()
-            onClose()
+            handleClose()
           }}
           aria-label="Back to Atelier"
           className="w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 transition-all cursor-pointer shadow-lg hover:border-white/40"
@@ -253,17 +296,20 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         <div className="w-10 h-10 pointer-events-none" />
       </header>
 
-      {/* Smooth, Fluid Vertical Shorts Snap Container (Neither too stiff nor too loose) */}
+      {/* Ultra-Smooth 120Hz Vertical Shorts Snap Container */}
       <div
         ref={containerRef}
-        onScroll={handleScroll}
-        className="flex-1 w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory scrollbar-none relative [scroll-behavior:smooth] [scroll-snap-type:y_mandatory] [-webkit-overflow-scrolling:touch]"
+        className="flex-1 w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory scrollbar-none relative overscroll-y-contain [scroll-snap-type:y_mandatory] [-webkit-overflow-scrolling:touch] touch-pan-y"
       >
         {SHORTS_REELS_DATA.map((reel, index) => {
           return (
             <section
               key={reel.id}
-              className="relative w-full h-[100dvh] snap-start snap-normal flex items-center justify-center bg-black overflow-hidden select-none"
+              ref={(el) => {
+                sectionRefs.current[index] = el
+              }}
+              data-index={index}
+              className="relative w-full h-[100dvh] snap-start snap-always flex items-center justify-center bg-black overflow-hidden select-none shrink-0"
             >
               {/* Fullscreen Vertical Video Element */}
               <video
@@ -274,15 +320,15 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 poster={reel.posterSrc}
                 loop
                 playsInline
-                preload="metadata"
+                preload="auto"
                 className="w-full h-full object-cover object-center pointer-events-none"
               />
 
-              {/* Dedicated Video Tap & Swipe Layer (z-10: Behind UI buttons, so buttons NEVER trigger Instagram!) */}
+              {/* Dedicated Video Tap Layer (z-10: Behind UI buttons, so buttons NEVER trigger Instagram!) */}
               <div
                 className="absolute inset-0 z-10 cursor-pointer"
                 onTouchStart={handleTouchStart}
-                onTouchEnd={(e) => handleTouchEnd(reel.instagramUrl, index, e)}
+                onTouchEnd={(e) => handleTouchEnd(reel.instagramUrl, e)}
                 onClick={() => handleOpenInstagram(reel.instagramUrl)}
                 aria-label="Tap video to open on Instagram"
               />
@@ -296,9 +342,8 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 
                 {/* Left Column: Refined Minimal Brand Mark & Follow us on Instagram Button */}
                 <div className="flex-1 space-y-3 pointer-events-auto pr-1">
-                  {/* Minimal Brand Mark: Motion Film Icon + leeana.in */}
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/45 border border-white/15 backdrop-blur-md w-fit shadow-md">
-                    <Film className="w-3.5 h-3.5 text-white/80 shrink-0" />
+                  {/* Minimal Brand Mark: Pure leeana.in (No clips/film icon) */}
+                  <div data-brand-pill className="px-3.5 py-1 rounded-full bg-black/45 border border-white/15 backdrop-blur-md w-fit shadow-md">
                     <span className="font-couture text-xs sm:text-sm tracking-widest text-white/95">
                       leeana<span className="text-[0.68em] lowercase opacity-85">.in</span>
                     </span>
@@ -329,7 +374,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                   <button
                     onClick={(e) => {
                       e.stopPropagation()
-                      onClose()
+                      handleClose()
                       onOpenConnect()
                     }}
                     aria-label="Connect with Atelier"
@@ -354,7 +399,13 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         })}
 
         {/* Final Concluding Slide: "Let's Talk" (Seamlessly Scrolled into view after the content ends) */}
-        <section className="relative w-full h-[100dvh] snap-start snap-normal flex items-center justify-center bg-[#07070a] px-6 select-none overflow-hidden">
+        <section
+          ref={(el) => {
+            sectionRefs.current[SHORTS_REELS_DATA.length] = el
+          }}
+          data-index={SHORTS_REELS_DATA.length}
+          className="relative w-full h-[100dvh] snap-start snap-always flex items-center justify-center bg-[#07070a] px-6 select-none overflow-hidden shrink-0"
+        >
           {/* Subtle Radial Backdrop Ambient */}
           <div className="absolute inset-0 bg-radial from-white/[0.05] via-transparent to-transparent pointer-events-none" />
 
@@ -376,7 +427,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
             <div className="space-y-3 pt-2">
               <button
                 onClick={() => {
-                  onClose()
+                  handleClose()
                   onOpenConnect()
                 }}
                 className="apple-press w-full py-4 rounded-full bg-white text-black font-semibold text-xs tracking-[0.18em] uppercase flex items-center justify-center gap-2 shadow-xl hover:bg-white/90 active:scale-95 transition-all cursor-pointer"

@@ -61,7 +61,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
                 PRIORITY DESK
               </span>
               <p className="text-sm text-white font-light">
-                +91 (0) 96061 99999
+                <a href="tel:+919916101011" className="hover:text-white transition-colors underline-offset-4 hover:underline">
+                  +91 99161 01011
+                </a>
               </p>
               <span className="text-xs text-white/50 block font-light mt-0.5">Direct White-Glove Desk</span>
             </div>
