@@ -15,49 +15,49 @@ export const INSTAGRAM_REELS_DATA: ReelItem[] = [
     title: 'Cafe & Culinary Atmosphere',
     videoSrc: '/assets/reels/reel_1.mp4',
     posterSrc: '/assets/reels/reel_1_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/reel/Dd4YGN6PsfU/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
   {
     id: '02',
     title: 'Founder Vision & Commercial Direction',
     videoSrc: '/assets/reels/reel_attached_1.mp4',
     posterSrc: '/assets/reels/reel_attached_1_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
   {
     id: '03',
     title: 'The Cozy Ambience',
     videoSrc: '/assets/reels/reel_attached_2.mp4',
     posterSrc: '/assets/reels/reel_attached_2_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
   {
     id: '04',
     title: 'Design Dialogue & Living Spaces',
     videoSrc: '/assets/reels/reel_attached_3.mp4',
     posterSrc: '/assets/reels/reel_attached_3_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
   {
     id: '05',
     title: 'Culinary Narrative & Cafe Architecture',
     videoSrc: '/assets/reels/reel_5_yt.mp4',
     posterSrc: '/assets/reels/reel_5_yt_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
   {
     id: '06',
     title: 'Editorial Haute Couture',
     videoSrc: '/assets/reels/reel_3.mp4',
     posterSrc: '/assets/reels/reel_3_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/reel/DdOtmW1yqrB/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
   {
     id: '07',
     title: 'Artisanal Dining & Ambient Spaces',
     videoSrc: '/assets/reels/reel_7_attached.mp4',
     posterSrc: '/assets/reels/reel_7_attached_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
 ]
 
@@ -130,7 +130,7 @@ export const InstagramReelsGrid: React.FC = () => {
           {/* Action Dock (Clean button, no unnecessary wordings/chips) */}
           <div className="flex items-center gap-3">
             <a
-              href="https://www.instagram.com/leeana.in/"
+              href="https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               className="apple-press inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full border border-white/20 bg-white/[0.06] hover:bg-white hover:text-black hover:border-white text-xs font-semibold tracking-[0.14em] uppercase text-white transition-all backdrop-blur-md shadow-lg"

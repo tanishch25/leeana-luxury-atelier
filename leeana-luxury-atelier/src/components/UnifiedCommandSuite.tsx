@@ -55,7 +55,7 @@ export const UnifiedCommandSuite: React.FC<UnifiedCommandSuiteProps> = ({ onOpen
 
           {/* WhatsApp Direct */}
           <a
-            href="https://wa.me/918585906629?text=Hello%20Leeana%20Desk,%20Let's%20talk%20about%20a%20Private%20Commission."
+            href="https://wa.me/919916101011?text=Hello%20Leeana%20Desk,%20Let's%20talk%20about%20a%20Private%20Commission."
             target="_blank"
             rel="noopener noreferrer"
             className="apple-press px-7 py-4 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/10 hover:border-white text-xs font-light tracking-[0.14em] uppercase text-white transition-all flex items-center gap-2.5 backdrop-blur-md cursor-pointer"
@@ -66,11 +66,11 @@ export const UnifiedCommandSuite: React.FC<UnifiedCommandSuiteProps> = ({ onOpen
 
           {/* Direct Phone */}
           <a
-            href="tel:+919606199999"
+            href="tel:+919916101011"
             className="apple-press px-7 py-4 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white/10 hover:border-white text-xs font-light tracking-[0.14em] uppercase text-white transition-all flex items-center gap-2.5 backdrop-blur-md cursor-pointer"
           >
             <Phone className="w-3.5 h-3.5 text-white/80" />
-            <span>+91 (0) 96061 99999</span>
+            <span>+91 99161 01011</span>
           </a>
 
           {/* Direct Email */}

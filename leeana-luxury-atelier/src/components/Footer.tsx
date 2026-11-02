@@ -12,7 +12,7 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
   const handleWhatsApp = () => {
     const msg = `Hello Leeana Atelier,\n\nI wish to connect with the Private Desk.`
-    window.open(`https://wa.me/918585906629?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/919916101011?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (
@@ -44,8 +44,8 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               </div>
               <div className="flex items-center gap-3.5">
                 <Phone className="w-5 h-5 text-white/70 shrink-0" />
-                <a href="tel:+918585906629" className="hover:text-white transition-colors underline-offset-4 hover:underline">
-                  +91 85859 06629 / +91 96061 99999
+                <a href="tel:+919916101011" className="hover:text-white transition-colors underline-offset-4 hover:underline">
+                  +91 99161 01011
                 </a>
               </div>
               <div className="flex items-center gap-3.5">
@@ -128,7 +128,7 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
             {/* Instagram */}
             <a
-              href="https://www.instagram.com/leeana.in/"
+              href="https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
@@ -158,7 +158,7 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
             {/* YouTube */}
             <a
-              href="https://www.youtube.com/@leeana-in"
+              href="https://youtube.com/@leeanafashion?si=i4mlCQfSsIdN8CLu"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
@@ -172,7 +172,7 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
             {/* Facebook */}
             <a
-              href="https://www.facebook.com/leeana.in/"
+              href="https://www.facebook.com/share/19eBPQMB1a/?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"

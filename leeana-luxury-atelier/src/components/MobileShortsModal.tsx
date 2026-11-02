@@ -19,7 +19,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Sensory gastronomy cinematography with golden-hour micro-textures.',
     videoSrc: '/assets/reels/reel_1.mp4',
     posterSrc: '/assets/reels/reel_1_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/reel/Dd4YGN6PsfU/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Sensory Atmosphere',
     duration: '0:18',
   },
@@ -29,7 +29,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Creative leadership, brand dialogues, and commercial film production narrative.',
     videoSrc: '/assets/reels/reel_attached_1.mp4',
     posterSrc: '/assets/reels/reel_attached_1_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Founder Spotlight',
     duration: '0:55',
   },
@@ -39,7 +39,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Warm architectural lighting and sensory hospitality culture captured on cinema lenses.',
     videoSrc: '/assets/reels/reel_attached_2.mp4',
     posterSrc: '/assets/reels/reel_attached_2_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Hospitality & Cafe',
     duration: '0:53',
   },
@@ -49,7 +49,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Curated interior aesthetics, bespoke furniture craftsmanship, and architectural living.',
     videoSrc: '/assets/reels/reel_attached_3.mp4',
     posterSrc: '/assets/reels/reel_attached_3_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Interior & Design',
     duration: '1:01',
   },
@@ -59,7 +59,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Brik Oven artisan storytelling, warm bakery textures, and cafe lifestyle.',
     videoSrc: '/assets/reels/reel_5_yt.mp4',
     posterSrc: '/assets/reels/reel_5_yt_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Culinary Narrative',
     duration: '0:34',
   },
@@ -69,7 +69,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Sculptural lighting & archival fashion narrative on main soundstage.',
     videoSrc: '/assets/reels/reel_3.mp4',
     posterSrc: '/assets/reels/reel_3_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/reel/DdOtmW1yqrB/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Haute Couture',
     duration: '0:24',
   },
@@ -79,7 +79,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     subtitle: 'Atmospheric hospitality cinematography, interior textures, and warm living moments.',
     videoSrc: '/assets/reels/reel_7_attached.mp4',
     posterSrc: '/assets/reels/reel_7_attached_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
     category: 'Hospitality & Atmosphere',
     duration: '0:16',
   },
@@ -388,7 +388,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
               <button
                 onClick={() => {
                   const msg = `Hello Leeana Atelier,\n\nI just viewed your reels and wish to connect.`
-                  window.open(`https://wa.me/918585906629?text=${encodeURIComponent(msg)}`, '_blank')
+                  window.open(`https://wa.me/919916101011?text=${encodeURIComponent(msg)}`, '_blank')
                 }}
                 className="apple-press w-full py-3.5 rounded-full border border-white/20 bg-white/[0.05] text-white font-medium text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
               >

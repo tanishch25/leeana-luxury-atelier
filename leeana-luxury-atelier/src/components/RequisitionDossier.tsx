@@ -31,7 +31,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
 
   const handleWhatsApp = () => {
     const msg = `Hello Leeana Atelier Desk,\n\nI wish to schedule a Private Session:\n- Discipline: ${selectedDiscipline}\n- Name: ${name || 'Confidential Patron'}\n- Phone: ${phone || 'Confidential'}\n- Brief: ${notes || 'Direct appointment requested.'}`
-    window.open(`https://wa.me/918585906629?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/919916101011?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   const handleFormSubmit = (e: React.FormEvent) => {

@@ -201,7 +201,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
   const handleWhatsApp = (mandate: string) => {
     const msg = `Hello Leeana Services Desk,\n\nI wish to register a Private Consultation regarding: ${mandate}.\n\nPlease connect me with the Private Desk.`
-    window.open(`https://wa.me/918585906629?text=${encodeURIComponent(msg)}`, '_blank')
+    window.open(`https://wa.me/919916101011?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
   return (
@@ -476,11 +476,11 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
           <div className="flex flex-wrap items-center gap-3.5">
             <a
-              href="tel:+919606199999"
+              href="tel:+919916101011"
               className="apple-press py-3 px-6 rounded-full bg-white hover:bg-white/90 text-black text-xs font-semibold uppercase tracking-[0.14em] flex items-center gap-2 transition-all shadow-xl cursor-pointer"
             >
               <Phone className="w-4 h-4" />
-              <span>+91 (0) 96061 99999</span>
+              <span>+91 99161 01011</span>
             </a>
 
             <button
