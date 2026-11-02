@@ -115,8 +115,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           )
         })}
 
-        {/* Content Anchored at Bottom Left and Right */}
-        <div className="relative z-20 flex flex-col justify-end w-full h-full pt-20 px-6 pb-8 sm:px-10 sm:pb-12 md:px-16 md:pb-16 lg:px-20 lg:pb-16 pointer-events-none">
+        {/* Content Anchored at Bottom Left and Right (Elevated pb on mobile to ensure zero overlap with floating bottom dock) */}
+        <div className="relative z-20 flex flex-col justify-end w-full h-full pt-20 px-6 pb-26 sm:px-10 sm:pb-12 md:px-16 md:pb-16 lg:px-20 lg:pb-16 pointer-events-none">
           
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-12">
             

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { X, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp } from 'lucide-react'
+import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp } from 'lucide-react'
 
 export interface ReelShortItem {
   id: string
@@ -187,37 +187,24 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
   return (
     <div className="fixed inset-0 z-50 bg-black text-white flex flex-col overflow-hidden select-none animate-in fade-in duration-300">
       
-      {/* Top Floating Glass Header Deck */}
+      {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA, No x/y, No dots */}
       <header className="absolute top-0 inset-x-0 z-30 pt-safe-top px-4 py-3 flex items-center justify-between pointer-events-auto bg-gradient-to-b from-black/85 via-black/40 to-transparent">
-        {/* Brand & Live Archive Status */}
-        <div className="flex items-center gap-2.5">
-          <span className="font-couture text-lg tracking-[0.24em] text-white">LEEANA</span>
-          <span className="w-1 h-1 rounded-full bg-white/40" />
-          <span className="text-[10px] uppercase font-light tracking-[0.2em] text-white/70">
-            Works {activeIndex + 1}/{SHORTS_REELS_DATA.length}
-          </span>
-        </div>
+        {/* Left: Back Arrow Button */}
+        <button
+          onClick={onClose}
+          aria-label="Back to Atelier"
+          className="w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 transition-all cursor-pointer shadow-lg hover:border-white/40"
+        >
+          <ArrowLeft className="w-5 h-5 text-white" />
+        </button>
 
-        {/* Action Controls: Sound & Close */}
-        <div className="flex items-center gap-2">
-          {/* Sound Toggle */}
-          <button
-            onClick={toggleSound}
-            aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
-            className="w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 transition-all cursor-pointer shadow-lg"
-          >
-            {isMuted ? <VolumeX className="w-4 h-4 text-white/80" /> : <Volume2 className="w-4 h-4 text-white" />}
-          </button>
+        {/* Middle: Centered LEEANA Mark */}
+        <span className="font-couture text-lg sm:text-xl tracking-[0.28em] text-white select-none">
+          LEEANA
+        </span>
 
-          {/* Close Modal Button */}
-          <button
-            onClick={onClose}
-            aria-label="Close Reels View"
-            className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center active:scale-90 transition-all cursor-pointer shadow-xl font-bold"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
+        {/* Right: Invisible Spacer to Balance Horizontal Center */}
+        <div className="w-10 h-10 pointer-events-none" />
       </header>
 
       {/* Vertical Shorts Snap Container */}
@@ -227,8 +214,6 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         className="flex-1 w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory scrollbar-none overscroll-y-contain relative"
       >
         {SHORTS_REELS_DATA.map((reel, index) => {
-          const isActive = index === activeIndex
-
           return (
             <section
               key={reel.id}
@@ -260,92 +245,77 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 </div>
               </div>
 
-              {/* Right Floating Actions Stack (Reels / TikTok Style) */}
-              <aside className="absolute right-3 sm:right-5 bottom-28 z-20 flex flex-col items-center gap-4.5 pointer-events-auto">
-                {/* 1. Watch on Instagram Button */}
-                <button
-                  onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
-                  aria-label="Open on Instagram"
-                  className="flex flex-col items-center gap-1.5 group cursor-pointer active:scale-90 transition-transform"
-                >
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] p-[1.5px] shadow-[0_8px_24px_rgba(220,39,67,0.4)]">
-                    <div className="w-full h-full rounded-full bg-black/70 backdrop-blur-md flex items-center justify-center text-white">
-                      <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                      </svg>
-                    </div>
+              {/* Bottom Full-Width Flex Container: Metadata & Watch on Instagram (Left) + 3 Side Actions (Right) */}
+              <div className="absolute inset-x-0 bottom-0 z-20 px-4 pb-6 sm:px-6 pointer-events-none flex items-end justify-between gap-3">
+                
+                {/* Left Column: Metadata & Watch on Instagram Button */}
+                <div className="flex-1 space-y-3 pointer-events-auto pr-1">
+                  {/* Atelier Tag & Handle (Clean, NO dot) */}
+                  <div className="flex items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-full bg-white/15 border border-white/20 text-[10px] font-medium tracking-[0.14em] uppercase text-white backdrop-blur-md">
+                      {reel.category}
+                    </span>
+                    <span className="text-xs font-semibold tracking-wider text-white/90">
+                      @leeana.in
+                    </span>
                   </div>
-                  <span className="text-[10px] font-medium tracking-wider uppercase text-white/80">Reel</span>
-                </button>
 
-                {/* 2. Direct Requisition / Connect Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    onClose()
-                    onOpenConnect()
-                  }}
-                  aria-label="Connect with Atelier"
-                  className="flex flex-col items-center gap-1.5 group cursor-pointer active:scale-90 transition-transform"
-                >
-                  <div className="w-12 h-12 rounded-full bg-white/[0.12] border border-white/25 backdrop-blur-xl flex items-center justify-center text-white shadow-lg group-hover:bg-white group-hover:text-black transition-all">
-                    <Sparkles className="w-5 h-5 text-white group-hover:text-black" />
+                  {/* Reel Title & Description */}
+                  <div className="space-y-1">
+                    <h2 className="font-display text-xl sm:text-2xl font-light text-white tracking-tight leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+                      {reel.title}
+                    </h2>
+                    <p className="text-white/80 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
+                      {reel.subtitle}
+                    </p>
                   </div>
-                  <span className="text-[10px] font-medium tracking-wider uppercase text-white/80">Connect</span>
-                </button>
 
-                {/* 3. Share Button */}
-                <button
-                  onClick={(e) => handleShare(reel, e)}
-                  aria-label="Share Reel"
-                  className="flex flex-col items-center gap-1.5 group cursor-pointer active:scale-90 transition-transform"
-                >
-                  <div className="w-12 h-12 rounded-full bg-white/[0.08] border border-white/20 backdrop-blur-xl flex items-center justify-center text-white shadow-lg group-hover:bg-white group-hover:text-black transition-all">
-                    <Share2 className="w-4 h-4 text-white group-hover:text-black" />
+                  {/* Primary Action Button: Watch on Instagram (h-12 / 48px) */}
+                  <div className="pt-1">
+                    <button
+                      onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
+                      className="apple-press cursor-pointer w-full h-12 px-5 rounded-full bg-white text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-white/90 active:scale-95 transition-all"
+                    >
+                      <span>Watch on Instagram</span>
+                      <ArrowUpRight className="w-4 h-4 text-black" />
+                    </button>
                   </div>
-                  <span className="text-[10px] font-medium tracking-wider uppercase text-white/80">Share</span>
-                </button>
-              </aside>
-
-              {/* Bottom Content Metadata Overlay */}
-              <div className="absolute left-0 right-16 bottom-6 z-20 px-4 sm:px-6 space-y-3 pointer-events-auto">
-                {/* Atelier Tag & Handle */}
-                <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-0.5 rounded-full bg-white/15 border border-white/20 text-[10px] font-medium tracking-[0.14em] uppercase text-white backdrop-blur-md">
-                    {reel.category}
-                  </span>
-                  <a
-                    href="https://www.instagram.com/leeana.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-xs font-semibold tracking-wider text-white/90 hover:text-white flex items-center gap-1"
-                  >
-                    @leeana.in
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  </a>
                 </div>
 
-                {/* Reel Title & Description */}
-                <div className="space-y-1">
-                  <h2 className="font-display text-xl sm:text-2xl font-light text-white tracking-tight leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-                    {reel.title}
-                  </h2>
-                  <p className="text-white/80 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
-                    {reel.subtitle}
-                  </p>
-                </div>
-
-                {/* Primary Action Pill: Watch on Instagram */}
-                <div className="pt-1 flex items-center gap-2.5">
+                {/* Right Column: Exactly 3 Action Buttons (Mute, Connect, Share) */}
+                <aside className="flex flex-col items-center gap-3 pointer-events-auto shrink-0">
+                  {/* 1. Mute Button (Moved from top, placed on side) */}
                   <button
-                    onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
-                    className="apple-press cursor-pointer flex-1 py-3 px-5 rounded-full bg-white text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-white/90 transition-all"
+                    onClick={toggleSound}
+                    aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+                    className="w-12 h-12 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 transition-all cursor-pointer shadow-lg hover:border-white/40"
                   >
-                    <span>Watch on Instagram</span>
-                    <ArrowUpRight className="w-4 h-4 text-black" />
+                    {isMuted ? <VolumeX className="w-5 h-5 text-white/80" /> : <Volume2 className="w-5 h-5 text-white" />}
                   </button>
-                </div>
+
+                  {/* 2. Connect Button (Opens Requisition Dossier card) */}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      onClose()
+                      onOpenConnect()
+                    }}
+                    aria-label="Connect with Atelier"
+                    className="w-12 h-12 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white shadow-lg active:scale-90 transition-all cursor-pointer hover:border-white/40"
+                  >
+                    <Sparkles className="w-5 h-5 text-white" />
+                  </button>
+
+                  {/* 3. Share Button — Bottom-most, EXACT SAME LEVEL as Watch on Instagram! */}
+                  <button
+                    onClick={(e) => handleShare(reel, e)}
+                    aria-label="Share Reel"
+                    className="w-12 h-12 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white shadow-lg active:scale-90 transition-all cursor-pointer hover:border-white/40"
+                  >
+                    <Share2 className="w-5 h-5 text-white" />
+                  </button>
+                </aside>
+
               </div>
             </section>
           )
@@ -354,7 +324,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
 
       {/* Swipe Up First-Visit Cue */}
       {showSwipeHint && (
-        <div className="absolute bottom-24 inset-x-0 z-30 flex flex-col items-center justify-center pointer-events-none animate-bounce">
+        <div className="absolute bottom-28 inset-x-0 z-30 flex flex-col items-center justify-center pointer-events-none animate-bounce">
           <div className="px-3.5 py-1.5 rounded-full bg-black/60 border border-white/20 backdrop-blur-md text-[11px] tracking-[0.14em] uppercase text-white/80 flex items-center gap-1.5">
             <ChevronUp className="w-3.5 h-3.5 text-white" />
             <span>Swipe for next reel</span>
