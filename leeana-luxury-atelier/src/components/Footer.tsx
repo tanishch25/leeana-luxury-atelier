@@ -30,7 +30,7 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
           {/* Brand & Address Column */}
           <div className="lg:col-span-6 space-y-6">
             <span className="font-couture text-4xl sm:text-5xl lg:text-6xl tracking-[0.25em] text-white block">
-              LEEANA
+              LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
             </span>
 
             <p className="text-base sm:text-lg text-white/85 font-light max-w-xl leading-relaxed">
@@ -108,14 +108,14 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
         {/* Monumental Watermark (Fluid clamped & perfectly responsive for Opera) */}
         <div className="py-12 md:py-20 select-none overflow-hidden flex justify-center items-center w-full">
           <h1 className="font-display text-[clamp(4.5rem,14vw,11.5rem)] font-light leading-none text-white/[0.18] tracking-[0.16em] text-center uppercase pointer-events-none select-none whitespace-nowrap">
-            LEEANA
+            LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
           </h1>
         </div>
 
         {/* Low End Colophon with Enhanced Proportions for Opera */}
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 pt-10 border-t border-white/[0.08] text-sm sm:text-base font-light text-white/70 w-full">
           <div className="text-center xl:text-left">
-            © {new Date().getFullYear()} LEEANA MAISON & ATELIER. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} LEEANA.in MAISON & ATELIER. ALL RIGHTS RESERVED.
           </div>
 
           {/* Social Channels Icons (Instagram, LinkedIn, YouTube, WhatsApp) */}
