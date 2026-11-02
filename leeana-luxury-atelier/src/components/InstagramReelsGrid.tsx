@@ -38,6 +38,27 @@ export const INSTAGRAM_REELS_DATA: ReelItem[] = [
     posterSrc: '/assets/reels/reel_attached_3_thumb.jpg',
     instagramUrl: 'https://www.instagram.com/leeana.in/',
   },
+  {
+    id: '05',
+    title: 'Culinary Narrative & Cafe Architecture',
+    videoSrc: '/assets/reels/reel_5_yt.mp4',
+    posterSrc: '/assets/reels/reel_5_yt_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/leeana.in/',
+  },
+  {
+    id: '06',
+    title: 'Editorial Haute Couture',
+    videoSrc: '/assets/reels/reel_3.mp4',
+    posterSrc: '/assets/reels/reel_3_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/reel/DdOtmW1yqrB/',
+  },
+  {
+    id: '07',
+    title: 'Artisanal Dining & Ambient Spaces',
+    videoSrc: '/assets/reels/reel_7_attached.mp4',
+    posterSrc: '/assets/reels/reel_7_attached_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/leeana.in/',
+  },
 ]
 
 export const InstagramReelsGrid: React.FC = () => {

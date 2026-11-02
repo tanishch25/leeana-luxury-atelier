@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp } from 'lucide-react'
+import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp, Film } from 'lucide-react'
 
 export interface ReelShortItem {
   id: string
@@ -55,6 +55,16 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
   },
   {
     id: '05',
+    title: 'Culinary Narrative & Cafe Architecture',
+    subtitle: 'Brik Oven artisan storytelling, warm bakery textures, and cafe lifestyle.',
+    videoSrc: '/assets/reels/reel_5_yt.mp4',
+    posterSrc: '/assets/reels/reel_5_yt_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    category: 'Culinary Narrative',
+    duration: '0:34',
+  },
+  {
+    id: '06',
     title: 'Editorial Haute Couture',
     subtitle: 'Sculptural lighting & archival fashion narrative on main soundstage.',
     videoSrc: '/assets/reels/reel_3.mp4',
@@ -64,24 +74,14 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     duration: '0:24',
   },
   {
-    id: '06',
-    title: 'Soundstage Lighting & BTS',
-    subtitle: 'Multi-point kinetic lighting rig choreography and real-time color grading.',
-    videoSrc: '/assets/reels/reel_2.mp4',
-    posterSrc: '/assets/reels/reel_2_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/reel/DdUMT0NvVPK/',
-    category: 'Soundstage BTS',
-    duration: '0:15',
-  },
-  {
     id: '07',
-    title: 'Metropolitan Nightlife',
-    subtitle: 'After-hours anamorphic flares and urban rhythm captured on 35mm motion film.',
-    videoSrc: '/assets/reels/reel_4.mp4',
-    posterSrc: '/assets/reels/reel_4_thumb.jpg',
-    instagramUrl: 'https://www.instagram.com/reel/Dc6YGOnPQUy/',
-    category: 'Motion Film',
-    duration: '0:22',
+    title: 'Artisanal Dining & Ambient Spaces',
+    subtitle: 'Atmospheric hospitality cinematography, interior textures, and warm living moments.',
+    videoSrc: '/assets/reels/reel_7_attached.mp4',
+    posterSrc: '/assets/reels/reel_7_attached_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/leeana.in/',
+    category: 'Hospitality & Atmosphere',
+    duration: '0:16',
   },
 ]
 
@@ -291,41 +291,27 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 via-45% to-transparent pointer-events-none z-15" />
               <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-transparent pointer-events-none z-15" />
 
-              {/* Bottom Full-Width Flex Container: Metadata & Watch on Instagram (Left) + 3 Side Actions (Right) */}
+              {/* Bottom Full-Width Flex Container: Minimal Brand & Follow on Instagram (Left) + 3 Side Actions (Right) */}
               <div className="absolute inset-x-0 bottom-0 z-30 px-4 pb-6 sm:px-6 pointer-events-none flex items-end justify-between gap-3">
                 
-                {/* Left Column: Metadata & Watch on Instagram Button */}
+                {/* Left Column: Refined Minimal Brand Mark & Follow us on Instagram Button */}
                 <div className="flex-1 space-y-3 pointer-events-auto pr-1">
-                  {/* Atelier Tag & Handle (Clean, NO dot) */}
-                  <div className="flex items-center gap-2">
-                    <span className="px-2.5 py-0.5 rounded-full bg-white/15 border border-white/20 text-[10px] font-medium tracking-[0.14em] uppercase text-white backdrop-blur-md">
-                      {reel.category}
-                    </span>
-                    <span className="text-xs font-semibold tracking-wider text-white/90">
-                      @leeana.in
+                  {/* Minimal Brand Mark: Motion Film Icon + leeana.in */}
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/45 border border-white/15 backdrop-blur-md w-fit shadow-md">
+                    <Film className="w-3.5 h-3.5 text-white/80 shrink-0" />
+                    <span className="font-couture text-xs sm:text-sm tracking-widest text-white/95">
+                      leeana<span className="text-[0.68em] lowercase opacity-85">.in</span>
                     </span>
                   </div>
 
-                  {/* Reel Title & Description */}
-                  <div className="space-y-1">
-                    <h2 className="font-display text-xl sm:text-2xl font-light text-white tracking-tight leading-snug drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
-                      {reel.title}
-                    </h2>
-                    <p className="text-white/80 text-xs sm:text-sm font-light leading-relaxed line-clamp-2 drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
-                      {reel.subtitle}
-                    </p>
-                  </div>
-
-                  {/* Primary Action Button: Watch on Instagram (h-12 / 48px) */}
-                  <div className="pt-1">
-                    <button
-                      onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
-                      className="apple-press cursor-pointer w-full h-12 px-5 rounded-full bg-white text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-white/90 active:scale-95 transition-all"
-                    >
-                      <span>Watch on Instagram</span>
-                      <ArrowUpRight className="w-4 h-4 text-black" />
-                    </button>
-                  </div>
+                  {/* Primary Action Button: Follow us on Instagram (h-12 / 48px) */}
+                  <button
+                    onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
+                    className="apple-press cursor-pointer w-full h-12 px-5 rounded-full bg-white text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-white/90 active:scale-95 transition-all"
+                  >
+                    <span>Follow us on Instagram</span>
+                    <ArrowUpRight className="w-4 h-4 text-black" />
+                  </button>
                 </div>
 
                 {/* Right Column: Exactly 3 Action Buttons (Mute, Connect, Share) */}
@@ -352,7 +338,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                     <Sparkles className="w-5 h-5 text-white" />
                   </button>
 
-                  {/* 3. Share Button — Bottom-most, Aligned with Watch on Instagram (Only shares, NEVER opens Instagram) */}
+                  {/* 3. Share Button — Bottom-most, Aligned with Follow on Instagram (Only shares, NEVER opens Instagram) */}
                   <button
                     onClick={(e) => handleShare(reel, e)}
                     aria-label="Share Reel"
@@ -366,6 +352,55 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
             </section>
           )
         })}
+
+        {/* Final Concluding Slide: "Let's Talk" (Seamlessly Scrolled into view after the content ends) */}
+        <section className="relative w-full h-[100dvh] snap-start snap-normal flex items-center justify-center bg-[#07070a] px-6 select-none overflow-hidden">
+          {/* Subtle Radial Backdrop Ambient */}
+          <div className="absolute inset-0 bg-radial from-white/[0.05] via-transparent to-transparent pointer-events-none" />
+
+          {/* Luxury Let's Talk Card */}
+          <div className="relative z-10 w-full max-w-sm rounded-[32px] border border-white/[0.16] bg-black/75 backdrop-blur-2xl p-7 sm:p-9 text-center space-y-6 shadow-[0_20px_60px_rgba(0,0,0,0.9)]">
+            
+            <div className="space-y-3">
+              <span className="font-couture text-2xl tracking-[0.24em] text-white block">
+                LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
+              </span>
+              <h3 className="font-display text-3xl font-light text-white tracking-tight">
+                Let's Talk
+              </h3>
+              <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed">
+                Commission bespoke cinema productions, commercial brand films, or reserve a private soundstage appointment.
+              </p>
+            </div>
+
+            <div className="space-y-3 pt-2">
+              <button
+                onClick={() => {
+                  onClose()
+                  onOpenConnect()
+                }}
+                className="apple-press w-full py-4 rounded-full bg-white text-black font-semibold text-xs tracking-[0.18em] uppercase flex items-center justify-center gap-2 shadow-xl hover:bg-white/90 active:scale-95 transition-all cursor-pointer"
+              >
+                <span>Let's Connect</span>
+                <ArrowUpRight className="w-4 h-4 text-black" />
+              </button>
+
+              <button
+                onClick={() => {
+                  const msg = `Hello Leeana Atelier,\n\nI just viewed your reels and wish to connect.`
+                  window.open(`https://wa.me/918585906629?text=${encodeURIComponent(msg)}`, '_blank')
+                }}
+                className="apple-press w-full py-3.5 rounded-full border border-white/20 bg-white/[0.05] text-white font-medium text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
+              >
+                <span>Message on WhatsApp</span>
+              </button>
+            </div>
+
+            <div className="pt-2 text-[10px] font-light tracking-widest uppercase text-white/40">
+              Direct Soundstage · JP Nagar, Bangalore
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* Swipe Up First-Visit Cue */}

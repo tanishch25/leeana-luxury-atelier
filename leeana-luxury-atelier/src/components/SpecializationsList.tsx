@@ -133,9 +133,9 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
         {/* Dual Column Layout with Tight Spacing on Mobile */}
         <div className="flex flex-col lg:flex-row gap-4 sm:gap-8 lg:gap-16 items-start">
           
-          {/* Left Column: Interactive Switch with Smooth Dynamic Indicator */}
-          <div className="w-full lg:w-5/12 relative z-20">
-            <div className="hidden lg:flex flex-col gap-3">
+          {/* Left Column: Interactive Switch with Smooth Dynamic Indicator (Desktop Only) */}
+          <div className="hidden lg:block lg:w-5/12 relative z-20">
+            <div className="flex flex-col gap-3">
               {SPECIALIZATIONS.map((spec, idx) => {
                 const isActive = activeIdx === idx
                 return (
@@ -170,26 +170,6 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
                       {spec.title}
                     </h3>
                   </div>
-                )
-              })}
-            </div>
-
-            {/* Mobile Snap List (Tight, Responsive Horizontal Tabs) */}
-            <div className="flex lg:hidden overflow-x-auto snap-x snap-mandatory gap-2 sm:gap-3 pb-2 sm:pb-4 w-full hide-scrollbar">
-              {SPECIALIZATIONS.map((spec, idx) => {
-                const isActive = activeIdx === idx
-                return (
-                  <button
-                    key={spec.id}
-                    onClick={() => handleSelect(idx)}
-                    className={`snap-start shrink-0 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full border text-[11px] sm:text-xs tracking-wider uppercase transition-all cursor-pointer ${
-                      isActive
-                        ? 'bg-white text-black font-semibold shadow-lg'
-                        : 'bg-white/[0.04] border-white/10 text-white/50'
-                    }`}
-                  >
-                    {spec.title}
-                  </button>
                 )
               })}
             </div>

@@ -208,16 +208,16 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
     <div className="pt-20 sm:pt-24 md:pt-28 pb-20 md:pb-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-12 md:space-y-16">
       
       {/* ========================================================= */}
-      {/* 1. HERO & PRIVATE SERVICES ALLOCATIONS                    */}
+      {/* 1. HERO & BESPOKE SERVICES & CREATIVE ADVISORY            */}
       {/* ========================================================= */}
       <section>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-8 border-b border-white/[0.08]">
           <div className="space-y-1.5">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-              Private Services & Allocations
+              Bespoke Services & Creative Advisory
             </h1>
             <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-              Comprehensive luxury acquisitions, archival talent casting, client attestations, and direct advisory.
+              Curated brand film productions, archival talent casting, luxury curations, and direct advisory.
             </p>
           </div>
 

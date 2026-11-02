@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowUpRight, MapPin, Mail, MessageCircle } from 'lucide-react'
+import { ArrowUpRight, MapPin, Mail, MessageCircle, Phone } from 'lucide-react'
 
 export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequisition }) => {
   const [email, setEmail] = useState('')
@@ -41,6 +41,12 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               <div className="flex items-center gap-3.5">
                 <MapPin className="w-5 h-5 text-white/70 shrink-0" />
                 <span>JP Nagar, 3rd Phase, Bangalore - 560078, India</span>
+              </div>
+              <div className="flex items-center gap-3.5">
+                <Phone className="w-5 h-5 text-white/70 shrink-0" />
+                <a href="tel:+918585906629" className="hover:text-white transition-colors underline-offset-4 hover:underline">
+                  +91 85859 06629 / +91 96061 99999
+                </a>
               </div>
               <div className="flex items-center gap-3.5">
                 <Mail className="w-5 h-5 text-white/70 shrink-0" />
@@ -88,13 +94,13 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               )}
             </div>
 
-            <div className="pt-8 border-t border-white/[0.08] flex items-center justify-between">
+            <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <button
                 onClick={onOpenRequisition}
-                className="apple-press inline-flex items-center gap-2.5 text-sm sm:text-base font-light tracking-[0.18em] uppercase text-white hover:text-white/80 cursor-pointer"
+                className="apple-press inline-flex items-center gap-2 text-sm sm:text-base font-light tracking-[0.16em] uppercase text-white hover:text-white/80 cursor-pointer w-fit group"
               >
-                <span>Direct Services Desk</span>
-                <ArrowUpRight className="w-4.5 h-4.5" />
+                <span className="whitespace-nowrap">Direct Services Desk</span>
+                <ArrowUpRight className="w-4 h-4 text-white/90 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <span className="text-xs sm:text-sm font-light tracking-widest uppercase text-white/45">
                 DISCREET & ENCRYPTED
@@ -105,30 +111,30 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
         </div>
 
-        {/* Monumental Watermark (Fluid clamped & perfectly responsive for Opera) */}
-        <div className="py-12 md:py-20 select-none overflow-hidden flex justify-center items-center w-full">
-          <h1 className="font-display text-[clamp(4.5rem,14vw,11.5rem)] font-light leading-none text-white/[0.18] tracking-[0.16em] text-center uppercase pointer-events-none select-none whitespace-nowrap">
-            LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
+        {/* Monumental Watermark (Responsive Clamped & Contained to Screen Width) */}
+        <div className="py-10 sm:py-14 md:py-20 select-none overflow-hidden flex justify-center items-center w-full px-2">
+          <h1 className="font-display text-[10.5vw] sm:text-[12vw] md:text-[clamp(4.5rem,13vw,11rem)] font-light leading-none text-white/[0.18] tracking-[0.06em] sm:tracking-[0.12em] md:tracking-[0.16em] text-center uppercase pointer-events-none select-none max-w-full overflow-hidden">
+            LEEANA<span className="text-[0.62em] tracking-[0.04em] lowercase opacity-85">.in</span>
           </h1>
         </div>
 
-        {/* Low End Colophon with Enhanced Proportions for Opera */}
+        {/* Low End Colophon */}
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 pt-10 border-t border-white/[0.08] text-sm sm:text-base font-light text-white/70 w-full">
           <div className="text-center xl:text-left">
             © {new Date().getFullYear()} LEEANA.in MAISON & ATELIER. ALL RIGHTS RESERVED.
           </div>
 
-          {/* Social Channels Icons (Instagram, LinkedIn, YouTube, WhatsApp) */}
-          <div className="flex items-center gap-4">
+          {/* Social Channels Icons (Instagram, LinkedIn, YouTube, Facebook, WhatsApp) */}
+          <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
             {/* Instagram */}
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/leeana.in/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="apple-press w-12 h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
             >
-              <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
@@ -137,13 +143,13 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/leeana-in/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="apple-press w-12 h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
             >
-              <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                 <rect width="4" height="12" x="2" y="9"/>
                 <circle cx="4" r="2"/>
@@ -152,15 +158,28 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
             {/* YouTube */}
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@leeana-in"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="apple-press w-12 h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
             >
-              <svg className="w-5 h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
                 <polygon points="10 15 15 12 10 9 10 15" fill="currentColor"/>
+              </svg>
+            </a>
+
+            {/* Facebook */}
+            <a
+              href="https://www.facebook.com/leeana.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+            >
+              <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
             </a>
 
@@ -168,9 +187,9 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
             <button
               onClick={handleWhatsApp}
               aria-label="WhatsApp Desk"
-              className="apple-press w-12 h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
             >
-              <MessageCircle className="w-5 h-5" />
+              <MessageCircle className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
             </button>
           </div>
 
