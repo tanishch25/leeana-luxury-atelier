@@ -27,7 +27,7 @@ export const Statement: React.FC = () => {
       {/* Monumental Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
         <span className="text-[20vw] leading-none text-white/[0.02] tracking-widest uppercase font-light">
-          LEEANA.in
+          LEEANA.IN
         </span>
       </div>
 

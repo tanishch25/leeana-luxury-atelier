@@ -114,14 +114,14 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
         {/* Monumental Watermark (Responsive Clamped & Contained to Screen Width) */}
         <div className="py-10 sm:py-14 md:py-20 select-none overflow-hidden flex justify-center items-center w-full px-2">
           <h1 className="font-display text-[10.5vw] sm:text-[12vw] md:text-[clamp(4.5rem,13vw,11rem)] font-light leading-none text-white/[0.18] tracking-[0.06em] sm:tracking-[0.12em] md:tracking-[0.16em] text-center uppercase pointer-events-none select-none max-w-full overflow-hidden">
-            LEEANA<span className="text-[0.62em] tracking-[0.04em] lowercase opacity-85">.in</span>
+            LEEANA<span className="text-[0.62em] tracking-[0.04em] uppercase opacity-85">.IN</span>
           </h1>
         </div>
 
         {/* Low End Colophon */}
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 pt-10 border-t border-white/[0.08] text-sm sm:text-base font-light text-white/70 w-full">
           <div className="text-center xl:text-left">
-            © {new Date().getFullYear()} LEEANA.in MAISON & ATELIER. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} LEEANA.IN MAISON & ATELIER. ALL RIGHTS RESERVED.
           </div>
 
           {/* Social Channels Icons (Instagram, LinkedIn, YouTube, Facebook, WhatsApp) */}

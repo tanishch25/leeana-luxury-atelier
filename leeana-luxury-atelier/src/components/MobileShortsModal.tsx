@@ -97,17 +97,12 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
   onOpenConnect,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0)
-  const [isMuted, setIsMuted] = useState(true)
+  const [isMuted, setIsMuted] = useState(false)
   const [copiedToast, setCopiedToast] = useState(false)
   const [showSwipeHint, setShowSwipeHint] = useState(true)
   const containerRef = useRef<HTMLDivElement>(null)
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
   const sectionRefs = useRef<(HTMLElement | null)[]>([])
-  
-  // Touch tracking specifically for quick video tap detection
-  const touchStartY = useRef<number | null>(null)
-  const touchStartX = useRef<number | null>(null)
-  const touchStartTime = useRef<number>(0)
 
   // Pause and reset all videos immediately
   const stopAllPlayback = useCallback(() => {
@@ -125,11 +120,12 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     onClose()
   }, [stopAllPlayback, onClose])
 
-  // Lock background scroll when open and ensure fresh start from slide 0
+  // Lock background scroll when open and ensure fresh start with sound on
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
       setActiveIndex(0)
+      setIsMuted(false)
       if (containerRef.current) {
         containerRef.current.scrollTop = 0
       }
@@ -150,7 +146,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     }
   }, [isOpen, stopAllPlayback])
 
-  // High-performance IntersectionObserver detects the active reel at 60% viewport visibility
+  // High-performance IntersectionObserver detects the active reel at 55% viewport visibility
   useEffect(() => {
     if (!isOpen) return
     const container = containerRef.current
@@ -182,7 +178,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     }
   }, [isOpen])
 
-  // Video playback & zero audio delay lifecycle: plays active reel only, completely silences all others
+  // Video playback & zero audio delay lifecycle: plays active reel with music ON, completely silences all others
   useEffect(() => {
     if (!isOpen) {
       stopAllPlayback()
@@ -201,15 +197,19 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         video.muted = isMuted
         const playPromise = video.play()
         if (playPromise !== undefined) {
-          playPromise.catch(() => {
-            // Fallback if browser requires muted autoplay
-            video.muted = true
-            video.play().catch(() => {})
+          playPromise.catch((err) => {
+            // Only mute if the browser explicitly rejects unmuted autoplay via security policy
+            if (err?.name === 'NotAllowedError') {
+              video.muted = true
+              setIsMuted(true)
+              video.play().catch(() => {})
+            }
           })
         }
       } else {
         video.pause()
         video.currentTime = 0
+        video.muted = true
       }
     })
   }, [activeIndex, isOpen, isMuted, stopAllPlayback])
@@ -233,7 +233,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `Leeana.in Atelier — ${reel.title}`,
+          title: `Leeana.IN Atelier — ${reel.title}`,
           text: reel.subtitle,
           url: reel.instagramUrl,
         })
@@ -247,33 +247,14 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     setTimeout(() => setCopiedToast(false), 2000)
   }
 
-  // Pure tap detection on the video surface (does NOT interfere with 120Hz native scroll snap)
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartY.current = e.touches[0].clientY
-    touchStartX.current = e.touches[0].clientX
-    touchStartTime.current = Date.now()
-  }
-
-  const handleTouchEnd = (url: string, e: React.TouchEvent) => {
-    if (touchStartY.current === null || touchStartX.current === null) return
-    const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY.current)
-    const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX.current)
-    const deltaTime = Date.now() - touchStartTime.current
-
-    // Trigger Instagram only on an intentional quick tap (<10px displacement, <260ms duration)
-    if (deltaY < 10 && deltaX < 10 && deltaTime < 260) {
-      handleOpenInstagram(url, e)
-    }
-    touchStartY.current = null
-    touchStartX.current = null
-  }
-
-  if (!isOpen) return null
-
   return (
-    <div className="fixed inset-0 z-50 bg-black text-white flex flex-col overflow-hidden select-none animate-in fade-in duration-300">
+    <div
+      className={`fixed inset-0 z-50 bg-black text-white flex flex-col overflow-hidden select-none transition-all duration-300 ${
+        isOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'
+      }`}
+    >
       
-      {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA.in, No x/y, No dots */}
+      {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA.IN, No x/y, No dots */}
       <header className="absolute top-0 inset-x-0 z-30 pt-safe-top px-4 py-3.5 flex items-center justify-between pointer-events-auto bg-gradient-to-b from-black/85 via-black/40 to-transparent">
         {/* Left: Back Arrow Button */}
         <button
@@ -287,9 +268,9 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
           <ArrowLeft className="w-5 h-5 text-white" />
         </button>
 
-        {/* Middle: Centered LEEANA.in Mark */}
+        {/* Middle: Centered LEEANA.IN Mark */}
         <span className="font-couture text-lg sm:text-xl tracking-[0.26em] text-white select-none">
-          LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
+          LEEANA<span className="text-[0.62em] tracking-[0.08em] uppercase opacity-85">.IN</span>
         </span>
 
         {/* Right: Invisible Spacer to Balance Horizontal Center */}
@@ -321,16 +302,8 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 loop
                 playsInline
                 preload="auto"
+                muted={index === activeIndex ? isMuted : true}
                 className="w-full h-full object-cover object-center pointer-events-none"
-              />
-
-              {/* Dedicated Video Tap Layer (z-10: Behind UI buttons, so buttons NEVER trigger Instagram!) */}
-              <div
-                className="absolute inset-0 z-10 cursor-pointer"
-                onTouchStart={handleTouchStart}
-                onTouchEnd={(e) => handleTouchEnd(reel.instagramUrl, e)}
-                onClick={() => handleOpenInstagram(reel.instagramUrl)}
-                aria-label="Tap video to open on Instagram"
               />
 
               {/* Seamless Vignette Gradients */}
@@ -342,14 +315,14 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 
                 {/* Left Column: Refined Minimal Brand Mark & Follow us on Instagram Button */}
                 <div className="flex-1 space-y-3 pointer-events-auto pr-1">
-                  {/* Minimal Brand Mark: Pure leeana.in (No clips/film icon) */}
+                  {/* Minimal Brand Mark: Pure leeana.IN (No clips/film icon) */}
                   <div data-brand-pill className="px-3.5 py-1 rounded-full bg-black/45 border border-white/15 backdrop-blur-md w-fit shadow-md">
                     <span className="font-couture text-xs sm:text-sm tracking-widest text-white/95">
-                      leeana<span className="text-[0.68em] lowercase opacity-85">.in</span>
+                      leeana<span className="text-[0.68em] uppercase opacity-85">.IN</span>
                     </span>
                   </div>
 
-                  {/* Primary Action Button: Follow us on Instagram (h-12 / 48px) */}
+                  {/* Primary Action Button: Follow us on Instagram (h-12 / 48px) - ONLY this opens Instagram */}
                   <button
                     onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
                     className="apple-press cursor-pointer w-full h-12 px-5 rounded-full bg-white text-black font-semibold text-xs tracking-[0.16em] uppercase flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(255,255,255,0.25)] hover:bg-white/90 active:scale-95 transition-all"
@@ -414,7 +387,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
             
             <div className="space-y-3">
               <span className="font-couture text-2xl tracking-[0.24em] text-white block">
-                LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
+                LEEANA<span className="text-[0.62em] tracking-[0.08em] uppercase opacity-85">.IN</span>
               </span>
               <h3 className="font-display text-3xl font-light text-white tracking-tight">
                 Let's Talk

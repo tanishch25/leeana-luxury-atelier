@@ -70,13 +70,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               : 'bg-black/50 border border-white/[0.1] backdrop-blur-xl'
           }`}
         >
-          {/* Brand Mark: LEEANA.in */}
+          {/* Brand Mark: LEEANA.IN */}
           <button
             onClick={() => handleLinkClick('home')}
             className="flex items-center gap-3 group text-left cursor-pointer"
           >
             <span className="font-couture text-2xl sm:text-3xl tracking-[0.26em] text-white transition-opacity group-hover:opacity-80">
-              LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
+              LEEANA<span className="text-[0.62em] tracking-[0.08em] uppercase opacity-85">.IN</span>
             </span>
           </button>
 
