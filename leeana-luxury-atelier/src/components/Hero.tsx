@@ -43,10 +43,10 @@ const SLIDES: HeroSlide[] = [
   },
   {
     id: '04',
-    tag: 'Monolithic Estates',
-    title: 'Architectural Sanctuaries & Sky Penthouses',
-    subtitle: 'Discreet developer allocations and private viewings for prime architectural monoliths and luxury sanctuaries.',
-    poster: '/assets/hero_estates_steady_4k.jpg',
+    tag: 'Historic & Lakefront Estates',
+    title: 'Heritage Villas & Architectural Sanctuaries',
+    subtitle: 'Discreet developer allocations and private viewings for rare heritage monoliths and vintage lakefront sanctuaries.',
+    poster: '/assets/hero_vintage_estate_4k.jpg',
     ctaText: 'Private Viewings',
   },
 ]

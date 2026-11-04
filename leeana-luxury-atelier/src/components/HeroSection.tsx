@@ -61,7 +61,7 @@ const CAMPAIGNS: CampaignFilm[] = [
     title: 'Architectural Sanctuaries & Penthouses',
     subtitle: 'Discreet developer allocations and off-market viewings for prime architectural monoliths, hill sanctuaries, and private collector homes.',
     videoSrc: '/assets/hero-estates.mp4',
-    gifFallback: '/assets/hero-estates.gif',
+    gifFallback: '/assets/hero_vintage_estate_4k.jpg',
     camera: 'Canon C500 Mark II 5.9K',
     optics: 'Canon Cinema Prime 24mm T1.5',
     lighting: 'Natural Dusk & Warm Interior Illuminants',

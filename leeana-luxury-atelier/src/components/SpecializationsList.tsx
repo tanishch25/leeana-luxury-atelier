@@ -48,7 +48,7 @@ const SPECIALIZATIONS: SpecItem[] = [
     subtitle: 'Architectural Monoliths & Sky Penthouses',
     description:
       'Discreet buyer representation and volumetric cinematography for Bengaluru cantilever villas and sky penthouses.',
-    image: '/assets/hero_estates_steady_4k.jpg',
+    image: '/assets/hero_vintage_estate_4k.jpg',
     deliverables: ['Twilight Walkthrough', 'Buyer Anonymity', 'Private Dossier'],
   },
   {

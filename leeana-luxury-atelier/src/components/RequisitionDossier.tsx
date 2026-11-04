@@ -43,10 +43,10 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 overflow-y-auto animate-in fade-in duration-300">
+    <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-2xl flex items-start sm:items-center justify-center p-3 sm:p-6 pt-6 sm:pt-6 pb-12 sm:pb-6 overflow-y-auto animate-in fade-in duration-200">
       
-      {/* Ultra-Sleek Glassmorphic Modal Card - Fits any phone frame flawlessly */}
-      <div data-dossier-card className="relative w-full max-w-xl max-h-[92dvh] overflow-y-auto scrollbar-none rounded-[28px] sm:rounded-[36px] bg-[#09090d] border border-white/[0.14] p-5 sm:p-8 md:p-10 text-white shadow-[0_40px_100px_rgba(0,0,0,0.95)] my-auto">
+      {/* Ultra-Sleek Glassmorphic Modal Card - Fits any phone frame flawlessly with zero font jitter */}
+      <div data-dossier-card className="relative w-full max-w-xl max-h-[92dvh] overflow-y-auto scrollbar-none rounded-[28px] sm:rounded-[36px] bg-[#09090d] border border-white/[0.14] p-5 sm:p-8 md:p-10 text-white shadow-[0_40px_100px_rgba(0,0,0,0.95)] my-0 sm:my-auto">
         
         {/* Soft Ambient Radial Glow */}
         <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-48 bg-white/[0.05] blur-3xl pointer-events-none rounded-full" />
@@ -129,7 +129,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
               </div>
             </div>
 
-            {/* Inputs: Clean 2-Column Coordinates */}
+            {/* Inputs: Clean 2-Column Coordinates with Anti-Zoom & Anti-Jitter Typography */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="text-[10px] uppercase tracking-[0.18em] text-white/50 block font-light mb-1.5">
@@ -140,8 +140,9 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
+                  onBlur={() => window.scrollTo(window.scrollX, window.scrollY)}
                   placeholder="e.g. Somani Jewellers"
-                  className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/25 text-xs sm:text-sm focus:outline-none focus:border-white focus:bg-white/[0.06] transition-all"
+                  className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/25 text-[16px] leading-normal font-sans focus:outline-none focus:border-white focus:bg-white/[0.06] transition-colors duration-150"
                 />
               </div>
 
@@ -154,8 +155,9 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
+                  onBlur={() => window.scrollTo(window.scrollX, window.scrollY)}
                   placeholder="+91 99161 01011"
-                  className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/25 text-xs sm:text-sm focus:outline-none focus:border-white focus:bg-white/[0.06] transition-all"
+                  className="w-full h-11 sm:h-12 px-3.5 sm:px-4 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/25 text-[16px] leading-normal font-sans focus:outline-none focus:border-white focus:bg-white/[0.06] transition-colors duration-150"
                 />
               </div>
             </div>
@@ -169,8 +171,9 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
                 rows={2}
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
+                onBlur={() => window.scrollTo(window.scrollX, window.scrollY)}
                 placeholder="Preferred shoot dates, piece count, or acquisition requirements..."
-                className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/25 text-xs sm:text-sm focus:outline-none focus:border-white focus:bg-white/[0.06] transition-all resize-none"
+                className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl sm:rounded-2xl bg-white/[0.03] border border-white/10 text-white placeholder-white/25 text-[16px] leading-normal font-sans focus:outline-none focus:border-white focus:bg-white/[0.06] transition-colors duration-150 resize-none"
               />
             </div>
 
