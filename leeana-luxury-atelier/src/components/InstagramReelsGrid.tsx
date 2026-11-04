@@ -59,6 +59,13 @@ export const INSTAGRAM_REELS_DATA: ReelItem[] = [
     posterSrc: '/assets/reels/reel_7_attached_thumb.jpg',
     instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
   },
+  {
+    id: '08',
+    title: 'Leeana Fashion Concierge',
+    videoSrc: '/assets/reels/reel_8_concierge.mp4',
+    posterSrc: '/assets/reels/reel_8_concierge_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
+  },
 ]
 
 export const InstagramReelsGrid: React.FC = () => {

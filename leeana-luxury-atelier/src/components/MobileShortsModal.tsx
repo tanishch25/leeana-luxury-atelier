@@ -83,6 +83,16 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
     category: 'Hospitality & Atmosphere',
     duration: '0:16',
   },
+  {
+    id: '08',
+    title: 'Leeana Fashion Concierge',
+    subtitle: 'Worldwide bespoke fashion concierge, couture curation, and patron empowerment.',
+    videoSrc: '/assets/reels/reel_8_concierge.mp4',
+    posterSrc: '/assets/reels/reel_8_concierge_thumb.jpg',
+    instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
+    category: 'Fashion Concierge',
+    duration: '1:28',
+  },
 ]
 
 interface MobileShortsModalProps {
