@@ -130,16 +130,31 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     onClose()
   }, [stopAllPlayback, onClose])
 
-  // Lock background scroll when open and ensure fresh start with sound on
+  // Lock background scroll when open, check for shared reel param, and ensure fresh start with sound on
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
-      setActiveIndex(0)
       setIsMuted(false)
-      if (containerRef.current) {
-        containerRef.current.scrollTop = 0
-      }
       stopAllPlayback()
+
+      // Check for deep-linked ?reel= parameter
+      const params = new URLSearchParams(window.location.search)
+      const reelParam = params.get('reel')
+      let initialIdx = 0
+      if (reelParam) {
+        const found = SHORTS_REELS_DATA.findIndex((r) => r.id === reelParam)
+        if (found !== -1) initialIdx = found
+      }
+
+      setActiveIndex(initialIdx)
+      setTimeout(() => {
+        if (containerRef.current && initialIdx > 0 && sectionRefs.current[initialIdx]) {
+          sectionRefs.current[initialIdx]?.scrollIntoView({ behavior: 'auto' })
+        } else if (containerRef.current) {
+          containerRef.current.scrollTop = 0
+        }
+      }, 50)
+
       setShowSwipeHint(true)
       const timer = setTimeout(() => setShowSwipeHint(false), 3200)
       return () => {
@@ -240,21 +255,25 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
 
   const handleShare = async (reel: ReelShortItem, e: React.MouseEvent) => {
     e.stopPropagation()
+    // Generates website share URL so recipients are brought back directly to this reel on the website
+    const websiteShareUrl = `${window.location.origin}${window.location.pathname}?reel=${reel.id}`
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `Leeana.IN Atelier — ${reel.title}`,
-          text: reel.subtitle,
-          url: reel.instagramUrl,
+          title: `LEEANA — ${reel.title}`,
+          text: `Watch ${reel.title} on Leeana Fashion Concierge:`,
+          url: websiteShareUrl,
         })
         return
       } catch {
         // Fallback to clipboard
       }
     }
-    navigator.clipboard?.writeText(reel.instagramUrl)
-    setCopiedToast(true)
-    setTimeout(() => setCopiedToast(false), 2000)
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(websiteShareUrl)
+      setCopiedToast(true)
+      setTimeout(() => setCopiedToast(false), 2000)
+    }
   }
 
   return (
@@ -264,7 +283,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
       }`}
     >
       
-      {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA.IN, No x/y, No dots */}
+      {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA, No x/y, No dots */}
       <header className="absolute top-0 inset-x-0 z-30 pt-safe-top px-4 py-3.5 flex items-center justify-between pointer-events-auto bg-gradient-to-b from-black/85 via-black/40 to-transparent">
         {/* Left: Back Arrow Button */}
         <button
@@ -278,9 +297,9 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
           <ArrowLeft className="w-5 h-5 text-white" />
         </button>
 
-        {/* Middle: Centered LEEANA.IN Mark */}
+        {/* Middle: Centered LEEANA Mark (Strictly without .IN, Same Bespoke Couture Font) */}
         <span className="font-couture text-lg sm:text-xl tracking-[0.26em] text-white select-none">
-          LEEANA<span className="text-[0.62em] tracking-[0.08em] uppercase opacity-85">.IN</span>
+          LEEANA
         </span>
 
         {/* Right: Invisible Spacer to Balance Horizontal Center */}
@@ -325,10 +344,10 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 
                 {/* Left Column: Refined Minimal Brand Mark & Follow us on Instagram Button */}
                 <div className="flex-1 space-y-3 pointer-events-auto pr-1">
-                  {/* Minimal Brand Mark: Pure leeana.IN (No clips/film icon) */}
+                  {/* Minimal Brand Mark: Pure leeana (No clips/film icon, No .IN) */}
                   <div data-brand-pill className="px-3.5 py-1 rounded-full bg-black/45 border border-white/15 backdrop-blur-md w-fit shadow-md">
                     <span className="font-couture text-xs sm:text-sm tracking-widest text-white/95">
-                      leeana<span className="text-[0.68em] uppercase opacity-85">.IN</span>
+                      leeana
                     </span>
                   </div>
 
@@ -397,7 +416,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
             
             <div className="space-y-3">
               <span className="font-couture text-2xl tracking-[0.24em] text-white block">
-                LEEANA<span className="text-[0.62em] tracking-[0.08em] uppercase opacity-85">.IN</span>
+                LEEANA
               </span>
               <h3 className="font-display text-3xl font-light text-white tracking-tight">
                 Let's Talk

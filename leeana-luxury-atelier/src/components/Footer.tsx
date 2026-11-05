@@ -30,11 +30,11 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
           {/* Brand & Address Column */}
           <div className="lg:col-span-6 space-y-6">
             <span className="font-couture text-4xl sm:text-5xl lg:text-6xl tracking-[0.25em] text-white block">
-              LEEANA<span className="text-[0.62em] tracking-[0.08em] lowercase opacity-85">.in</span>
+              LEEANA
             </span>
 
             <p className="text-base sm:text-lg text-white/85 font-light max-w-xl leading-relaxed">
-              Curating the world's most distinguished luxury brands and experiences under one sophisticated destination. Commercial film production, fine joaillerie macro direction, and private concierge acquisitions.
+              Leeana Fashion Concierge. We specialise in premium and luxury brand shoots — crafting cinema films, haute joaillerie macro optics, and high-fashion visual narratives that elevate prestige and command markets.
             </p>
 
             <div className="space-y-3.5 text-base sm:text-lg font-light text-white/80 pt-2">
@@ -111,17 +111,17 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
         </div>
 
-        {/* Monumental Watermark (Responsive Clamped & Contained to Screen Width) */}
+        {/* Monumental Watermark (Same Couture Font, Crisp White & Tracking as Top Logo, Strictly Without .IN) */}
         <div className="py-10 sm:py-14 md:py-20 select-none overflow-hidden flex justify-center items-center w-full px-2">
-          <h1 className="font-display text-[10.5vw] sm:text-[12vw] md:text-[clamp(4.5rem,13vw,11rem)] font-light leading-none text-white/[0.18] tracking-[0.06em] sm:tracking-[0.12em] md:tracking-[0.16em] text-center uppercase pointer-events-none select-none max-w-full overflow-hidden">
-            LEEANA<span className="text-[0.62em] tracking-[0.04em] uppercase opacity-85">.IN</span>
+          <h1 className="font-couture text-[9.5vw] sm:text-[11vw] md:text-[clamp(3.5rem,12vw,10.5rem)] font-normal leading-none text-white tracking-[0.22em] text-center uppercase pointer-events-none select-none max-w-full overflow-hidden opacity-90 drop-shadow-[0_10px_40px_rgba(255,255,255,0.15)]">
+            LEEANA
           </h1>
         </div>
 
         {/* Low End Colophon */}
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 pt-10 border-t border-white/[0.08] text-sm sm:text-base font-light text-white/70 w-full">
-          <div className="text-center xl:text-left">
-            © {new Date().getFullYear()} LEEANA.IN MAISON & ATELIER. ALL RIGHTS RESERVED.
+          <div className="text-center xl:text-left tracking-wide">
+            Leeana Fashion Concierge. All Rights Limited.
           </div>
 
           {/* Social Channels Icons (Instagram, LinkedIn, YouTube, Facebook, WhatsApp) */}
@@ -141,9 +141,9 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               </svg>
             </a>
 
-            {/* LinkedIn */}
+            {/* LinkedIn (Verified Active Link) */}
             <a
-              href="https://www.linkedin.com/company/leeana-in/"
+              href="https://www.linkedin.com/search/results/all/?keywords=leeana%20fashion%20concierge"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

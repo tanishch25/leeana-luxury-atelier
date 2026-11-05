@@ -13,7 +13,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
   initialService,
 }) => {
   const [selectedDiscipline, setSelectedDiscipline] = useState<string>(
-    initialService || 'Haute Joaillerie'
+    initialService || 'Fashion & Couture'
   )
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
@@ -23,23 +23,40 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
   if (!isOpen) return null
 
   const disciplines = [
-    'Haute Joaillerie',
     'Fashion & Couture',
-    'Exotic Fleet',
-    'Estates & Cellars',
+    'Haute Joaillerie',
+    'Cafe & Culinary',
+    'Commercial Brands',
   ]
 
+  const getEmailContent = () => {
+    const subject = `Atelier Appointment Booking: ${selectedDiscipline} — ${name || 'Confidential Patron'}`
+    const body = `Hello Leeana Fashion Concierge Desk,\n\nI wish to book an Atelier Appointment for a Premium & Luxury Brand Shoot:\n\n- Discipline: ${selectedDiscipline}\n- Client / Maison: ${name || 'Confidential'}\n- Phone / WhatsApp: ${phone || 'Confidential'}\n- Mandate / Brief: ${notes || 'Direct soundstage appointment requested.'}\n\nPlease confirm soundstage schedule and production brief.`
+    return { subject, body }
+  }
+
   const handleWhatsApp = () => {
-    const msg = `Hello Leeana Atelier Desk,\n\nI wish to schedule a Private Session:\n- Discipline: ${selectedDiscipline}\n- Name: ${name || 'Confidential Patron'}\n- Phone: ${phone || 'Confidential'}\n- Brief: ${notes || 'Direct appointment requested.'}`
+    const msg = `Hello Leeana Fashion Concierge Desk,\n\nI wish to schedule a Private Session for a Brand Shoot:\n- Discipline: ${selectedDiscipline}\n- Name: ${name || 'Confidential Patron'}\n- Phone: ${phone || 'Confidential'}\n- Brief: ${notes || 'Direct appointment requested.'}`
     window.open(`https://wa.me/919916101011?text=${encodeURIComponent(msg)}`, '_blank')
   }
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  const handleBookGmail = (e?: React.FormEvent) => {
+    if (e) e.preventDefault()
     setIsSubmitted(true)
-    setTimeout(() => {
-      window.location.href = `mailto:Info@leeana.in?subject=Atelier Appointment: ${selectedDiscipline}&body=Client: ${name}%0D%0APhone: ${phone}%0D%0ABrief: ${notes}`
-    }, 600)
+    const { subject, body } = getEmailContent()
+    
+    // Direct Gmail web compose link
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=Info@leeana.in&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    
+    // Open Gmail directly in a new tab
+    const newWindow = window.open(gmailUrl, '_blank')
+    
+    // Fallback: if popup blocked or client prefers native mailto
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      setTimeout(() => {
+        window.location.href = `mailto:Info@leeana.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+      }, 300)
+    }
   }
 
   return (
@@ -66,42 +83,49 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
         {/* Header: Clean & Slick */}
         <div className="space-y-1.5 max-w-md pr-8 sm:pr-0">
           <span className="text-[10px] uppercase tracking-[0.22em] text-white/50 block font-light">
-            Private Appointment & Inquiry
+            Leeana Fashion Concierge · Book Appointment
           </span>
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
             Schedule Atelier Session
           </h2>
           <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
-            Direct soundstage access in Bengaluru and confidential private acquisitions.
+            Direct soundstage access in JP Nagar, Bengaluru for premium and luxury brand shoots.
           </p>
         </div>
 
         {isSubmitted ? (
-          <div className="py-12 text-center space-y-4">
+          <div className="py-10 text-center space-y-4">
             <h3 className="font-display text-2xl text-white font-light">
-              Appointment Registered
+              Appointment Dispatched
             </h3>
-            <p className="text-sm text-white/70 max-w-md mx-auto font-light leading-relaxed">
-              Our direct board desk will confirm your appointment within 4 business hours.
+            <p className="text-sm text-white/75 max-w-md mx-auto font-light leading-relaxed">
+              Your appointment booking has been initiated directly to Gmail at <span className="text-white font-medium">Info@leeana.in</span>. Our board desk will confirm within 4 operational hours.
             </p>
-            <div className="pt-4 flex justify-center gap-3">
+            <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+              <button
+                onClick={() => handleBookGmail()}
+                className="apple-press px-6 py-3 rounded-full bg-white text-black text-xs font-semibold uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer shadow-lg"
+              >
+                <span>Reopen in Gmail</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
               <button
                 onClick={handleWhatsApp}
-                className="apple-press px-6 py-3 rounded-full bg-white text-black text-xs font-semibold uppercase tracking-wider flex items-center gap-2 cursor-pointer shadow-lg"
+                className="apple-press px-6 py-3 rounded-full border border-white/20 text-xs font-medium uppercase tracking-wider text-white hover:bg-white/10 flex items-center justify-center gap-2 cursor-pointer"
               >
                 <MessageCircle className="w-3.5 h-3.5" />
                 <span>Open WhatsApp Desk</span>
               </button>
               <button
                 onClick={onClose}
-                className="apple-press px-6 py-3 rounded-full border border-white/20 text-xs uppercase tracking-wider text-white hover:bg-white/10 cursor-pointer"
+                className="apple-press px-6 py-3 rounded-full border border-white/10 text-xs uppercase tracking-wider text-white/60 hover:text-white cursor-pointer"
               >
                 Close
               </button>
             </div>
           </div>
         ) : (
-          <form onSubmit={handleFormSubmit} className="mt-5 sm:mt-8 space-y-4 sm:space-y-5">
+          <form onSubmit={handleBookGmail} className="mt-5 sm:mt-8 space-y-4 sm:space-y-5">
             
             {/* Discipline Selector: Clean 4-Pill Segmented Grid */}
             <div>
@@ -183,16 +207,16 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
                 type="submit"
                 className="apple-press w-full sm:flex-1 py-3.5 px-6 rounded-full bg-white text-black text-xs font-semibold uppercase tracking-[0.16em] hover:bg-white/90 transition-all flex items-center justify-center gap-2 cursor-pointer shadow-xl"
               >
-                <span>Confirm Appointment</span>
+                <span>Book via Gmail</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
               <button
                 type="button"
                 onClick={handleWhatsApp}
-                className="apple-press w-full sm:w-auto py-3.5 px-6 rounded-full border border-white/20 bg-white/[0.03] hover:bg-white/10 text-white text-xs font-light uppercase tracking-[0.14em] transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
+                className="apple-press w-full sm:w-auto py-3.5 px-6 rounded-full border border-white/20 bg-white/[0.03] hover:bg-white/10 text-white text-xs font-medium uppercase tracking-[0.14em] transition-all flex items-center justify-center gap-2 cursor-pointer backdrop-blur-md"
               >
-                <MessageCircle className="w-3.5 h-3.5 text-white/80" />
+                <MessageCircle className="w-3.5 h-3.5 text-white/90" />
                 <span>WhatsApp Desk</span>
               </button>
             </div>

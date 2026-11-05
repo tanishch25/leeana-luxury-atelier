@@ -339,65 +339,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition 
 
 
       {/* ========================================================= */}
-      {/* 3. OUR MODELS — FACES OF LEEANA (TIGHT PINTEREST ALIGNMENT)*/}
-      {/* ========================================================= */}
-      <section id="our-models" className="scroll-mt-32">
-        {/* Creative Dashboard Frame with Tight, Refined Spacing */}
-        <div className="rounded-[28px] sm:rounded-[32px] border border-white/[0.12] bg-[#07070b]/80 backdrop-blur-2xl p-4 sm:p-6 md:p-6 relative overflow-hidden shadow-2xl">
-          {/* Subtle top hairline highlight */}
-          <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-
-          {/* Dashboard Header Bar (Clean title, no chips, no dots, no small words above title) */}
-          <div className="pb-4 border-b border-white/[0.08]">
-            <div className="space-y-1">
-              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
-                Faces of Leeana
-              </h2>
-              <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-                Archival talent cast for soundstage cinema, haute couture campaigns, and luxury brand narratives.
-              </p>
-            </div>
-          </div>
-
-          {/* Tight Pinterest-Style Board: 2 Columns on Mobile, 3 Columns on Desktop */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-2.5 md:gap-3 pt-3.5">
-            {MODELS_DATA.map((model) => {
-              return (
-                <article
-                  key={model.id}
-                  onClick={() => onOpenRequisition(`Model Booking Request: ${model.name}`)}
-                  className="group relative w-full aspect-[3/4] overflow-hidden rounded-[18px] sm:rounded-[20px] border border-white/[0.12] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-xl cursor-pointer flex flex-col justify-end hover:-translate-y-1"
-                >
-                  {/* Brighter High-Fashion Model Portrait */}
-                  <img
-                    src={model.img}
-                    alt={model.name}
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover object-center filter brightness-[1.08] contrast-[1.04] transition-transform duration-700 ease-out group-hover:scale-105 [transform:translate3d(0,0,0)]"
-                    style={{ imageRendering: '-webkit-optimize-contrast' }}
-                  />
-
-                  {/* Refined Cinematic Fade Atmosphere */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#050508] via-[#050508]/40 via-35% to-transparent pointer-events-none" />
-                  <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(5,5,8,0.65)] pointer-events-none" />
-                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-
-                  {/* Card Content: ONLY the title that is all (No arrow, no subtitle, no tag) */}
-                  <div className="relative z-10 p-3 sm:p-5 pointer-events-auto">
-                    <h3 className="font-display text-xs sm:text-lg md:text-xl text-white font-light tracking-tight leading-snug">
-                      {model.name}
-                    </h3>
-                  </div>
-                </article>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-
-      {/* ========================================================= */}
-      {/* 4. REVIEWS — SEE WHAT OUR CLIENTS THINK                  */}
+      {/* 3. REVIEWS — SEE WHAT OUR CLIENTS THINK                  */}
       {/* ========================================================= */}
       <section id="testimonials" className="border-t border-white/[0.08] pt-10 md:pt-14 scroll-mt-24">
         <div className="pb-6 border-b border-white/[0.08] space-y-1.5">

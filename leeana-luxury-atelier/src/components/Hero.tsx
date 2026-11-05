@@ -18,12 +18,12 @@ interface HeroSlide {
 const SLIDES: HeroSlide[] = [
   {
     id: '01',
-    tag: 'Fashion Cinema & Bridal Silks',
-    title: 'Visual Direction That Defines Luxury',
-    subtitle: 'Cinema campaigns celebrating Indian heritage handlooms, bridal couture drapes, and high-fashion narratives.',
+    tag: 'Leeana Fashion Concierge',
+    title: 'Premium and Luxury Brand Shoots',
+    subtitle: 'Cinema campaigns, bridal couture drapes, fine joaillerie macro optics, and high-fashion visual direction that define luxury.',
     videoSrc: '/assets/shotsquare-hero-reel.mp4',
     poster: '/assets/hero_couture_4k.jpg',
-    ctaText: 'Explore Atelier',
+    ctaText: 'Commission Shoot',
   },
   {
     id: '02',
@@ -35,17 +35,17 @@ const SLIDES: HeroSlide[] = [
   },
   {
     id: '03',
-    tag: 'Private Fleet Concierge',
-    title: 'Exotic Marques & Performance Supercars',
-    subtitle: 'Direct allocation pipelines and white-glove doorstep delivery for the world’s most sought-after hypercars.',
-    poster: '/assets/hero_supercar_steady_4k.jpg',
-    ctaText: 'Acquisition Desk',
+    tag: 'Culinary & Cafe Architecture',
+    title: 'Atmospheric Cinema For Premium Dining',
+    subtitle: 'Commercial soundstage and on-location luxury brand shoots capturing boutique cafe architecture, artisanal dining, and viral reels.',
+    poster: '/assets/reels/reel_1_thumb.jpg',
+    ctaText: 'Explore Productions',
   },
   {
     id: '04',
-    tag: 'Historic & Lakefront Estates',
+    tag: 'Historic & Architectural Sanctuaries',
     title: 'Heritage Villas & Architectural Sanctuaries',
-    subtitle: 'Discreet developer allocations and private viewings for rare heritage monoliths and vintage lakefront sanctuaries.',
+    subtitle: 'Volumetric cinematography, golden-hour ambient framing, and architectural luxury brand shoots for landmark spaces.',
     poster: '/assets/hero_vintage_estate_4k.jpg',
     ctaText: 'Private Viewings',
   },
@@ -121,14 +121,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 lg:gap-12">
             
             {/* Left Column: All-White Architectural Typography */}
-            <div className="flex flex-col max-w-5xl space-y-5">
+            <div className="flex flex-col max-w-5xl space-y-4">
+              {/* Luxury Atelier Label */}
+              <div className="flex items-center gap-2.5">
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-white/95 font-medium px-3.5 py-1.5 rounded-full bg-white/[0.1] border border-white/20 backdrop-blur-md w-fit shadow-md">
+                  Leeana Fashion Concierge
+                </span>
+                <span className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-white/70 font-light hidden sm:inline-block">
+                  Specialising in Premium & Luxury Brand Shoots
+                </span>
+              </div>
+
               {/* Monumental Headline (All-White, Modern Architecture) */}
               <h1 className="text-white text-[clamp(2.1rem,5.8vw,5.6rem)] font-light tracking-[-0.03em] leading-[1.0] md:leading-[0.92] drop-shadow-2xl">
                 {current.title}
               </h1>
 
               {/* Subtitle */}
-              <p className="text-base md:text-lg text-white/80 font-light max-w-2xl leading-relaxed hidden sm:block">
+              <p className="text-base md:text-lg text-white/85 font-light max-w-2xl leading-relaxed hidden sm:block">
                 {current.subtitle}
               </p>
 

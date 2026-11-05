@@ -17,57 +17,48 @@ interface SpecItem {
 const SPECIALIZATIONS: SpecItem[] = [
   {
     id: 'fashion',
-    title: 'Fashion & Couture',
-    subtitle: 'Editorial Runways & Heritage Handlooms',
+    title: 'Fashion & Haute Couture Shoots',
+    subtitle: 'Editorial Runways, Bridal Handlooms & Designer Silks',
     description:
-      'High-fashion editorial direction, dramatic tactile lighting, and cinema motion for couture drapes and modern silhouettes.',
+      'High-fashion visual direction, master cinema motion, and chiaroscuro studio lighting capturing the elegance of designer sarees, lehengas, and couture silhouettes.',
     image: '/assets/spec_fashion_4k.jpg',
-    deliverables: ['8K RED Cinema Reel', 'Medium Format Stills', 'Campaign Grade'],
+    deliverables: ['8K Cinema Campaign', 'Editorial Lookbooks', 'Color Grading Master'],
   },
   {
     id: 'jewellery',
-    title: 'Haute Joaillerie',
-    subtitle: 'Zero Distortion Macro Diamond Optics',
+    title: 'Haute Joaillerie & Solitaire Shoots',
+    subtitle: 'Zero-Distortion Macro Optics & Diamond Facet Capture',
     description:
-      'Custom optical rail benches capturing internal stone faceting, platinum luster, and multi-carat solitaire brilliance.',
+      'Dedicated optical rail benches capturing internal diamond scintillation, platinum luster, solitaire luminescence, and reflection control for fine jewellery maisons.',
     image: '/assets/spec_jewel_4k.jpg',
-    deliverables: ['Macro Facet Capture', 'Refraction Control', 'Global Retail Assets'],
+    deliverables: ['Macro Solitaire Video', 'Facet Sparkle Optics', 'High-Res Print Master'],
   },
   {
-    id: 'supercars',
-    title: 'Exotic Automotive',
-    subtitle: 'Direct Hypercar Allocation & Studio Motion',
+    id: 'culinary',
+    title: 'Cafe & Culinary Atmosphere Shoots',
+    subtitle: 'Artisanal Dining & Cafe Architecture Cinematography',
     description:
-      'European factory allocation pipelines for Ferrari, Lamborghini, and Rolls-Royce alongside dynamic soundstage tracking.',
-    image: '/assets/lookbook_clean_lamborghini.jpg',
-    deliverables: ['Factory Verification', 'White-Glove Delivery', 'High-Speed Tracking'],
-  },
-  {
-    id: 'estates',
-    title: 'Prime Estates',
-    subtitle: 'Architectural Monoliths & Sky Penthouses',
-    description:
-      'Discreet buyer representation and volumetric cinematography for Bengaluru cantilever villas and sky penthouses.',
-    image: '/assets/hero_vintage_estate_4k.jpg',
-    deliverables: ['Twilight Walkthrough', 'Buyer Anonymity', 'Private Dossier'],
+      'Commercial cinema shoots capturing boutique cafe aesthetics, luxury dining atmospheres, and artisanal gastronomy that drive viral culinary engagement.',
+    image: '/assets/reels/reel_1_thumb.jpg',
+    deliverables: ['Viral Cafe Reels', 'Interior Ambience Stills', 'Menu Master Cinema'],
   },
   {
     id: 'commercial',
-    title: 'Commercial Brands',
-    subtitle: 'High-Ticket Brand Films & Visual Direction',
+    title: 'Commercial Brand & Television Shoots',
+    subtitle: 'High-Ticket Brand Films & Television Commercials',
     description:
-      'Visual positioning and television campaigns that command prestige, establish authority, and dominate markets.',
+      'Holistic brand positioning and cinematic commercial films that elevate market authority, dominate digital and TV broadcast, and establish prestige.',
     image: '/assets/lookbook_clean_villa.jpg',
-    deliverables: ['Omnichannel Direction', 'Television Commercials', 'Master Audio Mix'],
+    deliverables: ['Omnichannel TVC', 'Commercial Motion Cut', 'Sound Design Mix'],
   },
   {
-    id: 'concierge',
-    title: 'Private Cellars',
-    subtitle: 'Bespoke Lifestyle & Rare Vintage Allocations',
+    id: 'interiors',
+    title: 'Living Spaces & Architectural Shoots',
+    subtitle: 'Atmospheric Interior Aesthetics & Design Dialogue',
     description:
-      'Direct winery allocations of Grand Cru Bordeaux, Patek Philippe horology allocations, and private vault viewings.',
-    image: '/assets/lookbook_clean_penthouse.jpg',
-    deliverables: ['Direct Domaine Access', 'Vault Storage', 'Sommelier Audit'],
+      'Volumetric walkthroughs and golden-hour ambient framing celebrating luxury architectural sanctuaries, designer spaces, and bespoke lifestyle environments.',
+    image: '/assets/hero_vintage_estate_4k.jpg',
+    deliverables: ['Cinematic Walkthrough', 'Architectural Stills', 'Atmospheric Lighting'],
   },
 ]
 
@@ -107,10 +98,16 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
         
         {/* Section Header with Dynamic Sequence Counter */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-5 sm:mb-10 md:mb-16">
-          <div>
+          <div className="space-y-1.5">
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.22em] text-white/50 block font-light">
+              Leeana Fashion Concierge
+            </span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-              Specializations
+              Premium and Luxury Brand Shoots
             </h2>
+            <p className="text-white/70 text-xs sm:text-sm font-light max-w-xl leading-relaxed pt-1">
+              We specialise in high premium and luxury brand shoots — crafting cinema films, macro joaillerie optical motion, and viral editorial narratives.
+            </p>
           </div>
 
           {/* Dynamic Sequence Counter (e.g. 01 / 06) */}

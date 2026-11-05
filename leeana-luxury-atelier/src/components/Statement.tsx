@@ -15,8 +15,8 @@ export const Statement: React.FC = () => {
       image: '/assets/svc-jewellery-BcB-GXPd.jpg',
     },
     {
-      title: 'Confidential Acquisitions Desk',
-      desc: 'Direct factory allocation pipelines for European hypercars, private aviation, and off-market architectural sky penthouses.',
+      title: 'Commercial Brand Shoots & Narrative Films',
+      desc: 'Television commercials, high-ticket brand storytelling, and bespoke lifestyle campaigns that establish unshakeable market authority.',
       image: '/assets/svc-homes-BDNBbpTG.jpg',
     },
   ]
@@ -26,8 +26,8 @@ export const Statement: React.FC = () => {
       
       {/* Monumental Watermark */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden">
-        <span className="text-[20vw] leading-none text-white/[0.02] tracking-widest uppercase font-light">
-          LEEANA.IN
+        <span className="font-couture text-[20vw] leading-none text-white/[0.02] tracking-[0.22em] uppercase">
+          LEEANA
         </span>
       </div>
 
@@ -35,18 +35,21 @@ export const Statement: React.FC = () => {
         
         {/* Monumental All-White Headline (Non-cursive, Architectural Authority) */}
         <div className="max-w-5xl space-y-4">
+          <div className="inline-block px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white/90">
+            Leeana Fashion Concierge
+          </div>
           <h2 className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-[-0.04em] leading-[0.98]">
-            We Create Visual Productions <br />
+            We Specialise In Premium <br />
             <span className="font-semibold text-white">
-              That Command Global Prestige.
+              And Luxury Brand Shoots.
             </span>
           </h2>
         </div>
 
         {/* Narrative Paragraph */}
         <div className="max-w-3xl pt-2">
-          <p className="text-base sm:text-xl text-white/80 font-light leading-relaxed">
-            Equipped with cinema camera systems, specialized macro glass, and master gaffers, our Bangalore atelier designs visual narratives that elevate fine jewellery, bridal couture, and luxury houses across India and internationally.
+          <p className="text-base sm:text-xl text-white/85 font-light leading-relaxed">
+            Equipped with state-of-the-art cinema camera systems, specialized macro glass, and master gaffers, Leeana Fashion Concierge designs visual campaigns that elevate fine jewellery, bridal couture drapes, and premier lifestyle houses across India and internationally.
           </p>
         </div>
 

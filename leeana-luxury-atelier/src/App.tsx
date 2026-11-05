@@ -25,6 +25,14 @@ export function App() {
   const [showBackToTop, setShowBackToTop] = useState(false)
   const lenisRef = useRef<Lenis | null>(null)
 
+  // Auto-open reels modal if shared URL contains ?reel= parameter
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('reel')) {
+      setIsShortsOpen(true)
+    }
+  }, [])
+
   // Lenis Inertia Smooth Scrolling with Apple Fluid Physics
   useEffect(() => {
     const lenis = new Lenis({
