@@ -24,7 +24,6 @@ export const CommandAuthoritySection: React.FC<CommandAuthoritySectionProps> = (
           
           {/* Telemetry Indicator */}
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
             <span className="text-xs uppercase tracking-[0.2em] text-white/50 font-light">
               Direct Executive Requisitions · Confidential Desk
             </span>

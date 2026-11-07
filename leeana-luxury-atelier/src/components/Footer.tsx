@@ -103,10 +103,10 @@ export const Footer: React.FC<{ onOpenRequisition: (mandate?: string) => void }>
                 <ArrowUpRight className="w-4 h-4 text-white/90 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <button
-                onClick={() => onOpenRequisition('Model Roster Application: New Talent Casting')}
+                onClick={() => onOpenRequisition('Model Roster Application: New Talent Representation')}
                 className="apple-press inline-flex items-center gap-1.5 text-xs sm:text-sm font-light tracking-widest uppercase text-white/70 hover:text-white cursor-pointer w-fit"
               >
-                <span>Model Casting & Opportunities</span>
+                <span>Model Opportunities & Representation</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-white/70" />
               </button>
             </div>

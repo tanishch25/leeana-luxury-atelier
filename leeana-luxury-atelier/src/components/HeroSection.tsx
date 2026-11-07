@@ -137,7 +137,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRequisition }) =
         
         {/* Subtle Top Kicker */}
         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#c7b299] animate-pulse" />
           <span className="text-[10px] font-light tracking-[0.28em] text-[#c7b299] uppercase">
             Commercial Visual Soundstage & Private Concierge
           </span>
@@ -211,7 +210,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRequisition }) =
           
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-red-500/30 text-[10px] font-mono tracking-wider text-red-400 uppercase">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
+              <span className="w-2 h-2 rounded-full bg-red-500" />
               <span>REC // 8K RAW</span>
             </span>
             <span className="text-[11px] font-mono text-white/50 hidden md:inline-block tracking-widest">

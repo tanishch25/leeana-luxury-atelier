@@ -163,7 +163,7 @@ export function App() {
           </div>
         )}
 
-        {/* Dedicated Opportunities & Casting Call View */}
+        {/* Dedicated Opportunities & Talent View */}
         {activePage === 'opportunities' && (
           <div className="animate-in fade-in duration-500 pt-8">
             <ConciergePage

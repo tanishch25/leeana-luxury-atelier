@@ -6,7 +6,6 @@ import {
   ChevronRight,
   Phone,
   Star,
-  Sparkles,
   ArrowRight,
   Mail,
 } from 'lucide-react'
@@ -237,13 +236,13 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition,
     <div className="pt-20 sm:pt-24 md:pt-28 pb-20 md:pb-28 px-4 sm:px-8 md:px-12 max-w-[1680px] mx-auto relative z-10 text-white space-y-12 md:space-y-16">
       
       {/* ========================================================= */}
-      {/* 1. WHAT WE DO — BESPOKE PRODUCTIONS & CONCIERGE           */}
+      {/* 1. BESPOKE PRODUCTIONS & CONCIERGE                        */}
       {/* ========================================================= */}
       <section>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 pb-8 border-b border-white/[0.08]">
           <div className="space-y-1.5">
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-              What We Do · Productions & Concierge
+              Concierge · Luxury Brand Productions
             </h1>
             <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
               Curated luxury brand film productions, archival talent casting, haute joaillerie direction, and confidential advisory.
@@ -392,7 +391,6 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition,
               href="#opportunities"
               className="apple-press inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 bg-white/[0.04] text-xs font-light tracking-[0.16em] uppercase text-white hover:bg-white hover:text-black transition-all cursor-pointer backdrop-blur-md w-fit"
             >
-              <Sparkles className="w-3.5 h-3.5" />
               <span>Join As A Model</span>
             </a>
           </div>
@@ -507,88 +505,122 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({ onOpenRequisition,
 
 
       {/* ========================================================= */}
-      {/* 5. OPPORTUNITIES & CAREERS — JOIN THE LEEANA ROSTER       */}
+      {/* 5. OPPORTUNITIES — JOIN THE FACES OF LEEANA               */}
       {/* ========================================================= */}
       <section id="opportunities" className="border-t border-white/[0.08] pt-12 md:pt-16 scroll-mt-28">
-        <div className="rounded-[30px] sm:rounded-[36px] border border-white/[0.14] bg-gradient-to-b from-[#0b0b12] to-[#060609] p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-2xl">
-          {/* Ambient Lighting Accents */}
-          <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-white/[0.04] blur-[120px] rounded-full pointer-events-none" />
-          <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/35 to-transparent pointer-events-none" />
+        <div className="rounded-[30px] sm:rounded-[36px] border border-[#c7b299]/30 bg-gradient-to-br from-[#120e0b] via-[#0d0d14] to-[#08080c] p-6 sm:p-10 md:p-14 relative overflow-hidden shadow-[0_24px_80px_-20px_rgba(199,178,153,0.15)]">
+          {/* Rich Photographic Editorial Ambiance (Zero Monochromatic Look) */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <img
+              src="/assets/lookbook_fashion_silk.jpg"
+              alt="Editorial Haute Texture"
+              className="w-full h-full object-cover object-center opacity-20 filter contrast-125 saturate-150 scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0d0907] via-[#0d0907]/90 to-[#08080c]/85" />
+            <div className="absolute top-0 right-0 w-[550px] h-[350px] bg-gradient-to-b from-[#d4af37]/15 to-transparent blur-[110px]" />
+            <div className="absolute bottom-0 left-0 w-[450px] h-[300px] bg-[#9a7b4f]/15 blur-[120px]" />
+            <div className="absolute top-0 inset-x-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#c7b299]/50 to-transparent" />
+          </div>
 
-          <div className="relative z-10 max-w-4xl space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] border border-white/20 backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-white" />
-              <span className="text-[10px] sm:text-xs uppercase tracking-[0.22em] text-white font-medium">
-                Careers & Open Casting Call
-              </span>
-            </div>
-
-            <div className="space-y-2">
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-[1.05]">
-                Opportunities · Join the Faces of Leeana
-              </h2>
-              <p className="text-white/75 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-3xl">
-                We are actively scouting emerging and professional models, runway muses, fashion stylists, and creative visionaries to join the prestigious Leeana talent network. Headline premier brand shoots, haute joaillerie films, and couture campaigns.
-              </p>
-            </div>
-
-            {/* Opportunity Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-                <h3 className="font-display text-sm sm:text-base text-white font-medium mb-1">
-                  Commercial & Runway
-                </h3>
-                <p className="text-xs text-white/60 font-light leading-relaxed">
-                  Headline campaigns for top luxury labels, designer bridal ateliers, and international commercial brands.
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Content (7 Cols) */}
+            <div className="lg:col-span-7 space-y-6">
+              <div className="space-y-3">
+                <span className="text-[11px] sm:text-xs uppercase tracking-[0.24em] text-[#c7b299] font-medium">
+                  Talent Representation
+                </span>
+                <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight leading-[1.05]">
+                  Opportunities · Join the Faces of Leeana
+                </h2>
+                <p className="text-white/80 text-sm sm:text-base md:text-lg font-light leading-relaxed max-w-2xl">
+                  We are actively scouting emerging and established models, runway muses, fashion stylists, and creative visionaries to join the prestigious Leeana talent network. Headline premier brand shoots, haute joaillerie films, and couture campaigns.
                 </p>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-                <h3 className="font-display text-sm sm:text-base text-white font-medium mb-1">
-                  Bangalore Soundstage
-                </h3>
-                <p className="text-xs text-white/60 font-light leading-relaxed">
-                  Direct work with state-of-the-art RED 8K cinema optics, specialized macro lighting, and expert stylists.
-                </p>
+              {/* Opportunity Pillars */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 pt-2">
+                <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.12] bg-white/[0.04] backdrop-blur-md hover:border-[#c7b299]/40 transition-colors">
+                  <span className="text-[10px] uppercase tracking-widest text-[#c7b299] block mb-1 font-mono">Discipline 01</span>
+                  <h3 className="font-display text-sm sm:text-base text-white font-medium mb-1">
+                    Commercial & Runway
+                  </h3>
+                  <p className="text-xs text-white/65 font-light leading-relaxed">
+                    Headline campaigns for top luxury labels, designer bridal ateliers, and commercial brands.
+                  </p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.12] bg-white/[0.04] backdrop-blur-md hover:border-[#c7b299]/40 transition-colors">
+                  <span className="text-[10px] uppercase tracking-widest text-[#c7b299] block mb-1 font-mono">Discipline 02</span>
+                  <h3 className="font-display text-sm sm:text-base text-white font-medium mb-1">
+                    Bangalore Soundstage
+                  </h3>
+                  <p className="text-xs text-white/65 font-light leading-relaxed">
+                    Direct work with RED 8K cinema optics, specialized macro lighting, and expert stylists.
+                  </p>
+                </div>
+
+                <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.12] bg-white/[0.04] backdrop-blur-md hover:border-[#c7b299]/40 transition-colors">
+                  <span className="text-[10px] uppercase tracking-widest text-[#c7b299] block mb-1 font-mono">Discipline 03</span>
+                  <h3 className="font-display text-sm sm:text-base text-white font-medium mb-1">
+                    Open Representation
+                  </h3>
+                  <p className="text-xs text-white/65 font-light leading-relaxed">
+                    Flexible agency representation, competitive commission rates, and direct portfolio placement.
+                  </p>
+                </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
-                <h3 className="font-display text-sm sm:text-base text-white font-medium mb-1">
-                  Open Representation
-                </h3>
-                <p className="text-xs text-white/60 font-light leading-relaxed">
-                  Flexible agency representation, competitive commission rates, and direct portfolio placement across luxury media.
-                </p>
+              {/* Action Triggers */}
+              <div className="pt-2 flex flex-wrap items-center gap-3.5">
+                <button
+                  onClick={() => onOpenRequisition('Model Roster Application: New Talent Representation')}
+                  className="apple-press px-8 sm:px-9 py-4 rounded-full bg-white hover:bg-white/90 text-black text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] transition-all flex items-center gap-2.5 shadow-xl cursor-pointer"
+                >
+                  <span>Apply To Join Roster</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+
+                <a
+                  href="https://wa.me/919916101011?text=Hello%20Leeana%20Desk,%20I%20am%20interested%20in%20joining%20the%20Leeana%20model%20roster.%20Please%20share%20representation%20guidelines."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apple-press px-7 sm:px-8 py-4 rounded-full border border-white/20 bg-white/[0.05] hover:bg-white hover:text-black text-xs sm:text-sm uppercase tracking-[0.14em] text-white transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>WhatsApp Talent Desk</span>
+                </a>
+
+                <a
+                  href="mailto:info@leeana.in?subject=Model%20Application%20-%20Leeana%20Roster&body=Hello%20Leeana%20Desk,%0A%0AName:%20%0APhone:%20%0AInstagram/Portfolio:%20%0AHeight/Experience:%20"
+                  className="apple-press px-6 py-4 rounded-full border border-white/15 text-xs sm:text-sm uppercase tracking-[0.14em] text-white/70 hover:text-white transition-all flex items-center gap-2 cursor-pointer"
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>Email Portfolio</span>
+                </a>
               </div>
             </div>
 
-            {/* Action Triggers */}
-            <div className="pt-4 flex flex-wrap items-center gap-3.5">
-              <button
-                onClick={() => onOpenRequisition('Model Roster Application: New Talent Casting')}
-                className="apple-press px-8 sm:px-9 py-4 rounded-full bg-white hover:bg-white/90 text-black text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] transition-all flex items-center gap-2.5 shadow-xl cursor-pointer"
-              >
-                <span>Apply To Join Roster</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-
-              <a
-                href="https://wa.me/919916101011?text=Hello%20Leeana%20Casting%20Desk,%20I%20am%20interested%20in%20joining%20the%20Leeana%20model%20roster.%20Please%20share%20casting%20guidelines."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="apple-press px-7 sm:px-8 py-4 rounded-full border border-white/20 bg-white/[0.04] hover:bg-white hover:text-black text-xs sm:text-sm uppercase tracking-[0.14em] text-white transition-all flex items-center gap-2 cursor-pointer backdrop-blur-md"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Casting Desk</span>
-              </a>
-
-              <a
-                href="mailto:info@leeana.in?subject=Model%20Casting%20Application%20-%20Leeana%20Roster&body=Hello%20Leeana%20Casting%20Desk,%0A%0AName:%20%0APhone:%20%0AInstagram/Portfolio:%20%0AHeight/Experience:%20"
-                className="apple-press px-6 py-4 rounded-full border border-white/15 text-xs sm:text-sm uppercase tracking-[0.14em] text-white/70 hover:text-white transition-all flex items-center gap-2 cursor-pointer"
-              >
-                <Mail className="w-4 h-4" />
-                <span>Email Portfolio</span>
-              </a>
+            {/* Right Editorial Showcase Card (5 Cols) */}
+            <div className="lg:col-span-5 hidden sm:block">
+              <div className="relative rounded-[24px] overflow-hidden aspect-[4/5] border border-[#c7b299]/30 shadow-2xl group">
+                <img
+                  src="/assets/editorial-fashion-4.jpg"
+                  alt="Leeana Model Talent Showcase"
+                  className="w-full h-full object-cover object-top filter saturate-[1.15] contrast-[1.08] transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 inset-x-0 p-6 space-y-1">
+                  <span className="text-[10px] uppercase tracking-[0.24em] text-[#c7b299] font-medium">
+                    Editorial Portfolio
+                  </span>
+                  <h4 className="font-display text-xl text-white font-light">
+                    Commercial & Couture Roster
+                  </h4>
+                  <p className="text-xs text-white/70 font-light">
+                    Soundstage shoots, runway engagements & luxury editorial campaigns.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
