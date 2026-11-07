@@ -35,21 +35,21 @@ const SPECIALIZATIONS: SpecItem[] = [
   },
   {
     id: 'culinary',
-    title: 'Cafe & Culinary Atmosphere Shoots',
-    subtitle: 'Artisanal Dining & Cafe Architecture Cinematography',
+    title: 'Artisanal Gastronomy & Culinary Shoots',
+    subtitle: 'Boutique Cafes, Fine Dining & Gourmet Confectionery',
     description:
-      'Commercial cinema shoots capturing boutique cafe aesthetics, luxury dining atmospheres, and artisanal gastronomy that drive viral culinary engagement.',
-    image: '/assets/reels/reel_1_thumb.jpg',
-    deliverables: ['Viral Cafe Reels', 'Interior Ambience Stills', 'Menu Master Cinema'],
+      'High-production cinema direction capturing artisanal cafe atmospheres, fine dining gastronomy, sommelier cellars, and culinary artistry designed for viral retention.',
+    image: '/assets/svc-cafe-DNXzNrQx.jpg',
+    deliverables: ['Atmospheric Cafe Reels', 'Menu Gastronomy Stills', 'Sommelier Cellar Cinema'],
   },
   {
     id: 'commercial',
-    title: 'Commercial Brand & Television Shoots',
-    subtitle: 'High-Ticket Brand Films & Television Commercials',
+    title: 'Commercial Brand & Boutique Shoots',
+    subtitle: 'High-Ticket Brand Campaigns & Luxury Retail Storefronts',
     description:
-      'Holistic brand positioning and cinematic commercial films that elevate market authority, dominate digital and TV broadcast, and establish prestige.',
-    image: '/assets/lookbook_clean_villa.jpg',
-    deliverables: ['Omnichannel TVC', 'Commercial Motion Cut', 'Sound Design Mix'],
+      'Holistic brand positioning and cinematic commercial films that elevate market authority, showcase luxury flagship storefronts, and establish commercial prestige.',
+    image: '/assets/svc-brands-EG9FRxhs.jpg',
+    deliverables: ['Omnichannel TVC', 'Commercial Motion Cut', 'Flagship Showcase'],
   },
   {
     id: 'interiors',

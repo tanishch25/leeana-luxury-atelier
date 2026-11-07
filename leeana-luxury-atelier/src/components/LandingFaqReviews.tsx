@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { Star, Plus } from 'lucide-react'
-import { TESTIMONIALS_DATA, FAQ_DATA } from './ConciergePage'
+import { Plus } from 'lucide-react'
+import { FAQ_DATA } from './ConciergePage'
+import { ReviewsShowcase } from './ReviewsShowcase'
 
 export const LandingFaqReviews: React.FC = () => {
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0)
@@ -8,67 +9,9 @@ export const LandingFaqReviews: React.FC = () => {
   return (
     <div className="relative w-full max-w-[1680px] mx-auto px-4 sm:px-8 md:px-12 py-14 md:py-20 space-y-16 md:space-y-20 z-10 text-white">
       
-      {/* 1. Client Reviews / Attestations (Real Reviews) */}
-      <section id="landing-reviews">
-        <div className="pb-6 border-b border-white/[0.08] space-y-1.5">
-          <span className="text-[10px] uppercase tracking-[0.24em] text-white/50 block font-light">
-            Client Attestations · Verified 5.0
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
-            Voices of Our Patrons
-          </h2>
-          <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-            Reflections from commercial brand partners, luxury retail leaders, and jewellery curators who partner with Leeana Fashion Concierge.
-          </p>
-        </div>
-
-        {/* 5 Real Testimonial Plates */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4.5 pt-8">
-          {TESTIMONIALS_DATA.map((item) => (
-            <div
-              key={item.id}
-              className="relative p-6 sm:p-7 rounded-[26px] border border-white/[0.1] bg-[#08080b]/95 hover:border-white/30 transition-all duration-500 shadow-2xl flex flex-col justify-between overflow-hidden group"
-            >
-              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-1">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 text-[#F5C042] fill-[#F5C042] filter drop-shadow-[0_0_6px_rgba(245,192,66,0.6)]"
-                    />
-                  ))}
-                  <span className="ml-2 text-[10px] text-[#F5C042] tracking-wider uppercase font-medium">
-                    5.0 Verified
-                  </span>
-                </div>
-
-                <p className="font-serif text-sm sm:text-base text-white/90 font-light italic leading-relaxed">
-                  "{item.text}"
-                </p>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-white/[0.08] flex items-center gap-3.5">
-                <div className="relative w-11 h-11 rounded-full overflow-hidden border border-[#F5C042]/30 shrink-0 shadow-lg ring-1 ring-[#F5C042]/20">
-                  <img
-                    src={item.img}
-                    alt={item.name}
-                    className="w-full h-full object-cover filter brightness-[0.98]"
-                  />
-                </div>
-                <div>
-                  <h4 className="font-display text-sm sm:text-base text-white font-medium tracking-tight">
-                    {item.name}
-                  </h4>
-                  <span className="text-[11px] text-white/50 font-light block mt-0.5">
-                    {item.role}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+      {/* 1. Dynamic Animated Client Reviews / Attestations Showcase */}
+      <section id="landing-reviews" className="scroll-mt-32">
+        <ReviewsShowcase />
       </section>
 
       {/* 2. Frequently Asked Questions */}
