@@ -48,7 +48,7 @@ const SPECIALIZATIONS: SpecItem[] = [
     subtitle: 'High-Ticket Brand Campaigns & Luxury Retail Storefronts',
     description:
       'Holistic brand positioning and cinematic commercial films that elevate market authority, showcase luxury flagship storefronts, and establish commercial prestige.',
-    image: '/assets/svc-brands-EG9FRxhs.jpg',
+    image: '/assets/lookbook_clean_couture_suit.jpg',
     deliverables: ['Omnichannel TVC', 'Commercial Motion Cut', 'Flagship Showcase'],
   },
   {

@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { ArrowUpRight, MapPin, Mail, MessageCircle, Phone } from 'lucide-react'
 
-export const Footer: React.FC<{ onOpenRequisition: (mandate?: string) => void }> = ({ onOpenRequisition }) => {
+export const Footer: React.FC<{
+  onOpenRequisition: (mandate?: string) => void
+  onNavigateOpportunities?: () => void
+}> = ({ onOpenRequisition, onNavigateOpportunities }) => {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -103,7 +106,7 @@ export const Footer: React.FC<{ onOpenRequisition: (mandate?: string) => void }>
                 <ArrowUpRight className="w-4 h-4 text-white/90 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <button
-                onClick={() => onOpenRequisition('Model Roster Application: New Talent Representation')}
+                onClick={onNavigateOpportunities || (() => onOpenRequisition('Model Roster Application: New Talent Representation'))}
                 className="apple-press inline-flex items-center gap-1.5 text-xs sm:text-sm font-light tracking-widest uppercase text-white/70 hover:text-white cursor-pointer w-fit"
               >
                 <span>Model Opportunities & Representation</span>

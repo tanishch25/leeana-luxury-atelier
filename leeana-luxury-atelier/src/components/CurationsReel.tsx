@@ -112,7 +112,7 @@ const MAISONS: MaisonVertical[] = [
     italicPart: 'Campaigns',
     category: 'Bangalore Studio 01',
     subtitle: 'Complete 4K/8K commercial campaign direction, model casting, lookbooks, and DaVinci color grading.',
-    image: '/assets/svc-brands-EG9FRxhs.jpg',
+    image: '/assets/lookbook_clean_couture_suit.jpg',
     specs: 'End-to-End // Studio & Location',
   },
 ]

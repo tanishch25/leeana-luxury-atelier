@@ -266,13 +266,13 @@ const COLUMN_4_ITEMS: LookbookItem[] = [
   },
   {
     id: '25',
-    title: 'Haute Couture Boutique Storefront',
+    title: 'Luxury Editorial Haute Collection',
     category: 'Commercial Brand',
-    image: '/assets/svc-brands-EG9FRxhs.jpg',
+    image: '/assets/editorial-fashion-6.jpg',
     aspect: 'aspect-[4/5]',
-    client: 'Flagship Fashion Maison',
+    client: 'Couture Silk Atelier',
     year: '2025',
-    description: 'Omnichannel visual direction highlighting boutique window merchandising, architectural lighting, and sartorial mannequins.',
+    description: 'Omnichannel visual campaign capturing artisanal silk dresses, studio chiaroscuro lighting, and high-fashion model trio direction.',
   },
   {
     id: '26',

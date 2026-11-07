@@ -10,6 +10,7 @@ import { LookbookGallery } from './components/LookbookGallery'
 import { UnifiedCommandSuite } from './components/UnifiedCommandSuite'
 import { StudiosPage } from './components/StudiosPage'
 import { ConciergePage } from './components/ConciergePage'
+import { OpportunitiesPage } from './components/OpportunitiesPage'
 import { OurWorksSection } from './components/OurWorksSection'
 import { LandingFaqReviews } from './components/LandingFaqReviews'
 import { Footer } from './components/Footer'
@@ -159,24 +160,27 @@ export function App() {
         {/* Dedicated Insane Aesthetic Concierge View */}
         {activePage === 'concierge' && (
           <div className="animate-in fade-in duration-500 pt-8">
-            <ConciergePage onOpenRequisition={(mandate) => handleOpenRequisition(mandate)} />
+            <ConciergePage
+              onOpenRequisition={(mandate) => handleOpenRequisition(mandate)}
+              onNavigateToOpportunities={() => handleNavigate('opportunities')}
+            />
           </div>
         )}
 
-        {/* Dedicated Opportunities & Talent View */}
+        {/* Dedicated Opportunities & Talent View (Separate Dedicated Page) */}
         {activePage === 'opportunities' && (
           <div className="animate-in fade-in duration-500 pt-8">
-            <ConciergePage
-              onOpenRequisition={(mandate) => handleOpenRequisition(mandate)}
-              initialScrollTo="opportunities"
-            />
+            <OpportunitiesPage />
           </div>
         )}
 
       </main>
 
       {/* 3. Sculptural Monumental Footer */}
-      <Footer onOpenRequisition={() => handleOpenRequisition()} />
+      <Footer
+        onOpenRequisition={() => handleOpenRequisition()}
+        onNavigateOpportunities={() => handleNavigate('opportunities')}
+      />
 
       {/* Floating Apple-Style Back-to-Top Capsule (Offset on mobile so it doesn't clash with bottom dock) */}
       <button
