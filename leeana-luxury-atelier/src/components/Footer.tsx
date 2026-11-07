@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { ArrowUpRight, MapPin, Mail, MessageCircle, Phone } from 'lucide-react'
 
-export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequisition }) => {
+export const Footer: React.FC<{ onOpenRequisition: (mandate?: string) => void }> = ({ onOpenRequisition }) => {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -50,8 +50,8 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               </div>
               <div className="flex items-center gap-3.5">
                 <Mail className="w-5 h-5 text-white/70 shrink-0" />
-                <a href="mailto:Info@leeana.in" className="hover:text-white transition-colors underline-offset-4 hover:underline">
-                  Info@leeana.in
+                <a href="mailto:info@leeana.in" className="hover:text-white transition-colors underline-offset-4 hover:underline">
+                  info@leeana.in
                 </a>
               </div>
             </div>
@@ -96,15 +96,19 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
 
             <div className="pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <button
-                onClick={onOpenRequisition}
+                onClick={() => onOpenRequisition('Direct Concierge Desk')}
                 className="apple-press inline-flex items-center gap-2 text-sm sm:text-base font-light tracking-[0.16em] uppercase text-white hover:text-white/80 cursor-pointer w-fit group"
               >
-                <span className="whitespace-nowrap">Direct Services Desk</span>
+                <span className="whitespace-nowrap">Direct Concierge Desk</span>
                 <ArrowUpRight className="w-4 h-4 text-white/90 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
-              <span className="text-xs sm:text-sm font-light tracking-widest uppercase text-white/45">
-                DISCREET & ENCRYPTED
-              </span>
+              <button
+                onClick={() => onOpenRequisition('Model Roster Application: New Talent Casting')}
+                className="apple-press inline-flex items-center gap-1.5 text-xs sm:text-sm font-light tracking-widest uppercase text-white/70 hover:text-white cursor-pointer w-fit"
+              >
+                <span>Model Casting & Opportunities</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-white/70" />
+              </button>
             </div>
 
           </div>
@@ -124,15 +128,15 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
             Leeana Fashion Concierge. All Rights Limited.
           </div>
 
-          {/* Social Channels Icons (Instagram, LinkedIn, YouTube, Facebook, WhatsApp) */}
+          {/* Social Channels Icons with Official Company Brand Colors */}
           <div className="flex items-center gap-3 sm:gap-4 flex-wrap justify-center">
-            {/* Instagram */}
+            {/* Instagram (Official Brand Color) */}
             <a
               href="https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
-              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[#E1306C]/40 bg-[#E1306C]/10 text-[#E1306C] hover:bg-[#E1306C] hover:text-white hover:border-[#E1306C] hover:shadow-[0_0_24px_rgba(225,48,108,0.55)] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg"
             >
               <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
@@ -141,13 +145,13 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               </svg>
             </a>
 
-            {/* LinkedIn (Verified Active Link) */}
+            {/* LinkedIn (Official Brand Color) */}
             <a
               href="https://www.linkedin.com/search/results/all/?keywords=leeana%20fashion%20concierge"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[#0A66C2]/40 bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white hover:border-[#0A66C2] hover:shadow-[0_0_24px_rgba(10,102,194,0.55)] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg"
             >
               <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -156,13 +160,13 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               </svg>
             </a>
 
-            {/* YouTube */}
+            {/* YouTube (Official Brand Color) */}
             <a
               href="https://youtube.com/@leeanafashion?si=i4mlCQfSsIdN8CLu"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="YouTube"
-              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[#FF0000]/40 bg-[#FF0000]/10 text-[#FF0000] hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] hover:shadow-[0_0_24px_rgba(255,0,0,0.55)] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg"
             >
               <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/>
@@ -170,24 +174,24 @@ export const Footer: React.FC<{ onOpenRequisition: () => void }> = ({ onOpenRequ
               </svg>
             </a>
 
-            {/* Facebook */}
+            {/* Facebook (Official Brand Color) */}
             <a
               href="https://www.facebook.com/share/19eBPQMB1a/?mibextid=wwXIfr"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[#1877F2]/40 bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] hover:shadow-[0_0_24px_rgba(24,119,242,0.55)] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg"
             >
               <svg className="w-4.5 h-4.5 sm:w-5 sm:h-5 fill-none stroke-current" viewBox="0 0 24 24" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
               </svg>
             </a>
 
-            {/* WhatsApp */}
+            {/* WhatsApp (Official Brand Color) */}
             <button
               onClick={handleWhatsApp}
               aria-label="WhatsApp Desk"
-              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-white/[0.04] hover:border-white hover:bg-white hover:text-black text-white/90 flex items-center justify-center transition-all cursor-pointer shadow-lg"
+              className="apple-press w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366] hover:text-white hover:border-[#25D366] hover:shadow-[0_0_24px_rgba(37,211,102,0.55)] flex items-center justify-center transition-all duration-300 cursor-pointer shadow-lg"
             >
               <MessageCircle className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
             </button>

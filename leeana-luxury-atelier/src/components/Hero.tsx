@@ -35,11 +35,11 @@ const SLIDES: HeroSlide[] = [
   },
   {
     id: '03',
-    tag: 'Culinary & Cafe Architecture',
-    title: 'Atmospheric Cinema For Premium Dining',
-    subtitle: 'Commercial soundstage and on-location luxury brand shoots capturing boutique cafe architecture, artisanal dining, and viral reels.',
-    poster: '/assets/reels/reel_1_thumb.jpg',
-    ctaText: 'Explore Productions',
+    tag: 'Commercial & Automotive Cinema',
+    title: 'Exotic Marques & High-Performance Shoots',
+    subtitle: 'High-speed tracking optics, anamorphic flares, and cinematic visual narratives for premier automotive and commercial brands.',
+    poster: '/assets/hero_supercar_steady_4k.jpg',
+    ctaText: 'Commission Shoot',
   },
   {
     id: '04',

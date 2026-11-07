@@ -75,11 +75,11 @@ export const UnifiedCommandSuite: React.FC<UnifiedCommandSuiteProps> = ({ onOpen
 
           {/* Direct Email */}
           <a
-            href="mailto:Info@leeana.in"
+            href="mailto:info@leeana.in"
             className="apple-press px-6 py-4 rounded-full border border-white/15 hover:border-white text-xs font-light tracking-[0.14em] uppercase text-white/70 hover:text-white transition-all flex items-center gap-2 cursor-pointer"
           >
             <Mail className="w-3.5 h-3.5" />
-            <span>Info@leeana.in</span>
+            <span>info@leeana.in</span>
           </a>
         </div>
 

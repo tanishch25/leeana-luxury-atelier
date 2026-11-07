@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowUpRight, Menu, X, Film } from 'lucide-react'
 
-export type NavPage = 'home' | 'studios' | 'specializations' | 'lookbook' | 'concierge'
+export type NavPage = 'home' | 'studios' | 'specializations' | 'lookbook' | 'concierge' | 'opportunities'
 
 interface NavbarProps {
   activePage: NavPage
@@ -44,7 +44,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'studios', label: 'Studios' },
     { id: 'specializations', label: 'Specializations' },
     { id: 'lookbook', label: 'Lookbook' },
-    { id: 'concierge', label: 'Services' },
+    { id: 'concierge', label: 'What We Do' },
+    { id: 'opportunities', label: 'Opportunities' },
   ]
 
   const handleLinkClick = (page: NavPage) => {

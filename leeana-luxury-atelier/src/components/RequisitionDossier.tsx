@@ -46,7 +46,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
     const { subject, body } = getEmailContent()
     
     // Direct Gmail web compose link
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=Info@leeana.in&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@leeana.in&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
     
     // Open Gmail directly in a new tab
     const newWindow = window.open(gmailUrl, '_blank')
@@ -54,7 +54,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
     // Fallback: if popup blocked or client prefers native mailto
     if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
       setTimeout(() => {
-        window.location.href = `mailto:Info@leeana.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+        window.location.href = `mailto:info@leeana.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
       }, 300)
     }
   }
@@ -99,7 +99,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
               Appointment Dispatched
             </h3>
             <p className="text-sm text-white/75 max-w-md mx-auto font-light leading-relaxed">
-              Your appointment booking has been initiated directly to Gmail at <span className="text-white font-medium">Info@leeana.in</span>. Our board desk will confirm within 4 operational hours.
+              Your appointment booking has been initiated directly to Gmail at <span className="text-white font-medium">info@leeana.in</span>. Our board desk will confirm within 4 operational hours.
             </p>
             <div className="pt-4 flex flex-col sm:flex-row justify-center gap-3">
               <button

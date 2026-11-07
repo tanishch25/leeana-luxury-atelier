@@ -51,7 +51,7 @@ export const CommandAuthoritySection: React.FC<CommandAuthoritySectionProps> = (
             </button>
 
             <a
-              href="mailto:Info@leeana.in"
+              href="mailto:info@leeana.in"
               className="apple-press px-7 sm:px-8 py-4 sm:py-4.5 rounded-full border border-white/20 text-xs sm:text-sm font-light tracking-[0.14em] uppercase text-white hover:border-white hover:bg-white/10 transition-all flex items-center gap-2.5 bg-white/[0.04] backdrop-blur-md cursor-pointer"
             >
               <span>Direct Inquiry</span>

@@ -163,6 +163,16 @@ export function App() {
           </div>
         )}
 
+        {/* Dedicated Opportunities & Casting Call View */}
+        {activePage === 'opportunities' && (
+          <div className="animate-in fade-in duration-500 pt-8">
+            <ConciergePage
+              onOpenRequisition={(mandate) => handleOpenRequisition(mandate)}
+              initialScrollTo="opportunities"
+            />
+          </div>
+        )}
+
       </main>
 
       {/* 3. Sculptural Monumental Footer */}

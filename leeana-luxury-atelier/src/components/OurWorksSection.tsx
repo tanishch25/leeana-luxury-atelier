@@ -639,7 +639,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
             onClick={onNavigateServices}
             className="apple-press group cursor-pointer inline-flex items-center gap-3.5 px-9 sm:px-12 py-4 sm:py-4.5 rounded-full bg-white text-black font-semibold text-xs sm:text-sm tracking-[0.18em] uppercase hover:bg-white/95 transition-all duration-300 shadow-[0_10px_35px_rgba(255,255,255,0.35)] hover:scale-105 active:scale-95"
           >
-            <span>Explore Services</span>
+            <span>Explore What We Do</span>
             <ArrowUpRight className="w-4 h-4 text-black transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </button>
         </div>
