@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Star, ChevronLeft, ChevronRight, ExternalLink, Quote } from 'lucide-react'
+import React, { useEffect, useState } from 'react'
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
 
 export interface TestimonialItem {
   id: string
@@ -53,168 +53,231 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
   },
 ]
 
+const GOOGLE_REVIEWS_URL =
+  'https://www.google.com/search?q=leeana+fashion+concierge+bengaluru+reviews'
+
+const STACK_AVATARS = [
+  { src: '/assets/testimonial-1-DkQAF5yQ.jpg', alt: 'Deepa' },
+  { src: '/assets/testimonial-3-m8_IuKUv.jpg', alt: 'Summaya' },
+  { src: '/assets/testimonial-2-DGKqWevx.jpg', alt: 'Tulasi Devi' },
+]
+
 export const ReviewsShowcase: React.FC = () => {
-  const [activeIdx, setActiveIdx] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-  const [isFading, setIsFading] = useState(false)
+  const [startIndex, setStartIndex] = useState(0)
+  const [direction, setDirection] = useState<'next' | 'prev'>('next')
+  const [phase, setPhase] = useState<'idle' | 'out' | 'in'>('idle')
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(() =>
+    typeof window !== 'undefined'
+      ? window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      : false
+  )
 
-  const activeReview = TESTIMONIALS_DATA[activeIdx]
-
-  // Calm auto-advance timer (5.5 seconds)
   useEffect(() => {
-    if (isPaused) return
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
-    const timer = setInterval(() => {
-      handleNext()
-    }, 5500)
-
-    return () => clearInterval(timer)
-  }, [isPaused, activeIdx])
-
-  const transitionTo = (newIdx: number) => {
-    setIsFading(true)
-    setTimeout(() => {
-      setActiveIdx(newIdx)
-      setIsFading(false)
-    }, 220)
+  const triggerStep = (step: number, dir: 'next' | 'prev') => {
+    if (phase !== 'idle') return
+    if (prefersReducedMotion) {
+      setDirection(dir)
+      setStartIndex((prev) => (prev + step + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length)
+      return
+    }
+    setDirection(dir)
+    setPhase('out')
+    window.setTimeout(() => {
+      setStartIndex((prev) => (prev + step + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length)
+      setPhase('in')
+      window.setTimeout(() => setPhase('idle'), 260)
+    }, 140)
   }
 
-  const handlePrev = () => {
-    const prev = (activeIdx - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length
-    transitionTo(prev)
-  }
+  const handlePrev = () => triggerStep(-1, 'prev')
+  const handleNext = () => triggerStep(1, 'next')
 
-  const handleNext = () => {
-    const next = (activeIdx + 1) % TESTIMONIALS_DATA.length
-    transitionTo(next)
+  const visibleReviews = [0, 1, 2].map(
+    (offset) => TESTIMONIALS_DATA[(startIndex + offset) % TESTIMONIALS_DATA.length]
+  )
+
+  const getMotionStyle = (cardOrder: number): React.CSSProperties => {
+    if (prefersReducedMotion) {
+      return {
+        transitionProperty: 'opacity',
+        transitionDuration: '200ms',
+        transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+        opacity: phase === 'out' ? 0.35 : 1,
+      }
+    }
+
+    const offsetPx = direction === 'next' ? 16 : -16
+    const delayMs = phase === 'in' ? cardOrder * 36 : 0
+
+    if (phase === 'out') {
+      return {
+        opacity: 0,
+        transform: `translate3d(${-offsetPx}px, 0, 0)`,
+        transitionProperty: 'opacity, transform',
+        transitionDuration: '140ms',
+        transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+        willChange: 'opacity, transform',
+      }
+    }
+
+    return {
+      opacity: 1,
+      transform: 'translate3d(0, 0, 0)',
+      transitionProperty: 'opacity, transform',
+      transitionDuration: '260ms',
+      transitionDelay: `${delayMs}ms`,
+      transitionTimingFunction: 'cubic-bezier(0.23, 1, 0.32, 1)',
+      willChange: 'opacity, transform',
+    }
   }
 
   return (
-    <div
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-      className="space-y-6"
-    >
-      {/* Header Deck: Clean Title & Calm Navigation Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-white/[0.08]">
-        <div className="space-y-1.5">
-          <span className="text-[10px] uppercase tracking-[0.24em] text-white/50 block font-light">
-            Patron Reflections · Bengaluru & Global
-          </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-light text-white tracking-tight">
-            Voices of Our Patrons
-          </h2>
-          <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-            Direct reflections from commercial brand partners, luxury retail leaders, and jewellery curators who partner with Leeana Fashion Concierge.
-          </p>
-        </div>
-
-        {/* Carousel Progress Indicators & Arrow Buttons */}
-        <div className="flex items-center gap-4 shrink-0">
-          <div className="flex items-center gap-1.5">
-            {TESTIMONIALS_DATA.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => transitionTo(idx)}
-                aria-label={`Go to review ${idx + 1}`}
-                className={`h-[2px] transition-all duration-400 rounded-full cursor-pointer ${
-                  idx === activeIdx ? 'w-7 bg-white' : 'w-2 bg-white/20 hover:bg-white/50'
-                }`}
-              />
-            ))}
+    <div className="max-w-7xl mx-auto px-6 md:px-10">
+      {/* Row 1: Editorial Intro (Left) + First Two Review Bento Cards (Right) */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
+        {/* Left Header Block */}
+        <div className="lg:col-span-4 flex flex-col justify-between py-2 lg:pr-4">
+          <div className="space-y-5">
+            <h2 className="font-couture text-4xl sm:text-5xl lg:text-[3.35rem] leading-[1.03] tracking-[-0.03em] text-white">
+              What Our Patrons Say
+            </h2>
+            <p className="text-[15px] text-white/60 leading-relaxed max-w-xs font-sans">
+              Genuine feedback from fashion houses, fine jewellery curators, and commercial partners who trust our studio.
+            </p>
           </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handlePrev}
-              aria-label="Previous Review"
-              className="apple-press w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/15 bg-white/[0.03] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              onClick={handleNext}
-              aria-label="Next Review"
-              className="apple-press w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/15 bg-white/[0.03] hover:bg-white hover:text-black text-white flex items-center justify-center transition-all cursor-pointer backdrop-blur-md shadow-md"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Review Card (Subtle, Clean Monochrome Luxury — Zero Gold Enclosure) */}
-      <div className="relative rounded-[24px] sm:rounded-[32px] border border-white/10 bg-[#08080b] p-6 sm:p-10 md:p-14 overflow-hidden shadow-2xl">
-        {/* Subtle Hairline Top Edge & Soft Radial Ambient Texture */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
-        <div className="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-white/[0.02] blur-[80px] pointer-events-none" />
-
-        {/* Large Decorative Minimalist Watermark */}
-        <div className="absolute right-6 sm:right-10 top-6 sm:top-8 font-serif text-[90px] sm:text-[140px] md:text-[180px] text-white/[0.02] select-none pointer-events-none leading-none font-bold">
-          “
-        </div>
-
-        <div className="relative z-10 space-y-6 sm:space-y-8 max-w-4xl">
-          {/* Subtle Star Rating with Warm Champagne Accent */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#e0cfbe] fill-[#e0cfbe]"
-                />
+          {/* Avatar Stack + Monochrome Count Badge + Direct Google Link */}
+          <div className="pt-8 lg:pt-10 flex flex-col items-start gap-4">
+            <div className="flex items-center">
+              {STACK_AVATARS.map((avatar, idx) => (
+                <div
+                  key={avatar.alt}
+                  className={`w-11 h-11 rounded-full overflow-hidden border-2 border-[#030303] bg-[#0b0b0f] ${
+                    idx > 0 ? '-ml-3' : ''
+                  }`}
+                >
+                  <img
+                    src={avatar.src}
+                    alt={avatar.alt}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
               ))}
-            </div>
-            <span className="text-[11px] sm:text-xs uppercase tracking-[0.2em] text-white/60 font-light font-mono">
-              5.0 Patron Review
-            </span>
-          </div>
-
-          {/* Calm Crossfade Editorial Quote */}
-          <blockquote
-            className={`font-display italic text-lg sm:text-2xl md:text-3xl text-white/90 font-light leading-relaxed tracking-tight transition-all duration-300 ${
-              isFading ? 'opacity-0 translate-y-1' : 'opacity-100 translate-y-0'
-            }`}
-          >
-            "{activeReview.text}"
-          </blockquote>
-
-          {/* Patron Identification & Avatar Details */}
-          <div
-            className={`pt-6 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-300 ${
-              isFading ? 'opacity-0' : 'opacity-100'
-            }`}
-          >
-            <div className="flex items-center gap-3.5 sm:gap-4">
-              <div className="relative w-11 h-11 sm:w-13 sm:h-13 rounded-full overflow-hidden border border-white/20 bg-white/[0.05] shrink-0 shadow-lg">
-                <img
-                  src={activeReview.img}
-                  alt={activeReview.name}
-                  className="w-full h-full object-cover filter brightness-[1.02]"
-                />
-              </div>
-              <div>
-                <h4 className="font-display text-base sm:text-lg text-white font-medium tracking-tight">
-                  {activeReview.name}
-                </h4>
-                <p className="text-xs text-white/50 font-light mt-0.5">
-                  {activeReview.role} · <span className="text-white/70">{activeReview.commission}</span>
-                </p>
+              <div
+                aria-label="Over 18 verified patron reviews"
+                className="-ml-3 w-11 h-11 rounded-full bg-white text-black border-2 border-[#030303] flex items-center justify-center text-[13px] font-semibold tabular-nums tracking-tight select-none"
+              >
+                18+
               </div>
             </div>
 
             <a
-              href="https://www.google.com/search?q=leeana+fashion+concierge+bengaluru+reviews"
+              href={GOOGLE_REVIEWS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="apple-press inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/[0.03] text-white/70 hover:text-white hover:border-white/30 text-xs tracking-wider uppercase font-light transition-all cursor-pointer backdrop-blur-md w-fit"
+              className="group inline-flex items-center gap-2 text-[13.5px] text-white/75 hover:text-white transition-colors duration-200 border-b border-white/15 hover:border-white/50 pb-0.5 apple-press"
             >
-              <span>View On Google</span>
-              <ExternalLink className="w-3.5 h-3.5 text-white/50" />
+              <span>Read verified reviews on Google</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white/55 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-white" />
             </a>
           </div>
+        </div>
+
+        {/* Review Card 1 */}
+        <ReviewCard item={visibleReviews[0]} style={getMotionStyle(0)} className="lg:col-span-4" />
+
+        {/* Review Card 2 */}
+        <ReviewCard item={visibleReviews[1]} style={getMotionStyle(1)} className="lg:col-span-4" />
+      </div>
+
+      {/* Row 2: Offset Review Card 3 + Editorial Portrait Tile + Circular Controls */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-7 items-center mt-6 lg:mt-7">
+        {/* Staggered Third Card */}
+        <ReviewCard
+          item={visibleReviews[2]}
+          style={getMotionStyle(2)}
+          className="lg:col-start-3 lg:col-span-4 h-full"
+        />
+
+        {/* Editorial Shoot Visual Tile */}
+        <div className="lg:col-span-4 relative overflow-hidden rounded-[24px] bg-[#09090d] border border-white/[0.1] aspect-[4/3] sm:aspect-[16/11] lg:aspect-auto lg:h-[300px]">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent z-10" />
+          <img
+            src="/assets/reviews-feature-shoot.jpg"
+            alt="Leeana Bengaluru luxury editorial session"
+            className="w-full h-full object-cover object-[center_22%] contrast-[1.03]"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+        </div>
+
+        {/* Circular Prev / Next Controls */}
+        <div className="lg:col-span-2 flex items-center justify-start lg:justify-center gap-3.5 py-2">
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous patron reviews"
+            className="w-12 h-12 rounded-full border border-white/[0.16] bg-white/[0.03] text-white/70 flex items-center justify-center hover:border-white/40 hover:bg-white/[0.09] hover:text-white transition-[background-color,border-color,color,transform] duration-200 apple-press cursor-pointer"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next patron reviews"
+            className="w-12 h-12 rounded-full border border-white/85 bg-white text-black flex items-center justify-center hover:bg-neutral-200 transition-[background-color,transform] duration-200 apple-press cursor-pointer"
+          >
+            <ArrowRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
     </div>
   )
 }
+
+interface ReviewCardProps {
+  item: TestimonialItem
+  style?: React.CSSProperties
+  className?: string
+}
+
+const ReviewCard: React.FC<ReviewCardProps> = ({ item, style, className = '' }) => (
+  <article
+    style={style}
+    className={`relative rounded-[24px] bg-[#09090d]/95 backdrop-blur-md border border-white/[0.1] p-7 sm:p-8 flex flex-col justify-between min-h-[285px] lg:min-h-[300px] shadow-[0_24px_60px_rgba(0,0,0,0.65)] ${className}`}
+  >
+    <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+
+    <div className="space-y-4">
+      <div aria-hidden="true" className="font-editorial font-bold text-4xl leading-[0.8] text-white/40 select-none pt-1">
+        “
+      </div>
+      <p className="text-[14.5px] sm:text-[15px] text-white/85 leading-[1.68] font-sans">
+        {item.text}
+      </p>
+    </div>
+
+    <div className="pt-6 mt-6 border-t border-white/[0.07] flex items-center gap-3.5">
+      <div className="w-11 h-11 rounded-full overflow-hidden border border-white/15 bg-black shrink-0">
+        <img
+          src={item.img}
+          alt={item.name}
+          className="w-full h-full object-cover object-top"
+        />
+      </div>
+      <div className="min-w-0">
+        <div className="text-[15px] font-medium text-white tracking-[-0.01em] truncate">
+          {item.name}
+        </div>
+        <div className="text-[12.5px] text-white/50 tabular-nums mt-0.5">
+          5.0 / 5
+        </div>
+      </div>
+    </div>
+  </article>
+)

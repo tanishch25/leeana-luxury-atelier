@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { ArrowUpRight, Menu, X, Film } from 'lucide-react'
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ArrowUpRight } from 'lucide-react'
 
 export type NavPage = 'home' | 'studios' | 'specializations' | 'lookbook' | 'concierge' | 'opportunities'
 
@@ -18,6 +19,87 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const navBarRef = useRef<HTMLDivElement>(null)
+  const navPillRef = useRef<HTMLElement>(null)
+  const brandLogoRef = useRef<HTMLButtonElement>(null)
+  const rightActionsRef = useRef<HTMLDivElement>(null)
+
+  // Center-out initial system entrance animation using GSAP + Emil Kowalski spring/expo physics
+  useLayoutEffect(() => {
+    const mm = gsap.matchMedia()
+
+    mm.add('(prefers-reduced-motion: no-preference)', () => {
+      const navItems = navPillRef.current?.querySelectorAll('.nav-center-item')
+
+      const tl = gsap.timeline({
+        defaults: { overwrite: 'auto' },
+        onComplete: () => {
+          gsap.set(
+            [navBarRef.current, brandLogoRef.current, rightActionsRef.current, navItems],
+            { clearProps: 'clipPath,transform,opacity' }
+          )
+        },
+      })
+
+      // 1. Expand outer floating capsule outwards from exact horizontal center
+      tl.fromTo(
+        navBarRef.current,
+        {
+          clipPath: 'inset(0% 48% 0% 48% round 9999px)',
+          scaleX: 0.56,
+          scaleY: 0.94,
+          opacity: 0,
+          transformOrigin: 'center center',
+        },
+        {
+          clipPath: 'inset(0% 0% 0% 0% round 9999px)',
+          scaleX: 1,
+          scaleY: 1,
+          opacity: 1,
+          duration: 0.85,
+          ease: 'power3.out',
+        },
+        0.14
+      )
+
+      // 2. Radiate nav links from center outward (Emil choreograph: from: 'center')
+      if (navItems && navItems.length > 0) {
+        tl.fromTo(
+          navItems,
+          { opacity: 0, scale: 0.9, y: 3 },
+          {
+            opacity: 1,
+            scale: 1,
+            y: 0,
+            duration: 0.52,
+            ease: 'power3.out',
+            stagger: { amount: 0.28, from: 'center', ease: 'power2.out' },
+          },
+          0.26
+        )
+      }
+
+      // 3. Glide outer flanks (LEEANA brand mark & right CTA) smoothly outward from center
+      tl.fromTo(
+        brandLogoRef.current,
+        { opacity: 0, x: 44 },
+        { opacity: 1, x: 0, duration: 0.68, ease: 'power3.out' },
+        0.3
+      ).fromTo(
+        rightActionsRef.current,
+        { opacity: 0, x: -44 },
+        { opacity: 1, x: 0, duration: 0.68, ease: 'power3.out' },
+        0.3
+      )
+    })
+
+    mm.add('(prefers-reduced-motion: reduce)', () => {
+      gsap.fromTo(navBarRef.current, { opacity: 0 }, { opacity: 1, duration: 0.25, ease: 'power2.out' })
+    })
+
+    return () => mm.revert()
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,14 +140,15 @@ export const Navbar: React.FC<NavbarProps> = ({
     <>
       {/* Top Main Navigation Header (On mobile: visible at the start, smoothly glides up & vanishes on scroll down) */}
       <header
-        className={`fixed top-5 left-0 right-0 z-40 px-3 sm:px-6 md:px-8 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed top-5 left-0 right-0 z-40 px-3 sm:px-6 md:px-8 pointer-events-none transition-[transform,opacity] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
           isScrolled
             ? '-translate-y-28 opacity-0 md:translate-y-0 md:opacity-100'
             : 'translate-y-0 opacity-100'
         }`}
       >
         <div
-          className={`pointer-events-auto max-w-[1580px] mx-auto flex items-center justify-between px-6 sm:px-10 py-4 md:py-5 rounded-full transition-all duration-500 ${
+          ref={navBarRef}
+          className={`pointer-events-auto max-w-[1580px] mx-auto flex items-center justify-between px-6 sm:px-10 py-4 md:py-5 rounded-full transition-[background-color,border-color,box-shadow] duration-500 ${
             isScrolled
               ? 'bg-black/85 border border-white/[0.16] backdrop-blur-2xl shadow-2xl shadow-black/90'
               : 'bg-black/50 border border-white/[0.1] backdrop-blur-xl'
@@ -73,23 +156,27 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           {/* Brand Mark: LEEANA (Strictly without .IN, Same Bespoke Couture Font) */}
           <button
+            ref={brandLogoRef}
             onClick={() => handleLinkClick('home')}
             className="flex items-center gap-3 group text-left cursor-pointer"
           >
-            <span className="font-couture text-2xl sm:text-3xl tracking-[0.26em] text-white transition-opacity group-hover:opacity-80">
+            <span className="font-couture text-2xl sm:text-3xl tracking-[0.26em] text-white transition-opacity duration-200 group-hover:opacity-80">
               LEEANA
             </span>
           </button>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-1 xl:gap-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/10">
+          <nav
+            ref={navPillRef}
+            className="hidden md:flex items-center gap-1 xl:gap-1.5 p-1.5 rounded-full bg-white/[0.04] border border-white/10"
+          >
             {navLinks.map((item) => {
               const isActive = activePage === item.id
               return (
                 <button
                   key={item.id}
                   onClick={() => handleLinkClick(item.id)}
-                  className={`apple-press cursor-pointer px-4 lg:px-5 py-2 rounded-full text-xs tracking-[0.14em] uppercase transition-all whitespace-nowrap ${
+                  className={`nav-center-item apple-press cursor-pointer px-4 lg:px-5 py-2 rounded-full text-xs tracking-[0.14em] uppercase transition-[color,background-color,box-shadow] duration-200 whitespace-nowrap ${
                     isActive
                       ? 'bg-white text-black font-semibold shadow-md'
                       : 'text-white/60 hover:text-white font-medium'
@@ -102,13 +189,13 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action: Let's Talk Pill Button */}
-          <div className="flex items-center gap-3">
+          <div ref={rightActionsRef} className="flex items-center gap-3">
             <button
               onClick={onOpenConsultation}
-              className="apple-press group cursor-pointer hidden sm:inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full border border-white/20 bg-white/[0.08] hover:bg-white hover:text-black hover:border-white backdrop-blur-md text-xs sm:text-[13px] font-semibold tracking-[0.16em] uppercase text-white transition-all shadow-lg"
+              className="apple-press group cursor-pointer hidden sm:inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 rounded-full border border-white/20 bg-white/[0.08] hover:bg-white hover:text-black hover:border-white backdrop-blur-md text-xs sm:text-[13px] font-semibold tracking-[0.16em] uppercase text-white transition-[color,background-color,border-color] duration-200 shadow-lg"
             >
               <span>Let's Talk</span>
-              <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black" />
+              <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black transition-colors duration-200" />
             </button>
 
             {/* Mobile Animated Fluid Menu Toggle */}
