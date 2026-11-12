@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-const base = process.env.BASE_PATH || (process.env.GITHUB_ACTIONS ? '/leeana-luxury-atelier/' : '/')
+const base = process.env.BASE_PATH || '/'
 
 // https://vite.dev/config/
 export default defineConfig({
