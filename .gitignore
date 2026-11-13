@@ -16,6 +16,8 @@ temp_whip/
 # Root-level scratch scripts and research files
 *.py
 *.html
+!leeana-luxury-atelier/index.html
+!leeana-luxury-atelier/public/404.html
 forgelync_*
 leeana_*
 shotsquare_*
