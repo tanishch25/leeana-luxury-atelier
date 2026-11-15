@@ -101,6 +101,49 @@ export const AtelierContentProvider: React.FC<{ children: React.ReactNode }> = (
     }
   }, [])
 
+  // Auto-sync from server or raw GitHub when live
+  useEffect(() => {
+    const syncLatestContent = async () => {
+      try {
+        const localRes = await fetch(`/atelierContent.json?t=${Date.now()}`)
+        if (localRes.ok) {
+          const remoteJson = await localRes.json()
+          if (remoteJson && remoteJson.reels && remoteJson.updatedAt) {
+            setContent((prev) => {
+              const prevTime = new Date(prev.updatedAt || 0).getTime()
+              const remoteTime = new Date(remoteJson.updatedAt || 0).getTime()
+              if (remoteTime >= prevTime) {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(remoteJson))
+                return remoteJson
+              }
+              return prev
+            })
+            return
+          }
+        }
+      } catch {
+        // Fallback to raw GitHub
+      }
+
+      try {
+        const ghRes = await fetch(
+          `https://raw.githubusercontent.com/tanishch25/leeana-luxury-atelier/main/leeana-luxury-atelier/public/atelierContent.json?t=${Date.now()}`
+        )
+        if (ghRes.ok) {
+          const ghJson = await ghRes.json()
+          if (ghJson && ghJson.reels && ghJson.updatedAt) {
+            setContent(ghJson)
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(ghJson))
+          }
+        }
+      } catch {
+        // Ignore offline / rate limits
+      }
+    }
+
+    syncLatestContent()
+  }, [])
+
   // Auto-persist whenever content changes
   const saveContent = useCallback((newContent: AtelierSiteContent) => {
     setContent(newContent)
@@ -338,7 +381,7 @@ export const AtelierContentProvider: React.FC<{ children: React.ReactNode }> = (
   const publishToGitHub = async (token: string) => {
     try {
       const repo = 'tanishch25/leeana-luxury-atelier'
-      const path = 'src/data/atelierContent.json'
+      const path = 'leeana-luxury-atelier/public/atelierContent.json'
       const branch = 'main'
       const message = `chore(content): client update via Atelier Admin Suite (${new Date().toLocaleTimeString()})`
 

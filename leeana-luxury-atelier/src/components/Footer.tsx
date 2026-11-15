@@ -132,14 +132,16 @@ export const Footer: React.FC<{
           <div className="flex flex-col sm:flex-row items-center gap-3 text-center xl:text-left tracking-wide">
             <span>Leeana Fashion Concierge. All Rights Limited.</span>
             <span className="hidden sm:inline opacity-30">·</span>
-            <button
-              onClick={() => setIsAdminOpen(true)}
+            <a
+              href="https://tanishch25.github.io/leeana-admin/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
-              title="Open Atelier Studio Desk (Ctrl+Shift+A)"
+              title="Open Atelier Studio Desk"
             >
               <Sliders className="w-3 h-3 opacity-60" />
               <span>Atelier Desk</span>
-            </button>
+            </a>
           </div>
 
           {/* Authentic Official Social Media Icons (Vibrant Official Brand Colors & Official Logos) */}

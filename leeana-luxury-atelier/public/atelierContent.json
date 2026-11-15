@@ -1,0 +1,557 @@
+{
+  "reels": [
+    {
+      "id": "01",
+      "title": "Cafe & Culinary Atmosphere",
+      "subtitle": "Sensory gastronomy cinematography with golden-hour micro-textures.",
+      "videoSrc": "/assets/reels/reel_1.mp4",
+      "posterSrc": "/assets/reels/reel_1_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Sensory Atmosphere",
+      "duration": "0:18",
+      "client": "Brik Oven Artisan Cafe"
+    },
+    {
+      "id": "02",
+      "title": "Founder Vision & Commercial Direction",
+      "subtitle": "Creative leadership, brand dialogues, and commercial film production narrative.",
+      "videoSrc": "/assets/reels/reel_attached_1.mp4",
+      "posterSrc": "/assets/reels/reel_attached_1_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Founder Spotlight",
+      "duration": "0:55",
+      "client": "Leeana Executive Desk"
+    },
+    {
+      "id": "03",
+      "title": "The Cozy Ambience",
+      "subtitle": "Warm architectural lighting and sensory hospitality culture captured on cinema lenses.",
+      "videoSrc": "/assets/reels/reel_attached_2.mp4",
+      "posterSrc": "/assets/reels/reel_attached_2_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Hospitality & Cafe",
+      "duration": "0:53",
+      "client": "Heritage Roastery Sanctuary"
+    },
+    {
+      "id": "04",
+      "title": "Design Dialogue & Living Spaces",
+      "subtitle": "Curated interior aesthetics, bespoke furniture craftsmanship, and architectural living.",
+      "videoSrc": "/assets/reels/reel_attached_3.mp4",
+      "posterSrc": "/assets/reels/reel_attached_3_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Interior & Design",
+      "duration": "1:01",
+      "client": "Bespoke Interior Studio"
+    },
+    {
+      "id": "05",
+      "title": "Culinary Narrative & Cafe Architecture",
+      "subtitle": "Brik Oven artisan storytelling, warm bakery textures, and cafe lifestyle.",
+      "videoSrc": "/assets/reels/reel_5_yt.mp4",
+      "posterSrc": "/assets/reels/reel_5_yt_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Culinary Narrative",
+      "duration": "0:34",
+      "client": "Artisan Culinary Group"
+    },
+    {
+      "id": "06",
+      "title": "Editorial Haute Couture",
+      "subtitle": "Sculptural lighting & archival fashion narrative in Bangalore.",
+      "videoSrc": "/assets/reels/reel_3.mp4",
+      "posterSrc": "/assets/reels/reel_3_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Haute Couture",
+      "duration": "0:24",
+      "client": "Milanese Couture House"
+    },
+    {
+      "id": "07",
+      "title": "Artisanal Dining & Ambient Spaces",
+      "subtitle": "Atmospheric hospitality cinematography, interior textures, and warm living moments.",
+      "videoSrc": "/assets/reels/reel_7_attached.mp4",
+      "posterSrc": "/assets/reels/reel_7_attached_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Fine Dining & Hospitality",
+      "duration": "0:48",
+      "client": "Urban Living Hospitality"
+    },
+    {
+      "id": "08",
+      "title": "Leeana Fashion Concierge",
+      "subtitle": "Full-service bespoke luxury shoots, fine joaillerie macro optics, and talent curation.",
+      "videoSrc": "/assets/reels/reel_8_concierge.mp4",
+      "posterSrc": "/assets/reels/reel_8_concierge_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Brand Concierge",
+      "duration": "0:30",
+      "client": "Leeana Flagship Campaign"
+    }
+  ],
+  "lookbookColumns": [
+    [
+      {
+        "id": "01",
+        "title": "Layered Gemstone & Crescent Study",
+        "category": "Haute Joaillerie",
+        "image": "/assets/hero_jewellery_4k.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Private Jeweller · Bengaluru",
+        "year": "2025",
+        "description": "100mm optical macro resolving faceted deep-teal stones, pavé diamond crescents, and brushed 18k gold links without glare."
+      },
+      {
+        "id": "02",
+        "title": "Limestone Pool Residence",
+        "category": "Architectural Estates",
+        "image": "/assets/hero_estates_4k.jpg",
+        "aspect": "aspect-[16/10]",
+        "client": "JP Nagar Sanctuary Villa",
+        "year": "2025",
+        "description": "Natural daylight architectural documentation capturing cantilevered stone terraces and glass-balustrade lap pools."
+      },
+      {
+        "id": "03",
+        "title": "Kanjeevaram Royal Weave",
+        "category": "Bridal Silks",
+        "image": "/assets/model-0106.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Heritage Loom Collective",
+        "year": "2025",
+        "focal": "top",
+        "description": "Courtyard daylight blending crimson handloom silk borders with uncut emerald kundan necklaces and carved timber architecture."
+      },
+      {
+        "id": "04",
+        "title": "Heritage Two-Wheel Campaign",
+        "category": "Commercial Brand",
+        "image": "/assets/model-1.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Motorcycles & Riding Apparel",
+        "year": "2024",
+        "focal": "top",
+        "description": "Location automotive and wardrobe direction capturing road-ready outerwear alongside twin-shock heritage motorcycles."
+      },
+      {
+        "id": "05",
+        "title": "Crimson Bridal Duo Series",
+        "category": "Bridal Silks",
+        "image": "/assets/editorial-fashion-4.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Atelier Bridal Archive",
+        "year": "2024",
+        "focal": "top",
+        "description": "Diffused outdoor silk reflector lighting balancing crimson gota-patti ensembles with heirloom polki chokers."
+      },
+      {
+        "id": "06",
+        "title": "Artisanal Espresso & Veined Marble",
+        "category": "Gastronomy & Culinary",
+        "image": "/assets/real_lookbook/cafe_real.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Specialty Roastery Atelier",
+        "year": "2025",
+        "description": "Overhead culinary frame resolving silky microfoam latte art against honed black Marquina marble textures."
+      },
+      {
+        "id": "07",
+        "title": "Emerald & Polki Cascade",
+        "category": "Haute Joaillerie",
+        "image": "/assets/real_lookbook/emerald_real.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Royal Heritage Jeweller",
+        "year": "2025",
+        "description": "Polarized studio key lighting eliminating surface reflection to reveal true emerald saturation and hand-set diamond links."
+      }
+    ],
+    [
+      {
+        "id": "08",
+        "title": "Trackside Carbon Speedform",
+        "category": "Exotic Fleet",
+        "image": "/assets/lookbook_clean_mclaren.jpg",
+        "aspect": "aspect-[16/10]",
+        "client": "Bespoke Automotive Vault",
+        "year": "2025",
+        "description": "Monsoon raindrop macro over volcano-red carbon rear bodywork and sculpted dihedral aerodynamic intakes."
+      },
+      {
+        "id": "09",
+        "title": "Modern Cantilever Pavilion",
+        "category": "Architectural Estates",
+        "image": "/assets/lookbook_architecture_villa.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Goa Coastal Sanctuary",
+        "year": "2025",
+        "description": "Architectural infinity pool and warm cedar soffit geometry captured in crisp coastal daylight."
+      },
+      {
+        "id": "10",
+        "title": "Shimmering Cape & Suede Silhouette",
+        "category": "Fashion Editorial",
+        "image": "/assets/editorial-fashion-3.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Bangalore Editorial Lookbook",
+        "year": "2025",
+        "focal": "top",
+        "description": "Clean cyclorama lighting isolating metallic blush textured cape tailoring and full-length black suede boots."
+      },
+      {
+        "id": "11",
+        "title": "Obsidian AMG GT R Monaco",
+        "category": "Exotic Fleet",
+        "image": "/assets/hero_supercar_4k.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Private Collector Vault",
+        "year": "2025",
+        "description": "Overcast Mediterranean harbour lighting against satin magno bodywork backed by moored white superyachts."
+      },
+      {
+        "id": "12",
+        "title": "Ruby Sequined Pallu Draping",
+        "category": "Bridal Silks",
+        "image": "/assets/editorial-fashion-2.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Bridal Couture Edition",
+        "year": "2024",
+        "focal": "top",
+        "description": "Studio back-profile portraiture showcasing sheer hand-beaded crimson sequins, crystal tassels, and delicate drape movement."
+      },
+      {
+        "id": "13",
+        "title": "Diamond Halo Solitaire Study",
+        "category": "Haute Joaillerie",
+        "image": "/assets/lookbook_jewel_macro.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Solitaire Atelier Bengaluru",
+        "year": "2025",
+        "description": "Macro facet illumination revealing rose-gold milgrain bezel detail and split-shank pavé brilliance on matte black leather."
+      },
+      {
+        "id": "14",
+        "title": "Sommelier Private Cellar Reserve",
+        "category": "Gastronomy & Culinary",
+        "image": "/assets/real_lookbook/wine_real.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Grand Cru Private Reserve",
+        "year": "2025",
+        "description": "Low-key sommelier service capture highlighting ruby vintage viscosity, hand-blown crystal goblet curves, and warm cellar amber."
+      }
+    ],
+    [
+      {
+        "id": "15",
+        "title": "Private Aviation & Ramp Transfer",
+        "category": "Commercial Brand",
+        "image": "/assets/real_lookbook/jet_real.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Executive Charter & Fleet",
+        "year": "2025",
+        "description": "Golden-hour apron production pairing stealth matte coachwork directly wing-to-wing with private charter aircraft."
+      },
+      {
+        "id": "16",
+        "title": "Luxury Optical & Sunwear Series",
+        "category": "Commercial Brand",
+        "image": "/assets/model-0107.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Bengaluru Optical Collective",
+        "year": "2024",
+        "focal": "top",
+        "description": "Natural interior cabin portraiture styled around linen shirting and sculpted acetate sunwear silhouettes."
+      },
+      {
+        "id": "17",
+        "title": "Botanical Mulberry Silk Trio",
+        "category": "Fashion Editorial",
+        "image": "/assets/editorial-fashion-6.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Contemporary Resort House",
+        "year": "2024",
+        "focal": "top",
+        "description": "Multi-model campaign direction highlighting painterly botanical prints, antique zari cuffs, and synchronized studio staging."
+      },
+      {
+        "id": "18",
+        "title": "Alpine Pearl Lamborghini Huracán",
+        "category": "Exotic Fleet",
+        "image": "/assets/lookbook_supercar_gt.jpg",
+        "aspect": "aspect-[16/10]",
+        "client": "Private Collector Reserve",
+        "year": "2025",
+        "description": "High-altitude pass automotive study balancing pearl white coachwork against crisp mountain shadow lines."
+      },
+      {
+        "id": "19",
+        "title": "Historic Limestone Villa",
+        "category": "Architectural Estates",
+        "image": "/assets/real_lookbook/villa_como_real.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Heritage Residence Portfolio",
+        "year": "2025",
+        "description": "Mediterranean facade architecture framed by mature coastal stone pines and warm travertine cornices."
+      },
+      {
+        "id": "20",
+        "title": "Eucalyptus Twilight Pavilion",
+        "category": "Architectural Estates",
+        "image": "/assets/lookbook_clean_villa.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Whitefield Sky Sanctuary",
+        "year": "2025",
+        "description": "Blue-hour architectural study balancing cedar vertical cladding with warm interior gallery illumination."
+      },
+      {
+        "id": "21",
+        "title": "Minimalist Travertine Residence",
+        "category": "Architectural Estates",
+        "image": "/assets/lookbook_clean_penthouse.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Private Residence Atelier",
+        "year": "2025",
+        "description": "Seamless indoor-outdoor glazing, oak millwork, and hearth stone textures photographed in even natural daylight."
+      }
+    ],
+    [
+      {
+        "id": "22",
+        "title": "Dark Cacao & Seasonal Patisserie",
+        "category": "Gastronomy & Culinary",
+        "image": "/assets/real_lookbook/chocolate_cake_real.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "Artisan Patisserie Atelier",
+        "year": "2025",
+        "description": "Tactile overhead table styling pairing rich baked dark cacao with tart winter berries on hand-cut timber slabs."
+      },
+      {
+        "id": "23",
+        "title": "Timber-Slat Sanctuary Facade",
+        "category": "Architectural Estates",
+        "image": "/assets/candidates/photo-1600566753376-12c8ab7fb75b.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Private Estate Bengaluru",
+        "year": "2025",
+        "description": "Evening architectural elevation showcasing warm vertical timber louver screening and glass atrium depth."
+      },
+      {
+        "id": "24",
+        "title": "Haute Sartorial Monograph",
+        "category": "Fashion Editorial",
+        "image": "/assets/lookbook_clean_couture_suit.jpg",
+        "aspect": "aspect-[1/1]",
+        "client": "International Tailoring House",
+        "year": "2025",
+        "focal": "top",
+        "description": "Architectural glass stairwell composition detailing bespoke navy wool suiting, cuff geometry, and dress horology."
+      },
+      {
+        "id": "25",
+        "title": "Tailored Magenta Studio Portrait",
+        "category": "Fashion Editorial",
+        "image": "/assets/model-6.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Leeana Talent Archive",
+        "year": "2025",
+        "focal": "top",
+        "description": "Direct dark-set portraiture balancing silver-threaded styling against structured jewel-tone tailoring."
+      },
+      {
+        "id": "26",
+        "title": "Obsidian Gran Turismo Profile",
+        "category": "Exotic Fleet",
+        "image": "/assets/candidates/photo-1503376780353-7e6692767b70.jpg",
+        "aspect": "aspect-[16/10]",
+        "client": "Automotive Collector Reserve",
+        "year": "2025",
+        "description": "Dynamic rolling chase photography emphasizing sculpted touring proportions along open asphalt curves."
+      },
+      {
+        "id": "27",
+        "title": "Offshore Superyacht Aerial",
+        "category": "Exotic Fleet",
+        "image": "/assets/real_lookbook/yacht_real.jpg",
+        "aspect": "aspect-[3/4]",
+        "client": "Offshore Charter Desk",
+        "year": "2025",
+        "description": "Overhead coastal flight frame following tri-deck motor yacht wake patterns past sunlit sea cliffs."
+      },
+      {
+        "id": "28",
+        "title": "Cinema Primes & Optics",
+        "category": "Commercial Brand",
+        "image": "/assets/candidates/photo-1516035069371-29a1b244cc32.jpg",
+        "aspect": "aspect-[4/5]",
+        "client": "Indiranagar Production Bench",
+        "year": "2025",
+        "description": "Flat-lay optical prep documenting full-frame mirrorless bodies and fast prime lenses ahead of campaign call sheets."
+      }
+    ]
+  ],
+  "heroSlides": [
+    {
+      "id": "01",
+      "tag": "Leeana Fashion Concierge",
+      "title": "Premium and Luxury Brand Shoots",
+      "subtitle": "Cinema campaigns, bridal couture drapes, fine joaillerie macro optics, and high-fashion visual direction that define luxury.",
+      "videoSrc": "/assets/shotsquare-hero-reel.mp4",
+      "poster": "/assets/hero_couture_4k.jpg",
+      "ctaText": "Commission Shoot"
+    },
+    {
+      "id": "02",
+      "tag": "Haute Joaillerie Optical Stage",
+      "title": "Macro Optical Mastery For Fine Solitaires",
+      "subtitle": "Zero chromatic distortion macro capture revealing the luminescence of diamonds, rare emeralds, and platinum.",
+      "poster": "/assets/hero_jewel_steady_4k.jpg",
+      "ctaText": "Commission Shoot"
+    },
+    {
+      "id": "03",
+      "tag": "Commercial & Automotive Cinema",
+      "title": "Exotic Marques & High-Performance Shoots",
+      "subtitle": "High-speed tracking optics, anamorphic flares, and cinematic visual narratives for premier automotive and commercial brands.",
+      "poster": "/assets/hero_supercar_steady_4k.jpg",
+      "ctaText": "Commission Shoot"
+    },
+    {
+      "id": "04",
+      "tag": "Historic & Architectural Sanctuaries",
+      "title": "Heritage Villas & Architectural Sanctuaries",
+      "subtitle": "Volumetric cinematography, golden-hour ambient framing, and architectural luxury brand shoots for landmark spaces.",
+      "poster": "/assets/hero_vintage_estate_4k.jpg",
+      "ctaText": "Private Viewings"
+    }
+  ],
+  "conciergeCards": [
+    {
+      "id": "fleet",
+      "title": "Exotic Hypercars",
+      "description": "Direct European factory build allocations, discreet collector brokerage, and enclosed climate-controlled transport coordinated door-to-door across India and Europe.",
+      "protocol": "Enclosed Trans-Continental Logistics",
+      "image": "/assets/hero_supercar_4k.jpg",
+      "mandate": "Exotic Supercar Procurement"
+    },
+    {
+      "id": "estates",
+      "title": "Architectural Estates",
+      "description": "Private buyer representation for trophy penthouses, coastal sanctuaries, and heritage villas with off-market due diligence and bespoke interior architecture.",
+      "protocol": "Off-Market Buyer Advisory",
+      "image": "/assets/hero_estates_4k.jpg",
+      "mandate": "Prime Architectural Estate Acquisition"
+    },
+    {
+      "id": "jewellery",
+      "title": "Rare Solitaires & Jewels",
+      "description": "Traceable GIA D-Flawless solitaires, unheated Colombian emeralds, and heirloom bridal commissions sourced directly from vault cutters for private viewings.",
+      "protocol": "Certified Vault Provenance",
+      "image": "/assets/hero_jewellery_4k.jpg",
+      "mandate": "Haute Joaillerie & Solitaire Sourcing"
+    },
+    {
+      "id": "cellars",
+      "title": "Allocated Vintages",
+      "description": "Ex-chateau Grand Cru first-growth cellar acquisitions, private sommelier tastings, and rare mechanical horology pieces arranged through bonded European merchants.",
+      "protocol": "Bonded Cellar & Vault Sourcing",
+      "image": "/assets/real_lookbook/wine_real.jpg",
+      "mandate": "Rare Vintage & Horology Allocation"
+    },
+    {
+      "id": "aviation",
+      "title": "Private Aviation & Couture",
+      "description": "On-demand long-range heavy jet chartering synchronized with closed-door runway salon appointments and private atelier trunk showings.",
+      "protocol": "Wing-To-Salon Ground Coordination",
+      "image": "/assets/real_lookbook/jet_real.jpg",
+      "mandate": "Private Aviation & Couture Mandate"
+    },
+    {
+      "id": "marine",
+      "title": "Mediterranean & Coastal Marine",
+      "description": "Discreet superyacht brokerage and season charters across Monaco, the Amalfi Coast, and the Arabian Sea with dedicated on-board hospitality crews.",
+      "protocol": "Discreet Maritime Charter Mandates",
+      "image": "/assets/real_lookbook/yacht_real.jpg",
+      "mandate": "Superyacht Charter & Acquisition"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "01",
+      "name": "Shanjith",
+      "role": "Commercial Brand Partner",
+      "img": "/assets/editorial-fashion-7.jpg",
+      "text": "The visual direction and campaign production delivered by Leeana completely transformed our brand perception. Their team is exceptionally creative, punctual, and meticulous with every single frame.",
+      "commission": "Brand Campaign Production"
+    },
+    {
+      "id": "02",
+      "name": "Shree Praveen",
+      "role": "Luxury Retail & Enterprise Client",
+      "img": "/assets/editorial-fashion-5.jpg",
+      "text": "Impeccable execution from pre-production to the final grade. The lighting, high-fashion styling, and production setup in Bangalore are truly world-class. Highly recommended for premium brand shoots.",
+      "commission": "Enterprise Brand Direction"
+    },
+    {
+      "id": "03",
+      "name": "Deepa",
+      "role": "Haute Couture Patron",
+      "img": "/assets/testimonial-1-DkQAF5yQ.jpg",
+      "text": "Working with Leeana was an extraordinary experience. The models brought effortless grace to our couture collection, and the 8K video reels generated unmatched engagement across our clientele.",
+      "commission": "Couture Lookbook & Reels"
+    },
+    {
+      "id": "04",
+      "name": "Summaya",
+      "role": "Bridal & Fine Jewellery Curator",
+      "img": "/assets/testimonial-3-m8_IuKUv.jpg",
+      "text": "Their macro optics and artistic sensitivity to bridal drapes and solitaires are unmatched. The entire team exudes luxury, calm professionalism, and a rare eye for perfection.",
+      "commission": "Haute Joaillerie Macro Shoot"
+    },
+    {
+      "id": "05",
+      "name": "Tulasi Devi",
+      "role": "Distinguished Patron",
+      "img": "/assets/testimonial-2-DGKqWevx.jpg",
+      "text": "Remarkable hospitality, discreet coordination, and top-tier production quality. Leeana is the definitive benchmark for luxury brand shoots and commercial campaigns.",
+      "commission": "Private Production Commission"
+    }
+  ],
+  "models": [
+    {
+      "id": "01",
+      "name": "Tara Sen",
+      "tag": "Editorial Streetwear",
+      "img": "/assets/model-1.jpg"
+    },
+    {
+      "id": "02",
+      "name": "Rhea Kapoor",
+      "tag": "Nightlife Luxe",
+      "img": "/assets/model-2.jpg"
+    },
+    {
+      "id": "04",
+      "name": "Kabir Verma",
+      "tag": "Classic Portrait",
+      "img": "/assets/model-4.jpg"
+    },
+    {
+      "id": "05",
+      "name": "Maya Singhania",
+      "tag": "Boutique Elegance",
+      "img": "/assets/model-5.jpg"
+    },
+    {
+      "id": "07",
+      "name": "Anya Roy",
+      "tag": "Supercar Charisma",
+      "img": "/assets/model-7.jpg"
+    },
+    {
+      "id": "09",
+      "name": "Ayesha Khan",
+      "tag": "Heritage Elegance",
+      "img": "/assets/model-0106.jpg"
+    }
+  ],
+  "updatedAt": "2026-11-15T09:17:17.460Z"
+}
