@@ -1,5 +1,5 @@
 import React from 'react'
-import { MessageCircle, Mail, ArrowUpRight } from 'lucide-react'
+import { MessageCircle, Mail, ArrowUpRight, Phone } from 'lucide-react'
 
 const WHATSAPP_PREFILL =
   'Hello Leeana Casting Desk,\n\nI would like to submit my profile for the Leeana model roster.\n\nFull Name:\nAge:\nHeight:\nCity:\nPhone:\nInstagram / Portfolio Link:'
@@ -29,25 +29,33 @@ export const OpportunitiesPage: React.FC = () => {
             </p>
 
             <p className="text-[15px] text-white/55 leading-[1.7] font-sans max-w-xl">
-              Every submission is reviewed directly by our casting director in Indiranagar. Connect over WhatsApp or email your unretouched daylight digitals to be considered for upcoming commercial and editorial commissions.
+              The message is directly reviewed by the team. Connect over WhatsApp or email to be considered for upcoming commercial and editorial commissions.
             </p>
 
-            <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <div className="pt-2 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <button
                 type="button"
                 onClick={handleWhatsApp}
-                className="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-full bg-white text-black text-[13.5px] font-medium hover:bg-neutral-200 transition-[background-color,transform] duration-200 apple-press cursor-pointer"
+                className="inline-flex items-center justify-center gap-2.5 h-12 px-6 rounded-full bg-white text-black text-[13.5px] font-medium hover:bg-neutral-200 transition-[background-color,transform] duration-200 apple-press cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Contact On WhatsApp</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4 text-emerald-600" />
+                <span>WhatsApp +91 99161 01011</span>
+                <ArrowUpRight className="w-4 h-4 text-black/50" />
               </button>
 
               <a
-                href="mailto:info@leeana.in?subject=Leeana%20Model%20Roster%20Submission"
-                className="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-full bg-white/[0.06] border border-white/[0.14] text-white text-[13.5px] font-medium hover:bg-white/[0.12] hover:border-white/30 transition-[background-color,border-color,transform] duration-200 apple-press"
+                href="tel:+919916101011"
+                className="inline-flex items-center justify-center gap-2.5 h-12 px-5 rounded-full bg-white/[0.06] border border-white/[0.14] text-white text-[13.5px] font-medium hover:bg-white/[0.12] hover:border-white/30 transition-[background-color,border-color,transform] duration-200 apple-press"
               >
-                <Mail className="w-4 h-4" />
+                <Phone className="w-4 h-4 text-white/70" />
+                <span>+91 99161 01011</span>
+              </a>
+
+              <a
+                href="mailto:info@leeana.in?subject=Leeana%20Model%20Roster%20Submission"
+                className="inline-flex items-center justify-center gap-2.5 h-12 px-5 rounded-full bg-white/[0.06] border border-white/[0.14] text-white text-[13.5px] font-medium hover:bg-white/[0.12] hover:border-white/30 transition-[background-color,border-color,transform] duration-200 apple-press"
+              >
+                <Mail className="w-4 h-4 text-white/70" />
                 <span>info@leeana.in</span>
               </a>
             </div>
@@ -137,7 +145,7 @@ export const OpportunitiesPage: React.FC = () => {
             <div className="mt-8 pt-6 border-t border-white/[0.08] space-y-4">
               <div>
                 <div className="text-[13px] font-medium text-white">Studio Location</div>
-                <div className="text-[13.5px] text-white/55 mt-0.5">Indiranagar, Bengaluru</div>
+                <div className="text-[13.5px] text-white/55 mt-0.5">Bengaluru, India</div>
               </div>
               <div>
                 <div className="text-[13px] font-medium text-white">Representation Model</div>
@@ -159,43 +167,48 @@ export const OpportunitiesPage: React.FC = () => {
             Submission Brief & Studio Terms
           </h2>
           <p className="text-[15.5px] text-white/60 leading-relaxed font-sans">
-            Prepare the details below before messaging our desk so your profile can be shortlisted accurately for upcoming bookings.
+            Submitting materials is completely optional — you do not need to prepare a formal portfolio. A simple greeting on WhatsApp is welcome.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {/* Left Panel: Required Digitals */}
+          {/* Left Panel: Optional Details */}
           <div className="relative rounded-[24px] bg-[#08080b]/95 border border-white/[0.1] p-7 sm:p-10">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
-            <h3 className="font-couture text-2xl sm:text-3xl text-white tracking-[-0.02em] mb-7">
-              What To Send
-            </h3>
+            <div className="flex items-center justify-between mb-7">
+              <h3 className="font-couture text-2xl sm:text-3xl text-white tracking-[-0.02em]">
+                What To Send (Optional)
+              </h3>
+              <span className="text-[11px] font-sans tracking-wider uppercase px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/10 text-white/60">
+                All Optional
+              </span>
+            </div>
 
             <div className="divide-y divide-white/[0.08]">
               <div className="pb-5">
                 <h4 className="text-[15px] font-medium text-white mb-1.5">
-                  Three Unretouched Daylight Digitals
+                  Daylight Digitals (Optional)
                 </h4>
                 <p className="text-[14px] text-white/60 leading-relaxed">
-                  Include a straight-on headshot, a side profile, and a full-length portrait against a neutral wall in natural light with minimal styling and fitted monochrome attire.
+                  No agency book or professional styling required. If handy, simple smartphone photos in daylight (face and full-length) against a plain background are helpful.
                 </p>
               </div>
 
               <div className="py-5">
                 <h4 className="text-[15px] font-medium text-white mb-1.5">
-                  Verified Physical Specifications
+                  Basic Details (Optional)
                 </h4>
                 <p className="text-[14px] text-white/60 leading-relaxed">
-                  Provide your full legal name, confirmed age (18+), height in centimetres or feet/inches, current residential city, clothing and shoe sizing, and direct telephone number.
+                  Name, current city, and approximate height. No rigid measurements or agency composite cards necessary.
                 </p>
               </div>
 
               <div className="pt-5">
                 <h4 className="text-[15px] font-medium text-white mb-1.5">
-                  Walk Clip & Portfolio Link
+                  Social Profile or Casual Clip (Optional)
                 </h4>
                 <p className="text-[14px] text-white/60 leading-relaxed">
-                  Attach a short 15-second natural walk clip or public Instagram profile URL. Fresh talent without formal portfolios are welcome to submit clean smartphone daylight frames.
+                  An Instagram handle or a short 10-second casual video clip if you wish to share. Fresh talent with zero camera experience are warmly invited.
                 </p>
               </div>
             </div>
@@ -214,16 +227,16 @@ export const OpportunitiesPage: React.FC = () => {
                   Written Usage & Clear Day Rates
                 </h4>
                 <p className="text-[14px] text-white/60 leading-relaxed">
-                  Every confirmed commission carries a written call sheet specifying shoot hours, commercial licensing scope, and guaranteed settlement within 14 business days of wrap.
+                  Written usage and clear day rates are mailed directly ahead of every confirmed production, with guaranteed settlement within 14 business days of wrap.
                 </p>
               </div>
 
               <div className="py-5">
                 <h4 className="text-[15px] font-medium text-white mb-1.5">
-                  Closed-Set Indiranagar Hospitality
+                  Private Studio Set Hospitality
                 </h4>
                 <p className="text-[14px] text-white/60 leading-relaxed">
-                  Private changing suites, on-set wardrobe draping, hair, makeup, and full catering are provided throughout production inside our private Bangalore studio.
+                  Private dressing suites, dedicated wardrobe draping, professional hair and makeup styling, and full artisanal catering are provided throughout production.
                 </p>
               </div>
 
@@ -250,28 +263,36 @@ export const OpportunitiesPage: React.FC = () => {
               Send Your Profile To Casting
             </h2>
             <p className="text-[15px] text-white/65 leading-relaxed font-sans">
-              Reach our Bengaluru talent coordinators directly on WhatsApp or send high-resolution digitals to info@leeana.in. No third-party forms required.
+              Reach our Bengaluru talent coordinators directly on WhatsApp at <span className="text-white font-medium">+91 99161 01011</span> or email info@leeana.in. No third-party forms or agency fees.
             </p>
             <p className="text-[13px] text-white/45 pt-1 font-sans">
-              Casting Desk Hours: Monday to Saturday, 10:00 AM to 7:00 PM IST — Indiranagar, Bengaluru
+              Casting Desk Hours: Monday to Saturday, 10:00 AM to 7:00 PM IST — Bengaluru, India
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 shrink-0">
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 shrink-0">
             <button
               type="button"
               onClick={handleWhatsApp}
-              className="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-full bg-white text-black text-[13.5px] font-medium hover:bg-neutral-200 transition-[background-color,transform] duration-200 apple-press cursor-pointer"
+              className="inline-flex items-center justify-center gap-2.5 h-12 px-6 rounded-full bg-white text-black text-[13.5px] font-medium hover:bg-neutral-200 transition-[background-color,transform] duration-200 apple-press cursor-pointer"
             >
-              <MessageCircle className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4 text-emerald-600" />
               <span>WhatsApp +91 99161 01011</span>
             </button>
 
             <a
-              href="mailto:info@leeana.in?subject=Leeana%20Model%20Roster%20Submission"
-              className="inline-flex items-center justify-center gap-2.5 h-12 px-7 rounded-full bg-white/[0.06] border border-white/[0.14] text-white text-[13.5px] font-medium hover:bg-white/[0.12] hover:border-white/30 transition-[background-color,border-color,transform] duration-200 apple-press"
+              href="tel:+919916101011"
+              className="inline-flex items-center justify-center gap-2.5 h-12 px-5 rounded-full bg-white/[0.06] border border-white/[0.14] text-white text-[13.5px] font-medium hover:bg-white/[0.12] hover:border-white/30 transition-[background-color,border-color,transform] duration-200 apple-press"
             >
-              <Mail className="w-4 h-4" />
+              <Phone className="w-4 h-4 text-white/70" />
+              <span>+91 99161 01011</span>
+            </a>
+
+            <a
+              href="mailto:info@leeana.in?subject=Leeana%20Model%20Roster%20Submission"
+              className="inline-flex items-center justify-center gap-2.5 h-12 px-5 rounded-full bg-white/[0.06] border border-white/[0.14] text-white text-[13.5px] font-medium hover:bg-white/[0.12] hover:border-white/30 transition-[background-color,border-color,transform] duration-200 apple-press"
+            >
+              <Mail className="w-4 h-4 text-white/70" />
               <span>info@leeana.in</span>
             </a>
           </div>

@@ -227,7 +227,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
               Private Luxury Concierge
             </h1>
             <p className="text-[15px] sm:text-[16px] text-white/65 font-sans leading-[1.7] max-w-xl">
-              Direct luxury acquisitions, private heavy-jet charters, archival couture viewings, and brand productions orchestrated discreetly from our Indiranagar desk.
+              Direct luxury acquisitions, private heavy-jet charters, archival couture viewings, and brand productions orchestrated discreetly from our Bengaluru atelier desk.
             </p>
           </div>
 

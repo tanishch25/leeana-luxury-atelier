@@ -311,7 +311,7 @@ const COLUMN_4_ITEMS: LookbookItem[] = [
     category: 'Commercial Brand',
     image: '/assets/candidates/photo-1516035069371-29a1b244cc32.jpg',
     aspect: 'aspect-[4/5]',
-    client: 'Indiranagar Production Bench',
+    client: 'Bengaluru Production Bench',
     year: '2025',
     description: 'Flat-lay optical prep documenting full-frame mirrorless bodies and fast prime lenses ahead of campaign call sheets.',
   },

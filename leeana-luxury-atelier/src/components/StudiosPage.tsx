@@ -49,6 +49,34 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onOpenRequisition }) =
       aspect: 'col-span-12 md:col-span-6 aspect-[16/11]',
       discipline: 'Heritage Handlooms',
     },
+    {
+      title: 'Artisanal Gastronomy & Culinary Stage',
+      subtitle: 'Micro-Steam Dynamics & Haute Cuisine Plating Cinema',
+      image: '/assets/real_lookbook/cafe_real.jpg',
+      aspect: 'col-span-12 md:col-span-7 aspect-[16/10]',
+      discipline: 'Culinary & Fine Dining',
+    },
+    {
+      title: 'Commercial Brand & Campaign Stage',
+      subtitle: 'Omnichannel TVC & High-Street Flagship Brand Direction',
+      image: '/assets/lookbook_clean_couture_suit.jpg',
+      aspect: 'col-span-12 md:col-span-5 aspect-[4/5]',
+      discipline: 'Commercial Brand Campaigns',
+    },
+    {
+      title: 'Sommelier Cellar & Fine Spirits Stage',
+      subtitle: 'Low-Key Ambient Pour Optics & Crystal Geometry',
+      image: '/assets/real_lookbook/wine_real.jpg',
+      aspect: 'col-span-12 md:col-span-5 aspect-[4/5]',
+      discipline: 'Fine Spirits & Cellars',
+    },
+    {
+      title: 'Gourmet Patisserie & Confectionery Stage',
+      subtitle: 'Macro Texture & Gloss Glaze Reflectance Capture',
+      image: '/assets/real_lookbook/chocolate_cake_real.jpg',
+      aspect: 'col-span-12 md:col-span-7 aspect-[16/10]',
+      discipline: 'Artisanal Confectionery',
+    },
   ]
 
   return (
