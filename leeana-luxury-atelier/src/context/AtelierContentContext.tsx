@@ -10,7 +10,7 @@ import type {
 } from '../types/atelierContent'
 import { INITIAL_ATELIER_CONTENT } from '../data/initialContent'
 
-const STORAGE_KEY = 'leeana_atelier_store_v1'
+const STORAGE_KEY = 'leeana_atelier_store_v2'
 const AUTH_KEY = 'leeana_atelier_auth_session'
 
 export type AdminTab = 'reels' | 'lookbook' | 'hero' | 'concierge' | 'reviews' | 'models' | 'publish'
@@ -104,40 +104,40 @@ export const AtelierContentProvider: React.FC<{ children: React.ReactNode }> = (
   // Auto-sync from server or raw GitHub when live
   useEffect(() => {
     const syncLatestContent = async () => {
+      // 1. Fetch live production atelierContent.json with cache: 'no-store'
       try {
-        const localRes = await fetch(`/atelierContent.json?t=${Date.now()}`)
+        const localRes = await fetch(`/atelierContent.json?t=${Date.now()}`, { cache: 'no-store' })
         if (localRes.ok) {
           const remoteJson = await localRes.json()
-          if (remoteJson && remoteJson.reels && remoteJson.updatedAt) {
-            setContent((prev) => {
-              const prevTime = new Date(prev.updatedAt || 0).getTime()
-              const remoteTime = new Date(remoteJson.updatedAt || 0).getTime()
-              if (remoteTime >= prevTime) {
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(remoteJson))
-                return remoteJson
-              }
-              return prev
-            })
+          if (remoteJson && remoteJson.reels && Array.isArray(remoteJson.reels)) {
+            setContent(remoteJson)
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(remoteJson))
+            } catch {}
             return
           }
         }
-      } catch {
-        // Fallback to raw GitHub
+      } catch (err) {
+        console.warn('Local content sync error, trying raw GitHub:', err)
       }
 
+      // 2. Direct Fallback to Raw GitHub
       try {
         const ghRes = await fetch(
-          `https://raw.githubusercontent.com/tanishch25/leeana-luxury-atelier/main/leeana-luxury-atelier/public/atelierContent.json?t=${Date.now()}`
+          `https://raw.githubusercontent.com/tanishch25/leeana-luxury-atelier/main/leeana-luxury-atelier/public/atelierContent.json?t=${Date.now()}`,
+          { cache: 'no-store' }
         )
         if (ghRes.ok) {
           const ghJson = await ghRes.json()
-          if (ghJson && ghJson.reels && ghJson.updatedAt) {
+          if (ghJson && ghJson.reels && Array.isArray(ghJson.reels)) {
             setContent(ghJson)
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(ghJson))
+            try {
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(ghJson))
+            } catch {}
           }
         }
-      } catch {
-        // Ignore offline / rate limits
+      } catch (err) {
+        console.warn('Raw GitHub sync error:', err)
       }
     }
 
