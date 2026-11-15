@@ -264,7 +264,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     if (navigator.share) {
       try {
         await navigator.share({
-          title: `LEEANA — ${reel.title}`,
+          title: `LEEANA · ${reel.title}`,
           text: `Watch ${reel.title} on Leeana Fashion Concierge:`,
           url: websiteShareUrl,
         })
@@ -346,15 +346,8 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
               {/* Bottom Full-Width Flex Container: Minimal Brand & Follow on Instagram (Left) + 3 Side Actions (Right) */}
               <div className="absolute inset-x-0 bottom-0 z-30 px-4 pb-6 sm:px-6 pointer-events-none flex items-end justify-between gap-3">
                 
-                {/* Left Column: Refined Minimal Brand Mark & Follow us on Instagram Button */}
-                <div className="flex-1 space-y-3 pointer-events-auto pr-1">
-                  {/* Minimal Brand Mark: Pure leeana (No clips/film icon, No .IN) */}
-                  <div data-brand-pill className="px-3.5 py-1 rounded-full bg-black/45 border border-white/15 backdrop-blur-md w-fit shadow-md">
-                    <span className="font-couture text-xs sm:text-sm tracking-widest text-white/95">
-                      leeana
-                    </span>
-                  </div>
-
+                {/* Left Column: Follow us on Instagram Button */}
+                <div className="flex-1 pointer-events-auto pr-1">
                   {/* Primary Action Button: Follow us on Instagram (h-12 / 48px) - ONLY this opens Instagram */}
                   <button
                     onClick={(e) => handleOpenInstagram(reel.instagramUrl, e)}
@@ -389,7 +382,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                     <Sparkles className="w-5 h-5 text-white" />
                   </button>
 
-                  {/* 3. Share Button — Bottom-most, Aligned with Follow on Instagram (Only shares, NEVER opens Instagram) */}
+                  {/* 3. Share Button - Bottom-most, Aligned with Follow on Instagram (Only shares, NEVER opens Instagram) */}
                   <button
                     onClick={(e) => handleShare(reel, e)}
                     aria-label="Share Reel"

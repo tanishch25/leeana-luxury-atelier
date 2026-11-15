@@ -37,13 +37,13 @@ export const Footer: React.FC<{
             </span>
 
             <p className="text-base sm:text-lg text-white/85 font-light max-w-xl leading-relaxed">
-              Leeana Fashion Concierge. We specialise in premium and luxury brand shoots — crafting cinema films, haute joaillerie macro optics, and high-fashion visual narratives that elevate prestige and command markets.
+              Leeana Fashion Concierge. We specialise in premium and luxury brand shoots, crafting cinema films, haute joaillerie macro optics, and high-fashion visual narratives that elevate prestige and command markets.
             </p>
 
             <div className="space-y-3.5 text-base sm:text-lg font-light text-white/80 pt-2">
               <div className="flex items-center gap-3.5">
                 <MapPin className="w-5 h-5 text-white/70 shrink-0" />
-                <span>JP Nagar, 3rd Phase, Bangalore - 560078, India</span>
+                <span>JP Nagar, 3rd Phase, Bangalore 560078, India</span>
               </div>
               <div className="flex items-center gap-3.5">
                 <Phone className="w-5 h-5 text-white/70 shrink-0" />

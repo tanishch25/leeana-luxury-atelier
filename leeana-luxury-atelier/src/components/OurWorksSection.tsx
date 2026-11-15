@@ -94,7 +94,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
         {/* Top hairline highlight */}
         <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
-        {/* Header Bar — Highly Visible Heading on Wall Canvas */}
+        {/* Header Bar - Highly Visible Heading on Wall Canvas */}
         <div className="relative z-20 pb-5 border-b border-white/[0.12]">
           <div className="space-y-1.5 inline-block px-4 py-2 rounded-2xl bg-black/40 backdrop-blur-md border border-white/[0.08]">
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
@@ -108,9 +108,9 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
         {/* DESKTOP LAYOUT: Master Asymmetric Studio Bento Grid (100% Pure Video Reels, Zero Models) */}
         <div className="hidden sm:block space-y-3 sm:space-y-3.5">
-          {/* Row 1: Priority 1 — Cafe & Culinary Feature (2 cols) + Priority 5 — Culinary Narrative (1 col) */}
+          {/* Row 1: Priority 1 - Cafe & Culinary Feature (2 cols) + Priority 5 - Culinary Narrative (1 col) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-3.5">
-            {/* Feature Master Cinema Card: Priority 1 — Cafe & Culinary Atmosphere */}
+            {/* Feature Master Cinema Card: Priority 1 - Cafe & Culinary Atmosphere */}
             <div
               onClick={onNavigateServices}
               className="group relative lg:col-span-2 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-2xl transition-all duration-500 hover:border-white/45 cursor-pointer flex flex-col justify-between"
@@ -246,9 +246,9 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
             </div>
           </div>
 
-          {/* Row 2: Priorities 2, 3, 4 — Attached Reels (1st Video, 2nd Video, 3rd Video) */}
+          {/* Row 2: Priorities 2, 3, 4 - Attached Reels (1st Video, 2nd Video, 3rd Video) */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
-            {/* Priority 2: 1st Attached Video — Founder Vision & Commercial Direction */}
+            {/* Priority 2: 1st Attached Video - Founder Vision & Commercial Direction */}
             <div
               onClick={onNavigateServices}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
@@ -301,7 +301,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
             </div>
 
-            {/* Priority 3: 2nd Attached Video — The Cozy Ambience */}
+            {/* Priority 3: 2nd Attached Video - The Cozy Ambience */}
             <div
               onClick={onNavigateServices}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
@@ -354,7 +354,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
             </div>
 
-            {/* Priority 4: 3rd Attached Video — Design Dialogue & Living Spaces */}
+            {/* Priority 4: 3rd Attached Video - Design Dialogue & Living Spaces */}
             <div
               onClick={onNavigateServices}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
@@ -411,7 +411,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
         {/* MOBILE-SPECIFIC LAYOUT: 100% Pure Video Reels (Zero Models, Strict Priority Order) */}
         <div className="block sm:hidden space-y-2.5">
-          {/* Card 1: Priority 1 — Feature Cinema Reel: Cafe & Culinary Atmosphere */}
+          {/* Card 1: Priority 1 - Feature Cinema Reel: Cafe & Culinary Atmosphere */}
           <div
             onClick={onOpenOurWorksShorts || onNavigateServices}
             className="group relative h-[210px] rounded-[20px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all cursor-pointer flex flex-col justify-between"

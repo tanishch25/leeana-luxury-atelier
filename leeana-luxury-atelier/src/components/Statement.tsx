@@ -11,7 +11,7 @@ export const Statement: React.FC = () => {
     },
     {
       title: 'Complete Shoot & Video Production',
-      desc: 'We handle everything from start to finish. You do not have to worry about cameras, models, hair, makeup, lighting, studio spaces, or editing — our team manages the entire shoot for you.',
+      desc: 'We handle everything from start to finish. You do not have to worry about cameras, models, hair, makeup, lighting, studio spaces, or editing: our team manages the entire shoot for you.',
       image: '/assets/svc-cars-BFdPfwO2.jpg',
     },
     {

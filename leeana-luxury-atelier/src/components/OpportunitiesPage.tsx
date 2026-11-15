@@ -167,7 +167,7 @@ export const OpportunitiesPage: React.FC = () => {
             Submission Brief & Studio Terms
           </h2>
           <p className="text-[15.5px] text-white/60 leading-relaxed font-sans">
-            Submitting materials is completely optional — you do not need to prepare a formal portfolio. A simple greeting on WhatsApp is welcome.
+            Submitting materials is completely optional, and you do not need to prepare a formal portfolio. A simple greeting on WhatsApp is welcome.
           </p>
         </div>
 
@@ -266,7 +266,7 @@ export const OpportunitiesPage: React.FC = () => {
               Reach our Bengaluru talent coordinators directly on WhatsApp at <span className="text-white font-medium">+91 99161 01011</span> or email info@leeana.in. No third-party forms or agency fees.
             </p>
             <p className="text-[13px] text-white/45 pt-1 font-sans">
-              Casting Desk Hours: Monday to Saturday, 10:00 AM to 7:00 PM IST — Bengaluru, India
+              Casting Desk Hours: Monday to Saturday, 10:00 AM to 7:00 PM IST · Bengaluru, India
             </p>
           </div>
 

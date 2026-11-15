@@ -33,7 +33,7 @@ export const KineticMarqueeSection: React.FC = () => {
                 WebkitTextStroke: '1.5px rgba(255,255,255,0.28)',
               }}
             >
-              {text} <span className="text-white/30 font-light mx-6">—</span>
+              {text} <span className="text-white/30 font-light mx-6">·</span>
             </span>
           ))}
         </div>
@@ -50,7 +50,7 @@ export const KineticMarqueeSection: React.FC = () => {
                 WebkitTextStroke: '1.5px rgba(255,255,255,0.28)',
               }}
             >
-              {text} <span className="text-white/30 font-light mx-6">—</span>
+              {text} <span className="text-white/30 font-light mx-6">·</span>
             </span>
           ))}
         </div>

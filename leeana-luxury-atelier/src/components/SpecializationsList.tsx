@@ -106,7 +106,7 @@ export const SpecializationsList: React.FC<SpecializationsListProps> = ({ onSele
               Premium and Luxury Brand Shoots
             </h2>
             <p className="text-white/70 text-xs sm:text-sm font-light max-w-xl leading-relaxed pt-1">
-              We specialise in high premium and luxury brand shoots — crafting cinema films, macro joaillerie optical motion, and viral editorial narratives.
+              We specialise in high premium and luxury brand shoots, crafting cinema films, macro joaillerie optical motion, and viral editorial narratives.
             </p>
           </div>
 

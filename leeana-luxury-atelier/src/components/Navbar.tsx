@@ -293,7 +293,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <div className="pointer-events-auto flex items-center gap-2.5 p-1.5 rounded-full bg-black/85 border border-white/[0.18] backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.95)] max-w-sm w-full mx-auto">
             
-            {/* 1. Our Work Button (Opens Vertical Short-Form Video Reels) — Pure Typography, No Emoji/Icon */}
+            {/* 1. Our Work Button (Opens Vertical Short-Form Video Reels) - Pure Typography, No Emoji/Icon */}
             <button
               onClick={() => {
                 if (onOpenOurWorksShorts) {

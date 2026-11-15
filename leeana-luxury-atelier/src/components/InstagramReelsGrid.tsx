@@ -204,7 +204,7 @@ export const InstagramReelsGrid: React.FC = () => {
                     style={{ aspectRatio: isTall ? '9 / 17' : '9 / 13.5' }}
                     className="group relative w-full rounded-[20px] sm:rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#0c0c10] shadow-2xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1.5 cursor-pointer flex flex-col justify-between block"
                   >
-                    {/* Background Video — Brighter & High Definition */}
+                    {/* Background Video - Brighter & High Definition */}
                     <video
                       ref={(el) => {
                         videoRefs.current[reel.id] = el

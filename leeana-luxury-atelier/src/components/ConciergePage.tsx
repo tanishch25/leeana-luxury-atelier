@@ -130,7 +130,7 @@ export const FAQ_DATA: FaqItem[] = [
   },
   {
     q: 'How is quality assured?',
-    a: 'Every partner and production undergoes our strict curation audit — provenance, craftsmanship, optical calibration, and private reputation are thoroughly vetted.',
+    a: 'Every partner and production undergoes our strict curation audit: provenance, craftsmanship, optical calibration, and private reputation are thoroughly vetted.',
   },
 ]
 
@@ -347,13 +347,13 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
 
 
       {/* ========================================================= */}
-      {/* 2. LIVE PRODUCTIONS — INSTAGRAM REELS SHOWCASE           */}
+      {/* 2. LIVE PRODUCTIONS - INSTAGRAM REELS SHOWCASE           */}
       {/* ========================================================= */}
       <InstagramReelsGrid />
 
 
       {/* ========================================================= */}
-      {/* 3. OUR MODELS — FACES OF LEEANA (RESTORED WITH NAMES)      */}
+      {/* 3. OUR MODELS - FACES OF LEEANA (RESTORED WITH NAMES)      */}
       {/* ========================================================= */}
       <section id="our-models" className="border-t border-white/[0.08] pt-12 md:pt-16 scroll-mt-28">
         <div className="rounded-[28px] sm:rounded-[32px] border border-white/[0.12] bg-[#07070b]/90 backdrop-blur-2xl p-5 sm:p-7 md:p-8 relative overflow-hidden shadow-2xl">
@@ -418,7 +418,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
 
 
       {/* ========================================================= */}
-      {/* 4. DYNAMIC ANIMATED REVIEWS — VOICES OF OUR PATRONS        */}
+      {/* 4. DYNAMIC ANIMATED REVIEWS - VOICES OF OUR PATRONS        */}
       {/* ========================================================= */}
       <section id="testimonials" className="border-t border-white/[0.08] pt-12 md:pt-16 scroll-mt-24">
         <ReviewsShowcase />

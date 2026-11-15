@@ -47,7 +47,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
     const contactPhone = phone.trim() || 'Confidential'
     const shootDetails = notes.trim() || 'Direct appointment requested.'
 
-    const subject = `Atelier Booking Inquiry: ${genre} — ${clientName}`
+    const subject = `Atelier Booking Inquiry: ${genre} · ${clientName}`
     const body = `Hello Leeana Concierge Desk,\n\nI wish to book an Atelier Appointment for a Brand Shoot:\n\n• Genre / Discipline: ${genre}\n• Client / Brand Name: ${clientName}\n• Contact Phone: ${contactPhone}\n• Shoot Details & Requirements: ${shootDetails}\n\nPlease confirm availability and production brief.`
     
     // Direct Gmail web compose link
