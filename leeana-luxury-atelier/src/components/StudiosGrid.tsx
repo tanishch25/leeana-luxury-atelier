@@ -59,7 +59,7 @@ export const StudiosGrid: React.FC<StudiosGridProps> = ({ onSelectStudio }) => {
             Discipline & Infrastructure
           </span>
           <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-            Strategic Creative Studios
+            What We Specialise On
           </h2>
         </div>
         <p className="text-white/60 text-xs sm:text-sm max-w-md font-light leading-relaxed">

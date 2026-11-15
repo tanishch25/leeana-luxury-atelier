@@ -125,16 +125,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             
             {/* Left Column: All-White Architectural Typography */}
             <div className="flex flex-col max-w-5xl space-y-4">
-              {/* Luxury Atelier Label */}
-              <div className="flex items-center gap-2.5">
-                <span className="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-white/95 font-medium px-3.5 py-1.5 rounded-full bg-white/[0.1] border border-white/20 backdrop-blur-md w-fit shadow-md">
-                  Leeana Fashion Concierge
-                </span>
-                <span className="text-[10px] sm:text-xs uppercase tracking-[0.18em] text-white/70 font-light hidden sm:inline-block">
-                  Specialising in Premium & Luxury Brand Shoots
-                </span>
-              </div>
-
               {/* Monumental Headline (All-White, Modern Architecture) */}
               <h1 className="text-white text-[clamp(2.1rem,5.8vw,5.6rem)] font-light tracking-[-0.03em] leading-[1.0] md:leading-[0.92] drop-shadow-2xl">
                 {current.title}

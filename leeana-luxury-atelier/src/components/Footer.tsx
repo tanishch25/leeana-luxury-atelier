@@ -118,11 +118,14 @@ export const Footer: React.FC<{
 
         </div>
 
-        {/* Monumental Watermark (Same Couture Font, Crisp White & Tracking as Top Logo, Strictly Without .IN) */}
-        <div className="py-10 sm:py-14 md:py-20 select-none overflow-hidden flex justify-center items-center w-full px-2">
-          <h1 className="font-couture text-[9.5vw] sm:text-[11vw] md:text-[clamp(3.5rem,12vw,10.5rem)] font-normal leading-none text-white tracking-[0.22em] text-center uppercase pointer-events-none select-none max-w-full overflow-hidden opacity-90 drop-shadow-[0_10px_40px_rgba(255,255,255,0.15)]">
+        {/* Monumental Watermark with Fashion Concierge Subtitle */}
+        <div className="py-10 sm:py-14 md:py-20 select-none overflow-hidden flex flex-col justify-center items-center w-full px-2 text-center pointer-events-none">
+          <h1 className="font-couture text-[9.5vw] sm:text-[11vw] md:text-[clamp(3.5rem,12vw,10.5rem)] font-normal leading-none text-white tracking-[0.24em] uppercase max-w-full overflow-hidden opacity-90 drop-shadow-[0_10px_40px_rgba(255,255,255,0.15)]">
             LEEANA
           </h1>
+          <span className="text-xs sm:text-sm md:text-base font-light tracking-[0.45em] sm:tracking-[0.55em] uppercase text-white/70 mt-3 sm:mt-5 drop-shadow-[0_2px_12px_rgba(0,0,0,0.8)]">
+            FASHION CONCIERGE
+          </span>
         </div>
 
         {/* Low End Colophon */}

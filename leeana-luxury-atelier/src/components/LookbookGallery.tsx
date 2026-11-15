@@ -453,7 +453,7 @@ export const LookbookGallery: React.FC = () => {
           </h2>
         </div>
         <p className="text-white/60 text-xs sm:text-sm max-w-md font-light leading-relaxed">
-          High-definition visual plates captured across our Bangalore studio, fine joaillerie macro benches, and private patron commissions.
+          Inspirational aesthetics, mood directions, and visual benchmarks we can cater for your brand shoots.
         </p>
       </div>
 

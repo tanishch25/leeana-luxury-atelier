@@ -35,9 +35,6 @@ export const Statement: React.FC = () => {
         
         {/* Monumental All-White Headline (Non-cursive, Architectural Authority) */}
         <div className="max-w-5xl space-y-4">
-          <div className="inline-block px-3.5 py-1.5 rounded-full bg-white/[0.06] border border-white/15 text-[11px] sm:text-xs tracking-[0.2em] uppercase text-white/90">
-            Leeana Fashion Concierge
-          </div>
           <h2 className="text-white text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light tracking-[-0.04em] leading-[0.98]">
             We Specialise In Premium <br />
             <span className="font-semibold text-white">
