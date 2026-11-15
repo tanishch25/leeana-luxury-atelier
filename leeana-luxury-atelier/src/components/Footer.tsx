@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
-import { ArrowUpRight, MapPin, Mail, MessageCircle, Phone, Sliders } from 'lucide-react'
-import { useAtelierContent } from '../context/AtelierContentContext'
+import { ArrowUpRight, MapPin, Mail, Phone } from 'lucide-react'
 
 export const Footer: React.FC<{
   onOpenRequisition: (mandate?: string) => void
   onNavigateOpportunities?: () => void
 }> = ({ onOpenRequisition, onNavigateOpportunities }) => {
-  const { setIsAdminOpen } = useAtelierContent()
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -131,17 +129,6 @@ export const Footer: React.FC<{
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 pt-10 border-t border-white/[0.08] text-sm sm:text-base font-light text-white/70 w-full">
           <div className="flex flex-col sm:flex-row items-center gap-3 text-center xl:text-left tracking-wide">
             <span>Leeana Fashion Concierge. All Rights Limited.</span>
-            <span className="hidden sm:inline opacity-30">·</span>
-            <a
-              href="https://tanishch25.github.io/leeana-admin/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
-              title="Open Atelier Studio Desk"
-            >
-              <Sliders className="w-3 h-3 opacity-60" />
-              <span>Atelier Desk</span>
-            </a>
           </div>
 
           {/* Authentic Official Social Media Icons (Vibrant Official Brand Colors & Official Logos) */}

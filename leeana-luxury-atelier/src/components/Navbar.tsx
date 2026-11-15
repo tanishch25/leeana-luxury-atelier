@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { ArrowUpRight, Sliders } from 'lucide-react'
-import { useAtelierContent } from '../context/AtelierContentContext'
+import { ArrowUpRight } from 'lucide-react'
 
 export type NavPage = 'home' | 'specialisations' | 'lookbook' | 'concierge' | 'opportunities' | 'studios' | 'specializations'
 
@@ -18,7 +17,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenConsultation,
   onOpenOurWorksShorts,
 }) => {
-  const { setIsAdminOpen } = useAtelierContent()
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -282,17 +280,6 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </svg>
                 <span>WhatsApp Desk</span>
               </button>
-
-              <a
-                href="https://tanishch25.github.io/leeana-admin/"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="w-full py-3 rounded-full bg-white/[0.04] border border-white/10 text-white/60 font-light text-xs tracking-[0.18em] uppercase cursor-pointer hover:bg-white/10 hover:text-white transition-all flex items-center justify-center gap-2"
-              >
-                <Sliders className="w-3.5 h-3.5 opacity-60" />
-                <span>Atelier Studio Desk</span>
-              </a>
             </div>
           </div>
         </div>

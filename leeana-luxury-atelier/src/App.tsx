@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import { AtelierContentProvider } from './context/AtelierContentContext'
-import { AtelierAdminSuite } from './components/admin/AtelierAdminSuite'
-import { AdminFloatingTrigger } from './components/admin/AdminFloatingTrigger'
 import { Navbar } from './components/Navbar'
 import type { NavPage } from './components/Navbar'
 import { Hero } from './components/Hero'
@@ -204,10 +202,6 @@ function AtelierApp() {
         onClose={() => setIsShortsOpen(false)}
         onOpenConnect={() => handleOpenRequisition()}
       />
-
-      {/* 6. Atelier Studio Desk (CMS) & Floating Capsule */}
-      <AtelierAdminSuite />
-      <AdminFloatingTrigger />
 
     </div>
   )
