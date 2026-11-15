@@ -22,7 +22,7 @@ const SLIDES: HeroSlide[] = [
     tag: 'Leeana Fashion Concierge',
     title: 'Premium and Luxury Brand Shoots',
     subtitle: 'Cinema campaigns, bridal couture drapes, fine joaillerie macro optics, and high-fashion visual direction that define luxury.',
-    videoSrc: '/assets/shotsquare-hero-reel.mp4',
+    videoSrc: '',
     poster: '/assets/hero_couture_4k.jpg',
     ctaText: 'Commission Shoot',
   },
