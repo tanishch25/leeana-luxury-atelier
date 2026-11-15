@@ -67,7 +67,7 @@ export const SHORTS_REELS_DATA: ReelShortItem[] = [
   {
     id: '06',
     title: 'Editorial Haute Couture',
-    subtitle: 'Sculptural lighting & archival fashion narrative on main soundstage.',
+    subtitle: 'Sculptural lighting & archival fashion narrative on main studio stage.',
     videoSrc: '/assets/reels/reel_3.mp4',
     posterSrc: '/assets/reels/reel_3_thumb.jpg',
     instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
@@ -426,7 +426,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
                 Let's Talk
               </h3>
               <p className="text-white/70 text-xs sm:text-sm font-light leading-relaxed">
-                Commission bespoke cinema productions, commercial brand films, or reserve a private soundstage appointment.
+                Commission bespoke cinema productions, commercial brand films, or reserve a private studio appointment.
               </p>
             </div>
 
@@ -454,7 +454,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
             </div>
 
             <div className="pt-2 text-[10px] font-light tracking-widest uppercase text-white/40">
-              Direct Soundstage · JP Nagar, Bangalore
+              Bangalore Production Desk · JP Nagar
             </div>
           </div>
         </section>

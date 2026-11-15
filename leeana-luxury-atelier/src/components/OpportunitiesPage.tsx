@@ -25,7 +25,7 @@ export const OpportunitiesPage: React.FC = () => {
             </h1>
 
             <p className="text-[16px] sm:text-[17px] text-white/75 leading-[1.72] font-sans max-w-xl">
-              Leeana welcomes fresh faces, experienced editorial models, and hand or beauty specialists for haute couture lookbooks, fine jewellery campaigns, and luxury brand films shot on our Bengaluru soundstage.
+              Leeana welcomes fresh faces, experienced editorial models, and hand or beauty specialists for haute couture lookbooks, fine jewellery campaigns, and luxury brand films shot in Bengaluru.
             </p>
 
             <p className="text-[15px] text-white/55 leading-[1.7] font-sans max-w-xl">
@@ -59,7 +59,7 @@ export const OpportunitiesPage: React.FC = () => {
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent z-10" />
               <img
                 src="/assets/opp-soundstage-shoot.jpg"
-                alt="Editorial talent filming on the Leeana Bengaluru soundstage"
+                alt="Editorial talent filming on the Leeana production set"
                 className="w-full h-full object-cover object-center contrast-[1.03]"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#030303]/70 via-transparent to-transparent" />
@@ -223,7 +223,7 @@ export const OpportunitiesPage: React.FC = () => {
                   Closed-Set Indiranagar Hospitality
                 </h4>
                 <p className="text-[14px] text-white/60 leading-relaxed">
-                  Private changing suites, on-set wardrobe draping, hair, makeup, and full catering are provided throughout production inside our private Bengaluru soundstage.
+                  Private changing suites, on-set wardrobe draping, hair, makeup, and full catering are provided throughout production inside our private Bangalore studio.
                 </p>
               </div>
 

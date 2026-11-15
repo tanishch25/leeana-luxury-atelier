@@ -25,8 +25,8 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     name: 'Shree Praveen',
     role: 'Luxury Retail & Enterprise Client',
     img: '/assets/editorial-fashion-5.jpg',
-    text: 'Impeccable execution from pre-production to the final grade. The lighting, high-fashion styling, and soundstage setup in Bangalore are truly world-class. Highly recommended for premium brand shoots.',
-    commission: 'Enterprise Soundstage Direction',
+    text: 'Impeccable execution from pre-production to the final grade. The lighting, high-fashion styling, and production setup in Bangalore are truly world-class. Highly recommended for premium brand shoots.',
+    commission: 'Enterprise Visual Direction',
   },
   {
     id: '03',
@@ -50,7 +50,7 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     role: 'Distinguished Patron',
     img: '/assets/testimonial-2-DGKqWevx.jpg',
     text: 'Remarkable hospitality, discreet coordination, and top-tier production quality. Leeana is the definitive benchmark for luxury brand shoots and commercial campaigns.',
-    commission: 'Private Soundstage Commission',
+    commission: 'Private Atelier Commission',
   },
 ]
 

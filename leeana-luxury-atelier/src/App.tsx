@@ -136,18 +136,10 @@ function AtelierApp() {
           </div>
         )}
 
-        {/* Dedicated Picture-First Studios View */}
-        {activePage === 'studios' && (
+        {/* Dedicated Specialisations View (formerly StudiosPage) */}
+        {(activePage === 'specialisations' || activePage === 'studios' || activePage === 'specializations') && (
           <div className="animate-in fade-in duration-500 pt-8">
             <StudiosPage onOpenRequisition={(studio) => handleOpenRequisition(studio)} />
-            <UnifiedCommandSuite onOpenRequisition={(mandate) => handleOpenRequisition(mandate)} />
-          </div>
-        )}
-
-        {/* Dedicated Specializations View */}
-        {activePage === 'specializations' && (
-          <div className="animate-in fade-in duration-500 pt-16">
-            <SpecializationsList onSelectSpecialization={(spec) => handleOpenRequisition(spec)} />
             <UnifiedCommandSuite onOpenRequisition={(mandate) => handleOpenRequisition(mandate)} />
           </div>
         )}

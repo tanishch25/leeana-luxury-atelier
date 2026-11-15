@@ -119,7 +119,7 @@ const COLUMN_2_ITEMS: LookbookItem[] = [
     category: 'Fashion Editorial',
     image: '/assets/editorial-fashion-3.jpg',
     aspect: 'aspect-[1/1]',
-    client: 'Bengaluru Soundstage Lookbook',
+    client: 'Bengaluru Lookbook',
     year: '2025',
     focal: 'top',
     description: 'Clean cyclorama lighting isolating metallic blush textured cape tailoring and full-length black suede boots.',
@@ -307,7 +307,7 @@ const COLUMN_4_ITEMS: LookbookItem[] = [
   },
   {
     id: '28',
-    title: 'Cinema Primes & Soundstage Optics',
+    title: 'Cinema Primes & Studio Optics',
     category: 'Commercial Brand',
     image: '/assets/candidates/photo-1516035069371-29a1b244cc32.jpg',
     aspect: 'aspect-[4/5]',
@@ -453,7 +453,7 @@ export const LookbookGallery: React.FC = () => {
           </h2>
         </div>
         <p className="text-white/60 text-xs sm:text-sm max-w-md font-light leading-relaxed">
-          High-definition visual plates captured across our Bangalore soundstage, fine joaillerie macro benches, and private patron commissions.
+          High-definition visual plates captured across our Bangalore studio, fine joaillerie macro benches, and private patron commissions.
         </p>
       </div>
 

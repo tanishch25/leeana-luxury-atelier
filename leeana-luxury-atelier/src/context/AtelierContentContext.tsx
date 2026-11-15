@@ -6,13 +6,14 @@ import type {
   HeroSlide,
   ConciergeCard,
   TestimonialItem,
+  ModelItem,
 } from '../types/atelierContent'
 import { INITIAL_ATELIER_CONTENT } from '../data/initialContent'
 
 const STORAGE_KEY = 'leeana_atelier_store_v1'
 const AUTH_KEY = 'leeana_atelier_auth_session'
 
-export type AdminTab = 'reels' | 'lookbook' | 'hero' | 'concierge' | 'reviews' | 'publish'
+export type AdminTab = 'reels' | 'lookbook' | 'hero' | 'concierge' | 'reviews' | 'models' | 'publish'
 
 interface AtelierContentContextType {
   content: AtelierSiteContent
@@ -55,6 +56,13 @@ interface AtelierContentContextType {
   addTestimonial: (item: Omit<TestimonialItem, 'id'>) => void
   deleteTestimonial: (id: string) => void
 
+  // Faces of Leeana (Models)
+  models: ModelItem[]
+  updateModel: (id: string, partial: Partial<ModelItem>) => void
+  addModel: (item: Omit<ModelItem, 'id'>) => void
+  deleteModel: (id: string) => void
+  moveModel: (id: string, direction: 'up' | 'down') => void
+
   // Persistence & Cloud
   resetToDefaults: () => void
   exportJson: () => void
@@ -80,6 +88,9 @@ export const AtelierContentProvider: React.FC<{ children: React.ReactNode }> = (
       if (saved) {
         const parsed = JSON.parse(saved)
         if (parsed.reels && parsed.lookbookColumns && parsed.heroSlides && parsed.conciergeCards) {
+          if (!parsed.models || !Array.isArray(parsed.models) || parsed.models.length === 0) {
+            parsed.models = INITIAL_ATELIER_CONTENT.models
+          }
           setContent(parsed)
         }
       }
@@ -262,6 +273,39 @@ export const AtelierContentProvider: React.FC<{ children: React.ReactNode }> = (
     saveContent({ ...content, testimonials: updated, updatedAt: new Date().toISOString() })
   }
 
+  // --- FACES OF LEEANA (MODELS) MUTATORS ---
+  const updateModel = (id: string, partial: Partial<ModelItem>) => {
+    const updated = (content.models || []).map((m) => (m.id === id ? { ...m, ...partial } : m))
+    saveContent({ ...content, models: updated, updatedAt: new Date().toISOString() })
+  }
+
+  const addModel = (itemData: Omit<ModelItem, 'id'>) => {
+    const newId = String(Date.now()).slice(-4)
+    const newModel: ModelItem = { ...itemData, id: newId }
+    saveContent({
+      ...content,
+      models: [...(content.models || []), newModel],
+      updatedAt: new Date().toISOString(),
+    })
+  }
+
+  const deleteModel = (id: string) => {
+    const updated = (content.models || []).filter((m) => m.id !== id)
+    saveContent({ ...content, models: updated, updatedAt: new Date().toISOString() })
+  }
+
+  const moveModel = (id: string, direction: 'up' | 'down') => {
+    const list = [...(content.models || [])]
+    const idx = list.findIndex((m) => m.id === id)
+    if (idx === -1) return
+    const targetIdx = direction === 'up' ? idx - 1 : idx + 1
+    if (targetIdx < 0 || targetIdx >= list.length) return
+    const temp = list[idx]
+    list[idx] = list[targetIdx]
+    list[targetIdx] = temp
+    saveContent({ ...content, models: list, updatedAt: new Date().toISOString() })
+  }
+
   // --- EXPORT & RESET ---
   const resetToDefaults = () => {
     saveContent(INITIAL_ATELIER_CONTENT)
@@ -392,6 +436,11 @@ export const AtelierContentProvider: React.FC<{ children: React.ReactNode }> = (
         updateTestimonial,
         addTestimonial,
         deleteTestimonial,
+        models: content.models || [],
+        updateModel,
+        addModel,
+        deleteModel,
+        moveModel,
         resetToDefaults,
         exportJson,
         importJson,

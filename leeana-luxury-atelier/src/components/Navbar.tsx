@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import { ArrowUpRight, Sliders } from 'lucide-react'
 import { useAtelierContent } from '../context/AtelierContentContext'
 
-export type NavPage = 'home' | 'studios' | 'specializations' | 'lookbook' | 'concierge' | 'opportunities'
+export type NavPage = 'home' | 'specialisations' | 'lookbook' | 'concierge' | 'opportunities' | 'studios' | 'specializations'
 
 interface NavbarProps {
   activePage: NavPage
@@ -125,8 +125,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navLinks: { id: NavPage; label: string }[] = [
     { id: 'home', label: 'Atelier' },
-    { id: 'studios', label: 'Studios' },
-    { id: 'specializations', label: 'Specializations' },
+    { id: 'specialisations', label: 'Specialisations' },
     { id: 'lookbook', label: 'Lookbook' },
     { id: 'concierge', label: 'Concierge' },
     { id: 'opportunities', label: 'Opportunities' },

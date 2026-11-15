@@ -29,7 +29,7 @@ const CAMPAIGNS: CampaignFilm[] = [
     camera: 'RED V-Raptor 8K VV',
     optics: '100mm Anamorphic Macro Prime',
     lighting: 'Aputure 1200d & Polarized Diffusion',
-    location: 'Soundstage 01 // JP Nagar',
+    location: 'Studio 01 // JP Nagar',
   },
   {
     id: '02',
@@ -138,7 +138,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRequisition }) =
         {/* Subtle Top Kicker */}
         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] backdrop-blur-md">
           <span className="text-[10px] font-light tracking-[0.28em] text-[#c7b299] uppercase">
-            Commercial Visual Soundstage & Private Concierge
+            Commercial Visual Atelier & Private Concierge
           </span>
         </div>
 
@@ -160,7 +160,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRequisition }) =
             href="#atelier"
             className="apple-press px-8 py-3.5 rounded-full bg-[#f4f0ea] text-[#060608] text-xs font-medium tracking-[0.16em] uppercase hover:bg-[#c7b299] transition-colors flex items-center gap-2.5 shadow-xl shadow-black/50"
           >
-            <span>Enter The Soundstage</span>
+            <span>Enter The Atelier</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
 
@@ -205,7 +205,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRequisition }) =
         {/* Cinematic Anamorphic Letterbox Vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-transparent to-[#060608]/60 pointer-events-none" />
 
-        {/* Top Hud: Soundstage Metadata & Live REC Status */}
+        {/* Top Hud: Studio Metadata & Live REC Status */}
         <div className="absolute top-6 sm:top-8 left-6 sm:left-10 right-6 sm:right-10 flex items-center justify-between pointer-events-none z-20">
           
           <div className="flex items-center gap-3">
@@ -307,7 +307,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenRequisition }) =
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-10 border-t border-white/[0.07] text-[#969188]">
         <div>
           <span className="text-[9px] tracking-[0.25em] uppercase text-white/30 block mb-1">
-            01 // SOUNDSTAGE SPEC
+            01 // STUDIO SPEC
           </span>
           <p className="text-xs font-light text-[#f4f0ea]">3,500 sq.ft Cyclorama & Optical Bench</p>
         </div>

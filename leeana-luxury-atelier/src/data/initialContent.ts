@@ -5,6 +5,7 @@ import type {
   HeroSlide,
   ConciergeCard,
   TestimonialItem,
+  ModelItem,
 } from '../types/atelierContent'
 
 export const DEFAULT_REELS: ReelItem[] = [
@@ -66,7 +67,7 @@ export const DEFAULT_REELS: ReelItem[] = [
   {
     id: '06',
     title: 'Editorial Haute Couture',
-    subtitle: 'Sculptural lighting & archival fashion narrative on main soundstage.',
+    subtitle: 'Sculptural lighting & archival fashion narrative in Bangalore.',
     videoSrc: '/assets/reels/reel_3.mp4',
     posterSrc: '/assets/reels/reel_3_thumb.jpg',
     instagramUrl: 'https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr',
@@ -203,7 +204,7 @@ export const DEFAULT_LOOKBOOK_COLUMNS: [LookbookItem[], LookbookItem[], Lookbook
       category: 'Fashion Editorial',
       image: '/assets/editorial-fashion-3.jpg',
       aspect: 'aspect-[1/1]',
-      client: 'Bengaluru Soundstage Lookbook',
+      client: 'Bangalore Editorial Lookbook',
       year: '2025',
       focal: 'top',
       description: 'Clean cyclorama lighting isolating metallic blush textured cape tailoring and full-length black suede boots.',
@@ -391,7 +392,7 @@ export const DEFAULT_LOOKBOOK_COLUMNS: [LookbookItem[], LookbookItem[], Lookbook
     },
     {
       id: '28',
-      title: 'Cinema Primes & Soundstage Optics',
+      title: 'Cinema Primes & Optics',
       category: 'Commercial Brand',
       image: '/assets/candidates/photo-1516035069371-29a1b244cc32.jpg',
       aspect: 'aspect-[4/5]',
@@ -503,8 +504,8 @@ export const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
     name: 'Shree Praveen',
     role: 'Luxury Retail & Enterprise Client',
     img: '/assets/editorial-fashion-5.jpg',
-    text: 'Impeccable execution from pre-production to the final grade. The lighting, high-fashion styling, and soundstage setup in Bangalore are truly world-class. Highly recommended for premium brand shoots.',
-    commission: 'Enterprise Soundstage Direction',
+    text: 'Impeccable execution from pre-production to the final grade. The lighting, high-fashion styling, and production setup in Bangalore are truly world-class. Highly recommended for premium brand shoots.',
+    commission: 'Enterprise Brand Direction',
   },
   {
     id: '03',
@@ -528,8 +529,17 @@ export const DEFAULT_TESTIMONIALS: TestimonialItem[] = [
     role: 'Distinguished Patron',
     img: '/assets/testimonial-2-DGKqWevx.jpg',
     text: 'Remarkable hospitality, discreet coordination, and top-tier production quality. Leeana is the definitive benchmark for luxury brand shoots and commercial campaigns.',
-    commission: 'Private Soundstage Commission',
+    commission: 'Private Production Commission',
   },
+]
+
+export const DEFAULT_MODELS: ModelItem[] = [
+  { id: '01', name: 'Tara Sen', tag: 'Editorial Streetwear', img: '/assets/model-1.jpg' },
+  { id: '02', name: 'Rhea Kapoor', tag: 'Nightlife Luxe', img: '/assets/model-2.jpg' },
+  { id: '04', name: 'Kabir Verma', tag: 'Classic Portrait', img: '/assets/model-4.jpg' },
+  { id: '05', name: 'Maya Singhania', tag: 'Boutique Elegance', img: '/assets/model-5.jpg' },
+  { id: '07', name: 'Anya Roy', tag: 'Supercar Charisma', img: '/assets/model-7.jpg' },
+  { id: '09', name: 'Ayesha Khan', tag: 'Heritage Elegance', img: '/assets/model-0106.jpg' },
 ]
 
 export const INITIAL_ATELIER_CONTENT: AtelierSiteContent = {
@@ -538,5 +548,6 @@ export const INITIAL_ATELIER_CONTENT: AtelierSiteContent = {
   heroSlides: DEFAULT_HERO_SLIDES,
   conciergeCards: DEFAULT_CONCIERGE_CARDS,
   testimonials: DEFAULT_TESTIMONIALS,
+  models: DEFAULT_MODELS,
   updatedAt: new Date().toISOString(),
 }

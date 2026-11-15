@@ -97,12 +97,12 @@ export const EditorialLookbook: React.FC = () => {
           <h2 className="font-couture text-4xl sm:text-6xl tracking-tight text-[#f4f0ea]">
             Captured Frames. <br />
             <span className="font-editorial italic font-normal text-[#c7b299]">
-              Visual Direction Under Soundstage Glass.
+              Visual Direction Under Studio Glass.
             </span>
           </h2>
         </div>
         <p className="text-[#969188] text-sm max-w-md font-light leading-relaxed">
-          A curated selection of commercial campaign reels, high-fashion editorials, and private acquisitions photographed inside our JP Nagar soundstage and on location.
+          A curated selection of commercial campaign reels, high-fashion editorials, and private acquisitions photographed inside our JP Nagar studio and on location.
         </p>
       </div>
 
@@ -184,7 +184,7 @@ export const EditorialLookbook: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#c7b299]" />
                   <span className="text-[10px] tracking-widest text-[#c7b299] uppercase font-light">
-                    SOUNDSTAGE CAMPAIGN DOSSIER
+                    STUDIO CAMPAIGN DOSSIER
                   </span>
                 </div>
 
@@ -226,7 +226,7 @@ export const EditorialLookbook: React.FC = () => {
 
               <div className="pt-4 border-t border-white/10">
                 <span className="text-[10px] text-white/40 tracking-widest uppercase font-light">
-                  BANGALORE SOUNDSTAGE ARCHIVE // CONFIDENTIAL
+                  BANGALORE ATELIER ARCHIVE // CONFIDENTIAL
                 </span>
               </div>
             </div>

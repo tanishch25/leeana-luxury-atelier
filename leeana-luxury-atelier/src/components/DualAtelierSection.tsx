@@ -28,7 +28,7 @@ export const DualAtelierSection: React.FC<{ onSelectPillar: (pillar: string) => 
       {/* Grand Dual Portals: Interactive Expanding Panels */}
       <div className="grid lg:grid-cols-12 gap-6 min-h-[640px]">
         
-        {/* PANEL 01: The Visual Atelier (Bangalore Soundstage) */}
+        {/* PANEL 01: The Visual Atelier (Bangalore Studio) */}
         <div
           onMouseEnter={() => setHoveredPanel('atelier')}
           className={`relative rounded-3xl overflow-hidden border border-white/[0.1] bg-[#07070a] flex flex-col justify-between p-8 sm:p-12 transition-all duration-700 ease-out cursor-pointer group ${
@@ -51,7 +51,7 @@ export const DualAtelierSection: React.FC<{ onSelectPillar: (pillar: string) => 
             <div className="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10">
               <span className="w-1.5 h-1.5 rounded-full bg-[#c7b299]" />
               <span className="text-[10px] font-mono tracking-widest text-[#c7b299] uppercase">
-                DIVISION 01 // SOUNDSTAGE ATELIER
+                DIVISION 01 // VISUAL ATELIER
               </span>
             </div>
             <span className="text-xs font-mono text-white/40">JP NAGAR, BLR</span>

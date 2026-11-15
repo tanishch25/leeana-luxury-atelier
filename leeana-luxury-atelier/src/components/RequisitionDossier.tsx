@@ -31,7 +31,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
 
   const getEmailContent = () => {
     const subject = `Atelier Appointment Booking: ${selectedDiscipline} — ${name || 'Confidential Patron'}`
-    const body = `Hello Leeana Fashion Concierge Desk,\n\nI wish to book an Atelier Appointment for a Premium & Luxury Brand Shoot:\n\n- Discipline: ${selectedDiscipline}\n- Client / Maison: ${name || 'Confidential'}\n- Phone / WhatsApp: ${phone || 'Confidential'}\n- Mandate / Brief: ${notes || 'Direct soundstage appointment requested.'}\n\nPlease confirm soundstage schedule and production brief.`
+    const body = `Hello Leeana Fashion Concierge Desk,\n\nI wish to book an Atelier Appointment for a Premium & Luxury Brand Shoot:\n\n- Discipline: ${selectedDiscipline}\n- Client / Maison: ${name || 'Confidential'}\n- Phone / WhatsApp: ${phone || 'Confidential'}\n- Mandate / Brief: ${notes || 'Direct appointment requested.'}\n\nPlease confirm production schedule and production brief.`
     return { subject, body }
   }
 
@@ -89,7 +89,7 @@ export const RequisitionDossier: React.FC<RequisitionDossierProps> = ({
             Schedule Atelier Session
           </h2>
           <p className="text-xs sm:text-sm text-white/70 font-light leading-relaxed">
-            Direct soundstage access in JP Nagar, Bengaluru for premium and luxury brand shoots.
+            Direct studio access in JP Nagar, Bengaluru for premium and luxury brand shoots.
           </p>
         </div>
 

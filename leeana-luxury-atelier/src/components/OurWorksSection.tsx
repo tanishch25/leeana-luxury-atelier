@@ -101,12 +101,12 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               Our Works
             </h2>
             <p className="text-white/90 text-xs sm:text-sm max-w-xl font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.9)]">
-              A curated soundstage archive uniting high-fashion casting, cinematic motion choreography, and luxury brand narratives.
+              A curated archive uniting high-fashion casting, cinematic motion choreography, and luxury brand narratives.
             </p>
           </div>
         </div>
 
-        {/* DESKTOP LAYOUT: Master Asymmetric Soundstage Bento Grid (100% Pure Video Reels, Zero Models) */}
+        {/* DESKTOP LAYOUT: Master Asymmetric Studio Bento Grid (100% Pure Video Reels, Zero Models) */}
         <div className="hidden sm:block space-y-3 sm:space-y-3.5">
           {/* Row 1: Priority 1 — Cafe & Culinary Feature (2 cols) + Priority 5 — Culinary Narrative (1 col) */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-3.5">

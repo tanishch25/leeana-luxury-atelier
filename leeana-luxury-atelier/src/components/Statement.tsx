@@ -5,18 +5,18 @@ export const Statement: React.FC = () => {
 
   const pillars = [
     {
-      title: 'Soundstage Cinema Motion',
-      desc: 'Dedicated soundstage facilities with motorized pantographs, continuous cycloramas, and precision robotic tracking for commercial campaigns.',
-      image: '/assets/svc-cars-BFdPfwO2.jpg',
-    },
-    {
-      title: 'Macro Joaillerie Direction',
-      desc: 'Anamorphic macro rail optics eliminating chromatic aberration to capture internal stone fire, platinum luster, and unheated gemstone depth.',
+      title: 'We Bring Out Your Best Aesthetics',
+      desc: 'We make sure your products look stunning on camera. Every photo, reel, and video is shot with premium lighting, styling, and angles to make your brand stand out immediately.',
       image: '/assets/svc-jewellery-BcB-GXPd.jpg',
     },
     {
-      title: 'Commercial Brand Shoots & Narrative Films',
-      desc: 'Television commercials, high-ticket brand storytelling, and bespoke lifestyle campaigns that establish unshakeable market authority.',
+      title: 'Complete Shoot & Video Production',
+      desc: 'We handle everything from start to finish. You do not have to worry about cameras, models, hair, makeup, lighting, studio spaces, or editing — our team manages the entire shoot for you.',
+      image: '/assets/svc-cars-BFdPfwO2.jpg',
+    },
+    {
+      title: 'Content That Grabs Attention & Sells',
+      desc: 'We create scroll-stopping Instagram reels, commercial ad videos, and catalog photos that capture buyer attention, build real trust, and turn viewers into loyal customers.',
       image: '/assets/svc-homes-BDNBbpTG.jpg',
     },
   ]
@@ -49,7 +49,7 @@ export const Statement: React.FC = () => {
         {/* Narrative Paragraph */}
         <div className="max-w-3xl pt-2">
           <p className="text-base sm:text-xl text-white/85 font-light leading-relaxed">
-            Equipped with state-of-the-art cinema camera systems, specialized macro glass, and master gaffers, Leeana Fashion Concierge designs visual campaigns that elevate fine jewellery, bridal couture drapes, and premier lifestyle houses across India and internationally.
+            Leeana Fashion Concierge plans, shoots, and produces world-class visuals for fine jewellery, bridal couture, fashion, and luxury lifestyle brands across India and internationally.
           </p>
         </div>
 

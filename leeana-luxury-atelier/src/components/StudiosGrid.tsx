@@ -25,7 +25,7 @@ export const StudiosGrid: React.FC<StudiosGridProps> = ({ onSelectStudio }) => {
       image: '/assets/editorial-fashion-6.jpg',
       icon: Film,
       aspect: 'md:col-span-5 aspect-[4/5]',
-      specs: 'RED V-Raptor 8K · Studio Soundstage',
+      specs: 'RED V-Raptor 8K · Cinema Studio',
     },
     {
       id: '03',
@@ -63,7 +63,7 @@ export const StudiosGrid: React.FC<StudiosGridProps> = ({ onSelectStudio }) => {
           </h2>
         </div>
         <p className="text-white/60 text-xs sm:text-sm max-w-md font-light leading-relaxed">
-          From soundstage cinema cameras and macro lighting benches to off-market acquisitions, each studio operates with uncompromising precision.
+          From studio cinema cameras and macro lighting benches to off-market acquisitions, each studio operates with uncompromising precision.
         </p>
       </div>
 

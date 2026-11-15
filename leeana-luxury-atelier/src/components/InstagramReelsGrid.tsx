@@ -162,7 +162,7 @@ export const InstagramReelsGrid: React.FC = () => {
               Live Productions In Motion
             </h2>
             <p className="text-white/60 text-xs sm:text-sm max-w-xl font-light leading-relaxed">
-              Soundstage captures, high-fashion motion choreography, and architectural cinematography streamed directly from our live Instagram reels vault.
+              Cinematic captures, high-fashion motion choreography, and architectural cinematography streamed directly from our live Instagram reels vault.
             </p>
           </div>
 

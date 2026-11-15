@@ -50,11 +50,19 @@ export interface TestimonialItem {
   commission: string
 }
 
+export interface ModelItem {
+  id: string
+  name: string
+  tag: string
+  img: string
+}
+
 export interface AtelierSiteContent {
   reels: ReelItem[]
   lookbookColumns: [LookbookItem[], LookbookItem[], LookbookItem[], LookbookItem[]]
   heroSlides: HeroSlide[]
   conciergeCards: ConciergeCard[]
   testimonials: TestimonialItem[]
+  models: ModelItem[]
   updatedAt: string
 }

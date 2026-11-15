@@ -15,14 +15,14 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onOpenRequisition }) =
       discipline: 'Diamond Facet Capture',
     },
     {
-      title: 'Fashion Cinema Soundstage',
+      title: 'Fashion Cinema Stage',
       subtitle: 'Continuous Cyclorama & High-Speed Motion',
       image: '/assets/editorial-fashion-6.jpg',
       aspect: 'col-span-12 md:col-span-5 aspect-[4/5]',
       discipline: 'Bridal Silks & Couture',
     },
     {
-      title: 'Exotic Automotive Soundstage',
+      title: 'Exotic Automotive Stage',
       subtitle: 'Trackside Chase Arm & Studio Rim Lighting',
       image: '/assets/hero_supercar_4k.jpg',
       aspect: 'col-span-12 md:col-span-5 aspect-[4/5]',
@@ -54,18 +54,18 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onOpenRequisition }) =
   return (
     <div className="pt-16 pb-24 px-4 sm:px-8 md:px-12 max-w-7xl mx-auto relative z-10 text-[#f4f0ea]">
       
-      {/* Tight, Aesthetic Editorial Header (One-line upright typography, pure white) */}
+      {/* Tight, Aesthetic Editorial Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-white/[0.08]">
         <div>
           <span className="text-[11px] uppercase tracking-[0.2em] text-white/50 block font-light mb-2">
-            Soundstage Facilities
+            Specialised Production
           </span>
           <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-light text-white tracking-tight">
-            Physical Soundstages & Optical Sets
+            Specialised Production Disciplines
           </h1>
         </div>
         <p className="text-white/60 text-xs sm:text-sm max-w-sm font-light leading-relaxed">
-          Bangalore soundstages configured with specialized macro benches, continuous gaffer grids, and cinema camera packages.
+          Bangalore facilities configured with specialized macro benches, continuous gaffer grids, and cinema camera packages.
         </p>
       </div>
 
@@ -115,7 +115,7 @@ export const StudiosPage: React.FC<StudiosPageProps> = ({ onOpenRequisition }) =
             Reserve Studio Session
           </h4>
           <p className="text-xs text-[#969188] font-light mt-1">
-            Soundstage access in JP Nagar, Bengaluru. Confidential bookings for jewellery and fashion houses.
+            Studio access in JP Nagar, Bengaluru. Confidential bookings for jewellery and fashion houses.
           </p>
         </div>
         <button

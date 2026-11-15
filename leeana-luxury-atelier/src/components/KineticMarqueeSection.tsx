@@ -2,7 +2,7 @@ import React from 'react'
 
 export const KineticMarqueeSection: React.FC = () => {
   const line1 = [
-    'COMMERCIAL SOUNDSTAGE',
+    'COMMERCIAL PRODUCTION',
     '8K CINEMATOGRAPHY',
     'HAUTE JOAILLERIE MACRO',
     'PRIVATE CONCIERGE',

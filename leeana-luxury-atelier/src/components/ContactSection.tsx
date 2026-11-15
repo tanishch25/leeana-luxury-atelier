@@ -22,7 +22,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
           {/* Telemetry Tag */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-white/60 text-xs uppercase tracking-[0.2em] font-light">
             <span className="w-1.5 h-1.5 rounded-full bg-white" />
-            <span>Private Soundstage & Concierge Desk</span>
+            <span>Private Atelier & Concierge Desk</span>
           </div>
 
           {/* Monumental All-White Headline (Non-cursive, Architectural Authority) */}
@@ -31,7 +31,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
           </h2>
 
           <p className="text-sm sm:text-base md:text-lg text-white/80 font-light leading-relaxed max-w-2xl mx-auto">
-            Whether reserving soundstage dates for fine jewellery & couture campaigns, or commissioning discreet supercar and estate allocations, our direct directors respond within four operational hours.
+            Whether reserving production dates for fine jewellery & couture campaigns, or commissioning discreet supercar and estate allocations, our direct directors respond within four operational hours.
           </p>
 
           <div className="pt-2 flex flex-wrap justify-center gap-4">
@@ -48,7 +48,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenConsultati
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-12 mt-8 border-t border-white/[0.08] text-left">
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
               <span className="text-[10px] tracking-widest uppercase text-white/40 block font-light mb-1">
-                BANGALORE SOUNDSTAGE
+                BANGALORE ATELIER
               </span>
               <p className="text-sm text-white font-light">
                 JP Nagar 7th Phase, South Bengaluru

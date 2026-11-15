@@ -114,7 +114,7 @@ export const MODELS_DATA: ModelItem[] = [
 export const FAQ_DATA: FaqItem[] = [
   {
     q: 'What kind of brands does Leeana feature?',
-    a: 'We curate premium and luxury brands across haute joaillerie, fashion couture, exotic fleet automotive, architectural real estate, private cellars, and soundstage media productions.',
+    a: 'We curate premium and luxury brands across haute joaillerie, fashion couture, exotic fleet automotive, architectural real estate, private cellars, and commercial media productions.',
   },
   {
     q: 'How do I become a Leeana partner?',
@@ -122,7 +122,7 @@ export const FAQ_DATA: FaqItem[] = [
   },
   {
     q: 'Is there a membership for buyers?',
-    a: 'Selected allocations and private soundstage previews are reserved exclusively for our verified private patrons. Inquire via the concierge desk to register credentials.',
+    a: 'Selected allocations and private studio previews are reserved exclusively for our verified private patrons. Inquire via the concierge desk to register credentials.',
   },
   {
     q: 'Do you operate internationally?',
@@ -139,8 +139,9 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
   initialScrollTo,
   onNavigateToOpportunities,
 }) => {
-  const { conciergeCards: storeCards } = useAtelierContent()
+  const { conciergeCards: storeCards, models: storeModels } = useAtelierContent()
   const cardsList = storeCards && storeCards.length > 0 ? storeCards : CONCIERGE_CARDS
+  const modelsList = storeModels && storeModels.length > 0 ? storeModels : MODELS_DATA
 
   const [currentCardIdx, setCurrentCardIdx] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
@@ -382,7 +383,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
 
           {/* Pinterest-Style Model Grid: 2 Columns Mobile, 3 Columns Desktop */}
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-5 pt-6">
-            {MODELS_DATA.map((model) => (
+            {modelsList.map((model) => (
               <article
                 key={model.id}
                 onClick={() => onOpenRequisition(`Model Booking Request: ${model.name} (${model.tag})`)}
@@ -439,7 +440,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
               Connect With A Dedicated Private Director
             </h2>
             <p className="text-xs sm:text-sm text-white/70 font-light max-w-xl">
-              Appointments confirmed within 4 business hours. Private soundstage viewings and acquisition consultations conducted in total confidence.
+              Appointments confirmed within 4 business hours. Private studio viewings and acquisition consultations conducted in total confidence.
             </p>
           </div>
 

@@ -85,7 +85,7 @@ export const UnifiedCommandSuite: React.FC<UnifiedCommandSuiteProps> = ({ onOpen
 
         {/* Minimal Architectural Telemetry Strip (Zero Dots) */}
         <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs sm:text-sm text-white/65 font-light">
-          <span>Bangalore Soundstage / JP Nagar 3rd Phase</span>
+          <span>Bangalore / JP Nagar 3rd Phase</span>
           <span>Guaranteed 4-Hour Response SLA</span>
           <span>Strict Non-Disclosure & Encrypted Transmission</span>
         </div>

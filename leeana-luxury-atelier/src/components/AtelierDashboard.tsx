@@ -101,11 +101,11 @@ export const AtelierDashboard: React.FC<AtelierDashboardProps> = ({ onOpenRequis
           </h1>
         </div>
 
-        {/* Live Soundstage Telemetrics */}
+        {/* Live Studio Telemetrics */}
         <div className="flex flex-col sm:flex-row gap-4 p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-xl">
           <div className="space-y-1">
             <span className="text-[10px] uppercase tracking-widest text-white/40 block font-light">
-              SOUNDSTAGE ALPHA (JP NAGAR)
+              STUDIO ALPHA (JP NAGAR)
             </span>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
@@ -118,7 +118,7 @@ export const AtelierDashboard: React.FC<AtelierDashboardProps> = ({ onOpenRequis
 
           <div className="space-y-1">
             <span className="text-[10px] uppercase tracking-widest text-white/40 block font-light">
-              SOUNDSTAGE BETA (SOUND PROOF)
+              STUDIO BETA (SOUND PROOF)
             </span>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#c7b299]" />
@@ -229,11 +229,11 @@ export const AtelierDashboard: React.FC<AtelierDashboardProps> = ({ onOpenRequis
             </div>
           </div>
 
-          {/* Step 4: Soundstage Lighting & Rigging */}
+          {/* Step 4: Studio Lighting & Rigging */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <label className="text-[11px] font-medium tracking-[0.2em] uppercase text-white/70">
-                04 · Lighting & Soundstage Gaffer Grid
+                04 · Lighting & Studio Gaffer Grid
               </label>
               <span className="text-xs text-[#c7b299] font-light">{selectedLighting}</span>
             </div>
@@ -399,7 +399,7 @@ export const AtelierDashboard: React.FC<AtelierDashboardProps> = ({ onOpenRequis
             </button>
 
             <div className="flex items-center justify-between text-[10px] text-white/40 uppercase tracking-wider pt-1">
-              <span>SOUNDSTAGE RESERVATIONS: 48H RESPONSE</span>
+              <span>STUDIO RESERVATIONS: 48H RESPONSE</span>
               <span>JP NAGAR ATELIER</span>
             </div>
           </div>

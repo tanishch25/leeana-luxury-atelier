@@ -26,7 +26,7 @@ import {
 } from 'lucide-react'
 import { useAtelierContent, type AdminTab } from '../../context/AtelierContentContext'
 import { MediaUploader } from './MediaUploader'
-import type { ReelItem, LookbookItem, HeroSlide, ConciergeCard, TestimonialItem } from '../../types/atelierContent'
+import type { ReelItem, LookbookItem, HeroSlide, ConciergeCard, TestimonialItem, ModelItem } from '../../types/atelierContent'
 
 export const AtelierAdminSuite: React.FC = () => {
   const {
@@ -53,6 +53,11 @@ export const AtelierAdminSuite: React.FC = () => {
     updateConciergeCard,
     testimonials,
     updateTestimonial,
+    models,
+    updateModel,
+    addModel,
+    deleteModel,
+    moveModel,
     resetToDefaults,
     exportJson,
     importJson,
@@ -92,6 +97,28 @@ export const AtelierAdminSuite: React.FC = () => {
 
   // Selected Column Filter for Lookbook Tab
   const [activeColumnView, setActiveColumnView] = useState<number | 'all'>('all')
+
+  // Faces of Leeana Draft State
+  const [isAddingModel, setIsAddingModel] = useState(false)
+  const [newModel, setNewModel] = useState<Omit<ModelItem, 'id'>>({
+    name: '',
+    tag: 'Haute Horlogerie & Couture',
+    img: '',
+  })
+
+  const handleSaveNewModel = () => {
+    if (!newModel.name.trim() || !newModel.img.trim()) {
+      alert('Please provide a name and photo for the model profile.')
+      return
+    }
+    addModel(newModel)
+    setNewModel({
+      name: '',
+      tag: 'Haute Horlogerie & Couture',
+      img: '',
+    })
+    setIsAddingModel(false)
+  }
 
   // GitHub Publish State
   const [githubToken, setGithubToken] = useState(() => localStorage.getItem('leeana_gh_pat') || '')
@@ -257,6 +284,7 @@ export const AtelierAdminSuite: React.FC = () => {
           },
           { id: 'hero', label: 'Hero Stage', icon: Sparkles, count: heroSlides.length },
           { id: 'concierge', label: 'Concierge Cards', icon: Layers, count: conciergeCards.length },
+          { id: 'models', label: 'Faces of Leeana', icon: Eye, count: models.length },
           { id: 'reviews', label: 'Client Reviews', icon: MessageSquare, count: testimonials.length },
           { id: 'publish', label: 'Publish & Sync', icon: Globe },
         ].map((tab) => {
@@ -1082,6 +1110,189 @@ export const AtelierAdminSuite: React.FC = () => {
                     label="Portrait Avatar"
                     value={test.img}
                     onChange={(val) => updateTestimonial(test.id, { img: val })}
+                    accept="image"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================== */}
+        {/* TAB: FACES OF LEEANA (MODELS ROSTER)                      */}
+        {/* ========================================================== */}
+        {activeAdminTab === 'models' && (
+          <div className="space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-white/[0.08]">
+              <div>
+                <h3 className="text-xl sm:text-2xl font-light text-white tracking-tight">
+                  Faces of Leeana · Model Roster
+                </h3>
+                <p className="text-xs text-white/50 font-light mt-1">
+                  Manage talent profiles displayed on the Concierge Desk. Add new models, rename talent, adjust specialty tags, and update photos.
+                </p>
+              </div>
+
+              <button
+                onClick={() => setIsAddingModel(!isAddingModel)}
+                className="apple-press px-4 py-2.5 rounded-2xl bg-white text-black font-semibold text-xs tracking-wider uppercase transition-all flex items-center gap-2 self-start sm:self-auto cursor-pointer shadow-lg hover:bg-white/90"
+              >
+                <Plus className="w-4 h-4" />
+                <span>{isAddingModel ? 'Cancel' : 'Add New Model'}</span>
+              </button>
+            </div>
+
+            {/* Inline Add Model Composer */}
+            {isAddingModel && (
+              <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#12121c] to-[#09090d] p-6 space-y-5 animate-in fade-in duration-300 shadow-2xl">
+                <div className="flex items-center justify-between pb-3 border-b border-white/10">
+                  <span className="text-xs font-semibold tracking-wider uppercase text-white/90">
+                    Add New Model Profile
+                  </span>
+                  <button
+                    onClick={() => setIsAddingModel(false)}
+                    className="p-1 rounded-full text-white/40 hover:text-white"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-[10px] uppercase tracking-wider text-white/50 block mb-1">
+                      Model Full Name
+                    </label>
+                    <input
+                      type="text"
+                      value={newModel.name}
+                      onChange={(e) => setNewModel({ ...newModel, name: e.target.value })}
+                      placeholder="e.g. Maya Singhania"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 text-xs text-white placeholder-white/30 focus:outline-none focus:border-white"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-[10px] uppercase tracking-wider text-white/50 block mb-1">
+                      Specialty Tag / Discipline
+                    </label>
+                    <input
+                      type="text"
+                      value={newModel.tag}
+                      onChange={(e) => setNewModel({ ...newModel, tag: e.target.value })}
+                      placeholder="e.g. Editorial Streetwear / Haute Couture"
+                      className="w-full px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/15 text-xs text-white placeholder-white/30 focus:outline-none focus:border-white"
+                    />
+                  </div>
+                </div>
+
+                <MediaUploader
+                  label="Model Editorial Portrait Photo"
+                  value={newModel.img}
+                  onChange={(val) => setNewModel({ ...newModel, img: val })}
+                  accept="image"
+                />
+
+                <div className="flex justify-end gap-3 pt-2">
+                  <button
+                    onClick={() => setIsAddingModel(false)}
+                    className="px-4 py-2 rounded-xl text-xs text-white/60 hover:text-white cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={handleSaveNewModel}
+                    className="apple-press px-6 py-2.5 rounded-xl bg-white text-black font-semibold text-xs tracking-wider uppercase hover:bg-white/90 shadow-lg cursor-pointer"
+                  >
+                    Save Model Profile
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Model Profiles Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {models.map((m, idx) => (
+                <div
+                  key={m.id}
+                  className="rounded-3xl border border-white/10 bg-[#09090d] p-5 space-y-4 hover:border-white/20 transition-all flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    {/* Image Preview & Order Controls */}
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-black/60 border border-white/10">
+                      <img
+                        src={m.img}
+                        alt={m.name}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-2.5 right-2.5 flex items-center gap-1 bg-black/70 backdrop-blur-md rounded-full p-1 border border-white/15">
+                        <button
+                          onClick={() => moveModel(m.id, 'up')}
+                          disabled={idx === 0}
+                          title="Move Left / Earlier"
+                          className="p-1 rounded-full text-white/70 hover:text-white disabled:opacity-30 cursor-pointer"
+                        >
+                          <ArrowUp className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={() => moveModel(m.id, 'down')}
+                          disabled={idx === models.length - 1}
+                          title="Move Right / Later"
+                          className="p-1 rounded-full text-white/70 hover:text-white disabled:opacity-30 cursor-pointer"
+                        >
+                          <ArrowDown className="w-3.5 h-3.5" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            if (confirm(`Remove ${m.name} from roster?`)) {
+                              deleteModel(m.id)
+                            }
+                          }}
+                          title="Delete Model Profile"
+                          className="p-1 rounded-full text-red-400 hover:text-red-300 cursor-pointer"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+
+                      <div className="absolute bottom-2.5 left-2.5 bg-black/70 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 text-[10px] text-white/70 tracking-widest uppercase">
+                        #{idx + 1}
+                      </div>
+                    </div>
+
+                    {/* In-place Editable Fields */}
+                    <div className="space-y-2.5">
+                      <div>
+                        <label className="text-[10px] uppercase tracking-wider text-white/40 block mb-1">
+                          Model Name
+                        </label>
+                        <input
+                          type="text"
+                          value={m.name}
+                          onChange={(e) => updateModel(m.id, { name: e.target.value })}
+                          placeholder="Model Name"
+                          className="w-full px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs text-white font-medium focus:outline-none focus:border-white"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="text-[10px] uppercase tracking-wider text-white/40 block mb-1">
+                          Specialty / Tag
+                        </label>
+                        <input
+                          type="text"
+                          value={m.tag}
+                          onChange={(e) => updateModel(m.id, { tag: e.target.value })}
+                          placeholder="e.g. Classic Portrait"
+                          className="w-full px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs text-white/70 focus:outline-none focus:border-white"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <MediaUploader
+                    label="Change Photo"
+                    value={m.img}
+                    onChange={(val) => updateModel(m.id, { img: val })}
                     accept="image"
                   />
                 </div>
