@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 export interface TestimonialItem {
   id: string
@@ -63,6 +64,9 @@ const STACK_AVATARS = [
 ]
 
 export const ReviewsShowcase: React.FC = () => {
+  const { testimonials: storeTestimonials } = useAtelierContent()
+  const testimonialsList = storeTestimonials && storeTestimonials.length > 0 ? storeTestimonials : TESTIMONIALS_DATA
+
   const [startIndex, setStartIndex] = useState(0)
   const [direction, setDirection] = useState<'next' | 'prev'>('next')
   const [phase, setPhase] = useState<'idle' | 'out' | 'in'>('idle')
@@ -83,13 +87,13 @@ export const ReviewsShowcase: React.FC = () => {
     if (phase !== 'idle') return
     if (prefersReducedMotion) {
       setDirection(dir)
-      setStartIndex((prev) => (prev + step + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length)
+      setStartIndex((prev) => (prev + step + testimonialsList.length) % testimonialsList.length)
       return
     }
     setDirection(dir)
     setPhase('out')
     window.setTimeout(() => {
-      setStartIndex((prev) => (prev + step + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length)
+      setStartIndex((prev) => (prev + step + testimonialsList.length) % testimonialsList.length)
       setPhase('in')
       window.setTimeout(() => setPhase('idle'), 260)
     }, 140)
@@ -99,7 +103,7 @@ export const ReviewsShowcase: React.FC = () => {
   const handleNext = () => triggerStep(1, 'next')
 
   const visibleReviews = [0, 1, 2].map(
-    (offset) => TESTIMONIALS_DATA[(startIndex + offset) % TESTIMONIALS_DATA.length]
+    (offset) => testimonialsList[(startIndex + offset) % testimonialsList.length]
   )
 
   const getMotionStyle = (cardOrder: number): React.CSSProperties => {

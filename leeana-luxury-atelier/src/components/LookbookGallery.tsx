@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { ArrowUpRight, X } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 interface LookbookItem {
   id: string
@@ -377,12 +378,18 @@ export const LookbookGallery: React.FC = () => {
     'Exotic Fleet',
   ]
 
+  const { lookbookColumns } = useAtelierContent()
+  const liveCol1 = lookbookColumns[0]?.length ? lookbookColumns[0] : COLUMN_1_ITEMS
+  const liveCol2 = lookbookColumns[1]?.length ? lookbookColumns[1] : COLUMN_2_ITEMS
+  const liveCol3 = lookbookColumns[2]?.length ? lookbookColumns[2] : COLUMN_3_ITEMS
+  const liveCol4 = lookbookColumns[3]?.length ? lookbookColumns[3] : COLUMN_4_ITEMS
+
   // Flattened pool for balanced multi-column distribution when category filters are applied
   const ALL_PLATES = [
-    ...COLUMN_1_ITEMS,
-    ...COLUMN_2_ITEMS,
-    ...COLUMN_3_ITEMS,
-    ...COLUMN_4_ITEMS,
+    ...liveCol1,
+    ...liveCol2,
+    ...liveCol3,
+    ...liveCol4,
   ]
 
   const filteredItems = activeFilter === 'ALL'
@@ -391,10 +398,10 @@ export const LookbookGallery: React.FC = () => {
 
   // When 'ALL', preserve the bespoke engineered column layout that terminates at the exact same baseline
   // When filtered, dynamically distribute across the 4 columns so the Pinterest waterfall remains dense & balanced
-  const col1 = activeFilter === 'ALL' ? COLUMN_1_ITEMS : filteredItems.filter((_, i) => i % 4 === 0)
-  const col2 = activeFilter === 'ALL' ? COLUMN_2_ITEMS : filteredItems.filter((_, i) => i % 4 === 1)
-  const col3 = activeFilter === 'ALL' ? COLUMN_3_ITEMS : filteredItems.filter((_, i) => i % 4 === 2)
-  const col4 = activeFilter === 'ALL' ? COLUMN_4_ITEMS : filteredItems.filter((_, i) => i % 4 === 3)
+  const col1 = activeFilter === 'ALL' ? liveCol1 : filteredItems.filter((_, i) => i % 4 === 0)
+  const col2 = activeFilter === 'ALL' ? liveCol2 : filteredItems.filter((_, i) => i % 4 === 1)
+  const col3 = activeFilter === 'ALL' ? liveCol3 : filteredItems.filter((_, i) => i % 4 === 2)
+  const col4 = activeFilter === 'ALL' ? liveCol4 : filteredItems.filter((_, i) => i % 4 === 3)
 
   // Engineered 2-column mobile layout that guarantees BOTH columns terminate at the EXACT SAME LEVEL (Zero blank space at bottom)
   const getMobileColumns = () => {

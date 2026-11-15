@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 export interface ReelShortItem {
   id: string
@@ -106,6 +107,9 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
   onClose,
   onOpenConnect,
 }) => {
+  const { reels: storeReels } = useAtelierContent()
+  const reelsList = storeReels && storeReels.length > 0 ? storeReels : SHORTS_REELS_DATA
+
   const [activeIndex, setActiveIndex] = useState(0)
   const [isMuted, setIsMuted] = useState(false)
   const [copiedToast, setCopiedToast] = useState(false)
@@ -142,7 +146,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
       const reelParam = params.get('reel')
       let initialIdx = 0
       if (reelParam) {
-        const found = SHORTS_REELS_DATA.findIndex((r) => r.id === reelParam)
+        const found = reelsList.findIndex((r) => r.id === reelParam)
         if (found !== -1) initialIdx = found
       }
 
@@ -211,7 +215,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     }
 
     // If viewing the concluding Let's Talk card (slide index >= 7), silence all videos immediately!
-    if (activeIndex >= SHORTS_REELS_DATA.length) {
+    if (activeIndex >= reelsList.length) {
       stopAllPlayback()
       return
     }
@@ -311,7 +315,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         ref={containerRef}
         className="flex-1 w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory scrollbar-none relative overscroll-y-contain [scroll-snap-type:y_mandatory] [-webkit-overflow-scrolling:touch] touch-pan-y"
       >
-        {SHORTS_REELS_DATA.map((reel, index) => {
+        {reelsList.map((reel, index) => {
           return (
             <section
               key={reel.id}
@@ -403,9 +407,9 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         {/* Final Concluding Slide: "Let's Talk" (Seamlessly Scrolled into view after the content ends) */}
         <section
           ref={(el) => {
-            sectionRefs.current[SHORTS_REELS_DATA.length] = el
+            sectionRefs.current[reelsList.length] = el
           }}
-          data-index={SHORTS_REELS_DATA.length}
+          data-index={reelsList.length}
           className="relative w-full h-[100dvh] snap-start snap-always flex items-center justify-center bg-[#07070a] px-6 select-none overflow-hidden shrink-0"
         >
           {/* Subtle Radial Backdrop Ambient */}

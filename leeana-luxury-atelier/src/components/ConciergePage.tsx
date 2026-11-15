@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { InstagramReelsGrid } from './InstagramReelsGrid'
 import { ReviewsShowcase, TESTIMONIALS_DATA, type TestimonialItem } from './ReviewsShowcase'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 export { TESTIMONIALS_DATA, type TestimonialItem }
 
@@ -138,6 +139,9 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
   initialScrollTo,
   onNavigateToOpportunities,
 }) => {
+  const { conciergeCards: storeCards } = useAtelierContent()
+  const cardsList = storeCards && storeCards.length > 0 ? storeCards : CONCIERGE_CARDS
+
   const [currentCardIdx, setCurrentCardIdx] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
@@ -157,11 +161,11 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
   useEffect(() => {
     if (isPaused) return
     const interval = setInterval(() => {
-      const nextIdx = (currentCardIdx + 1) % CONCIERGE_CARDS.length
+      const nextIdx = (currentCardIdx + 1) % cardsList.length
       scrollToCard(nextIdx)
     }, 6000)
     return () => clearInterval(interval)
-  }, [currentCardIdx, isPaused])
+  }, [currentCardIdx, isPaused, cardsList.length])
 
   const scrollToCard = (index: number) => {
     const container = scrollContainerRef.current
@@ -176,12 +180,12 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
   }
 
   const handlePrev = () => {
-    const nextIdx = (currentCardIdx - 1 + CONCIERGE_CARDS.length) % CONCIERGE_CARDS.length
+    const nextIdx = (currentCardIdx - 1 + cardsList.length) % cardsList.length
     scrollToCard(nextIdx)
   }
 
   const handleNext = () => {
-    const nextIdx = (currentCardIdx + 1) % CONCIERGE_CARDS.length
+    const nextIdx = (currentCardIdx + 1) % cardsList.length
     scrollToCard(nextIdx)
   }
 
@@ -199,7 +203,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
         closestIdx = i
       }
     }
-    if (closestIdx >= 0 && closestIdx < CONCIERGE_CARDS.length && closestIdx !== currentCardIdx) {
+    if (closestIdx >= 0 && closestIdx < cardsList.length && closestIdx !== currentCardIdx) {
       setCurrentCardIdx(closestIdx)
     }
   }
@@ -257,7 +261,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
             onScroll={handleScroll}
             className="relative flex gap-6 overflow-x-auto pb-6 scroll-smooth snap-x snap-mandatory hide-scrollbar"
           >
-            {CONCIERGE_CARDS.map((card, idx) => {
+            {cardsList.map((card, idx) => {
               const isActive = currentCardIdx === idx
               return (
                 <article
@@ -325,7 +329,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
 
           {/* Hairline Architectural Progress Bars */}
           <div className="flex items-center justify-center gap-2.5 pt-3">
-            {CONCIERGE_CARDS.map((card, idx) => (
+            {cardsList.map((card, idx) => (
               <button
                 key={card.id}
                 type="button"

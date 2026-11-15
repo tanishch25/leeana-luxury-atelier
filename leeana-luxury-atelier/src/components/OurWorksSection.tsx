@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { ArrowUpRight, Volume2, VolumeX } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 interface OurWorksSectionProps {
   onNavigateServices: () => void
@@ -12,6 +13,13 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
   onOpenOurWorksShorts,
   isPaused = false,
 }) => {
+  const { reels } = useAtelierContent()
+  const reel0 = reels[0] || { title: 'Cafe & Culinary Atmosphere', videoSrc: '/assets/reels/reel_1.mp4', posterSrc: '/assets/reels/reel_1_thumb.jpg' }
+  const reel1 = reels[1] || { title: 'Founder Vision', videoSrc: '/assets/reels/reel_attached_1.mp4', posterSrc: '/assets/reels/reel_attached_1_thumb.jpg' }
+  const reel2 = reels[2] || { title: 'The Cozy Ambience', videoSrc: '/assets/reels/reel_attached_2.mp4', posterSrc: '/assets/reels/reel_attached_2_thumb.jpg' }
+  const reel3 = reels[3] || { title: 'Design Dialogue & Living Spaces', videoSrc: '/assets/reels/reel_attached_3.mp4', posterSrc: '/assets/reels/reel_attached_3_thumb.jpg' }
+  const reel4 = reels[4] || { title: 'Culinary Narrative', videoSrc: '/assets/reels/reel_5_yt.mp4', posterSrc: '/assets/reels/reel_5_yt_thumb.jpg' }
+
   const [unmutedId, setUnmutedId] = useState<string | null>(null)
   const videoRefs = useRef<Record<string, HTMLVideoElement | null>>({})
   const containerRef = useRef<HTMLDivElement>(null)
@@ -111,8 +119,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['feature-reel'] = el
                 }}
-                src="/assets/reels/reel_1.mp4"
-                poster="/assets/reels/reel_1_thumb.jpg"
+                src={reel0.videoSrc}
+                poster={reel0.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -174,7 +182,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Bottom Feature Details */}
               <div className="relative z-10 p-5 sm:p-6 flex items-end justify-between gap-4 pointer-events-auto">
                 <h3 className="font-display text-2xl sm:text-3xl text-white font-light tracking-tight leading-snug">
-                  Cafe & Culinary Atmosphere
+                  {reel0.title}
                 </h3>
 
                 <div className="w-9 h-9 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
@@ -194,8 +202,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-5-yt'] = el
                 }}
-                src="/assets/reels/reel_5_yt.mp4"
-                poster="/assets/reels/reel_5_yt_thumb.jpg"
+                src={reel4.videoSrc}
+                poster={reel4.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -227,7 +235,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
               <div className="relative z-10 p-5 sm:p-6 flex items-end justify-between gap-2.5 pointer-events-auto">
                 <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  Culinary Narrative
+                  {reel4.title}
                 </h3>
                 <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -249,8 +257,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-attached-1'] = el
                 }}
-                src="/assets/reels/reel_attached_1.mp4"
-                poster="/assets/reels/reel_attached_1_thumb.jpg"
+                src={reel1.videoSrc}
+                poster={reel1.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -283,7 +291,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Title + Arrow */}
               <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-2.5 pointer-events-auto">
                 <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  Founder Vision
+                  {reel1.title}
                 </h3>
                 <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -302,8 +310,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-attached-2'] = el
                 }}
-                src="/assets/reels/reel_attached_2.mp4"
-                poster="/assets/reels/reel_attached_2_thumb.jpg"
+                src={reel2.videoSrc}
+                poster={reel2.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -336,7 +344,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Title + Arrow */}
               <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-2.5 pointer-events-auto">
                 <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  The Cozy Ambience
+                  {reel2.title}
                 </h3>
                 <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -355,8 +363,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-attached-3'] = el
                 }}
-                src="/assets/reels/reel_attached_3.mp4"
-                poster="/assets/reels/reel_attached_3_thumb.jpg"
+                src={reel3.videoSrc}
+                poster={reel3.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -389,7 +397,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               {/* Title + Arrow */}
               <div className="relative z-10 p-4 sm:p-5 flex items-end justify-between gap-2.5 pointer-events-auto">
                 <h3 className="font-display text-lg sm:text-xl text-white font-light tracking-tight leading-snug">
-                  Design Dialogue
+                  {reel3.title}
                 </h3>
                 <div className="w-8 h-8 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-black group-hover:border-white transition-all shrink-0 shadow-lg">
                   <ArrowUpRight className="w-3.5 h-3.5" />
@@ -412,8 +420,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               ref={(el) => {
                 videoRefs.current['feature-reel-mobile'] = el
               }}
-              src="/assets/reels/reel_1.mp4"
-              poster="/assets/reels/reel_1_thumb.jpg"
+              src={reel0.videoSrc}
+              poster={reel0.posterSrc}
               loop
               playsInline
               autoPlay
@@ -445,7 +453,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
             {/* Bottom Title + Arrow */}
             <div className="relative z-10 p-4 flex items-end justify-between gap-3 pointer-events-auto">
               <h3 className="font-display text-lg text-white font-light tracking-tight leading-snug">
-                Cafe & Culinary Atmosphere
+                {reel0.title}
               </h3>
               <div className="w-7 h-7 rounded-full border border-white/25 bg-black/40 backdrop-blur-md flex items-center justify-center text-white shrink-0">
                 <ArrowUpRight className="w-3 h-3" />
@@ -464,8 +472,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-attached-1-mobile'] = el
                 }}
-                src="/assets/reels/reel_attached_1.mp4"
-                poster="/assets/reels/reel_attached_1_thumb.jpg"
+                src={reel1.videoSrc}
+                poster={reel1.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -493,7 +501,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
               <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
                 <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
-                  Founder Vision
+                  {reel1.title}
                 </h3>
                 <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
               </div>
@@ -508,8 +516,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-attached-2-mobile'] = el
                 }}
-                src="/assets/reels/reel_attached_2.mp4"
-                poster="/assets/reels/reel_attached_2_thumb.jpg"
+                src={reel2.videoSrc}
+                poster={reel2.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -537,7 +545,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
               <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
                 <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
-                  Cozy Ambience
+                  {reel2.title}
                 </h3>
                 <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
               </div>
@@ -552,8 +560,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-attached-3-mobile'] = el
                 }}
-                src="/assets/reels/reel_attached_3.mp4"
-                poster="/assets/reels/reel_attached_3_thumb.jpg"
+                src={reel3.videoSrc}
+                poster={reel3.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -581,7 +589,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
               <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
                 <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
-                  Design Dialogue
+                  {reel3.title}
                 </h3>
                 <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
               </div>
@@ -596,8 +604,8 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
                 ref={(el) => {
                   videoRefs.current['reel-5-mobile'] = el
                 }}
-                src="/assets/reels/reel_5_yt.mp4"
-                poster="/assets/reels/reel_5_yt_thumb.jpg"
+                src={reel4.videoSrc}
+                poster={reel4.posterSrc}
                 loop
                 playsInline
                 autoPlay
@@ -625,7 +633,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
               </div>
               <div className="relative z-10 p-3 flex items-end justify-between gap-1 pointer-events-auto">
                 <h3 className="font-display text-sm text-white font-light tracking-tight leading-snug">
-                  Culinary Narrative
+                  {reel4.title}
                 </h3>
                 <ArrowUpRight className="w-3 h-3 text-white/70 shrink-0" />
               </div>

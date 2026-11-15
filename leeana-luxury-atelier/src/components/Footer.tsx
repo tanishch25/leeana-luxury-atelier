@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { ArrowUpRight, MapPin, Mail, MessageCircle, Phone } from 'lucide-react'
+import { ArrowUpRight, MapPin, Mail, MessageCircle, Phone, Sliders } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 export const Footer: React.FC<{
   onOpenRequisition: (mandate?: string) => void
   onNavigateOpportunities?: () => void
 }> = ({ onOpenRequisition, onNavigateOpportunities }) => {
+  const { setIsAdminOpen } = useAtelierContent()
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
 
@@ -127,8 +129,17 @@ export const Footer: React.FC<{
 
         {/* Low End Colophon */}
         <div className="flex flex-col xl:flex-row items-center justify-between gap-8 pt-10 border-t border-white/[0.08] text-sm sm:text-base font-light text-white/70 w-full">
-          <div className="text-center xl:text-left tracking-wide">
-            Leeana Fashion Concierge. All Rights Limited.
+          <div className="flex flex-col sm:flex-row items-center gap-3 text-center xl:text-left tracking-wide">
+            <span>Leeana Fashion Concierge. All Rights Limited.</span>
+            <span className="hidden sm:inline opacity-30">·</span>
+            <button
+              onClick={() => setIsAdminOpen(true)}
+              className="text-xs uppercase tracking-widest text-white/40 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5"
+              title="Open Atelier Studio Desk (Ctrl+Shift+A)"
+            >
+              <Sliders className="w-3 h-3 opacity-60" />
+              <span>Atelier Desk</span>
+            </button>
           </div>
 
           {/* Authentic Official Social Media Icons (Pure Black Circle Housing Official Brand SVGs) */}

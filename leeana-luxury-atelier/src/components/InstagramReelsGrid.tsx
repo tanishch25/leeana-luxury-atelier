@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Volume2, VolumeX, ArrowUpRight } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 export interface ReelItem {
   id: string
@@ -126,20 +127,21 @@ export const InstagramReelsGrid: React.FC = () => {
     return () => observer.disconnect()
   }, [])
 
+  const { reels: storeReels } = useAtelierContent()
+  const reelsData = storeReels && storeReels.length > 0 ? storeReels : INSTAGRAM_REELS_DATA
+
   // Mathematical Pinterest Column Architecture:
-  // Desktop: 4 columns where each column sums to 30.5 aspect units (17 + 13.5 = 30.5)
-  // Mobile: 2 columns where each column sums to 61.0 aspect units (17 + 17 + 13.5 + 13.5 = 61.0)
-  // Result: Completely asymmetric staggered middle seams, with 100% flush, identical bottom level!
+  // Dynamically populated from active reels store
   const columns = isDesktop
     ? [
-        [INSTAGRAM_REELS_DATA[0], INSTAGRAM_REELS_DATA[4]], // Col 1: 01 (tall), 05 (short) -> 30.5
-        [INSTAGRAM_REELS_DATA[1], INSTAGRAM_REELS_DATA[5]], // Col 2: 02 (short), 06 (tall) -> 30.5
-        [INSTAGRAM_REELS_DATA[2], INSTAGRAM_REELS_DATA[6]], // Col 3: 03 (tall), 07 (short) -> 30.5
-        [INSTAGRAM_REELS_DATA[3], INSTAGRAM_REELS_DATA[7]], // Col 4: 04 (short), 08 (tall) -> 30.5
+        [reelsData[0], reelsData[4]].filter(Boolean),
+        [reelsData[1], reelsData[5]].filter(Boolean),
+        [reelsData[2], reelsData[6]].filter(Boolean),
+        [reelsData[3], reelsData[7]].filter(Boolean),
       ]
     : [
-        [INSTAGRAM_REELS_DATA[0], INSTAGRAM_REELS_DATA[2], INSTAGRAM_REELS_DATA[4], INSTAGRAM_REELS_DATA[6]], // Col 1: 01, 03, 05, 07 -> 61.0
-        [INSTAGRAM_REELS_DATA[1], INSTAGRAM_REELS_DATA[3], INSTAGRAM_REELS_DATA[5], INSTAGRAM_REELS_DATA[7]], // Col 2: 02, 04, 06, 08 -> 61.0
+        reelsData.filter((_, i) => i % 2 === 0),
+        reelsData.filter((_, i) => i % 2 === 1),
       ]
 
   return (

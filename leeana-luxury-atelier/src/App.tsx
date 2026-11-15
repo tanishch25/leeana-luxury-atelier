@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Lenis from 'lenis'
+import { AtelierContentProvider } from './context/AtelierContentContext'
+import { AtelierAdminSuite } from './components/admin/AtelierAdminSuite'
+import { AdminFloatingTrigger } from './components/admin/AdminFloatingTrigger'
 import { Navbar } from './components/Navbar'
 import type { NavPage } from './components/Navbar'
 import { Hero } from './components/Hero'
@@ -17,7 +20,7 @@ import { Footer } from './components/Footer'
 import { RequisitionDossier } from './components/RequisitionDossier'
 import { MobileShortsModal } from './components/MobileShortsModal'
 
-export function App() {
+function AtelierApp() {
   const [activePage, setActivePage] = useState<NavPage>('home')
   const [isDossierOpen, setIsDossierOpen] = useState(false)
   const [isShortsOpen, setIsShortsOpen] = useState(false)
@@ -210,7 +213,19 @@ export function App() {
         onOpenConnect={() => handleOpenRequisition()}
       />
 
+      {/* 6. Atelier Studio Desk (CMS) & Floating Capsule */}
+      <AtelierAdminSuite />
+      <AdminFloatingTrigger />
+
     </div>
+  )
+}
+
+export function App() {
+  return (
+    <AtelierContentProvider>
+      <AtelierApp />
+    </AtelierContentProvider>
   )
 }
 

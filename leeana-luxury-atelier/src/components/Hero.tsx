@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowRight } from 'lucide-react'
+import { useAtelierContent } from '../context/AtelierContentContext'
 
 interface HeroProps {
   onOpenConsultation: () => void
@@ -52,21 +53,23 @@ const SLIDES: HeroSlide[] = [
 ]
 
 export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
+  const { heroSlides } = useAtelierContent()
+  const slidesList = heroSlides && heroSlides.length > 0 ? heroSlides : SLIDES
   const [currentIdx, setCurrentIdx] = useState(0)
 
   // Auto advance slides every 7 seconds
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIdx((prev) => (prev + 1) % SLIDES.length)
+      setCurrentIdx((prev) => (prev + 1) % slidesList.length)
     }, 7000)
     return () => clearInterval(timer)
-  }, [])
+  }, [slidesList.length])
 
   const handleSwitchSlide = (idx: number) => {
     setCurrentIdx(idx)
   }
 
-  const current = SLIDES[currentIdx]
+  const current = slidesList[currentIdx] || slidesList[0]
 
   return (
     <section className="pt-26 pb-10 px-3 sm:px-6 md:px-8 max-w-[1620px] mx-auto relative z-10">
@@ -75,7 +78,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       <div className="relative w-full h-[88svh] md:h-[95vh] min-h-[560px] sm:min-h-[680px] md:min-h-[760px] rounded-[24px] sm:rounded-[36px] md:rounded-[44px] overflow-hidden bg-black select-none shadow-2xl border border-white/[0.12] [transform:translateZ(0)]">
         
         {/* Pre-mounted Slides with Hardware-Accelerated Opacity Crossfade (Guaranteed Zero Shaking / Zero Remounting) */}
-        {SLIDES.map((slide, idx) => {
+        {slidesList.map((slide, idx) => {
           const isActive = idx === currentIdx
           return (
             <div
@@ -160,7 +163,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
 
               {/* Slide Selector Indicators */}
               <div className="flex items-center gap-2 bg-black/70 backdrop-blur-md p-1.5 rounded-full border border-white/20">
-                {SLIDES.map((slide, idx) => (
+                {slidesList.map((slide, idx) => (
                   <button
                     key={slide.id}
                     onClick={() => handleSwitchSlide(idx)}
