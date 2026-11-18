@@ -12,17 +12,6 @@
       "id": "0162"
     },
     {
-      "id": "08",
-      "title": "Leeana Fashion Concierge",
-      "subtitle": "Full-service bespoke luxury shoots, fine joaillerie macro optics, and talent curation.",
-      "videoSrc": "/assets/reels/reel_8_concierge.mp4",
-      "posterSrc": "/assets/reels/reel_8_concierge_thumb.jpg",
-      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
-      "category": "Brand Concierge",
-      "duration": "0:30",
-      "client": "Leeana Flagship Campaign"
-    },
-    {
       "id": "01",
       "title": "Cafe & Culinary Atmosphere",
       "subtitle": "Sensory gastronomy cinematography with golden-hour micro-textures.",
@@ -98,6 +87,17 @@
       "category": "Haute Couture",
       "duration": "0:24",
       "client": "Milanese Couture House"
+    },
+    {
+      "id": "08",
+      "title": "Leeana Fashion Concierge",
+      "subtitle": "Full-service bespoke luxury shoots, fine joaillerie macro optics, and talent curation.",
+      "videoSrc": "/assets/reels/reel_8_concierge.mp4",
+      "posterSrc": "/assets/reels/reel_8_concierge_thumb.jpg",
+      "instagramUrl": "https://www.instagram.com/leeana.in?xtok=MTNianE5anNlMTloeg%3D%3D&utm_source=qr",
+      "category": "Brand Concierge",
+      "duration": "0:30",
+      "client": "Leeana Flagship Campaign"
     }
   ],
   "lookbookColumns": [
@@ -576,5 +576,5 @@
       "id": "3454"
     }
   ],
-  "updatedAt": "2026-11-18T17:13:06.796Z"
+  "updatedAt": "2026-11-18T17:24:25.289Z"
 }
