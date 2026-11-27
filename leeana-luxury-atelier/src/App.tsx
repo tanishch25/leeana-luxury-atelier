@@ -22,6 +22,7 @@ function AtelierApp() {
   const [activePage, setActivePage] = useState<NavPage>('home')
   const [isDossierOpen, setIsDossierOpen] = useState(false)
   const [isShortsOpen, setIsShortsOpen] = useState(false)
+  const [activeShortsReelId, setActiveShortsReelId] = useState<string | undefined>()
   const [selectedService, setSelectedService] = useState<string | undefined>()
   const [scrollProgress, setScrollProgress] = useState(0)
   const [showBackToTop, setShowBackToTop] = useState(false)
@@ -84,6 +85,11 @@ function AtelierApp() {
     setIsDossierOpen(true)
   }
 
+  const handleOpenReel = (reelId?: string) => {
+    setActiveShortsReelId(reelId)
+    setIsShortsOpen(true)
+  }
+
   const handleNavigate = (page: NavPage) => {
     setActivePage(page)
     if (lenisRef.current) {
@@ -107,7 +113,7 @@ function AtelierApp() {
         activePage={activePage}
         onNavigate={handleNavigate}
         onOpenConsultation={() => handleOpenRequisition()}
-        onOpenOurWorksShorts={() => setIsShortsOpen(true)}
+        onOpenOurWorksShorts={() => handleOpenReel()}
       />
 
       {/* 2. Main Viewport Flow */}
@@ -125,7 +131,7 @@ function AtelierApp() {
                 setActivePage('concierge')
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
-              onOpenOurWorksShorts={() => setIsShortsOpen(true)}
+              onOpenOurWorksShorts={(reelId) => handleOpenReel(reelId)}
               isPaused={isShortsOpen}
             />
             <LookbookGallery />
@@ -156,6 +162,7 @@ function AtelierApp() {
             <ConciergePage
               onOpenRequisition={(mandate) => handleOpenRequisition(mandate)}
               onNavigateToOpportunities={() => handleNavigate('opportunities')}
+              onOpenReel={(reelId) => handleOpenReel(reelId)}
             />
           </div>
         )}
@@ -196,11 +203,15 @@ function AtelierApp() {
         initialService={selectedService}
       />
 
-      {/* 5. Mobile-Specific Vertical Short-Form Video Reels Modal (Strictly Mobile Only) */}
+      {/* 5. In-Site Vertical Video Reels Modal (Mobile & Desktop Luxury Stage) */}
       <MobileShortsModal
         isOpen={isShortsOpen}
-        onClose={() => setIsShortsOpen(false)}
+        onClose={() => {
+          setIsShortsOpen(false)
+          setActiveShortsReelId(undefined)
+        }}
         onOpenConnect={() => handleOpenRequisition()}
+        initialReelId={activeShortsReelId}
       />
 
     </div>

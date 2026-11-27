@@ -18,6 +18,7 @@ interface ConciergePageProps {
   onOpenRequisition: (mandate?: string) => void
   initialScrollTo?: string
   onNavigateToOpportunities?: () => void
+  onOpenReel?: (reelId: string) => void
 }
 
 export interface ConciergeCard {
@@ -138,6 +139,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
   onOpenRequisition,
   initialScrollTo,
   onNavigateToOpportunities,
+  onOpenReel,
 }) => {
   const { conciergeCards: storeCards, models: storeModels } = useAtelierContent()
   const cardsList = storeCards && storeCards.length > 0 ? storeCards : CONCIERGE_CARDS
@@ -349,7 +351,7 @@ export const ConciergePage: React.FC<ConciergePageProps> = ({
       {/* ========================================================= */}
       {/* 2. LIVE PRODUCTIONS - INSTAGRAM REELS SHOWCASE           */}
       {/* ========================================================= */}
-      <InstagramReelsGrid />
+      <InstagramReelsGrid onOpenReel={onOpenReel} />
 
 
       {/* ========================================================= */}

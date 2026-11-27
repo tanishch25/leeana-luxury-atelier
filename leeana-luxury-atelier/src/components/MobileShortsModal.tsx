@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { ArrowLeft, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp } from 'lucide-react'
+import { ArrowLeft, X, Volume2, VolumeX, ArrowUpRight, Share2, Sparkles, ChevronUp, ChevronDown } from 'lucide-react'
 import { useAtelierContent } from '../context/AtelierContentContext'
 
 export interface ReelShortItem {
@@ -100,12 +100,14 @@ interface MobileShortsModalProps {
   isOpen: boolean
   onClose: () => void
   onOpenConnect: () => void
+  initialReelId?: string
 }
 
 export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
   isOpen,
   onClose,
   onOpenConnect,
+  initialReelId,
 }) => {
   const { reels: storeReels } = useAtelierContent()
   const reelsList = storeReels && storeReels.length > 0 ? storeReels : SHORTS_REELS_DATA
@@ -134,34 +136,47 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     onClose()
   }, [stopAllPlayback, onClose])
 
-  // Lock background scroll when open, check for shared reel param, and ensure fresh start with sound on
+  const scrollToReel = useCallback((targetIdx: number) => {
+    if (!containerRef.current) return
+    const targetSection = sectionRefs.current[targetIdx]
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [])
+
+  // Lock background scroll when open, check for shared reel param or initialReelId, and ensure fresh start with sound on
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
       setIsMuted(false)
       stopAllPlayback()
 
-      // Check for deep-linked ?reel= parameter
-      const params = new URLSearchParams(window.location.search)
-      const reelParam = params.get('reel')
       let initialIdx = 0
-      if (reelParam) {
-        const found = reelsList.findIndex((r) => r.id === reelParam)
+      if (initialReelId) {
+        const found = reelsList.findIndex((r) => r.id === initialReelId)
         if (found !== -1) initialIdx = found
+      } else {
+        const params = new URLSearchParams(window.location.search)
+        const reelParam = params.get('reel')
+        if (reelParam) {
+          const found = reelsList.findIndex((r) => r.id === reelParam)
+          if (found !== -1) initialIdx = found
+        }
       }
 
       setActiveIndex(initialIdx)
-      setTimeout(() => {
-        if (containerRef.current && initialIdx > 0 && sectionRefs.current[initialIdx]) {
+      const scrollTimer = setTimeout(() => {
+        if (containerRef.current && sectionRefs.current[initialIdx]) {
           sectionRefs.current[initialIdx]?.scrollIntoView({ behavior: 'auto' })
         } else if (containerRef.current) {
           containerRef.current.scrollTop = 0
         }
-      }, 50)
+      }, 40)
 
       setShowSwipeHint(true)
       const timer = setTimeout(() => setShowSwipeHint(false), 3200)
       return () => {
+        clearTimeout(scrollTimer)
         clearTimeout(timer)
         document.body.style.overflow = ''
       }
@@ -173,7 +188,38 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isOpen, stopAllPlayback])
+  }, [isOpen, initialReelId, stopAllPlayback, reelsList])
+
+  // Desktop keyboard navigation (Escape to close, Arrows to step, Space to play/pause, M to mute)
+  useEffect(() => {
+    if (!isOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        handleClose()
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault()
+        scrollToReel(Math.min(activeIndex + 1, reelsList.length))
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault()
+        scrollToReel(Math.max(activeIndex - 1, 0))
+      } else if (e.key === ' ' || e.key === 'k') {
+        e.preventDefault()
+        const activeVideo = videoRefs.current[activeIndex]
+        if (activeVideo) {
+          if (activeVideo.paused) {
+            activeVideo.play().catch(() => {})
+          } else {
+            activeVideo.pause()
+          }
+        }
+      } else if (e.key === 'm' || e.key === 'M') {
+        e.preventDefault()
+        setIsMuted((prev) => !prev)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isOpen, activeIndex, reelsList.length, handleClose, scrollToReel])
 
   // High-performance IntersectionObserver detects the active reel at 55% viewport visibility
   useEffect(() => {
@@ -282,49 +328,93 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-black text-white flex flex-col overflow-hidden select-none transition-all duration-300 ${
+      className={`fixed inset-0 z-50 bg-black/90 md:bg-black/85 md:backdrop-blur-3xl text-white flex items-center justify-center overflow-hidden select-none transition-all duration-300 ${
         isOpen ? 'opacity-100 pointer-events-auto visible' : 'opacity-0 pointer-events-none invisible'
       }`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          handleClose()
+        }
+      }}
     >
-      
-      {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA, No x/y, No dots */}
-      <header className="absolute top-0 inset-x-0 z-30 pt-safe-top px-4 py-3.5 flex items-center justify-between pointer-events-auto bg-gradient-to-b from-black/85 via-black/40 to-transparent">
-        {/* Left: Back Arrow Button */}
-        <button
-          onClick={(e) => {
-            e.stopPropagation()
-            handleClose()
-          }}
-          aria-label="Back to Atelier"
-          className="w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 transition-all cursor-pointer shadow-lg hover:border-white/40"
-        >
-          <ArrowLeft className="w-5 h-5 text-white" />
-        </button>
-
-        {/* Middle: Centered LEEANA Mark (Strictly without .IN, Same Bespoke Couture Font) */}
-        <span className="font-couture text-lg sm:text-xl tracking-[0.26em] text-white select-none">
-          LEEANA
-        </span>
-
-        {/* Right: Invisible Spacer to Balance Horizontal Center */}
-        <div className="w-10 h-10 pointer-events-none" />
-      </header>
-
-      {/* Ultra-Smooth 120Hz Vertical Shorts Snap Container */}
-      <div
-        ref={containerRef}
-        className="flex-1 w-full h-[100dvh] overflow-y-scroll snap-y snap-mandatory scrollbar-none relative overscroll-y-contain [scroll-snap-type:y_mandatory] [-webkit-overflow-scrolling:touch] touch-pan-y"
+      {/* Desktop Floating Close Button */}
+      <button
+        onClick={handleClose}
+        aria-label="Close modal"
+        className="hidden md:flex absolute top-6 right-8 z-50 w-11 h-11 rounded-full bg-white/10 hover:bg-white hover:text-black border border-white/20 backdrop-blur-xl items-center justify-center text-white transition-all cursor-pointer shadow-2xl active:scale-95"
       >
-        {reelsList.map((reel, index) => {
-          return (
-            <section
-              key={reel.id}
-              ref={(el) => {
-                sectionRefs.current[index] = el
-              }}
-              data-index={index}
-              className="relative w-full h-[100dvh] snap-start snap-always flex items-center justify-center bg-black overflow-hidden select-none shrink-0"
-            >
+        <X className="w-5 h-5" />
+      </button>
+
+      {/* Desktop Vertical Stepper Controls */}
+      <div className="hidden md:flex flex-col items-center gap-3 absolute right-8 top-1/2 -translate-y-1/2 z-50">
+        <button
+          onClick={() => scrollToReel(Math.max(activeIndex - 1, 0))}
+          disabled={activeIndex === 0}
+          className="w-11 h-11 rounded-full bg-white/10 hover:bg-white hover:text-black border border-white/20 backdrop-blur-xl flex items-center justify-center text-white transition-all disabled:opacity-25 disabled:pointer-events-none cursor-pointer shadow-xl active:scale-95"
+          aria-label="Previous reel"
+        >
+          <ChevronUp className="w-5 h-5" />
+        </button>
+        <span className="text-[11px] font-mono tracking-widest text-white/60">
+          {String(Math.min(activeIndex + 1, reelsList.length)).padStart(2, '0')}/{String(reelsList.length).padStart(2, '0')}
+        </span>
+        <button
+          onClick={() => scrollToReel(Math.min(activeIndex + 1, reelsList.length))}
+          disabled={activeIndex >= reelsList.length}
+          className="w-11 h-11 rounded-full bg-white/10 hover:bg-white hover:text-black border border-white/20 backdrop-blur-xl flex items-center justify-center text-white transition-all disabled:opacity-25 disabled:pointer-events-none cursor-pointer shadow-xl active:scale-95"
+          aria-label="Next reel"
+        >
+          <ChevronDown className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Centered Cinema Frame (Full screen on mobile, luxury 9:16 aspect on desktop) */}
+      <div className="relative w-full h-[100dvh] md:max-w-[430px] md:h-[92vh] md:max-h-[920px] md:rounded-[36px] md:border md:border-white/20 md:shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden flex flex-col bg-black">
+        {/* Top Floating Glass Header Deck: Left Back Arrow, Center LEEANA, Right Sound Toggle */}
+        <header className="absolute top-0 inset-x-0 z-30 pt-safe-top px-4 py-3.5 flex items-center justify-between pointer-events-auto bg-gradient-to-b from-black/85 via-black/40 to-transparent">
+          {/* Left: Back / Close Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              handleClose()
+            }}
+            aria-label="Close"
+            className="w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 hover:bg-white hover:text-black hover:border-white transition-all cursor-pointer shadow-lg"
+          >
+            <ArrowLeft className="w-5 h-5 text-white" />
+          </button>
+
+          {/* Middle: Centered LEEANA Mark (Strictly without .IN, Same Bespoke Couture Font) */}
+          <span className="font-couture text-lg sm:text-xl tracking-[0.26em] text-white select-none">
+            LEEANA
+          </span>
+
+          {/* Right: Quick Sound Toggle in Header */}
+          <button
+            onClick={toggleSound}
+            aria-label={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+            className="w-10 h-10 rounded-full bg-black/60 border border-white/20 backdrop-blur-xl flex items-center justify-center text-white active:scale-90 hover:bg-white hover:text-black hover:border-white transition-all cursor-pointer shadow-lg"
+          >
+            {isMuted ? <VolumeX className="w-4 h-4 text-white/80" /> : <Volume2 className="w-4 h-4 text-white" />}
+          </button>
+        </header>
+
+        {/* Ultra-Smooth 120Hz Vertical Shorts Snap Container */}
+        <div
+          ref={containerRef}
+          className="flex-1 w-full h-full overflow-y-scroll snap-y snap-mandatory scrollbar-none relative overscroll-y-contain [scroll-snap-type:y_mandatory] [-webkit-overflow-scrolling:touch] touch-pan-y"
+        >
+          {reelsList.map((reel, index) => {
+            return (
+              <section
+                key={reel.id}
+                ref={(el) => {
+                  sectionRefs.current[index] = el
+                }}
+                data-index={index}
+                className="relative w-full h-[100dvh] md:h-full snap-start snap-always flex items-center justify-center bg-black overflow-hidden select-none shrink-0"
+              >
               {/* Fullscreen Vertical Video Element */}
               <video
                 ref={(el) => {
@@ -403,7 +493,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
             sectionRefs.current[reelsList.length] = el
           }}
           data-index={reelsList.length}
-          className="relative w-full h-[100dvh] snap-start snap-always flex items-center justify-center bg-[#07070a] px-6 select-none overflow-hidden shrink-0"
+          className="relative w-full h-[100dvh] md:h-full snap-start snap-always flex items-center justify-center bg-[#07070a] px-6 select-none overflow-hidden shrink-0"
         >
           {/* Subtle Radial Backdrop Ambient */}
           <div className="absolute inset-0 bg-radial from-white/[0.05] via-transparent to-transparent pointer-events-none" />
@@ -472,6 +562,7 @@ export const MobileShortsModal: React.FC<MobileShortsModalProps> = ({
         </div>
       )}
 
+      </div>
     </div>
   )
 }

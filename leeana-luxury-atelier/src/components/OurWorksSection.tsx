@@ -4,7 +4,7 @@ import { useAtelierContent } from '../context/AtelierContentContext'
 
 interface OurWorksSectionProps {
   onNavigateServices: () => void
-  onOpenOurWorksShorts?: () => void
+  onOpenOurWorksShorts?: (reelId?: string) => void
   isPaused?: boolean
 }
 
@@ -112,7 +112,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-3.5">
             {/* Feature Master Cinema Card: Priority 1 - Cafe & Culinary Atmosphere */}
             <div
-              onClick={onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel0.id || '01') : onNavigateServices())}
               className="group relative lg:col-span-2 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-2xl transition-all duration-500 hover:border-white/45 cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -195,7 +195,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
             {/* Reel 5: Culinary Narrative & Cafe Architecture */}
             <div
-              onClick={onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel4.id || '05') : onNavigateServices())}
               className="group relative lg:col-span-1 h-[340px] sm:h-[400px] md:h-[450px] rounded-[24px] overflow-hidden border border-white/[0.14] bg-[#060609] hover:border-white/40 transition-all duration-500 shadow-2xl cursor-pointer flex flex-col justify-between hover:-translate-y-1"
             >
               <video
@@ -250,7 +250,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5">
             {/* Priority 2: 1st Attached Video - Founder Vision & Commercial Direction */}
             <div
-              onClick={onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel1.id || '02') : onNavigateServices())}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -303,7 +303,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
             {/* Priority 3: 2nd Attached Video - The Cozy Ambience */}
             <div
-              onClick={onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel2.id || '03') : onNavigateServices())}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -356,7 +356,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
             {/* Priority 4: 3rd Attached Video - Design Dialogue & Living Spaces */}
             <div
-              onClick={onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel3.id || '04') : onNavigateServices())}
               className="group relative h-[300px] sm:h-[350px] md:h-[380px] rounded-[22px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all duration-500 hover:border-white/45 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -413,7 +413,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
         <div className="block sm:hidden space-y-2.5">
           {/* Card 1: Priority 1 - Feature Cinema Reel: Cafe & Culinary Atmosphere */}
           <div
-            onClick={onOpenOurWorksShorts || onNavigateServices}
+            onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel0.id || '01') : onNavigateServices())}
             className="group relative h-[210px] rounded-[20px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-xl transition-all cursor-pointer flex flex-col justify-between"
           >
             <video
@@ -465,7 +465,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
           <div className="grid grid-cols-2 gap-2.5">
             {/* Reel 2: Founder Vision */}
             <div
-              onClick={onOpenOurWorksShorts || onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel1.id || '02') : onNavigateServices())}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -509,7 +509,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
             {/* Reel 3: The Cozy Ambience */}
             <div
-              onClick={onOpenOurWorksShorts || onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel2.id || '03') : onNavigateServices())}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -553,7 +553,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
             {/* Reel 4: Design Dialogue */}
             <div
-              onClick={onOpenOurWorksShorts || onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel3.id || '04') : onNavigateServices())}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
@@ -597,7 +597,7 @@ export const OurWorksSection: React.FC<OurWorksSectionProps> = ({
 
             {/* Reel 5: Culinary Narrative */}
             <div
-              onClick={onOpenOurWorksShorts || onNavigateServices}
+              onClick={() => (onOpenOurWorksShorts ? onOpenOurWorksShorts(reel4.id || '05') : onNavigateServices())}
               className="group relative aspect-[3/4] rounded-[18px] overflow-hidden border border-white/[0.14] bg-[#060609] shadow-lg cursor-pointer flex flex-col justify-between"
             >
               <video
